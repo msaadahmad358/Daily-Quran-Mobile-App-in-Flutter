@@ -1,0 +1,967 @@
+import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'main.dart';
+import 'auth_service.dart';
+import 'login_screen.dart';
+
+class SettingsTab extends StatefulWidget {
+  final Function(bool) onThemeToggle;
+  final Function(String) onLanguageChange;
+  final String currentLanguage;
+  final bool isDarkMode;
+
+  const SettingsTab({
+    super.key,
+    required this.onThemeToggle,
+    required this.onLanguageChange,
+    required this.currentLanguage,
+    required this.isDarkMode,
+  });
+
+  @override
+  State<SettingsTab> createState() => _SettingsTabState();
+}
+
+class _SettingsTabState extends State<SettingsTab> {
+  final AuthService _auth = AuthService();
+  User? _currentUser;
+  bool _showTranslation = true;
+  bool _showTafsir = true;
+  bool _isLoading = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadUser();
+    _loadPreferences();
+  }
+
+  void _loadUser() async {
+    final user = await _auth.getCurrentUser();
+    setState(() {
+      _currentUser = user;
+    });
+  }
+
+  Future<void> _loadPreferences() async {
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      _showTranslation = prefs.getBool('show_translation') ?? true;
+      _showTafsir = prefs.getBool('show_tafsir') ?? true;
+    });
+  }
+
+  Future<void> _savePreferences() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('show_translation', _showTranslation);
+    await prefs.setBool('show_tafsir', _showTafsir);
+  }
+
+  // ========== EDIT PROFILE ==========
+  void _showEditProfileDialog() {
+    final TextEditingController nameController = TextEditingController(
+      text: _currentUser?.name ?? '',
+    );
+
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Edit Profile'),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            TextField(
+              controller: nameController,
+              decoration: const InputDecoration(
+                labelText: 'Full Name',
+                border: OutlineInputBorder(),
+                prefixIcon: Icon(Icons.person),
+              ),
+            ),
+          ],
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('Cancel'),
+          ),
+          ElevatedButton(
+            onPressed: () async {
+              final name = nameController.text.trim();
+              if (name.isEmpty) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('Name cannot be empty'),
+                    backgroundColor: Colors.red,
+                  ),
+                );
+                return;
+              }
+              setState(() => _isLoading = true);
+              final result = await _auth.updateProfile(name: name);
+              setState(() => _isLoading = false);
+              if (result['success'] == true) {
+                _loadUser();
+                Navigator.pop(context);
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('Profile updated successfully'),
+                    backgroundColor: Colors.green,
+                  ),
+                );
+              } else {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(
+                      result['message'] ?? 'Failed to update profile',
+                    ),
+                    backgroundColor: Colors.red,
+                  ),
+                );
+              }
+            },
+            style: ElevatedButton.styleFrom(
+              backgroundColor: const Color(0xFF1A5F4A),
+            ),
+            child: _isLoading
+                ? const SizedBox(
+                    width: 20,
+                    height: 20,
+                    child: CircularProgressIndicator(
+                      strokeWidth: 2,
+                      valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                    ),
+                  )
+                : const Text('Save'),
+          ),
+        ],
+      ),
+    );
+  }
+
+  // ========== CHANGE PASSWORD ==========
+  void _showChangePasswordDialog() {
+    final TextEditingController oldPassController = TextEditingController();
+    final TextEditingController newPassController = TextEditingController();
+    final TextEditingController confirmPassController = TextEditingController();
+
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Change Password'),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            TextField(
+              controller: oldPassController,
+              obscureText: true,
+              decoration: const InputDecoration(
+                labelText: 'Current Password',
+                border: OutlineInputBorder(),
+                prefixIcon: Icon(Icons.lock_outline),
+              ),
+            ),
+            const SizedBox(height: 12),
+            TextField(
+              controller: newPassController,
+              obscureText: true,
+              decoration: const InputDecoration(
+                labelText: 'New Password',
+                border: OutlineInputBorder(),
+                prefixIcon: Icon(Icons.lock),
+              ),
+            ),
+            const SizedBox(height: 12),
+            TextField(
+              controller: confirmPassController,
+              obscureText: true,
+              decoration: const InputDecoration(
+                labelText: 'Confirm New Password',
+                border: OutlineInputBorder(),
+                prefixIcon: Icon(Icons.lock),
+              ),
+            ),
+          ],
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('Cancel'),
+          ),
+          ElevatedButton(
+            onPressed: () async {
+              final oldPass = oldPassController.text;
+              final newPass = newPassController.text;
+              final confirmPass = confirmPassController.text;
+
+              if (oldPass.isEmpty || newPass.isEmpty || confirmPass.isEmpty) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('Please fill all fields'),
+                    backgroundColor: Colors.red,
+                  ),
+                );
+                return;
+              }
+              if (newPass != confirmPass) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('New passwords do not match'),
+                    backgroundColor: Colors.red,
+                  ),
+                );
+                return;
+              }
+              if (newPass.length < 8) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('Password must be at least 8 characters'),
+                    backgroundColor: Colors.red,
+                  ),
+                );
+                return;
+              }
+
+              setState(() => _isLoading = true);
+              final result = await _auth.changePassword(
+                oldPassword: oldPass,
+                newPassword: newPass,
+              );
+              setState(() => _isLoading = false);
+
+              if (result['success'] == true) {
+                Navigator.pop(context);
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('Password changed successfully'),
+                    backgroundColor: Colors.green,
+                  ),
+                );
+              } else {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(
+                      result['message'] ?? 'Failed to change password',
+                    ),
+                    backgroundColor: Colors.red,
+                  ),
+                );
+              }
+            },
+            style: ElevatedButton.styleFrom(
+              backgroundColor: const Color(0xFF1A5F4A),
+            ),
+            child: _isLoading
+                ? const SizedBox(
+                    width: 20,
+                    height: 20,
+                    child: CircularProgressIndicator(
+                      strokeWidth: 2,
+                      valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                    ),
+                  )
+                : const Text('Update'),
+          ),
+        ],
+      ),
+    );
+  }
+
+  // ========== LOGOUT ==========
+  Future<void> _logout() async {
+    final confirm = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Logout'),
+        content: const Text('Are you sure you want to logout?'),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context, false),
+            child: const Text('Cancel'),
+          ),
+          TextButton(
+            onPressed: () => Navigator.pop(context, true),
+            style: TextButton.styleFrom(foregroundColor: Colors.red),
+            child: const Text('Logout'),
+          ),
+        ],
+      ),
+    );
+
+    if (confirm == true) {
+      setState(() => _isLoading = true);
+      await _auth.logoutUser();
+      setState(() => _isLoading = false);
+
+      // Navigate to login screen
+      if (context.mounted) {
+        Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(
+            builder: (context) => LoginScreen(
+              onLogin: () {},
+              onSignup: () {},
+              onForgotPassword: () {},
+              currentLanguage: widget.currentLanguage,
+              isDarkMode: widget.isDarkMode,
+            ),
+          ),
+          (route) => false,
+        );
+      }
+    }
+  }
+
+  // ========== DELETE ACCOUNT ==========
+  Future<void> _deleteAccount() async {
+    final confirm = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text(
+          'Delete Account',
+          style: TextStyle(color: Colors.red),
+        ),
+        content: const Text(
+          'Are you sure you want to delete your account? This action cannot be undone. All your data will be permanently removed.',
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context, false),
+            child: const Text('Cancel'),
+          ),
+          TextButton(
+            onPressed: () => Navigator.pop(context, true),
+            style: TextButton.styleFrom(foregroundColor: Colors.red),
+            child: const Text('Delete'),
+          ),
+        ],
+      ),
+    );
+
+    if (confirm == true) {
+      setState(() => _isLoading = true);
+      final result = await _auth.deleteAccount();
+      setState(() => _isLoading = false);
+
+      if (result['success'] == true) {
+        if (context.mounted) {
+          Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(
+              builder: (context) => LoginScreen(
+                onLogin: () {},
+                onSignup: () {},
+                onForgotPassword: () {},
+                currentLanguage: widget.currentLanguage,
+                isDarkMode: widget.isDarkMode,
+              ),
+            ),
+            (route) => false,
+          );
+        }
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Account deleted successfully'),
+            backgroundColor: Colors.green,
+          ),
+        );
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(result['message'] ?? 'Failed to delete account'),
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final getText = (String key) =>
+        AppTranslations.getText(widget.currentLanguage, key);
+    final isDark = widget.isDarkMode;
+
+    return Scaffold(
+      backgroundColor: isDark
+          ? const Color(0xFF0A0A0A)
+          : const Color(0xFFF5F0EB),
+      appBar: AppBar(
+        title: Text(
+          getText('settings'),
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: isDark ? Colors.white : Colors.black87,
+          ),
+        ),
+        backgroundColor: isDark
+            ? const Color(0xFF0A0A0A)
+            : const Color(0xFFF5F0EB),
+        elevation: 0,
+      ),
+      body: _isLoading
+          ? const Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  CircularProgressIndicator(),
+                  SizedBox(height: 16),
+                  Text('Please wait...'),
+                ],
+              ),
+            )
+          : SingleChildScrollView(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // ========== PROFILE SECTION ==========
+                  Container(
+                    padding: const EdgeInsets.all(20),
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                        colors: isDark
+                            ? [const Color(0xFF1E1E1E), const Color(0xFF2A2A2A)]
+                            : [Colors.white, const Color(0xFFF8F5F0)],
+                      ),
+                      borderRadius: BorderRadius.circular(20),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withValues(alpha: 0.05),
+                          blurRadius: 12,
+                          offset: const Offset(0, 4),
+                        ),
+                      ],
+                    ),
+                    child: Row(
+                      children: [
+                        Container(
+                          width: 60,
+                          height: 60,
+                          decoration: BoxDecoration(
+                            gradient: const LinearGradient(
+                              colors: [Color(0xFF1A5F4A), Color(0xFF2D7A62)],
+                            ),
+                            shape: BoxShape.circle,
+                          ),
+                          child: Center(
+                            child: Text(
+                              _currentUser?.name?.isNotEmpty == true
+                                  ? _currentUser!.name![0].toUpperCase()
+                                  : '👤',
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 24,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 16),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                _currentUser?.name ?? 'Guest User',
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                  color: isDark ? Colors.white : Colors.black87,
+                                ),
+                              ),
+                              Text(
+                                _currentUser?.email ?? 'Not signed in',
+                                style: TextStyle(
+                                  fontSize: 13,
+                                  color: isDark
+                                      ? Colors.grey[400]
+                                      : Colors.grey[600],
+                                ),
+                              ),
+                              Container(
+                                margin: const EdgeInsets.only(top: 4),
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 8,
+                                  vertical: 2,
+                                ),
+                                decoration: BoxDecoration(
+                                  color: _currentUser?.emailVerified == true
+                                      ? Colors.green.withValues(alpha: 0.15)
+                                      : Colors.orange.withValues(alpha: 0.15),
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                child: Text(
+                                  _currentUser?.emailVerified == true
+                                      ? '✓ Verified'
+                                      : '⚠️ Not Verified',
+                                  style: TextStyle(
+                                    fontSize: 10,
+                                    color: _currentUser?.emailVerified == true
+                                        ? Colors.green
+                                        : Colors.orange,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  const SizedBox(height: 24),
+
+                  // ========== LANGUAGE SECTION ==========
+                  _buildSectionHeader('🌐', getText('language'), isDark),
+                  const SizedBox(height: 12),
+                  Container(
+                    padding: const EdgeInsets.all(16),
+                    decoration: _buildCardDecoration(isDark),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: GestureDetector(
+                            onTap: () => widget.onLanguageChange('English'),
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(vertical: 12),
+                              decoration: BoxDecoration(
+                                gradient: widget.currentLanguage == 'English'
+                                    ? const LinearGradient(
+                                        colors: [
+                                          Color(0xFF1A5F4A),
+                                          Color(0xFF2D7A62),
+                                        ],
+                                      )
+                                    : null,
+                                color: widget.currentLanguage == 'English'
+                                    ? null
+                                    : (isDark
+                                          ? const Color(0xFF3D3D3D)
+                                          : const Color(0xFFF0F0F0)),
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  'English',
+                                  style: TextStyle(
+                                    color: widget.currentLanguage == 'English'
+                                        ? Colors.white
+                                        : (isDark
+                                              ? Colors.grey[400]
+                                              : Colors.grey[700]),
+                                    fontWeight:
+                                        widget.currentLanguage == 'English'
+                                        ? FontWeight.w600
+                                        : FontWeight.w400,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 12),
+                        Expanded(
+                          child: GestureDetector(
+                            onTap: () => widget.onLanguageChange('French'),
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(vertical: 12),
+                              decoration: BoxDecoration(
+                                gradient: widget.currentLanguage == 'French'
+                                    ? const LinearGradient(
+                                        colors: [
+                                          Color(0xFF1A5F4A),
+                                          Color(0xFF2D7A62),
+                                        ],
+                                      )
+                                    : null,
+                                color: widget.currentLanguage == 'French'
+                                    ? null
+                                    : (isDark
+                                          ? const Color(0xFF3D3D3D)
+                                          : const Color(0xFFF0F0F0)),
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  'Français',
+                                  style: TextStyle(
+                                    color: widget.currentLanguage == 'French'
+                                        ? Colors.white
+                                        : (isDark
+                                              ? Colors.grey[400]
+                                              : Colors.grey[700]),
+                                    fontWeight:
+                                        widget.currentLanguage == 'French'
+                                        ? FontWeight.w600
+                                        : FontWeight.w400,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  const SizedBox(height: 24),
+
+                  // ========== READING PREFERENCES ==========
+                  _buildSectionHeader('📖', 'Reading Preferences', isDark),
+                  const SizedBox(height: 12),
+
+                  // Show Translation Toggle
+                  Container(
+                    padding: const EdgeInsets.all(16),
+                    decoration: _buildCardDecoration(isDark),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            Container(
+                              padding: const EdgeInsets.all(8),
+                              decoration: BoxDecoration(
+                                color: const Color(
+                                  0xFF1A5F4A,
+                                ).withValues(alpha: 0.1),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: const Icon(
+                                Icons.translate,
+                                color: Color(0xFF1A5F4A),
+                                size: 22,
+                              ),
+                            ),
+                            const SizedBox(width: 12),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Show Translation',
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w500,
+                                    color: isDark
+                                        ? Colors.white
+                                        : Colors.black87,
+                                  ),
+                                ),
+                                Text(
+                                  'Display translation below verses',
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    color: isDark
+                                        ? Colors.grey[400]
+                                        : Colors.grey[600],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                        Switch(
+                          value: _showTranslation,
+                          onChanged: (value) {
+                            setState(() {
+                              _showTranslation = value;
+                              _savePreferences();
+                            });
+                          },
+                          activeColor: const Color(0xFF1A5F4A),
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  const SizedBox(height: 12),
+
+                  // Show Tafsir Toggle
+                  Container(
+                    padding: const EdgeInsets.all(16),
+                    decoration: _buildCardDecoration(isDark),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            Container(
+                              padding: const EdgeInsets.all(8),
+                              decoration: BoxDecoration(
+                                color: const Color(
+                                  0xFFC9A96E,
+                                ).withValues(alpha: 0.15),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: const Icon(
+                                Icons.info_outline,
+                                color: Color(0xFFC9A96E),
+                                size: 22,
+                              ),
+                            ),
+                            const SizedBox(width: 12),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Show Tafsir',
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w500,
+                                    color: isDark
+                                        ? Colors.white
+                                        : Colors.black87,
+                                  ),
+                                ),
+                                Text(
+                                  'Display explanation below translation',
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    color: isDark
+                                        ? Colors.grey[400]
+                                        : Colors.grey[600],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                        Switch(
+                          value: _showTafsir,
+                          onChanged: (value) {
+                            setState(() {
+                              _showTafsir = value;
+                              _savePreferences();
+                            });
+                          },
+                          activeColor: const Color(0xFF1A5F4A),
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  const SizedBox(height: 24),
+
+                  // ========== THEME SECTION ==========
+                  _buildSectionHeader('🎨', 'Theme', isDark),
+                  const SizedBox(height: 12),
+                  Container(
+                    padding: const EdgeInsets.all(16),
+                    decoration: _buildCardDecoration(isDark),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            Container(
+                              padding: const EdgeInsets.all(8),
+                              decoration: BoxDecoration(
+                                color: const Color(
+                                  0xFF1A5F4A,
+                                ).withValues(alpha: 0.1),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Icon(
+                                widget.isDarkMode
+                                    ? Icons.dark_mode
+                                    : Icons.light_mode,
+                                color: const Color(0xFF1A5F4A),
+                                size: 22,
+                              ),
+                            ),
+                            const SizedBox(width: 12),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  widget.isDarkMode
+                                      ? getText('darkMode')
+                                      : getText('lightMode'),
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w500,
+                                    color: isDark
+                                        ? Colors.white
+                                        : Colors.black87,
+                                  ),
+                                ),
+                                Text(
+                                  widget.isDarkMode
+                                      ? getText('switchToLight')
+                                      : getText('switchToDark'),
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    color: isDark
+                                        ? Colors.grey[400]
+                                        : Colors.grey[600],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                        Switch(
+                          value: widget.isDarkMode,
+                          onChanged: widget.onThemeToggle,
+                          activeColor: const Color(0xFF1A5F4A),
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  const SizedBox(height: 24),
+
+                  // ========== ACCOUNT SECTION ==========
+                  _buildSectionHeader('🔐', 'Account', isDark),
+                  const SizedBox(height: 12),
+
+                  _buildMenuItem(
+                    icon: Icons.person_outline,
+                    title: 'Edit Profile',
+                    isDark: isDark,
+                    onTap: _showEditProfileDialog,
+                  ),
+                  const SizedBox(height: 8),
+
+                  _buildMenuItem(
+                    icon: Icons.lock_outline,
+                    title: 'Change Password',
+                    isDark: isDark,
+                    onTap: _showChangePasswordDialog,
+                  ),
+                  const SizedBox(height: 8),
+
+                  _buildMenuItem(
+                    icon: Icons.logout,
+                    title: 'Logout',
+                    isDark: isDark,
+                    iconColor: Colors.red,
+                    onTap: _logout,
+                  ),
+                  const SizedBox(height: 8),
+
+                  _buildMenuItem(
+                    icon: Icons.delete_outline,
+                    title: 'Delete Account',
+                    isDark: isDark,
+                    iconColor: Colors.red,
+                    onTap: _deleteAccount,
+                  ),
+
+                  const SizedBox(height: 24),
+
+                  // ========== VERSION ==========
+                  Center(
+                    child: Text(
+                      'Version 1.0.0',
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: isDark ? Colors.grey[600] : Colors.grey[400],
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                ],
+              ),
+            ),
+    );
+  }
+
+  // ========== UI HELPERS ==========
+
+  Widget _buildSectionHeader(String emoji, String title, bool isDark) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 4),
+      child: Row(
+        children: [
+          Text(emoji, style: const TextStyle(fontSize: 20)),
+          const SizedBox(width: 8),
+          Text(
+            title,
+            style: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+              color: isDark ? Colors.white : Colors.black87,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  BoxDecoration _buildCardDecoration(bool isDark) {
+    return BoxDecoration(
+      gradient: LinearGradient(
+        begin: Alignment.topLeft,
+        end: Alignment.bottomRight,
+        colors: isDark
+            ? [const Color(0xFF1E1E1E), const Color(0xFF2A2A2A)]
+            : [Colors.white, const Color(0xFFF8F5F0)],
+      ),
+      borderRadius: BorderRadius.circular(16),
+      boxShadow: [
+        BoxShadow(
+          color: Colors.black.withValues(alpha: 0.05),
+          blurRadius: 8,
+          offset: const Offset(0, 2),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildMenuItem({
+    required IconData icon,
+    required String title,
+    required bool isDark,
+    required VoidCallback onTap,
+    Color? iconColor,
+  }) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: isDark
+                ? [const Color(0xFF1E1E1E), const Color(0xFF2A2A2A)]
+                : [Colors.white, const Color(0xFFF8F5F0)],
+          ),
+          borderRadius: BorderRadius.circular(12),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withValues(alpha: 0.04),
+              blurRadius: 8,
+              offset: const Offset(0, 2),
+            ),
+          ],
+        ),
+        child: Row(
+          children: [
+            Icon(icon, color: iconColor ?? const Color(0xFF1A5F4A), size: 22),
+            const SizedBox(width: 14),
+            Expanded(
+              child: Text(
+                title,
+                style: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w500,
+                  color: isDark ? Colors.white : Colors.black87,
+                ),
+              ),
+            ),
+            Icon(
+              Icons.chevron_right,
+              color: isDark ? Colors.grey[600] : Colors.grey[400],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
