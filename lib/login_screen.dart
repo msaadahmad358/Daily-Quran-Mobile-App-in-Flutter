@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:qrn_app/main.dart';
 import 'auth_service.dart';
+import 'translations.dart';
+import 'base_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   final VoidCallback onLogin;
@@ -22,7 +24,7 @@ class LoginScreen extends StatefulWidget {
   State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginScreenState extends BaseScreenState<LoginScreen> {
   bool _isLogin = true;
   bool _isLoading = false;
   final _emailController = TextEditingController();
@@ -39,7 +41,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     final isDark = widget.isDarkMode;
     final getText = (String key) =>
-        AppTranslations.getText(widget.currentLanguage, key);
+        Translations.getText(widget.currentLanguage, key);
 
     return Scaffold(
       backgroundColor: isDark
@@ -85,7 +87,7 @@ class _LoginScreenState extends State<LoginScreen> {
               // ========== VERIFICATION SCREEN ==========
               if (_showVerification) ...[
                 Text(
-                  'Verify Your Email',
+                  getText('verifyYourEmail'),
                   style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
@@ -94,7 +96,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 const SizedBox(height: 10),
                 Text(
-                  'Enter the 6-digit code sent to $_verificationEmail',
+                  '${getText('enterVerificationCode')} $_verificationEmail',
                   style: TextStyle(
                     fontSize: 14,
                     color: isDark ? Colors.grey[400] : Colors.grey[600],
@@ -109,7 +111,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   keyboardType: TextInputType.number,
                   maxLength: 6,
                   decoration: InputDecoration(
-                    labelText: 'Verification Code',
+                    labelText: getText('verificationCode'),
                     labelStyle: TextStyle(
                       color: isDark ? Colors.grey[400] : Colors.grey[600],
                     ),
@@ -158,7 +160,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                           )
                         : Text(
-                            'Verify',
+                            getText('verify'),
                             style: const TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.w600,
@@ -170,7 +172,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 TextButton(
                   onPressed: _resendCode,
                   child: Text(
-                    'Resend Code',
+                    getText('resendCode'),
                     style: TextStyle(
                       color: const Color(0xFF1A5F4A),
                       fontWeight: FontWeight.w500,
@@ -180,7 +182,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 TextButton(
                   onPressed: () => setState(() => _showVerification = false),
                   child: Text(
-                    'Back to Login',
+                    getText('backToLogin'),
                     style: TextStyle(
                       color: isDark ? Colors.grey[400] : Colors.grey[600],
                     ),
@@ -461,14 +463,14 @@ class _LoginScreenState extends State<LoginScreen> {
           });
           return;
         }
-        _showError(result['message'] ?? 'Login failed');
+        _showError(result['message'] ?? getText('loginFailed'));
       }
     } else {
       // REGISTER
       final name = _nameController.text.trim();
 
       if (name.isEmpty) {
-        _showError('Full name is required');
+        _showError(getText('nameCannotBeEmpty'));
         setState(() => _isLoading = false);
         return;
       }
@@ -485,9 +487,9 @@ class _LoginScreenState extends State<LoginScreen> {
           _showVerification = true;
           _isLoading = false;
         });
-        _showSuccess('Verification code sent to your email!');
+        _showSuccess(getText('codeSentSuccess'));
       } else {
-        _showError(result['message'] ?? 'Registration failed');
+        _showError(result['message'] ?? getText('registrationFailed'));
       }
     }
 
@@ -497,7 +499,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Future<void> _verifyEmail() async {
     final code = _codeController.text.trim();
     if (code.length != 6) {
-      _showError('Please enter the 6-digit verification code');
+      _showError(getText('enter6DigitCode'));
       return;
     }
 
@@ -511,7 +513,7 @@ class _LoginScreenState extends State<LoginScreen> {
     if (result['success'] == true) {
       widget.onLogin();
     } else {
-      _showError(result['message'] ?? 'Verification failed');
+      _showError(result['message'] ?? getText('verificationFailed'));
     }
 
     setState(() => _isLoading = false);
@@ -525,9 +527,9 @@ class _LoginScreenState extends State<LoginScreen> {
     );
 
     if (result['success'] == true) {
-      _showSuccess('New code sent to your email!');
+      _showSuccess(getText('newCodeSent'));
     } else {
-      _showError(result['message'] ?? 'Failed to resend code');
+      _showError(result['message'] ?? getText('resendCodeFailed'));
     }
 
     setState(() => _isLoading = false);
@@ -548,7 +550,7 @@ class _LoginScreenState extends State<LoginScreen> {
     if (result['success'] == true) {
       widget.onLogin();
     } else {
-      _showError(result['message'] ?? 'Google login failed');
+      _showError(result['message'] ?? getText('googleLoginFailed'));
     }
 
     setState(() => _isLoading = false);
@@ -568,7 +570,7 @@ class _LoginScreenState extends State<LoginScreen> {
     if (result['success'] == true) {
       widget.onLogin();
     } else {
-      _showError(result['message'] ?? 'Apple login failed');
+      _showError(result['message'] ?? getText('appleLoginFailed'));
     }
 
     setState(() => _isLoading = false);

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'main.dart';
+import 'translations.dart';
 
 class OnboardingScreen extends StatefulWidget {
   final VoidCallback onComplete;
@@ -52,7 +52,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   Widget build(BuildContext context) {
     final isDark = widget.isDarkMode;
     final getText = (String key) =>
-        AppTranslations.getText(widget.currentLanguage, key);
+        Translations.getText(widget.currentLanguage, key);
 
     return Scaffold(
       backgroundColor: isDark

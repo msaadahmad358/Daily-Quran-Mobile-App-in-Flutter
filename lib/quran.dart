@@ -4,7 +4,7 @@ import 'package:qrn_app/stats.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 import 'dart:async';
-import 'main.dart';
+import 'translations.dart';
 
 // ============================================================
 // QURAN TAB - WITH SEARCH
@@ -123,7 +123,7 @@ class _QuranTabState extends State<QuranTab> {
   Widget build(BuildContext context) {
     final isDark = widget.isDarkMode;
     final getText = (String key) =>
-        AppTranslations.getText(widget.currentLanguage, key);
+        Translations.getText(widget.currentLanguage, key);
 
     return Scaffold(
       backgroundColor: isDark

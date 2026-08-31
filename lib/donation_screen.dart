@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'main.dart';
+import 'translations.dart';
+import 'base_screen.dart';
 
 class DonationScreen extends StatefulWidget {
   final bool isDarkMode;
@@ -16,7 +17,7 @@ class DonationScreen extends StatefulWidget {
   State<DonationScreen> createState() => _DonationScreenState();
 }
 
-class _DonationScreenState extends State<DonationScreen> {
+class _DonationScreenState extends BaseScreenState<DonationScreen> {
   bool _isRecurring = false;
   double _selectedAmount = 10.0;
   final TextEditingController _customAmountController = TextEditingController();
@@ -52,7 +53,7 @@ class _DonationScreenState extends State<DonationScreen> {
           children: [
             const Icon(Icons.favorite, color: Color(0xFF1A5F4A)),
             const SizedBox(width: 8),
-            Text(AppTranslations.getText(widget.currentLanguage, 'thankYou')),
+            Text(Translations.getText(widget.currentLanguage, 'thankYou')),
           ],
         ),
         content: Column(
@@ -72,7 +73,10 @@ class _DonationScreenState extends State<DonationScreen> {
             ),
             const SizedBox(height: 16),
             Text(
-              'Thank you for your generous donation of \$${_selectedAmount.toStringAsFixed(2)}!',
+              getText('thankYouDonation').replaceAll(
+                '{amount}',
+                '\$${_selectedAmount.toStringAsFixed(2)}',
+              ),
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 16,
@@ -82,7 +86,7 @@ class _DonationScreenState extends State<DonationScreen> {
             ),
             const SizedBox(height: 8),
             Text(
-              'Your support helps us continue improving the Quran App.',
+              getText('supportMessage'),
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 14,
@@ -95,7 +99,7 @@ class _DonationScreenState extends State<DonationScreen> {
           TextButton(
             onPressed: () => Navigator.pop(context),
             child: Text(
-              'Close',
+              getText('close'),
               style: TextStyle(
                 color: const Color(0xFF1A5F4A),
                 fontWeight: FontWeight.w600,
@@ -111,7 +115,7 @@ class _DonationScreenState extends State<DonationScreen> {
   Widget build(BuildContext context) {
     final isDark = widget.isDarkMode;
     final getText = (String key) =>
-        AppTranslations.getText(widget.currentLanguage, key);
+        Translations.getText(widget.currentLanguage, key);
 
     return Scaffold(
       backgroundColor: isDark
@@ -181,7 +185,7 @@ class _DonationScreenState extends State<DonationScreen> {
                           ),
                         ),
                         Text(
-                          'Support the Quran App',
+                          getText('supportTheApp'),
                           style: TextStyle(fontSize: 14, color: Colors.white70),
                         ),
                       ],
@@ -268,7 +272,7 @@ class _DonationScreenState extends State<DonationScreen> {
 
             // Preset Amounts
             Text(
-              'Select Amount',
+              getText('selectAmount'),
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w600,
@@ -417,7 +421,7 @@ class _DonationScreenState extends State<DonationScreen> {
                         borderRadius: BorderRadius.circular(8),
                       ),
                       child: Text(
-                        'Custom',
+                        getText('custom'),
                         style: TextStyle(
                           color: _isCustom
                               ? Colors.white
@@ -464,7 +468,10 @@ class _DonationScreenState extends State<DonationScreen> {
                     const SizedBox(width: 10),
                     Text(
                       _selectedAmount > 0
-                          ? 'Donate \$${_selectedAmount.toStringAsFixed(2)} on Website'
+                          ? getText('donateOnWebsite').replaceAll(
+                              '{amount}',
+                              '\$${_selectedAmount.toStringAsFixed(2)}',
+                            )
                           : getText('donateNow'),
                       style: const TextStyle(
                         fontSize: 16,
@@ -489,7 +496,7 @@ class _DonationScreenState extends State<DonationScreen> {
                   ),
                   const SizedBox(width: 6),
                   Text(
-                    '100% secure • Powered by Stripe',
+                    getText('secureStripe'),
                     style: TextStyle(
                       fontSize: 12,
                       color: isDark ? Colors.grey[400] : Colors.grey[600],

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'main.dart';
+import 'translations.dart';
 import 'auth_service.dart';
 import 'login_screen.dart';
 
@@ -57,7 +57,6 @@ class _SettingsTabState extends State<SettingsTab> {
     await prefs.setBool('show_tafsir', _showTafsir);
   }
 
-  // ========== EDIT PROFILE ==========
   void _showEditProfileDialog() {
     final TextEditingController nameController = TextEditingController(
       text: _currentUser?.name ?? '',
@@ -66,16 +65,21 @@ class _SettingsTabState extends State<SettingsTab> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Edit Profile'),
+        title: Text(
+          Translations.getText(widget.currentLanguage, 'editProfile'),
+        ),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             TextField(
               controller: nameController,
-              decoration: const InputDecoration(
-                labelText: 'Full Name',
-                border: OutlineInputBorder(),
-                prefixIcon: Icon(Icons.person),
+              decoration: InputDecoration(
+                labelText: Translations.getText(
+                  widget.currentLanguage,
+                  'fullName',
+                ),
+                border: const OutlineInputBorder(),
+                prefixIcon: const Icon(Icons.person),
               ),
             ),
           ],
@@ -83,15 +87,20 @@ class _SettingsTabState extends State<SettingsTab> {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Cancel'),
+            child: Text(Translations.getText(widget.currentLanguage, 'cancel')),
           ),
           ElevatedButton(
             onPressed: () async {
               final name = nameController.text.trim();
               if (name.isEmpty) {
                 ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    content: Text('Name cannot be empty'),
+                  SnackBar(
+                    content: Text(
+                      Translations.getText(
+                        widget.currentLanguage,
+                        'nameCannotBeEmpty',
+                      ),
+                    ),
                     backgroundColor: Colors.red,
                   ),
                 );
@@ -104,8 +113,13 @@ class _SettingsTabState extends State<SettingsTab> {
                 _loadUser();
                 Navigator.pop(context);
                 ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    content: Text('Profile updated successfully'),
+                  SnackBar(
+                    content: Text(
+                      Translations.getText(
+                        widget.currentLanguage,
+                        'profileUpdated',
+                      ),
+                    ),
                     backgroundColor: Colors.green,
                   ),
                 );
@@ -113,7 +127,11 @@ class _SettingsTabState extends State<SettingsTab> {
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     content: Text(
-                      result['message'] ?? 'Failed to update profile',
+                      result['message'] ??
+                          Translations.getText(
+                            widget.currentLanguage,
+                            'failedUpdateProfile',
+                          ),
                     ),
                     backgroundColor: Colors.red,
                   ),
@@ -132,14 +150,13 @@ class _SettingsTabState extends State<SettingsTab> {
                       valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
                     ),
                   )
-                : const Text('Save'),
+                : Text(Translations.getText(widget.currentLanguage, 'save')),
           ),
         ],
       ),
     );
   }
 
-  // ========== CHANGE PASSWORD ==========
   void _showChangePasswordDialog() {
     final TextEditingController oldPassController = TextEditingController();
     final TextEditingController newPassController = TextEditingController();
@@ -148,37 +165,48 @@ class _SettingsTabState extends State<SettingsTab> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Change Password'),
+        title: Text(
+          Translations.getText(widget.currentLanguage, 'changePassword'),
+        ),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             TextField(
               controller: oldPassController,
               obscureText: true,
-              decoration: const InputDecoration(
-                labelText: 'Current Password',
-                border: OutlineInputBorder(),
-                prefixIcon: Icon(Icons.lock_outline),
+              decoration: InputDecoration(
+                labelText: Translations.getText(
+                  widget.currentLanguage,
+                  'currentPassword',
+                ),
+                border: const OutlineInputBorder(),
+                prefixIcon: const Icon(Icons.lock_outline),
               ),
             ),
             const SizedBox(height: 12),
             TextField(
               controller: newPassController,
               obscureText: true,
-              decoration: const InputDecoration(
-                labelText: 'New Password',
-                border: OutlineInputBorder(),
-                prefixIcon: Icon(Icons.lock),
+              decoration: InputDecoration(
+                labelText: Translations.getText(
+                  widget.currentLanguage,
+                  'newPassword',
+                ),
+                border: const OutlineInputBorder(),
+                prefixIcon: const Icon(Icons.lock),
               ),
             ),
             const SizedBox(height: 12),
             TextField(
               controller: confirmPassController,
               obscureText: true,
-              decoration: const InputDecoration(
-                labelText: 'Confirm New Password',
-                border: OutlineInputBorder(),
-                prefixIcon: Icon(Icons.lock),
+              decoration: InputDecoration(
+                labelText: Translations.getText(
+                  widget.currentLanguage,
+                  'confirmNewPassword',
+                ),
+                border: const OutlineInputBorder(),
+                prefixIcon: const Icon(Icons.lock),
               ),
             ),
           ],
@@ -186,7 +214,7 @@ class _SettingsTabState extends State<SettingsTab> {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Cancel'),
+            child: Text(Translations.getText(widget.currentLanguage, 'cancel')),
           ),
           ElevatedButton(
             onPressed: () async {
@@ -196,8 +224,13 @@ class _SettingsTabState extends State<SettingsTab> {
 
               if (oldPass.isEmpty || newPass.isEmpty || confirmPass.isEmpty) {
                 ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    content: Text('Please fill all fields'),
+                  SnackBar(
+                    content: Text(
+                      Translations.getText(
+                        widget.currentLanguage,
+                        'pleaseFillAllFields',
+                      ),
+                    ),
                     backgroundColor: Colors.red,
                   ),
                 );
@@ -205,8 +238,13 @@ class _SettingsTabState extends State<SettingsTab> {
               }
               if (newPass != confirmPass) {
                 ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    content: Text('New passwords do not match'),
+                  SnackBar(
+                    content: Text(
+                      Translations.getText(
+                        widget.currentLanguage,
+                        'passwordsDoNotMatch',
+                      ),
+                    ),
                     backgroundColor: Colors.red,
                   ),
                 );
@@ -214,8 +252,13 @@ class _SettingsTabState extends State<SettingsTab> {
               }
               if (newPass.length < 8) {
                 ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    content: Text('Password must be at least 8 characters'),
+                  SnackBar(
+                    content: Text(
+                      Translations.getText(
+                        widget.currentLanguage,
+                        'passwordMinLength',
+                      ),
+                    ),
                     backgroundColor: Colors.red,
                   ),
                 );
@@ -232,8 +275,13 @@ class _SettingsTabState extends State<SettingsTab> {
               if (result['success'] == true) {
                 Navigator.pop(context);
                 ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    content: Text('Password changed successfully'),
+                  SnackBar(
+                    content: Text(
+                      Translations.getText(
+                        widget.currentLanguage,
+                        'passwordChanged',
+                      ),
+                    ),
                     backgroundColor: Colors.green,
                   ),
                 );
@@ -241,7 +289,11 @@ class _SettingsTabState extends State<SettingsTab> {
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     content: Text(
-                      result['message'] ?? 'Failed to change password',
+                      result['message'] ??
+                          Translations.getText(
+                            widget.currentLanguage,
+                            'failedChangePassword',
+                          ),
                     ),
                     backgroundColor: Colors.red,
                   ),
@@ -260,29 +312,30 @@ class _SettingsTabState extends State<SettingsTab> {
                       valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
                     ),
                   )
-                : const Text('Update'),
+                : Text(Translations.getText(widget.currentLanguage, 'update')),
           ),
         ],
       ),
     );
   }
 
-  // ========== LOGOUT ==========
   Future<void> _logout() async {
     final confirm = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Logout'),
-        content: const Text('Are you sure you want to logout?'),
+        title: Text(Translations.getText(widget.currentLanguage, 'logout')),
+        content: Text(
+          Translations.getText(widget.currentLanguage, 'confirmLogout'),
+        ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context, false),
-            child: const Text('Cancel'),
+            child: Text(Translations.getText(widget.currentLanguage, 'cancel')),
           ),
           TextButton(
             onPressed: () => Navigator.pop(context, true),
             style: TextButton.styleFrom(foregroundColor: Colors.red),
-            child: const Text('Logout'),
+            child: Text(Translations.getText(widget.currentLanguage, 'logout')),
           ),
         ],
       ),
@@ -293,7 +346,6 @@ class _SettingsTabState extends State<SettingsTab> {
       await _auth.logoutUser();
       setState(() => _isLoading = false);
 
-      // Navigate to login screen
       if (context.mounted) {
         Navigator.pushAndRemoveUntil(
           context,
@@ -312,27 +364,26 @@ class _SettingsTabState extends State<SettingsTab> {
     }
   }
 
-  // ========== DELETE ACCOUNT ==========
   Future<void> _deleteAccount() async {
     final confirm = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text(
-          'Delete Account',
-          style: TextStyle(color: Colors.red),
+        title: Text(
+          Translations.getText(widget.currentLanguage, 'deleteAccount'),
+          style: const TextStyle(color: Colors.red),
         ),
-        content: const Text(
-          'Are you sure you want to delete your account? This action cannot be undone. All your data will be permanently removed.',
+        content: Text(
+          Translations.getText(widget.currentLanguage, 'deleteAccountConfirm'),
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context, false),
-            child: const Text('Cancel'),
+            child: Text(Translations.getText(widget.currentLanguage, 'cancel')),
           ),
           TextButton(
             onPressed: () => Navigator.pop(context, true),
             style: TextButton.styleFrom(foregroundColor: Colors.red),
-            child: const Text('Delete'),
+            child: Text(Translations.getText(widget.currentLanguage, 'delete')),
           ),
         ],
       ),
@@ -379,7 +430,7 @@ class _SettingsTabState extends State<SettingsTab> {
   @override
   Widget build(BuildContext context) {
     final getText = (String key) =>
-        AppTranslations.getText(widget.currentLanguage, key);
+        Translations.getText(widget.currentLanguage, key);
     final isDark = widget.isDarkMode;
 
     return Scaffold(
@@ -400,13 +451,15 @@ class _SettingsTabState extends State<SettingsTab> {
         elevation: 0,
       ),
       body: _isLoading
-          ? const Center(
+          ? Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   CircularProgressIndicator(),
                   SizedBox(height: 16),
-                  Text('Please wait...'),
+                  Text(
+                    Translations.getText(widget.currentLanguage, 'pleaseWait'),
+                  ),
                 ],
               ),
             )
@@ -415,7 +468,7 @@ class _SettingsTabState extends State<SettingsTab> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // ========== PROFILE SECTION ==========
+                  // Profile Section
                   Container(
                     padding: const EdgeInsets.all(20),
                     decoration: BoxDecoration(
@@ -465,7 +518,7 @@ class _SettingsTabState extends State<SettingsTab> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                _currentUser?.name ?? 'Guest User',
+                                _currentUser?.name ?? getText('guestUser'),
                                 style: TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold,
@@ -473,7 +526,7 @@ class _SettingsTabState extends State<SettingsTab> {
                                 ),
                               ),
                               Text(
-                                _currentUser?.email ?? 'Not signed in',
+                                _currentUser?.email ?? getText('notSignedIn'),
                                 style: TextStyle(
                                   fontSize: 13,
                                   color: isDark
@@ -495,8 +548,8 @@ class _SettingsTabState extends State<SettingsTab> {
                                 ),
                                 child: Text(
                                   _currentUser?.emailVerified == true
-                                      ? '✓ Verified'
-                                      : '⚠️ Not Verified',
+                                      ? getText('verified')
+                                      : getText('notVerified'),
                                   style: TextStyle(
                                     fontSize: 10,
                                     color: _currentUser?.emailVerified == true
@@ -515,7 +568,7 @@ class _SettingsTabState extends State<SettingsTab> {
 
                   const SizedBox(height: 24),
 
-                  // ========== LANGUAGE SECTION ==========
+                  // Language Section
                   _buildSectionHeader('🌐', getText('language'), isDark),
                   const SizedBox(height: 12),
                   Container(
@@ -610,11 +663,14 @@ class _SettingsTabState extends State<SettingsTab> {
 
                   const SizedBox(height: 24),
 
-                  // ========== READING PREFERENCES ==========
-                  _buildSectionHeader('📖', 'Reading Preferences', isDark),
+                  // Reading Preferences
+                  _buildSectionHeader(
+                    '📖',
+                    getText('readingPreferences'),
+                    isDark,
+                  ),
                   const SizedBox(height: 12),
 
-                  // Show Translation Toggle
                   Container(
                     padding: const EdgeInsets.all(16),
                     decoration: _buildCardDecoration(isDark),
@@ -642,7 +698,7 @@ class _SettingsTabState extends State<SettingsTab> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Show Translation',
+                                  getText('showTranslation'),
                                   style: TextStyle(
                                     fontSize: 15,
                                     fontWeight: FontWeight.w500,
@@ -652,9 +708,9 @@ class _SettingsTabState extends State<SettingsTab> {
                                   ),
                                 ),
                                 Text(
-                                  'Display translation below verses',
+                                  getText('showTranslationDesc'),
                                   style: TextStyle(
-                                    fontSize: 12,
+                                    fontSize: 10,
                                     color: isDark
                                         ? Colors.grey[400]
                                         : Colors.grey[600],
@@ -680,7 +736,6 @@ class _SettingsTabState extends State<SettingsTab> {
 
                   const SizedBox(height: 12),
 
-                  // Show Tafsir Toggle
                   Container(
                     padding: const EdgeInsets.all(16),
                     decoration: _buildCardDecoration(isDark),
@@ -708,7 +763,7 @@ class _SettingsTabState extends State<SettingsTab> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Show Tafsir',
+                                  getText('showTafsir'),
                                   style: TextStyle(
                                     fontSize: 15,
                                     fontWeight: FontWeight.w500,
@@ -718,9 +773,9 @@ class _SettingsTabState extends State<SettingsTab> {
                                   ),
                                 ),
                                 Text(
-                                  'Display explanation below translation',
+                                  getText('showTafsirDesc'),
                                   style: TextStyle(
-                                    fontSize: 12,
+                                    fontSize: 10,
                                     color: isDark
                                         ? Colors.grey[400]
                                         : Colors.grey[600],
@@ -746,8 +801,8 @@ class _SettingsTabState extends State<SettingsTab> {
 
                   const SizedBox(height: 24),
 
-                  // ========== THEME SECTION ==========
-                  _buildSectionHeader('🎨', 'Theme', isDark),
+                  // Theme Section
+                  _buildSectionHeader('🎨', getText('theme'), isDark),
                   const SizedBox(height: 12),
                   Container(
                     padding: const EdgeInsets.all(16),
@@ -815,13 +870,13 @@ class _SettingsTabState extends State<SettingsTab> {
 
                   const SizedBox(height: 24),
 
-                  // ========== ACCOUNT SECTION ==========
-                  _buildSectionHeader('🔐', 'Account', isDark),
+                  // Account Section
+                  _buildSectionHeader('🔐', getText('account'), isDark),
                   const SizedBox(height: 12),
 
                   _buildMenuItem(
                     icon: Icons.person_outline,
-                    title: 'Edit Profile',
+                    title: getText('editProfile'),
                     isDark: isDark,
                     onTap: _showEditProfileDialog,
                   ),
@@ -829,7 +884,7 @@ class _SettingsTabState extends State<SettingsTab> {
 
                   _buildMenuItem(
                     icon: Icons.lock_outline,
-                    title: 'Change Password',
+                    title: getText('changePassword'),
                     isDark: isDark,
                     onTap: _showChangePasswordDialog,
                   ),
@@ -837,7 +892,7 @@ class _SettingsTabState extends State<SettingsTab> {
 
                   _buildMenuItem(
                     icon: Icons.logout,
-                    title: 'Logout',
+                    title: getText('logout'),
                     isDark: isDark,
                     iconColor: Colors.red,
                     onTap: _logout,
@@ -846,7 +901,7 @@ class _SettingsTabState extends State<SettingsTab> {
 
                   _buildMenuItem(
                     icon: Icons.delete_outline,
-                    title: 'Delete Account',
+                    title: getText('deleteAccount'),
                     isDark: isDark,
                     iconColor: Colors.red,
                     onTap: _deleteAccount,
@@ -854,10 +909,10 @@ class _SettingsTabState extends State<SettingsTab> {
 
                   const SizedBox(height: 24),
 
-                  // ========== VERSION ==========
+                  // Version
                   Center(
                     child: Text(
-                      'Version 1.0.0',
+                      '${getText('version')} 1.0.1',
                       style: TextStyle(
                         fontSize: 12,
                         color: isDark ? Colors.grey[600] : Colors.grey[400],
@@ -870,8 +925,6 @@ class _SettingsTabState extends State<SettingsTab> {
             ),
     );
   }
-
-  // ========== UI HELPERS ==========
 
   Widget _buildSectionHeader(String emoji, String title, bool isDark) {
     return Padding(

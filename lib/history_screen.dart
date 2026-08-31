@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'main.dart';
+import 'translations.dart';
 import 'stats.dart';
 
 class HistoryScreen extends StatefulWidget {
@@ -40,7 +40,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
   Widget build(BuildContext context) {
     final isDark = widget.isDarkMode;
     final getText = (String key) =>
-        AppTranslations.getText(widget.currentLanguage, key);
+        Translations.getText(widget.currentLanguage, key);
 
     return Scaffold(
       backgroundColor: isDark
@@ -110,7 +110,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                       // Navigate to Quran tab
                     },
                     icon: const Icon(Icons.menu_book),
-                    label: const Text('Start Reading'),
+                    label: Text(getText('startReading')),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFF1A5F4A),
                       foregroundColor: Colors.white,
@@ -213,7 +213,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                                   ),
                                   const SizedBox(width: 4),
                                   Text(
-                                    '${session.totalAyahsRead} ayahs',
+                                    '${session.totalAyahsRead} ${getText('ayahs')}',
                                     style: TextStyle(
                                       fontSize: 12,
                                       color: isDark
@@ -274,7 +274,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                                 ),
                                 const SizedBox(width: 4),
                                 Text(
-                                  'Read',
+                                  getText('read'),
                                   style: TextStyle(
                                     fontSize: 11,
                                     fontWeight: FontWeight.w600,

@@ -2,8 +2,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
-import 'main.dart';
-
+import 'translations.dart';
+import 'base_screen.dart';
 // ============================================================
 // MODELS
 // ============================================================
@@ -166,7 +166,7 @@ class DailyActivity {
 }
 
 // ============================================================
-// READING TRACKER SERVICE
+// READING TRACKER SERVICE - UPDATED
 // ============================================================
 
 class ReadingTracker {
@@ -177,11 +177,15 @@ class ReadingTracker {
   static const String _sessionsKey = 'reading_sessions';
   static const String _ayahsKey = 'reading_ayahs';
   static const String _lastSyncKey = 'last_sync';
+  static const String _totalVersesKey = 'total_verses_read';
+  static const String _streakKey = 'streak_count';
 
   List<ReadingSession> _sessions = [];
   List<AyahReadEvent> _ayahEvents = [];
   ReadingSummary? _cachedSummary;
   bool _isLoaded = false;
+  int _totalVerses = 0;
+  int _currentStreak = 0;
 
   Future<void> initialize() async {
     if (_isLoaded) return;
@@ -191,6 +195,10 @@ class ReadingTracker {
 
   Future<void> load() async {
     final prefs = await SharedPreferences.getInstance();
+
+    // Load total verses
+    _totalVerses = prefs.getInt(_totalVersesKey) ?? 0;
+    _currentStreak = prefs.getInt(_streakKey) ?? 0;
 
     final sessionsJson = prefs.getString(_sessionsKey);
     if (sessionsJson != null) {
@@ -207,10 +215,16 @@ class ReadingTracker {
       try {
         final List<dynamic> decoded = jsonDecode(ayahsJson);
         _ayahEvents = decoded.map((e) => AyahReadEvent.fromJson(e)).toList();
+        _totalVerses = _ayahEvents.length;
+        await prefs.setInt(_totalVersesKey, _totalVerses);
       } catch (e) {
         _ayahEvents = [];
       }
     }
+
+    // Recalculate streak
+    _currentStreak = _calculateStreak();
+    await prefs.setInt(_streakKey, _currentStreak);
 
     _cachedSummary = _buildSummary();
   }
@@ -236,7 +250,35 @@ class ReadingTracker {
       durationSeconds: durationSeconds.clamp(1, 300),
     );
 
-    _ayahEvents.add(event);
+    // Check if this ayah was already read today to avoid duplicates
+    final today = DateTime(now.year, now.month, now.day);
+    bool alreadyReadToday = false;
+    for (final e in _ayahEvents) {
+      final eventDate = DateTime(
+        e.timestamp.year,
+        e.timestamp.month,
+        e.timestamp.day,
+      );
+      if (eventDate == today &&
+          e.surahNumber == surahNumber &&
+          e.ayahNumber == ayahNumber) {
+        alreadyReadToday = true;
+        break;
+      }
+    }
+
+    if (!alreadyReadToday) {
+      _ayahEvents.add(event);
+      _totalVerses = _ayahEvents.length;
+
+      // Update streak
+      _currentStreak = _calculateStreak();
+
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setInt(_totalVersesKey, _totalVerses);
+      await prefs.setInt(_streakKey, _currentStreak);
+    }
+
     if (_ayahEvents.length > 5000) _ayahEvents.removeAt(0);
 
     _cachedSummary = _buildSummary();
@@ -288,6 +330,8 @@ class ReadingTracker {
       _ayahsKey,
       jsonEncode(_ayahEvents.map((e) => e.toJson()).toList()),
     );
+    await prefs.setInt(_totalVersesKey, _totalVerses);
+    await prefs.setInt(_streakKey, _currentStreak);
   }
 
   Future<void> save() async => await _save();
@@ -391,78 +435,9 @@ class ReadingTracker {
     await autoSync();
   }
 
-  ReadingSummary _buildSummary() {
-    final now = DateTime.now();
-    final today = DateTime(now.year, now.month, now.day);
-
-    final uniqueAyahs = <String>{};
-    for (final event in _ayahEvents) {
-      uniqueAyahs.add('${event.surahNumber}_${event.ayahNumber}');
-    }
-    final totalVerses = uniqueAyahs.length;
-
-    final totalSessions = _sessions.length;
-
-    int totalTime = 0;
-    for (final event in _ayahEvents) {
-      totalTime += event.durationSeconds;
-    }
-
-    int todayVerses = 0;
-    int todayTime = 0;
-    for (final event in _ayahEvents) {
-      final eventDate = DateTime(
-        event.timestamp.year,
-        event.timestamp.month,
-        event.timestamp.day,
-      );
-      if (eventDate == today) {
-        todayVerses++;
-        todayTime += event.durationSeconds;
-      }
-    }
-
-    int streak = _calculateStreak();
-    int surahsCompleted = _calculateCompletedSurahs();
-    final quranProgress = (totalVerses / 6236 * 100).clamp(0, 100);
-
-    final surahFrequency = <String, int>{};
-    for (final event in _ayahEvents) {
-      surahFrequency[event.surahName] =
-          (surahFrequency[event.surahName] ?? 0) + 1;
-    }
-
-    final weeklyActivity = _buildWeeklyActivity();
-    final hourlyDistribution = _buildHourlyDistribution();
-    final monthlyProgress = _buildMonthlyProgress();
-
-    DateTime lastReadDate = DateTime.now();
-    String lastReadSurah = '';
-    if (_ayahEvents.isNotEmpty) {
-      final lastEvent = _ayahEvents.last;
-      lastReadDate = lastEvent.timestamp;
-      lastReadSurah = lastEvent.surahName;
-    }
-
-    return ReadingSummary(
-      totalVerses: totalVerses,
-      totalSessions: totalSessions,
-      totalTimeSeconds: totalTime,
-      currentStreak: streak,
-      todayVerses: todayVerses,
-      todayTimeSeconds: todayTime,
-      surahsCompleted: surahsCompleted,
-      quranProgress: quranProgress.toDouble(),
-      surahFrequency: surahFrequency,
-      weeklyActivity: weeklyActivity,
-      lastReadDate: lastReadDate,
-      lastReadSurah: lastReadSurah,
-      hourlyDistribution: hourlyDistribution,
-      monthlyProgress: monthlyProgress,
-    );
-  }
-
   int _calculateStreak() {
+    if (_ayahEvents.isEmpty) return 0;
+
     final now = DateTime.now();
     final today = DateTime(now.year, now.month, now.day);
 
@@ -571,6 +546,74 @@ class ReadingTracker {
     return progress;
   }
 
+  ReadingSummary _buildSummary() {
+    final now = DateTime.now();
+    final today = DateTime(now.year, now.month, now.day);
+
+    // Use stored total verses
+    final totalVerses = _ayahEvents.length;
+
+    final totalSessions = _sessions.length;
+
+    int totalTime = 0;
+    for (final event in _ayahEvents) {
+      totalTime += event.durationSeconds;
+    }
+
+    int todayVerses = 0;
+    int todayTime = 0;
+    for (final event in _ayahEvents) {
+      final eventDate = DateTime(
+        event.timestamp.year,
+        event.timestamp.month,
+        event.timestamp.day,
+      );
+      if (eventDate == today) {
+        todayVerses++;
+        todayTime += event.durationSeconds;
+      }
+    }
+
+    int streak = _currentStreak;
+    int surahsCompleted = _calculateCompletedSurahs();
+    final quranProgress = (totalVerses / 6236 * 100).clamp(0, 100);
+
+    final surahFrequency = <String, int>{};
+    for (final event in _ayahEvents) {
+      surahFrequency[event.surahName] =
+          (surahFrequency[event.surahName] ?? 0) + 1;
+    }
+
+    final weeklyActivity = _buildWeeklyActivity();
+    final hourlyDistribution = _buildHourlyDistribution();
+    final monthlyProgress = _buildMonthlyProgress();
+
+    DateTime lastReadDate = DateTime.now();
+    String lastReadSurah = '';
+    if (_ayahEvents.isNotEmpty) {
+      final lastEvent = _ayahEvents.last;
+      lastReadDate = lastEvent.timestamp;
+      lastReadSurah = lastEvent.surahName;
+    }
+
+    return ReadingSummary(
+      totalVerses: totalVerses,
+      totalSessions: totalSessions,
+      totalTimeSeconds: totalTime,
+      currentStreak: streak,
+      todayVerses: todayVerses,
+      todayTimeSeconds: todayTime,
+      surahsCompleted: surahsCompleted,
+      quranProgress: quranProgress.toDouble(),
+      surahFrequency: surahFrequency,
+      weeklyActivity: weeklyActivity,
+      lastReadDate: lastReadDate,
+      lastReadSurah: lastReadSurah,
+      hourlyDistribution: hourlyDistribution,
+      monthlyProgress: monthlyProgress,
+    );
+  }
+
   ReadingSummary getSummary() {
     if (_cachedSummary == null) _cachedSummary = _buildSummary();
     return _cachedSummary!;
@@ -583,21 +626,56 @@ class ReadingTracker {
 
   Future<void> refresh() async {
     await load();
+    _cachedSummary = _buildSummary();
   }
 
   Future<void> clearAllData() async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.remove(_sessionsKey);
     await prefs.remove(_ayahsKey);
+    await prefs.remove(_totalVersesKey);
+    await prefs.remove(_streakKey);
     _sessions.clear();
     _ayahEvents.clear();
+    _totalVerses = 0;
+    _currentStreak = 0;
     _cachedSummary = _buildSummary();
     await _save();
+  }
+
+  // ============ DEBUG METHODS ============
+  Future<void> addDemoData() async {
+    // Add 7 demo verses for testing
+    final now = DateTime.now();
+    final today = DateTime(now.year, now.month, now.day);
+
+    for (int i = 0; i < 7; i++) {
+      final event = AyahReadEvent(
+        id: 'demo_${now.millisecondsSinceEpoch}_$i',
+        surahName: 'Al-Fatihah',
+        surahNumber: 1,
+        ayahNumber: i + 1,
+        ayahText: 'Demo ayah text $i',
+        timestamp: today.add(Duration(hours: i)),
+        durationSeconds: 10 + i * 2,
+      );
+      _ayahEvents.add(event);
+    }
+
+    _totalVerses = _ayahEvents.length;
+    _currentStreak = _calculateStreak();
+
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setInt(_totalVersesKey, _totalVerses);
+    await prefs.setInt(_streakKey, _currentStreak);
+
+    await _save();
+    _cachedSummary = _buildSummary();
   }
 }
 
 // ============================================================
-// STATS SCREEN - UI (Keep your existing StatsScreen widget)
+// STATS SCREEN - UI (Keep existing)
 // ============================================================
 
 class StatsScreen extends StatefulWidget {
@@ -614,7 +692,7 @@ class StatsScreen extends StatefulWidget {
   State<StatsScreen> createState() => _StatsScreenState();
 }
 
-class _StatsScreenState extends State<StatsScreen>
+class _StatsScreenState extends BaseScreenState<StatsScreen>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
   final ReadingTracker _tracker = ReadingTracker();
@@ -638,6 +716,17 @@ class _StatsScreenState extends State<StatsScreen>
     });
   }
 
+  Future<void> _addDemoData() async {
+    await _tracker.addDemoData();
+    await _loadData();
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(getText('demoDataAdded')),
+        backgroundColor: Colors.green,
+      ),
+    );
+  }
+
   Future<void> _clearAllData() async {
     final confirm = await showDialog<bool>(
       context: context,
@@ -649,12 +738,12 @@ class _StatsScreenState extends State<StatsScreen>
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context, false),
-            child: const Text('Cancel'),
+            child: Text(getText('cancel')),
           ),
           TextButton(
             onPressed: () => Navigator.pop(context, true),
             style: TextButton.styleFrom(foregroundColor: Colors.red),
-            child: const Text('Clear All'),
+            child: Text(getText('clearAll')),
           ),
         ],
       ),
@@ -667,8 +756,8 @@ class _StatsScreenState extends State<StatsScreen>
       setState(() => _isClearing = false);
 
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('All data cleared successfully'),
+        SnackBar(
+          content: Text(getText('dataCleared')),
           backgroundColor: Colors.green,
         ),
       );
@@ -685,7 +774,7 @@ class _StatsScreenState extends State<StatsScreen>
   Widget build(BuildContext context) {
     final isDark = widget.isDarkMode;
     final getText = (String key) =>
-        AppTranslations.getText(widget.currentLanguage, key);
+        Translations.getText(widget.currentLanguage, key);
 
     return Scaffold(
       backgroundColor: isDark
@@ -693,7 +782,7 @@ class _StatsScreenState extends State<StatsScreen>
           : const Color(0xFFF5F0EB),
       appBar: AppBar(
         title: Text(
-          '📊 Statistics',
+          getText('statistics'),
           style: TextStyle(
             fontWeight: FontWeight.bold,
             color: isDark ? Colors.white : Colors.black87,
@@ -704,7 +793,7 @@ class _StatsScreenState extends State<StatsScreen>
             : const Color(0xFFF5F0EB),
         elevation: 0,
         actions: [
-          // Refresh Button - Working
+          // Refresh Button
           Padding(
             padding: const EdgeInsets.only(right: 8),
             child: IconButton(
@@ -722,8 +811,17 @@ class _StatsScreenState extends State<StatsScreen>
                       color: isDark ? Colors.white : Colors.black87,
                     ),
               onPressed: _isLoading ? null : _loadData,
-              tooltip: 'Refresh Data',
+              tooltip: getText('refreshData'),
             ),
+          ),
+          // Add demo data button (for testing)
+          IconButton(
+            icon: Icon(
+              Icons.add_box,
+              color: isDark ? Colors.white : Colors.black87,
+            ),
+            onPressed: _addDemoData,
+            tooltip: getText('addDemoData'),
           ),
         ],
         bottom: TabBar(
@@ -785,37 +883,37 @@ class _StatsScreenState extends State<StatsScreen>
               children: [
                 _buildStatCard(
                   icon: Icons.menu_book,
-                  label: 'Verses Read',
+                  label: getText('versesRead'),
                   value: '${summary.totalVerses}',
                   color: const Color(0xFF1A5F4A),
                   isDark: isDark,
-                  subtitle: '${summary.todayVerses} today',
+                  subtitle: '${summary.todayVerses} ${getText('today')}',
                 ),
                 _buildStatCard(
                   icon: Icons.local_fire_department,
-                  label: 'Reading Streak',
+                  label: getText('readingStreak'),
                   value: '${summary.currentStreak}',
                   color: const Color(0xFFE74C3C),
                   isDark: isDark,
                   subtitle: summary.currentStreak > 0
                       ? '🔥 ${summary.currentStreak} days'
-                      : 'Start today',
+                      : getText('startTodayStat'),
                 ),
                 _buildStatCard(
                   icon: Icons.timer,
-                  label: 'Time Spent',
+                  label: getText('timeSpent'),
                   value: summary.totalTimeFormatted,
                   color: const Color(0xFFC9A96E),
                   isDark: isDark,
-                  subtitle: '${summary.todayTimeFormatted} today',
+                  subtitle: '${summary.todayTimeFormatted} ${getText('today')}',
                 ),
                 _buildStatCard(
                   icon: Icons.check_circle,
-                  label: 'Surahs Read',
+                  label: getText('surahsRead'),
                   value: '${summary.surahsCompleted}',
                   color: const Color(0xFF2E86C1),
                   isDark: isDark,
-                  subtitle: '${summary.totalSessions} sessions',
+                  subtitle: '${summary.totalSessions} ${getText('sessions')}',
                 ),
               ],
             ),
@@ -851,7 +949,7 @@ class _StatsScreenState extends State<StatsScreen>
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Quran Progress',
+                              getText('quranProgress'),
                               style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 fontSize: 16,
@@ -859,7 +957,7 @@ class _StatsScreenState extends State<StatsScreen>
                               ),
                             ),
                             Text(
-                              '${summary.quranProgress.toStringAsFixed(1)}% of Quran',
+                              '${summary.quranProgress.toStringAsFixed(1)}% ${getText('percentOfQuran')}',
                               style: TextStyle(
                                 fontSize: 12,
                                 color: isDark
@@ -919,7 +1017,7 @@ class _StatsScreenState extends State<StatsScreen>
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      '🏆 Most Read Surahs',
+                      getText('mostReadSurahs'),
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
@@ -1005,7 +1103,7 @@ class _StatsScreenState extends State<StatsScreen>
             ),
             const SizedBox(height: 20),
 
-            // ========== CLEAR DATA BUTTON ==========
+            // Clear Data Button
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
@@ -1015,77 +1113,71 @@ class _StatsScreenState extends State<StatsScreen>
                 borderRadius: BorderRadius.circular(12),
                 border: Border.all(color: Colors.red.withValues(alpha: 0.3)),
               ),
-              child: Column(
+              child: Row(
                 children: [
-                  Row(
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.all(8),
-                        decoration: BoxDecoration(
-                          color: Colors.red.withValues(alpha: 0.1),
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        child: const Icon(
-                          Icons.delete_forever,
-                          color: Colors.red,
-                          size: 22,
-                        ),
-                      ),
-                      const SizedBox(width: 14),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              '🗑️ Clear All Data',
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                                color: isDark ? Colors.white : Colors.black87,
-                              ),
-                            ),
-                            Text(
-                              'Delete all reading history and statistics',
-                              style: TextStyle(
-                                fontSize: 12,
-                                color: isDark
-                                    ? Colors.grey[400]
-                                    : Colors.grey[600],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      ElevatedButton(
-                        onPressed: _isClearing ? null : _clearAllData,
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.red,
-                          foregroundColor: Colors.white,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 20,
-                            vertical: 12,
+                  Container(
+                    padding: const EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                      color: Colors.red.withValues(alpha: 0.1),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: const Icon(
+                      Icons.delete_forever,
+                      color: Colors.red,
+                      size: 22,
+                    ),
+                  ),
+                  const SizedBox(width: 14),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          getText('clearAllData'),
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: isDark ? Colors.white : Colors.black87,
                           ),
                         ),
-                        child: _isClearing
-                            ? const SizedBox(
-                                width: 20,
-                                height: 20,
-                                child: CircularProgressIndicator(
-                                  strokeWidth: 2,
-                                  valueColor: AlwaysStoppedAnimation<Color>(
-                                    Colors.white,
-                                  ),
-                                ),
-                              )
-                            : const Text(
-                                'Clear',
-                                style: TextStyle(fontWeight: FontWeight.w600),
-                              ),
+                        Text(
+                          getText('clearAllDataDesc'),
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: isDark ? Colors.grey[400] : Colors.grey[600],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  ElevatedButton(
+                    onPressed: _isClearing ? null : _clearAllData,
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.red,
+                      foregroundColor: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
                       ),
-                    ],
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 20,
+                        vertical: 12,
+                      ),
+                    ),
+                    child: _isClearing
+                        ? const SizedBox(
+                            width: 20,
+                            height: 20,
+                            child: CircularProgressIndicator(
+                              strokeWidth: 2,
+                              valueColor: AlwaysStoppedAnimation<Color>(
+                                Colors.white,
+                              ),
+                            ),
+                          )
+                        : Text(
+                            getText('clear'),
+                            style: const TextStyle(fontWeight: FontWeight.w600),
+                          ),
                   ),
                 ],
               ),
@@ -1115,7 +1207,7 @@ class _StatsScreenState extends State<StatsScreen>
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // Weekly Heatmap
-            _buildSectionHeader('🔥 Weekly Reading Heatmap', isDark),
+            _buildSectionHeader(getText('weeklyHeatmap'), isDark),
             const SizedBox(height: 12),
             Container(
               padding: const EdgeInsets.all(16),
@@ -1141,7 +1233,7 @@ class _StatsScreenState extends State<StatsScreen>
             const SizedBox(height: 20),
 
             // Hourly Distribution
-            _buildSectionHeader('⏰ Reading Time Distribution', isDark),
+            _buildSectionHeader(getText('hourlyDistribution'), isDark),
             const SizedBox(height: 12),
             Container(
               padding: const EdgeInsets.all(20),
@@ -1155,7 +1247,7 @@ class _StatsScreenState extends State<StatsScreen>
             const SizedBox(height: 20),
 
             // Monthly Progress
-            _buildSectionHeader('📅 Monthly Progress', isDark),
+            _buildSectionHeader(getText('monthlyProgress'), isDark),
             const SizedBox(height: 12),
             Container(
               padding: const EdgeInsets.all(16),
@@ -1197,7 +1289,7 @@ class _StatsScreenState extends State<StatsScreen>
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          '${summary.currentStreak} Day Streak!',
+                          '${summary.currentStreak} ${getText('dayStreak')}',
                           style: const TextStyle(
                             color: Colors.white,
                             fontSize: 20,
@@ -1206,8 +1298,8 @@ class _StatsScreenState extends State<StatsScreen>
                         ),
                         Text(
                           summary.currentStreak > 0
-                              ? 'Keep going! You\'re building a great habit.'
-                              : 'Start your streak today!',
+                              ? getText('keepGoing')
+                              : getText('startToday'),
                           style: TextStyle(color: Colors.white70, fontSize: 13),
                         ),
                       ],
@@ -1420,7 +1512,7 @@ class _StatsScreenState extends State<StatsScreen>
             Icon(Icons.history, size: 64, color: Colors.grey[400]),
             const SizedBox(height: 16),
             Text(
-              'No reading history yet',
+              getText('noHistory'),
               style: TextStyle(
                 color: isDark ? Colors.grey[400] : Colors.grey[600],
                 fontSize: 16,
@@ -1428,7 +1520,7 @@ class _StatsScreenState extends State<StatsScreen>
             ),
             const SizedBox(height: 8),
             Text(
-              'Start reading to build your history',
+              getText('startReadingHistory'),
               style: TextStyle(
                 color: isDark ? Colors.grey[600] : Colors.grey[500],
                 fontSize: 13,
@@ -1533,12 +1625,12 @@ class _StatsScreenState extends State<StatsScreen>
                     color: Colors.green.withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  child: const Row(
+                  child: Row(
                     children: [
                       Icon(Icons.check_circle, color: Colors.green, size: 14),
                       SizedBox(width: 4),
                       Text(
-                        'Read',
+                        getText('read'),
                         style: TextStyle(color: Colors.green, fontSize: 11),
                       ),
                     ],

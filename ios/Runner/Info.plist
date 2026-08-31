@@ -2,6 +2,7 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<!-- ============ EXISTING CONFIGURATION ============ -->
 	<key>CADisableMinimumFrameDurationOnPhone</key>
 	<true/>
 	<key>CFBundleDevelopmentRegion</key>
@@ -26,6 +27,37 @@
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	
+	<!-- ============ PERMISSION DESCRIPTIONS ============ -->
+	
+	<!-- Location Permission Descriptions -->
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>This app needs your location to calculate accurate Qibla direction and prayer times for your current city.</string>
+	
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>This app needs your location to calculate accurate Qibla direction and prayer times even when the app is in the background.</string>
+	
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>This app needs your location to calculate accurate Qibla direction and prayer times.</string>
+	
+	<!-- Sensor/Motion Permission Description -->
+	<key>NSMotionUsageDescription</key>
+	<string>This app needs motion sensor access to show the Qibla compass direction. The compass helps you find the direction of Mecca for prayer.</string>
+	
+	<!-- Internet Permission (iOS doesn't require explicit permission, but we keep this for clarity) -->
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+		<key>NSAllowsArbitraryLoadsForMedia</key>
+		<true/>
+		<key>NSAllowsArbitraryLoadsInWebContent</key>
+		<true/>
+	</dict>
+	
+	<!-- ============ END PERMISSION DESCRIPTIONS ============ -->
+	
+	<!-- ============ SCENE CONFIGURATION ============ -->
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -47,18 +79,24 @@
 			</array>
 		</dict>
 	</dict>
+	
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
+	
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
+	
+	<!-- ============ ORIENTATION ============ -->
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
@@ -66,5 +104,18 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	
+	<!-- ============ APP ICON & SPLASH ============ -->
+	<key>UIPrerenderedIcon</key>
+	<false/>
+	
+	<key>UIStatusBarHidden</key>
+	<false/>
+	
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
+	
+	<key>UIStatusBarStyle</key>
+	<string>UIStatusBarStyleDefault</string>
 </dict>
 </plist>

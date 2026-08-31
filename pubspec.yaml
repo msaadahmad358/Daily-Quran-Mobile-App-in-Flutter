@@ -1,11 +1,8 @@
 name: qrn_app
 description: "Daily Quran - Your daily Quran companion"
-# The following line prevents the package from being accidentally published to
-# pub.dev using `flutter pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: 'none'
 
-version: 1.0.0+1
-
+version: 1.0.1+1
 environment:
   sdk: ^3.11.5
 
@@ -23,17 +20,13 @@ dependencies:
   url_launcher: ^6.3.2
   geolocator: ^10.1.0
   permission_handler: ^11.0.0
-  flutter_launcher_icons: ^0.13.1  # Add this
-
+  flutter_launcher_icons: ^0.13.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^6.0.0
 
-# ============================================================
-# FLUTTER NATIVE SPLASH SCREEN
-# ============================================================
 flutter_native_splash:
   color: "#1A5F4A"
   image: assets/logo.jpg
@@ -43,9 +36,6 @@ flutter_native_splash:
   ios_content_mode: center
   web: false
 
-# ============================================================
-# FLUTTER LAUNCHER ICONS
-# ============================================================
 flutter_launcher_icons:
   android: true
   ios: true
@@ -69,6 +59,5 @@ flutter_launcher_icons:
 
 flutter:
   uses-material-design: true
-
   assets:
     - assets/

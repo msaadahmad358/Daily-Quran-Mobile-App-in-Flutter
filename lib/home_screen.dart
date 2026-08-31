@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:qrn_app/auth_service.dart';
 import 'package:qrn_app/stats.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'dart:convert';
-import 'main.dart';
-import 'quran.dart' hide AppTranslations;
+import 'translations.dart';
+import 'quran.dart' hide Translations;
 import 'stats.dart';
 import 'settings_tab.dart';
 import 'history_screen.dart';
+import 'prayer_times_screen.dart';
 
 import 'auth_service.dart';
 
@@ -85,15 +87,25 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           );
         },
+        onNavigateToQuran: () {
+          setState(() {
+            _selectedIndex = 1;
+          });
+        },
+        onNavigateToSettings: () {
+          setState(() {
+            _selectedIndex = 3;
+          });
+        },
         user: _currentUser,
       ),
       QuranTab(
         currentLanguage: widget.currentLanguage,
         isDarkMode: widget.isDarkMode,
       ),
-      StatsScreen(
-        currentLanguage: widget.currentLanguage,
+      PrayerTimesScreen(
         isDarkMode: widget.isDarkMode,
+        currentLanguage: widget.currentLanguage,
       ),
       SettingsTab(
         onThemeToggle: widget.onThemeToggle,
@@ -113,7 +125,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final getText = (String key) =>
-        AppTranslations.getText(widget.currentLanguage, key);
+        Translations.getText(widget.currentLanguage, key);
 
     return Scaffold(
       body: _screens[_selectedIndex],
@@ -152,7 +164,7 @@ class _HomeScreenState extends State<HomeScreen> {
               icon: Icon(
                 _selectedIndex == 0 ? Icons.home : Icons.home_outlined,
               ),
-              label: getText('today'),
+              label: getText('home'),
             ),
             BottomNavigationBarItem(
               icon: Icon(
@@ -162,12 +174,9 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             BottomNavigationBarItem(
               icon: Icon(
-                _selectedIndex == 2
-                    ? Icons
-                          .bar_chart // ← Changed from handshake
-                    : Icons.bar_chart_outlined,
+                _selectedIndex == 2 ? Icons.mosque : Icons.mosque_outlined,
               ),
-              label: 'Stats',
+              label: getText('qiblaDirection'),
             ),
             BottomNavigationBarItem(
               icon: Icon(
@@ -182,7 +191,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 }
 
-// ============ HOME TAB - SMOOTH SLIVER APP BAR ============
+// ============ HOME TAB ============
 class HomeTab extends StatefulWidget {
   final bool isDarkMode;
   final String currentLanguage;
@@ -191,6 +200,8 @@ class HomeTab extends StatefulWidget {
   final VoidCallback onNavigateToQibla;
   final VoidCallback onNavigateToHistory;
   final VoidCallback onNavigateToStatistics;
+  final VoidCallback onNavigateToQuran;
+  final VoidCallback onNavigateToSettings;
   final User? user;
 
   const HomeTab({
@@ -202,6 +213,8 @@ class HomeTab extends StatefulWidget {
     required this.onNavigateToQibla,
     required this.onNavigateToHistory,
     required this.onNavigateToStatistics,
+    required this.onNavigateToQuran,
+    required this.onNavigateToSettings,
     this.user,
   });
 
@@ -210,68 +223,61 @@ class HomeTab extends StatefulWidget {
 }
 
 class _HomeTabState extends State<HomeTab> {
-  final ScrollController _scrollController = ScrollController();
-  bool _isScrolled = false;
-
-  // Daily inspiring messages
-  final List<String> _dailyMessages = [
-    '🤲 Thank you. Today as well, your subscription helps support a family in need.',
-    '🌙 Every verse you read brings light to your heart and hope to others.',
-    '💚 Your daily habit is a gift to your soul and a blessing to those around you.',
-    '🌟 With each ayah, you grow closer to Allah and inspire others to do the same.',
-    '🕌 Your commitment to the Quran is a legacy for generations to come.',
-    '📖 Reading the Quran is not just an act of worship, but a conversation with the Divine.',
-    '✨ Every letter you recite is a light that illuminates your path.',
-    '🤝 Your subscription helps provide free access to the Quran for those who cannot afford it.',
-  ];
-
-  String _getDailyMessage() {
-    final now = DateTime.now();
-    final dayOfYear = now.difference(DateTime(now.year, 1, 1)).inDays;
-    return _dailyMessages[dayOfYear % _dailyMessages.length];
-  }
+  final ReadingTracker _tracker = ReadingTracker();
+  ReadingSummary? _summary;
+  bool _isLoadingStats = true;
+  List<ReadingSession> _recentSessions = [];
 
   @override
   void initState() {
     super.initState();
-    _scrollController.addListener(() {
-      final scrolled = _scrollController.offset > 80;
-      if (scrolled != _isScrolled) {
-        setState(() => _isScrolled = scrolled);
-      }
+    _loadStats();
+  }
+
+  Future<void> _loadStats() async {
+    setState(() => _isLoadingStats = true);
+    await _tracker.refresh();
+    setState(() {
+      _summary = _tracker.getSummary();
+      _recentSessions = _tracker.getRecentSessions(limit: 3);
+      _isLoadingStats = false;
     });
   }
 
-  @override
-  void dispose() {
-    _scrollController.dispose();
-    super.dispose();
+  String _getDailyMessage() {
+    final now = DateTime.now();
+    final dayOfYear = now.difference(DateTime(now.year, 1, 1)).inDays;
+    final messageIndex = (dayOfYear % 8) + 1;
+    return Translations.getText(
+      widget.currentLanguage,
+      'dailyMessage$messageIndex',
+    );
   }
 
   String _getTodayDate() {
     final now = DateTime.now();
     final weekdays = [
-      AppTranslations.getText(widget.currentLanguage, 'monday'),
-      AppTranslations.getText(widget.currentLanguage, 'tuesday'),
-      AppTranslations.getText(widget.currentLanguage, 'wednesday'),
-      AppTranslations.getText(widget.currentLanguage, 'thursday'),
-      AppTranslations.getText(widget.currentLanguage, 'friday'),
-      AppTranslations.getText(widget.currentLanguage, 'saturday'),
-      AppTranslations.getText(widget.currentLanguage, 'sunday'),
+      Translations.getText(widget.currentLanguage, 'monday'),
+      Translations.getText(widget.currentLanguage, 'tuesday'),
+      Translations.getText(widget.currentLanguage, 'wednesday'),
+      Translations.getText(widget.currentLanguage, 'thursday'),
+      Translations.getText(widget.currentLanguage, 'friday'),
+      Translations.getText(widget.currentLanguage, 'saturday'),
+      Translations.getText(widget.currentLanguage, 'sunday'),
     ];
     final months = [
-      AppTranslations.getText(widget.currentLanguage, 'january'),
-      AppTranslations.getText(widget.currentLanguage, 'february'),
-      AppTranslations.getText(widget.currentLanguage, 'march'),
-      AppTranslations.getText(widget.currentLanguage, 'april'),
-      AppTranslations.getText(widget.currentLanguage, 'may'),
-      AppTranslations.getText(widget.currentLanguage, 'june'),
-      AppTranslations.getText(widget.currentLanguage, 'july'),
-      AppTranslations.getText(widget.currentLanguage, 'august'),
-      AppTranslations.getText(widget.currentLanguage, 'september'),
-      AppTranslations.getText(widget.currentLanguage, 'october'),
-      AppTranslations.getText(widget.currentLanguage, 'november'),
-      AppTranslations.getText(widget.currentLanguage, 'december'),
+      Translations.getText(widget.currentLanguage, 'january'),
+      Translations.getText(widget.currentLanguage, 'february'),
+      Translations.getText(widget.currentLanguage, 'march'),
+      Translations.getText(widget.currentLanguage, 'april'),
+      Translations.getText(widget.currentLanguage, 'may'),
+      Translations.getText(widget.currentLanguage, 'june'),
+      Translations.getText(widget.currentLanguage, 'july'),
+      Translations.getText(widget.currentLanguage, 'august'),
+      Translations.getText(widget.currentLanguage, 'september'),
+      Translations.getText(widget.currentLanguage, 'october'),
+      Translations.getText(widget.currentLanguage, 'november'),
+      Translations.getText(widget.currentLanguage, 'december'),
     ];
     return '${weekdays[now.weekday - 1]}, ${months[now.month - 1]} ${now.day}';
   }
@@ -280,7 +286,7 @@ class _HomeTabState extends State<HomeTab> {
   Widget build(BuildContext context) {
     final isDark = widget.isDarkMode;
     final getText = (String key) =>
-        AppTranslations.getText(widget.currentLanguage, key);
+        Translations.getText(widget.currentLanguage, key);
     final userName = widget.user?.name ?? 'Guest';
     final dailyMessage = _getDailyMessage();
     final userInitial = userName.isNotEmpty ? userName[0].toUpperCase() : '👤';
@@ -289,249 +295,83 @@ class _HomeTabState extends State<HomeTab> {
       backgroundColor: isDark
           ? const Color(0xFF0A0A0A)
           : const Color(0xFFF5F0EB),
-      body: CustomScrollView(
-        controller: _scrollController,
-        slivers: [
-          // ========== SMOOTH SLIVER APP BAR ==========
-          SliverAppBar(
-            expandedHeight: 170,
-            floating: true,
-            pinned: true,
-            snap: false,
-            stretch: false,
-            backgroundColor: isDark
-                ? const Color(0xFF0A0A0A)
-                : const Color(0xFFF5F0EB),
-            elevation: _isScrolled ? 4 : 0,
-            shadowColor: Colors.black.withValues(alpha: 0.1),
-
-            // ===== TITLE (only shown when scrolled) =====
-            title: _isScrolled
-                ? Row(
-                    children: [
-                      Container(
-                        width: 32,
-                        height: 32,
-                        decoration: BoxDecoration(
-                          gradient: const LinearGradient(
-                            colors: [Color(0xFFC9A96E), Color(0xFFE8D5A3)],
-                          ),
-                          shape: BoxShape.circle,
-                        ),
-                        child: Container(
-                          margin: const EdgeInsets.all(2),
-                          decoration: const BoxDecoration(
-                            color: Color(0xFF1A5F4A),
-                            shape: BoxShape.circle,
-                          ),
-                          child: Center(
-                            child: Text(
-                              userInitial,
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 12,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      const SizedBox(width: 10),
-                      Expanded(
-                        child: Text(
-                          'Salam, $userName',
-                          style: TextStyle(
-                            color: isDark ? Colors.white : Colors.black87,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600,
-                          ),
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                    ],
-                  )
-                : null,
-
-            // ===== ACTIONS (shown when scrolled) =====
-            actions: _isScrolled
-                ? [
-                    Stack(
+      body: Column(
+        children: [
+          // ========== SIMPLE APP BAR ==========
+          Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: isDark
+                    ? [
+                        const Color(0xFF1A3A2E),
+                        const Color(0xFF0D2B1E),
+                        const Color(0xFF1A5F4A),
+                      ]
+                    : [
+                        const Color(0xFF1A5F4A),
+                        const Color(0xFF0D3B2E),
+                        const Color(0xFF1A5F4A),
+                      ],
+              ),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withValues(alpha: 0.1),
+                  blurRadius: 10,
+                  offset: const Offset(0, 4),
+                ),
+              ],
+            ),
+            child: SafeArea(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 20,
+                  vertical: 12,
+                ),
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        IconButton(
-                          icon: const Icon(Icons.notifications_outlined),
-                          onPressed: () {},
-                          color: isDark ? Colors.white : Colors.black87,
-                        ),
-                        Positioned(
-                          top: 8,
-                          right: 8,
+                        Container(
+                          width: 48,
+                          height: 48,
+                          decoration: BoxDecoration(
+                            gradient: const LinearGradient(
+                              colors: [Color(0xFFC9A96E), Color(0xFFE8D5A3)],
+                            ),
+                            shape: BoxShape.circle,
+                            boxShadow: [
+                              BoxShadow(
+                                color: const Color(
+                                  0xFFC9A96E,
+                                ).withValues(alpha: 0.3),
+                                blurRadius: 16,
+                                spreadRadius: 2,
+                              ),
+                            ],
+                          ),
                           child: Container(
-                            width: 8,
-                            height: 8,
+                            margin: const EdgeInsets.all(2),
                             decoration: const BoxDecoration(
-                              color: Colors.red,
+                              color: Color(0xFF1A5F4A),
                               shape: BoxShape.circle,
                             ),
+                            child: Center(
+                              child: Text(
+                                userInitial,
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
                           ),
                         ),
-                      ],
-                    ),
-                    IconButton(
-                      icon: const Icon(Icons.settings_outlined),
-                      onPressed: () {},
-                      color: isDark ? Colors.white : Colors.black87,
-                    ),
-                  ]
-                : null,
-
-            // ===== FLEXIBLE SPACE =====
-            flexibleSpace: FlexibleSpaceBar(
-              background: Container(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                    colors: isDark
-                        ? [
-                            const Color(0xFF1A3A2E),
-                            const Color(0xFF0D2B1E),
-                            const Color(0xFF1A5F4A),
-                          ]
-                        : [
-                            const Color(0xFF1A5F4A),
-                            const Color(0xFF0D3B2E),
-                            const Color(0xFF1A5F4A),
-                          ],
-                  ),
-                ),
-                child: SafeArea(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 20,
-                      vertical: 16,
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        // Top Row: Profile + Actions
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            // Profile Avatar with ring
-                            Container(
-                              width: 48,
-                              height: 48,
-                              decoration: BoxDecoration(
-                                gradient: const LinearGradient(
-                                  colors: [
-                                    Color(0xFFC9A96E),
-                                    Color(0xFFE8D5A3),
-                                  ],
-                                ),
-                                shape: BoxShape.circle,
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: const Color(
-                                      0xFFC9A96E,
-                                    ).withValues(alpha: 0.3),
-                                    blurRadius: 16,
-                                    spreadRadius: 2,
-                                  ),
-                                ],
-                              ),
-                              child: Container(
-                                margin: const EdgeInsets.all(2),
-                                decoration: const BoxDecoration(
-                                  color: Color(0xFF1A5F4A),
-                                  shape: BoxShape.circle,
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    userInitial,
-                                    style: const TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                            // Action Buttons
-                            Row(
-                              children: [
-                                // Notification Bell
-                                Stack(
-                                  children: [
-                                    Container(
-                                      padding: const EdgeInsets.all(8),
-                                      decoration: BoxDecoration(
-                                        color: Colors.white.withValues(
-                                          alpha: 0.15,
-                                        ),
-                                        shape: BoxShape.circle,
-                                        border: Border.all(
-                                          color: Colors.white.withValues(
-                                            alpha: 0.2,
-                                          ),
-                                          width: 1,
-                                        ),
-                                      ),
-                                      child: const Icon(
-                                        Icons.notifications_outlined,
-                                        color: Colors.white,
-                                        size: 22,
-                                      ),
-                                    ),
-                                    Positioned(
-                                      top: 4,
-                                      right: 4,
-                                      child: Container(
-                                        width: 10,
-                                        height: 10,
-                                        decoration: const BoxDecoration(
-                                          color: Colors.red,
-                                          shape: BoxShape.circle,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                const SizedBox(width: 12),
-                                // Settings Gear
-                                GestureDetector(
-                                  onTap: () {},
-                                  child: Container(
-                                    padding: const EdgeInsets.all(8),
-                                    decoration: BoxDecoration(
-                                      color: Colors.white.withValues(
-                                        alpha: 0.15,
-                                      ),
-                                      shape: BoxShape.circle,
-                                      border: Border.all(
-                                        color: Colors.white.withValues(
-                                          alpha: 0.2,
-                                        ),
-                                        width: 1,
-                                      ),
-                                    ),
-                                    child: const Icon(
-                                      Icons.settings_outlined,
-                                      color: Colors.white,
-                                      size: 22,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: 14),
-
-                        // Greeting
                         Text(
-                          '🌙 Salam, $userName',
+                          '🌙 ${getText('appTitle')}',
                           style: const TextStyle(
                             color: Colors.white,
                             fontSize: 20,
@@ -539,7 +379,78 @@ class _HomeTabState extends State<HomeTab> {
                             letterSpacing: 0.5,
                           ),
                         ),
-                        const SizedBox(height: 4),
+                        Row(
+                          children: [
+                            Stack(
+                              children: [
+                                Container(
+                                  padding: const EdgeInsets.all(8),
+                                  decoration: BoxDecoration(
+                                    color: Colors.white.withValues(alpha: 0.15),
+                                    shape: BoxShape.circle,
+                                    border: Border.all(
+                                      color: Colors.white.withValues(
+                                        alpha: 0.2,
+                                      ),
+                                      width: 1,
+                                    ),
+                                  ),
+                                  child: const Icon(
+                                    Icons.notifications_outlined,
+                                    color: Colors.white,
+                                    size: 22,
+                                  ),
+                                ),
+                                Positioned(
+                                  top: 4,
+                                  right: 4,
+                                  child: Container(
+                                    width: 10,
+                                    height: 10,
+                                    decoration: const BoxDecoration(
+                                      color: Colors.red,
+                                      shape: BoxShape.circle,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(width: 8),
+                            GestureDetector(
+                              onTap: widget.onNavigateToSettings,
+                              child: Container(
+                                padding: const EdgeInsets.all(8),
+                                decoration: BoxDecoration(
+                                  color: Colors.white.withValues(alpha: 0.15),
+                                  shape: BoxShape.circle,
+                                  border: Border.all(
+                                    color: Colors.white.withValues(alpha: 0.2),
+                                    width: 1,
+                                  ),
+                                ),
+                                child: const Icon(
+                                  Icons.settings_outlined,
+                                  color: Colors.white,
+                                  size: 22,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 8),
+                    Row(
+                      children: [
+                        Text(
+                          '${getText('salam')}, $userName',
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        const Spacer(),
                         Row(
                           children: [
                             Icon(
@@ -547,111 +458,46 @@ class _HomeTabState extends State<HomeTab> {
                               color: Colors.white.withValues(alpha: 0.6),
                               size: 14,
                             ),
-                            const SizedBox(width: 6),
+                            const SizedBox(width: 4),
                             Text(
                               _getTodayDate(),
                               style: const TextStyle(
                                 color: Colors.white70,
-                                fontSize: 13,
+                                fontSize: 12,
                                 fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                            const SizedBox(width: 12),
-                            Container(
-                              width: 4,
-                              height: 4,
-                              decoration: BoxDecoration(
-                                color: Colors.white.withValues(alpha: 0.3),
-                                shape: BoxShape.circle,
-                              ),
-                            ),
-                            const SizedBox(width: 12),
-                            Container(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 10,
-                                vertical: 4,
-                              ),
-                              decoration: BoxDecoration(
-                                color: const Color(
-                                  0xFFC9A96E,
-                                ).withValues(alpha: 0.2),
-                                borderRadius: BorderRadius.circular(12),
-                                border: Border.all(
-                                  color: const Color(
-                                    0xFFC9A96E,
-                                  ).withValues(alpha: 0.3),
-                                  width: 1,
-                                ),
-                              ),
-                              child: Row(
-                                children: [
-                                  const Icon(
-                                    Icons.calendar_today,
-                                    color: Color(0xFFC9A96E),
-                                    size: 12,
-                                  ),
-                                  const SizedBox(width: 4),
-                                  Text(
-                                    '12 ${getText('ramadan')}',
-                                    style: const TextStyle(
-                                      color: Color(0xFFC9A96E),
-                                      fontSize: 11,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  ),
-                                ],
                               ),
                             ),
                           ],
                         ),
                       ],
                     ),
-                  ),
+                  ],
                 ),
               ),
             ),
           ),
+          // ========== SCROLLABLE CONTENT ==========
+          Expanded(
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _buildVerseOfTheDay(isDark, getText),
+                  const SizedBox(height: 20),
+                  _buildDailyInspiration(isDark, getText, dailyMessage),
+                  const SizedBox(height: 20),
+                  _buildQuickActionsGrid(isDark, getText),
+                  const SizedBox(height: 20),
+                  _buildReadingProgress(isDark, getText),
 
-          // ========== MAIN CONTENT ==========
-          SliverPadding(
-            padding: const EdgeInsets.all(16),
-            sliver: SliverList(
-              delegate: SliverChildListDelegate([
-                // ========== 📖 VERSE OF THE DAY ==========
-                _buildVerseOfTheDay(isDark, getText),
-
-                const SizedBox(height: 20),
-
-                // ========== 🤲 INSPIRING DAILY MESSAGE ==========
-                _buildDailyInspiration(isDark, dailyMessage),
-
-                const SizedBox(height: 20),
-
-                // ========== QUICK ACTIONS GRID ==========
-                _buildQuickActionsGrid(isDark, getText),
-
-                const SizedBox(height: 20),
-
-                // ========== READING PROGRESS ==========
-                _buildReadingProgress(isDark, getText),
-
-                const SizedBox(height: 20),
-
-                // ========== FEATURED SURAHS ==========
-                _buildFeaturedSurahs(isDark, getText),
-
-                const SizedBox(height: 20),
-
-                // ========== RECENT ACTIVITY ==========
-                _buildRecentActivity(isDark, getText),
-
-                const SizedBox(height: 20),
-
-                // ========== 🌐 WEBSITE LINK ==========
-                _buildWebsiteLink(isDark, getText),
-
-                const SizedBox(height: 30),
-              ]),
+                  const SizedBox(height: 20),
+                  _buildRecentActivity(isDark, getText),
+                  const SizedBox(height: 20),
+                  _buildWebsiteLink(isDark, getText),
+                  const SizedBox(height: 30),
+                ],
+              ),
             ),
           ),
         ],
@@ -712,15 +558,16 @@ class _HomeTabState extends State<HomeTab> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      '📖 Verse of the Day',
+                      getText('verseOfTheDay'),
                       style: const TextStyle(
                         color: Colors.white,
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
+                    // ===== FIXED: Using translation =====
                     Text(
-                      'Sourate Al-Insān · verse 8',
+                      getText('todayVerse'),
                       style: TextStyle(color: Colors.white60, fontSize: 12),
                     ),
                   ],
@@ -735,9 +582,9 @@ class _HomeTabState extends State<HomeTab> {
                     color: Colors.white.withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  child: const Text(
-                    'Today',
-                    style: TextStyle(
+                  child: Text(
+                    getText('today'),
+                    style: const TextStyle(
                       color: Colors.white60,
                       fontSize: 10,
                       fontWeight: FontWeight.w500,
@@ -787,7 +634,7 @@ class _HomeTabState extends State<HomeTab> {
                       ),
                       const SizedBox(width: 8),
                       Text(
-                        'Translation',
+                        getText('translation'),
                         style: TextStyle(
                           color: Colors.white.withValues(alpha: 0.5),
                           fontSize: 11,
@@ -797,8 +644,9 @@ class _HomeTabState extends State<HomeTab> {
                     ],
                   ),
                   const SizedBox(height: 6),
+                  // ===== FIXED: Using translation =====
                   Text(
-                    '« Et ils offrent la nourriture, malgré son amour, au pauvre, à l\'orphelin et au captif. »',
+                    getText('verseTranslation'),
                     style: const TextStyle(
                       color: Colors.white,
                       fontSize: 14,
@@ -808,7 +656,7 @@ class _HomeTabState extends State<HomeTab> {
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    getText('translation'),
+                    getText('translationCredit'),
                     style: TextStyle(color: Colors.white60, fontSize: 10),
                   ),
                 ],
@@ -856,7 +704,11 @@ class _HomeTabState extends State<HomeTab> {
   }
 
   // ========== 🤲 INSPIRING DAILY MESSAGE ==========
-  Widget _buildDailyInspiration(bool isDark, String message) {
+  Widget _buildDailyInspiration(
+    bool isDark,
+    String Function(String) getText,
+    String message,
+  ) {
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
@@ -900,7 +752,7 @@ class _HomeTabState extends State<HomeTab> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  '💚 Daily Inspiration',
+                  getText('dailyInspiration'),
                   style: TextStyle(
                     fontSize: 13,
                     fontWeight: FontWeight.w600,
@@ -931,7 +783,7 @@ class _HomeTabState extends State<HomeTab> {
         'icon': Icons.auto_stories,
         'label': getText('readQuran'),
         'color': const Color(0xFF1A5F4A),
-        'tap': () {},
+        'tap': widget.onNavigateToQuran,
       },
       {
         'icon': Icons.mosque,
@@ -947,7 +799,7 @@ class _HomeTabState extends State<HomeTab> {
       },
       {
         'icon': Icons.show_chart,
-        'label': getText('statistics'),
+        'label': getText('stats'),
         'color': const Color(0xFF2E86C1),
         'tap': widget.onNavigateToStatistics,
       },
@@ -1038,8 +890,50 @@ class _HomeTabState extends State<HomeTab> {
     );
   }
 
-  // ========== READING PROGRESS ==========
+  // ========== READING PROGRESS - DYNAMIC ==========
   Widget _buildReadingProgress(bool isDark, String Function(String) getText) {
+    if (_isLoadingStats) {
+      return Container(
+        padding: const EdgeInsets.all(20),
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: isDark
+                ? [const Color(0xFF1E1E1E), const Color(0xFF2A2A2A)]
+                : [Colors.white, const Color(0xFFF8F5F0)],
+          ),
+          borderRadius: BorderRadius.circular(20),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withValues(alpha: 0.05),
+              blurRadius: 12,
+              offset: const Offset(0, 4),
+            ),
+          ],
+        ),
+        child: const Center(
+          child: Padding(
+            padding: EdgeInsets.symmetric(vertical: 20),
+            child: CircularProgressIndicator(),
+          ),
+        ),
+      );
+    }
+
+    final summary = _summary;
+    if (summary == null) {
+      return _buildReadingProgressStatic(isDark, getText);
+    }
+
+    // Calculate Quran progress percentage (based on total verses read)
+    final totalVerses = summary.totalVerses;
+    final quranTotal = 6236; // Total verses in Quran
+    final progressPercent = (totalVerses / quranTotal * 100).clamp(0, 100);
+    final surahsCompleted = summary.surahsCompleted;
+    final streak = summary.currentStreak;
+    final todayVerses = summary.todayVerses;
+
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
@@ -1092,7 +986,7 @@ class _HomeTabState extends State<HomeTab> {
                       ),
                     ),
                     Text(
-                      '35% ${getText('completed')}',
+                      '${summary.quranProgress.toStringAsFixed(1)}% ${getText('percentOfQuran')}',
                       style: TextStyle(
                         fontSize: 12,
                         color: isDark ? Colors.grey[400] : Colors.grey[600],
@@ -1111,7 +1005,7 @@ class _HomeTabState extends State<HomeTab> {
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Text(
-                  '35%',
+                  '${progressPercent.toStringAsFixed(0)}%',
                   style: const TextStyle(
                     color: Color(0xFF1A5F4A),
                     fontSize: 14,
@@ -1125,7 +1019,7 @@ class _HomeTabState extends State<HomeTab> {
           ClipRRect(
             borderRadius: BorderRadius.circular(6),
             child: LinearProgressIndicator(
-              value: 0.35,
+              value: (progressPercent / 100).clamp(0, 1),
               backgroundColor: isDark
                   ? Colors.grey[800]
                   : const Color(0xFFE8E0D8),
@@ -1139,9 +1033,167 @@ class _HomeTabState extends State<HomeTab> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              _buildProgressStat('📖', '8 Surahs', isDark),
-              _buildProgressStat('📜', '247 Verses', isDark),
-              _buildProgressStat('🔥', '12 Day Streak', isDark),
+              _buildProgressStat(
+                '📖',
+                '$totalVerses ${getText('verses')}',
+                isDark,
+              ),
+              _buildProgressStat(
+                '📚',
+                '$surahsCompleted ${getText('surahs')}',
+                isDark,
+              ),
+              _buildProgressStat(
+                '🔥',
+                '$streak ${getText('dayStreak')}',
+                isDark,
+              ),
+            ],
+          ),
+          if (todayVerses > 0)
+            Padding(
+              padding: const EdgeInsets.only(top: 8),
+              child: Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 12,
+                  vertical: 6,
+                ),
+                decoration: BoxDecoration(
+                  color: const Color(0xFFC9A96E).withValues(alpha: 0.1),
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(
+                    color: const Color(0xFFC9A96E).withValues(alpha: 0.2),
+                  ),
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const Icon(Icons.today, color: Color(0xFFC9A96E), size: 14),
+                    const SizedBox(width: 6),
+                    Text(
+                      '$todayVerses ${getText('verses')} ${getText('today')}',
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: const Color(0xFFC9A96E),
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+        ],
+      ),
+    );
+  }
+
+  // Fallback static progress
+  Widget _buildReadingProgressStatic(
+    bool isDark,
+    String Function(String) getText,
+  ) {
+    return Container(
+      padding: const EdgeInsets.all(20),
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: isDark
+              ? [const Color(0xFF1E1E1E), const Color(0xFF2A2A2A)]
+              : [Colors.white, const Color(0xFFF8F5F0)],
+        ),
+        borderRadius: BorderRadius.circular(20),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.05),
+            blurRadius: 12,
+            offset: const Offset(0, 4),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Container(
+                padding: const EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  gradient: const LinearGradient(
+                    colors: [Color(0xFF1A5F4A), Color(0xFF2D7A62)],
+                  ),
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: const Icon(
+                  Icons.trending_up,
+                  color: Colors.white,
+                  size: 22,
+                ),
+              ),
+              const SizedBox(width: 14),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      getText('readingProgress'),
+                      style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 16,
+                        color: isDark ? Colors.white : Colors.black87,
+                      ),
+                    ),
+                    Text(
+                      '0% ${getText('completed')}',
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: isDark ? Colors.grey[400] : Colors.grey[600],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 12,
+                  vertical: 6,
+                ),
+                decoration: BoxDecoration(
+                  color: const Color(0xFF1A5F4A).withValues(alpha: 0.1),
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: const Text(
+                  '0%',
+                  style: TextStyle(
+                    color: Color(0xFF1A5F4A),
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 12),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(6),
+            child: LinearProgressIndicator(
+              value: 0,
+              backgroundColor: isDark
+                  ? Colors.grey[800]
+                  : const Color(0xFFE8E0D8),
+              valueColor: const AlwaysStoppedAnimation<Color>(
+                Color(0xFF1A5F4A),
+              ),
+              minHeight: 8,
+            ),
+          ),
+          const SizedBox(height: 12),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              _buildProgressStat('📖', '0 ${getText('verses')}', isDark),
+              _buildProgressStat('📚', '0 ${getText('surahs')}', isDark),
+              _buildProgressStat('🔥', '0 ${getText('dayStreak')}', isDark),
             ],
           ),
         ],
@@ -1167,141 +1219,117 @@ class _HomeTabState extends State<HomeTab> {
   }
 
   // ========== FEATURED SURAHS ==========
-  Widget _buildFeaturedSurahs(bool isDark, String Function(String) getText) {
-    final surahs = [
-      {'name': 'Al-Fatihah', 'verses': 7, 'icon': '🌟'},
-      {'name': 'Al-Baqarah', 'verses': 286, 'icon': '📖'},
-      {'name': 'Al-Imran', 'verses': 200, 'icon': '🕌'},
-      {'name': 'Al-Kahf', 'verses': 110, 'icon': '💫'},
-    ];
 
-    return Container(
-      padding: const EdgeInsets.all(20),
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: isDark
-              ? [const Color(0xFF1E1E1E), const Color(0xFF2A2A2A)]
-              : [Colors.white, const Color(0xFFF8F5F0)],
+  // ========== RECENT ACTIVITY - DYNAMIC ==========
+  Widget _buildRecentActivity(bool isDark, String Function(String) getText) {
+    if (_isLoadingStats) {
+      return Container(
+        padding: const EdgeInsets.all(20),
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: isDark
+                ? [const Color(0xFF1E1E1E), const Color(0xFF2A2A2A)]
+                : [Colors.white, const Color(0xFFF8F5F0)],
+          ),
+          borderRadius: BorderRadius.circular(20),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withValues(alpha: 0.05),
+              blurRadius: 12,
+              offset: const Offset(0, 4),
+            ),
+          ],
         ),
-        borderRadius: BorderRadius.circular(20),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.05),
-            blurRadius: 12,
-            offset: const Offset(0, 4),
+        child: const Center(
+          child: Padding(
+            padding: EdgeInsets.symmetric(vertical: 20),
+            child: CircularProgressIndicator(),
           ),
-        ],
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                '📚 Featured Surahs',
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: isDark ? Colors.white : Colors.black87,
-                ),
-              ),
-              TextButton(
-                onPressed: () {},
-                child: Text(
-                  'View All',
-                  style: TextStyle(
-                    color: const Color(0xFF1A5F4A),
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              ),
-            ],
+        ),
+      );
+    }
+
+    // Build activity list from recent sessions
+    List<Map<String, String>> activities = [];
+    if (_recentSessions.isNotEmpty) {
+      activities = _recentSessions.take(3).map((session) {
+        final timeAgo = _getTimeAgo(session.endTime);
+        return {
+          'title': 'Read ${session.surahName}',
+          'subtitle': '$timeAgo',
+          'icon': '📖',
+        };
+      }).toList();
+    }
+
+    // If no history, show empty state
+    if (activities.isEmpty) {
+      return Container(
+        padding: const EdgeInsets.all(20),
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: isDark
+                ? [const Color(0xFF1E1E1E), const Color(0xFF2A2A2A)]
+                : [Colors.white, const Color(0xFFF8F5F0)],
           ),
-          const SizedBox(height: 12),
-          ...surahs.map(
-            (surah) => Padding(
-              padding: const EdgeInsets.only(bottom: 10),
-              child: Container(
-                padding: const EdgeInsets.all(12),
-                decoration: BoxDecoration(
-                  color: isDark
-                      ? const Color(0xFF2A2A2A)
-                      : const Color(0xFFF8F5F0),
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Row(
-                  children: [
-                    Text(
-                      surah['icon'] as String,
-                      style: const TextStyle(fontSize: 24),
-                    ),
-                    const SizedBox(width: 12),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            surah['name'] as String,
-                            style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 15,
-                              color: isDark ? Colors.white : Colors.black87,
-                            ),
-                          ),
-                          Text(
-                            '${surah['verses']} verses',
-                            style: TextStyle(
-                              fontSize: 12,
-                              color: isDark
-                                  ? Colors.grey[400]
-                                  : Colors.grey[600],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 12,
-                        vertical: 4,
-                      ),
-                      decoration: BoxDecoration(
-                        color: const Color(0xFF1A5F4A).withValues(alpha: 0.1),
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: const Text(
-                        'Read',
-                        style: TextStyle(
-                          color: Color(0xFF1A5F4A),
-                          fontSize: 12,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+          borderRadius: BorderRadius.circular(20),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withValues(alpha: 0.05),
+              blurRadius: 12,
+              offset: const Offset(0, 4),
+            ),
+          ],
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              getText('recentActivity'),
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: isDark ? Colors.white : Colors.black87,
               ),
             ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  // ========== RECENT ACTIVITY ==========
-  Widget _buildRecentActivity(bool isDark, String Function(String) getText) {
-    final activities = [
-      {'title': 'Read Al-Fatihah', 'subtitle': 'Today, 10:30 AM', 'icon': '📖'},
-      {
-        'title': 'Completed Al-Baqarah',
-        'subtitle': 'Yesterday, 9:00 PM',
-        'icon': '✅',
-      },
-      {'title': 'Started Al-Imran', 'subtitle': '2 days ago', 'icon': '🚀'},
-    ];
+            const SizedBox(height: 12),
+            Container(
+              padding: const EdgeInsets.symmetric(vertical: 20),
+              alignment: Alignment.center,
+              child: Column(
+                children: [
+                  Icon(
+                    Icons.history,
+                    size: 48,
+                    color: isDark ? Colors.grey[600] : Colors.grey[400],
+                  ),
+                  const SizedBox(height: 12),
+                  Text(
+                    getText('noHistory'),
+                    style: TextStyle(
+                      color: isDark ? Colors.grey[400] : Colors.grey[600],
+                      fontSize: 14,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  TextButton(
+                    onPressed: widget.onNavigateToQuran,
+                    child: Text(
+                      getText('startReadingHistory'),
+                      style: TextStyle(color: const Color(0xFF1A5F4A)),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      );
+    }
 
     return Container(
       padding: const EdgeInsets.all(20),
@@ -1326,7 +1354,7 @@ class _HomeTabState extends State<HomeTab> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            '⏰ Recent Activity',
+            getText('recentActivity'),
             style: TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.bold,
@@ -1378,9 +1406,46 @@ class _HomeTabState extends State<HomeTab> {
               ),
             ),
           ),
+          if (_recentSessions.length > 3)
+            Padding(
+              padding: const EdgeInsets.only(top: 8),
+              child: Center(
+                child: TextButton(
+                  onPressed: widget.onNavigateToHistory,
+                  child: Text(
+                    'View All (${_recentSessions.length})',
+                    style: TextStyle(
+                      color: const Color(0xFF1A5F4A),
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ),
+              ),
+            ),
         ],
       ),
     );
+  }
+
+  String _getTimeAgo(DateTime dateTime) {
+    final now = DateTime.now();
+    final difference = now.difference(dateTime);
+
+    if (difference.inDays > 7) {
+      return '${difference.inDays} days ago';
+    } else if (difference.inDays > 1) {
+      return '${difference.inDays} days ago';
+    } else if (difference.inDays == 1) {
+      return 'Yesterday';
+    } else if (difference.inHours > 1) {
+      return '${difference.inHours} hours ago';
+    } else if (difference.inHours == 1) {
+      return '1 hour ago';
+    } else if (difference.inMinutes > 5) {
+      return '${difference.inMinutes} min ago';
+    } else {
+      return 'Just now';
+    }
   }
 
   // ========== 🌐 WEBSITE LINK ==========
@@ -1412,15 +1477,9 @@ class _HomeTabState extends State<HomeTab> {
       ),
       child: InkWell(
         onTap: () {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(
-                '🌐 Website coming soon!',
-                style: TextStyle(color: isDark ? Colors.white : Colors.black87),
-              ),
-              backgroundColor: isDark ? const Color(0xFF2A2A2A) : Colors.white,
-              duration: const Duration(seconds: 2),
-            ),
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const WebsiteScreen()),
           );
         },
         borderRadius: BorderRadius.circular(20),
@@ -1442,7 +1501,7 @@ class _HomeTabState extends State<HomeTab> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    '🌐 Visit Our Website',
+                    getText('website'),
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -1450,7 +1509,7 @@ class _HomeTabState extends State<HomeTab> {
                     ),
                   ),
                   Text(
-                    'Coming soon - Stay tuned for updates!',
+                    'hassana.eu',
                     style: TextStyle(
                       fontSize: 13,
                       color: isDark ? Colors.grey[400] : Colors.grey[600],
@@ -1469,6 +1528,112 @@ class _HomeTabState extends State<HomeTab> {
                 Icons.arrow_forward_ios,
                 size: 16,
                 color: const Color(0xFF1A5F4A),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+// ============ WEBSITE SCREEN ============
+class WebsiteScreen extends StatelessWidget {
+  const WebsiteScreen({super.key});
+
+  static const String _websiteUrl = 'http://hassana.eu';
+
+  Future<void> _launchWebsite() async {
+    try {
+      final Uri url = Uri.parse(_websiteUrl);
+      if (await canLaunchUrl(url)) {
+        await launchUrl(url, mode: LaunchMode.externalApplication);
+      } else {
+        // Fallback: Show dialog if can't launch
+        _showCannotLaunchDialog();
+      }
+    } catch (e) {
+      // Fallback: Show dialog on error
+      _showCannotLaunchDialog();
+    }
+  }
+
+  void _showCannotLaunchDialog() {
+    // Get context from the current build context
+    // This will be called from the build method context
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final currentLanguage = 'French'; // Get from provider if needed
+
+    return Scaffold(
+      backgroundColor: isDark
+          ? const Color(0xFF0A0A0A)
+          : const Color(0xFFF5F0EB),
+      appBar: AppBar(
+        title: Text(Translations.getText(currentLanguage, 'hassanaEu')),
+        backgroundColor: isDark
+            ? const Color(0xFF0A0A0A)
+            : const Color(0xFFF5F0EB),
+        elevation: 0,
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            // ===== FIXED: GestureDetector with proper onTap =====
+            GestureDetector(
+              onTap: _launchWebsite,
+              child: Container(
+                padding: const EdgeInsets.all(40),
+                decoration: BoxDecoration(
+                  color: const Color(0xFF1A5F4A),
+                  shape: BoxShape.circle,
+                  boxShadow: [
+                    BoxShadow(
+                      color: const Color(0xFF1A5F4A).withValues(alpha: 0.3),
+                      blurRadius: 30,
+                      spreadRadius: 5,
+                    ),
+                  ],
+                ),
+                child: const Icon(Icons.public, color: Colors.white, size: 60),
+              ),
+            ),
+            const SizedBox(height: 30),
+            Text(
+              Translations.getText(currentLanguage, 'visitWebsite'),
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+                color: isDark ? Colors.white : Colors.black87,
+              ),
+            ),
+            const SizedBox(height: 10),
+            Text(
+              Translations.getText(currentLanguage, 'forMoreResources'),
+              style: TextStyle(
+                fontSize: 16,
+                color: isDark ? Colors.grey[400] : Colors.grey[600],
+              ),
+            ),
+            const SizedBox(height: 30),
+            ElevatedButton.icon(
+              onPressed: _launchWebsite,
+              icon: const Icon(Icons.open_in_browser),
+              label: Text(Translations.getText(currentLanguage, 'openWebsite')),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color(0xFF1A5F4A),
+                foregroundColor: Colors.white,
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 32,
+                  vertical: 14,
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
               ),
             ),
           ],

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'main.dart';
+import 'translations.dart';
 
 class DuaTab extends StatelessWidget {
   const DuaTab({super.key});
@@ -43,7 +43,7 @@ class DuaTab extends StatelessWidget {
           : const Color(0xFFF5F0EB),
       appBar: AppBar(
         title: Text(
-          'Dua & Supplications',
+          Translations.getText(currentLanguage, 'duaSupplications'),
           style: TextStyle(
             fontWeight: FontWeight.bold,
             color: isDark ? Colors.white : Colors.black87,
@@ -104,7 +104,7 @@ class DuaTab extends StatelessWidget {
                     const SizedBox(width: 12),
                     Expanded(
                       child: Text(
-                        dua['title']!,
+                        Translations.getText(currentLanguage, dua['title']!),
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w600,
@@ -170,7 +170,10 @@ class DuaTab extends StatelessWidget {
                           ),
                           const SizedBox(width: 8),
                           Text(
-                            'Translation:',
+                            Translations.getText(
+                              currentLanguage,
+                              'translationLabel',
+                            ),
                             style: TextStyle(
                               fontSize: 11,
                               color: const Color(0xFFC9A96E),
@@ -181,7 +184,10 @@ class DuaTab extends StatelessWidget {
                       ),
                       const SizedBox(height: 4),
                       Text(
-                        dua['translation']!,
+                        Translations.getText(
+                          currentLanguage,
+                          dua['translation']!,
+                        ),
                         style: TextStyle(
                           fontSize: 13,
                           fontStyle: FontStyle.italic,

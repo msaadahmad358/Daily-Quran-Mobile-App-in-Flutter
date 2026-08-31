@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:qrn_app/main.dart';
+
+import 'package:qrn_app/translations.dart';
 import '../auth_service.dart';
+
+import 'base_screen.dart';
 
 class ForgotPasswordScreen extends StatefulWidget {
   final bool isDarkMode;
@@ -16,7 +19,7 @@ class ForgotPasswordScreen extends StatefulWidget {
   State<ForgotPasswordScreen> createState() => _ForgotPasswordScreenState();
 }
 
-class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
+class _ForgotPasswordScreenState extends BaseScreenState<ForgotPasswordScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _codeController = TextEditingController();
   final TextEditingController _newPasswordController = TextEditingController();
@@ -32,7 +35,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   Widget build(BuildContext context) {
     final isDark = widget.isDarkMode;
     final getText = (String key) =>
-        AppTranslations.getText(widget.currentLanguage, key);
+        Translations.getText(widget.currentLanguage, key);
 
     return Scaffold(
       backgroundColor: isDark
@@ -62,7 +65,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
             // ========== STEP 1: Enter Email ==========
             if (!_emailSent) ...[
               Text(
-                'Reset Password',
+                getText('resetPassword'),
                 style: TextStyle(
                   fontSize: 28,
                   fontWeight: FontWeight.bold,
@@ -71,7 +74,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
               ),
               const SizedBox(height: 10),
               Text(
-                'Enter your email address and we\'ll send you a 6-digit reset code.',
+                getText('enterEmail'),
                 style: TextStyle(
                   fontSize: 15,
                   color: isDark ? Colors.grey[400] : Colors.grey[600],
@@ -151,8 +154,8 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                             ),
                           ),
                         )
-                      : const Text(
-                          'Send Code',
+                      : Text(
+                          getText('sendCode'),
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w600,
@@ -164,10 +167,10 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
 
             // ========== STEP 2: Enter Code ==========
             if (_emailSent && !_codeVerified) ...[
-              _buildStepIndicator(1, 'Enter Code'),
+              _buildStepIndicator(1, getText('enterCode')),
               const SizedBox(height: 8),
               Text(
-                'Enter the 6-digit code sent to ${_emailController.text}',
+                '${getText('enterCodeSent')} ${_emailController.text}',
                 style: TextStyle(
                   fontSize: 14,
                   color: isDark ? Colors.grey[400] : Colors.grey[600],
@@ -251,8 +254,8 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                             ),
                           ),
                         )
-                      : const Text(
-                          'Verify Code',
+                      : Text(
+                          getText('verifyCode'),
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w600,
@@ -265,7 +268,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                 child: TextButton(
                   onPressed: _resendCode,
                   child: Text(
-                    'Resend Code',
+                    getText('resendCode'),
                     style: TextStyle(
                       color: const Color(0xFF1A5F4A),
                       fontWeight: FontWeight.w600,
@@ -277,10 +280,10 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
 
             // ========== STEP 3: New Password ==========
             if (_codeVerified) ...[
-              _buildStepIndicator(2, 'Set New Password'),
+              _buildStepIndicator(2, getText('setNewPassword')),
               const SizedBox(height: 8),
               Text(
-                'Create a new password for your account',
+                getText('createNewPassword'),
                 style: TextStyle(
                   fontSize: 14,
                   color: isDark ? Colors.grey[400] : Colors.grey[600],
@@ -306,7 +309,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                   style: TextStyle(color: isDark ? Colors.white : Colors.black),
                   obscureText: true,
                   decoration: InputDecoration(
-                    labelText: 'New Password',
+                    labelText: getText('newPassword'),
                     labelStyle: TextStyle(
                       color: isDark ? Colors.grey[400] : Colors.grey[600],
                     ),
@@ -334,7 +337,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
               ),
               const SizedBox(height: 8),
               Text(
-                'Password must be at least 8 characters with uppercase and number',
+                getText('passwordRequirements'),
                 style: TextStyle(
                   fontSize: 12,
                   color: isDark ? Colors.grey[400] : Colors.grey[600],
@@ -367,8 +370,8 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                             ),
                           ),
                         )
-                      : const Text(
-                          'Reset Password',
+                      : Text(
+                          getText('resetPassword'),
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w600,
@@ -385,7 +388,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
               child: TextButton(
                 onPressed: () => Navigator.pop(context),
                 child: Text(
-                  'Back to Login',
+                  getText('backToLogin2'),
                   style: TextStyle(
                     color: isDark ? Colors.grey[400] : Colors.grey[600],
                     fontSize: 14,
@@ -400,6 +403,10 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   }
 
   Widget _buildStepIndicator(int step, String label) {
+    String getText(String key) {
+      return Translations.getText(widget.currentLanguage, key);
+    }
+
     final isDark = widget.isDarkMode;
     return Row(
       children: [
@@ -439,7 +446,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   Future<void> _sendResetCode() async {
     final email = _emailController.text.trim();
     if (!_auth.isValidEmail(email)) {
-      _showError('Please enter a valid email address');
+      _showError(getText('validEmailRequired'));
       return;
     }
 
@@ -451,7 +458,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
         _emailSent = true;
         _isLoading = false;
       });
-      _showSuccess('Reset code sent to your email!');
+      _showSuccess(getText('resetCodeSent'));
     } else {
       _showError(result['message'] ?? 'Failed to send code');
       setState(() => _isLoading = false);
@@ -461,7 +468,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   Future<void> _verifyCode() async {
     final code = _codeController.text.trim();
     if (code.length != 6) {
-      _showError('Please enter the 6-digit code');
+      _showError(getText('enter6DigitCode'));
       return;
     }
 
@@ -477,9 +484,9 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
         _resetId = result['data']?['reset_id'] ?? '';
         _isLoading = false;
       });
-      _showSuccess('Code verified! Set your new password.');
+      _showSuccess(getText('codeVerified'));
     } else {
-      _showError(result['message'] ?? 'Invalid code');
+      _showError(result['message'] ?? getText('invalidCode'));
       setState(() => _isLoading = false);
     }
   }
@@ -491,7 +498,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
     );
 
     if (result['success'] == true) {
-      _showSuccess('New code sent to your email!');
+      _showSuccess(getText('resendNewCode'));
     } else {
       _showError(result['message'] ?? 'Failed to resend code');
     }
@@ -514,12 +521,12 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
     );
 
     if (result['success'] == true) {
-      _showSuccess('Password reset successful!');
+      _showSuccess(getText('passwordResetSuccess'));
       Future.delayed(const Duration(seconds: 1), () {
         Navigator.pop(context);
       });
     } else {
-      _showError(result['message'] ?? 'Failed to reset password');
+      _showError(result['message'] ?? getText('failedResetPassword'));
     }
     setState(() => _isLoading = false);
   }

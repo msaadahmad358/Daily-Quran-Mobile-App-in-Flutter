@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'main.dart';
+import 'translations.dart';
+import 'base_screen.dart';
 
 class SubscriptionScreen extends StatefulWidget {
   final bool isDarkMode;
@@ -15,15 +16,15 @@ class SubscriptionScreen extends StatefulWidget {
   State<SubscriptionScreen> createState() => _SubscriptionScreenState();
 }
 
-class _SubscriptionScreenState extends State<SubscriptionScreen> {
-  bool _isYearly = false;
+class _SubscriptionScreenState extends BaseScreenState<SubscriptionScreen> {
   int _selectedPlan = -1;
+  final int _fixedPrice = 30; // €30 per month
 
   @override
   Widget build(BuildContext context) {
     final isDark = widget.isDarkMode;
     final getText = (String key) =>
-        AppTranslations.getText(widget.currentLanguage, key);
+        Translations.getText(widget.currentLanguage, key);
 
     return Scaffold(
       backgroundColor: isDark
@@ -70,7 +71,7 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
                   const Icon(Icons.star, color: Color(0xFFC9A96E), size: 48),
                   const SizedBox(height: 12),
                   Text(
-                    '🌟 Premium Access',
+                    getText('premiumAccess'),
                     style: TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.bold,
@@ -79,7 +80,7 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
                   ),
                   const SizedBox(height: 8),
                   Text(
-                    'Unlock all features and get the most out of your Quran journey',
+                    getText('choosePlan'),
                     textAlign: TextAlign.center,
                     style: TextStyle(fontSize: 14, color: Colors.white70),
                   ),
@@ -89,114 +90,19 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
 
             const SizedBox(height: 24),
 
-            // Toggle
-            Container(
-              padding: const EdgeInsets.all(4),
-              decoration: BoxDecoration(
-                color: isDark ? const Color(0xFF1E1E1E) : Colors.grey[200],
-                borderRadius: BorderRadius.circular(14),
-              ),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: GestureDetector(
-                      onTap: () => setState(() => _isYearly = false),
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(vertical: 14),
-                        decoration: BoxDecoration(
-                          color: !_isYearly
-                              ? const Color(0xFF1A5F4A)
-                              : Colors.transparent,
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        child: Center(
-                          child: Text(
-                            getText('monthly'),
-                            style: TextStyle(
-                              color: !_isYearly
-                                  ? Colors.white
-                                  : (isDark
-                                        ? Colors.grey[400]
-                                        : Colors.grey[600]),
-                              fontWeight: !_isYearly
-                                  ? FontWeight.w600
-                                  : FontWeight.w400,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: GestureDetector(
-                      onTap: () => setState(() => _isYearly = true),
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(vertical: 14),
-                        decoration: BoxDecoration(
-                          color: _isYearly
-                              ? const Color(0xFF1A5F4A)
-                              : Colors.transparent,
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        child: Center(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                getText('yearly'),
-                                style: TextStyle(
-                                  color: _isYearly
-                                      ? Colors.white
-                                      : (isDark
-                                            ? Colors.grey[400]
-                                            : Colors.grey[600]),
-                                  fontWeight: _isYearly
-                                      ? FontWeight.w600
-                                      : FontWeight.w400,
-                                ),
-                              ),
-                              const SizedBox(width: 8),
-                              Container(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 10,
-                                  vertical: 3,
-                                ),
-                                decoration: BoxDecoration(
-                                  color: const Color(0xFFC9A96E),
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                child: const Text(
-                                  'Save 20%',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 10,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-
-            const SizedBox(height: 24),
-
-            // Plan Cards
+            // Plan Cards - All at €30/month
             _buildPlanCard(
               isDark: isDark,
-              title: 'Basic',
-              price: _isYearly ? '\$4.99/mo' : '\$4.99/mo',
-              description: 'Perfect for getting started',
+              title: getText('basic'),
+              price: '${getText('euro')}30',
+              description: getText('basicDesc'),
               features: [
                 'Access to all Quran translations',
                 'Daily verse notifications',
                 'Basic dua library',
                 'Qibla compass',
+                'Prayer times',
+                'Reading history',
               ],
               isSelected: _selectedPlan == 0,
               onTap: () => setState(() => _selectedPlan = 0),
@@ -206,9 +112,9 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
 
             _buildPlanCard(
               isDark: isDark,
-              title: 'Premium',
-              price: _isYearly ? '\$8.99/mo' : '\$9.99/mo',
-              description: 'All features unlocked',
+              title: getText('premium'),
+              price: '${getText('euro')}30',
+              description: getText('premiumDesc'),
               features: [
                 'Everything in Basic',
                 'Advanced audio recitation',
@@ -216,6 +122,7 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
                 'Offline mode',
                 'Priority support',
                 'No ads',
+                'Multiple translations',
               ],
               isPopular: true,
               isSelected: _selectedPlan == 1,
@@ -226,14 +133,15 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
 
             _buildPlanCard(
               isDark: isDark,
-              title: 'Family',
-              price: _isYearly ? '\$14.99/mo' : '\$19.99/mo',
-              description: 'For the whole family',
+              title: getText('family'),
+              price: '${getText('euro')}30',
+              description: getText('familyDesc'),
               features: [
                 'Everything in Premium',
                 'Share with 5 family members',
                 'Family progress tracking',
                 'Kids learning module',
+                'Family dashboard',
               ],
               isSelected: _selectedPlan == 2,
               onTap: () => setState(() => _selectedPlan = 2),
@@ -249,8 +157,8 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
                 onPressed: _selectedPlan != -1
                     ? () {
                         ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text('Subscription started! (Demo)'),
+                          SnackBar(
+                            content: Text(getText('subscriptionStarted')),
                             backgroundColor: Colors.green,
                             duration: Duration(seconds: 2),
                           ),
@@ -270,16 +178,8 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
                 ),
                 child: Text(
                   _selectedPlan != -1
-                      ? '${getText('subscribe')} ${_selectedPlan == 0
-                            ? '\$4.99'
-                            : _selectedPlan == 1
-                            ? _isYearly
-                                  ? '\$8.99'
-                                  : '\$9.99'
-                            : _isYearly
-                            ? '\$14.99'
-                            : '\$19.99'}'
-                      : 'Select a plan to continue',
+                      ? '${getText('subscribe')} ${getText('euro')}30 ${getText('perMonth')}'
+                      : getText('selectPlan'),
                   style: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w600,
@@ -315,7 +215,7 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
                   ),
                   const SizedBox(width: 6),
                   Text(
-                    'Secure payment',
+                    getText('securePayment'),
                     style: TextStyle(
                       fontSize: 12,
                       color: isDark ? Colors.grey[400] : Colors.grey[600],
@@ -414,8 +314,8 @@ class _SubscriptionScreenState extends State<SubscriptionScreen> {
                           color: const Color(0xFFC9A96E),
                           borderRadius: BorderRadius.circular(12),
                         ),
-                        child: const Text(
-                          'POPULAR',
+                        child: Text(
+                          getText('popular'),
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 9,
