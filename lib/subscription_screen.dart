@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'translations.dart';
 import 'base_screen.dart';
-
-// UPDATED: subscription_screen.dart with real payment logic
+// import 'package:flutter_stripe/flutter_stripe.dart';          // TODO: enable later
+// import 'dart:convert';                                        // TODO
+// import 'package:http/http.dart' as http;                      // TODO
+// import 'package:shared_preferences/shared_preferences.dart';  // TODO
+// import 'auth_service.dart';                                   // TODO
 
 class SubscriptionScreen extends StatefulWidget {
   final bool isDarkMode;
@@ -23,8 +26,10 @@ class _SubscriptionScreenState extends BaseScreenState<SubscriptionScreen> {
   int _selectedPlan = -1;
   bool _isAnnual = false;
   bool _isProcessing = false;
-  bool _applePayAvailable = false;
-  bool _googlePayAvailable = false;
+
+  // Kept for future payment UI, not used yet
+  // bool _applePayAvailable = false;
+  // bool _googlePayAvailable = false;
 
   // ============ PRICING ============
   final Map<String, Map<String, dynamic>> _plans = {
@@ -70,45 +75,102 @@ class _SubscriptionScreenState extends BaseScreenState<SubscriptionScreen> {
   };
 
   // ============ FREE TRIAL ============
-  bool _hasFreeTrial = true;
-  int _freeTrialDays = 3;
+  final bool _hasFreeTrial = true; // was `bool` — now `final`
+  final int _freeTrialDays = 3; // was `int` — now `final`
   bool _isSubscribed = false;
 
   @override
   void initState() {
     super.initState();
-    _checkPaymentAvailability();
-    _checkSubscriptionStatus();
+    // _checkPaymentAvailability(); // TODO: enable when Stripe is configured
+    // _checkSubscriptionStatus();  // TODO: enable when SharedPreferences is wired
   }
 
-  Future<void> _checkPaymentAvailability() async {
-    try {
-      // Check Apple Pay availability (iOS)
-      final applePay = await Stripe.instance.isApplePaySupported();
-      // Check Google Pay availability (Android)
-      final googlePay = await Stripe.instance.isGooglePaySupported();
+  // ============================================================
+  // TODO: PAYMENT LOGIC — uncomment & adapt when ready
+  // ============================================================
+  //
+  // Future<void> _checkPaymentAvailability() async {
+  //   try {
+  //     final applePay = await Stripe.instance.isPlatformPaySupported();
+  //     final googlePay = await Stripe.instance.isPlatformPaySupported(
+  //       googlePay: const IsGooglePaySupportedParams(testEnv: true),
+  //     );
+  //     setState(() {
+  //       _applePayAvailable = applePay;
+  //       _googlePayAvailable = googlePay;
+  //     });
+  //   } catch (e) {
+  //     // handle error
+  //   }
+  // }
+  //
+  // Future<void> _checkSubscriptionStatus() async {
+  //   final prefs = await SharedPreferences.getInstance();
+  //   final expiry = prefs.getString('subscription_expiry');
+  //   if (expiry != null) {
+  //     final expiryDate = DateTime.parse(expiry);
+  //     if (expiryDate.isAfter(DateTime.now())) {
+  //       setState(() => _isSubscribed = true);
+  //     }
+  //   }
+  // }
+  //
+  // Future<Map<String, dynamic>> _processPayment({...}) async { ... }
+  // Future<void> _restorePurchases() async { ... }
 
-      setState(() {
-        _applePayAvailable = applePay;
-        _googlePayAvailable = googlePay;
-      });
-    } catch (e) {
-      // Handle error
-    }
+  // ========== PLACEHOLDER HANDLERS ==========
+
+  Future<void> _handleSubscription() async {
+    setState(() => _isProcessing = true);
+    await Future.delayed(const Duration(milliseconds: 500));
+    if (!mounted) return;
+    setState(() => _isProcessing = false);
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('Payment flow coming soon'),
+        backgroundColor: Color(0xFF1A5F4A),
+      ),
+    );
   }
 
-  Future<void> _checkSubscriptionStatus() async {
-    // Check if user already has active subscription
-    final prefs = await SharedPreferences.getInstance();
-    final expiry = prefs.getString('subscription_expiry');
-    if (expiry != null) {
-      final expiryDate = DateTime.parse(expiry);
-      if (expiryDate.isAfter(DateTime.now())) {
-        setState(() {
-          _isSubscribed = true;
-        });
-      }
-    }
+  Future<void> _restorePurchases() async {
+    setState(() => _isProcessing = true);
+    await Future.delayed(const Duration(milliseconds: 500));
+    if (!mounted) return;
+    setState(() => _isProcessing = false);
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('Restore purchases coming soon'),
+        backgroundColor: Color(0xFF1A5F4A),
+      ),
+    );
+  }
+
+  void _showTermsDialog() {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Terms & Conditions'),
+        content: const SingleChildScrollView(
+          child: Text(
+            '1. Subscription automatically renews unless cancelled 24 hours before renewal.\n\n'
+            '2. Free trial available for new subscribers only.\n\n'
+            '3. Manage subscriptions in App Store/Google Play settings.\n\n'
+            '4. Payment processed through Apple/Google/Stripe.\n\n'
+            '5. Refunds are subject to Apple/Google/Stripe policies.',
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('Close'),
+          ),
+        ],
+      ),
+    );
   }
 
   @override
@@ -137,9 +199,9 @@ class _SubscriptionScreenState extends BaseScreenState<SubscriptionScreen> {
           if (_isSubscribed)
             TextButton(
               onPressed: _restorePurchases,
-              child: Text(
+              child: const Text(
                 'Restore',
-                style: TextStyle(color: const Color(0xFF1A5F4A)),
+                style: TextStyle(color: Color(0xFF1A5F4A)),
               ),
             ),
         ],
@@ -158,17 +220,11 @@ class _SubscriptionScreenState extends BaseScreenState<SubscriptionScreen> {
       padding: const EdgeInsets.all(16),
       child: Column(
         children: [
-          // ========== HEADER ==========
           _buildHeader(isDark, getText),
-
           const SizedBox(height: 20),
-
-          // ========== BILLING TOGGLE ==========
           _buildBillingToggle(isDark, getText),
-
           const SizedBox(height: 20),
 
-          // ========== PLAN CARDS ==========
           ..._plans.entries.map((entry) {
             final key = entry.key;
             final plan = entry.value;
@@ -192,23 +248,14 @@ class _SubscriptionScreenState extends BaseScreenState<SubscriptionScreen> {
               freeTrialDays: _freeTrialDays,
               onTap: () => setState(() => _selectedPlan = index),
             );
-          }).toList(),
+          }),
 
           const SizedBox(height: 24),
-
-          // ========== PAYMENT METHOD ==========
           _buildPaymentMethodSelector(isDark, getText),
-
           const SizedBox(height: 16),
-
-          // ========== SUBSCRIBE BUTTON ==========
           _buildSubscribeButton(isDark, getText),
-
           const SizedBox(height: 12),
-
-          // ========== TERMS ==========
           _buildTermsAndConditions(isDark, getText),
-
           const SizedBox(height: 30),
         ],
       ),
@@ -249,7 +296,7 @@ class _SubscriptionScreenState extends BaseScreenState<SubscriptionScreen> {
           const SizedBox(height: 8),
           Text(
             _hasFreeTrial
-                ? 'Start with ${_freeTrialDays}-day free trial!'
+                ? 'Start with $_freeTrialDays-day free trial!'
                 : getText('choosePlan'),
             textAlign: TextAlign.center,
             style: const TextStyle(fontSize: 14, color: Colors.white70),
@@ -433,9 +480,9 @@ class _SubscriptionScreenState extends BaseScreenState<SubscriptionScreen> {
                           color: const Color(0xFFC9A96E),
                           borderRadius: BorderRadius.circular(12),
                         ),
-                        child: Text(
+                        child: const Text(
                           'POPULAR',
-                          style: const TextStyle(
+                          style: TextStyle(
                             color: Colors.white,
                             fontSize: 9,
                             fontWeight: FontWeight.bold,
@@ -580,26 +627,24 @@ class _SubscriptionScreenState extends BaseScreenState<SubscriptionScreen> {
           const SizedBox(height: 12),
           Row(
             children: [
-              if (_applePayAvailable)
-                Expanded(
-                  child: _buildPaymentOption(
-                    isDark: isDark,
-                    icon: Icons.apple,
-                    label: 'Apple Pay',
-                    selected: true,
-                    onTap: () {},
-                  ),
+              Expanded(
+                child: _buildPaymentOption(
+                  isDark: isDark,
+                  icon: Icons.apple,
+                  label: 'Apple Pay',
+                  selected: true,
+                  onTap: () {},
                 ),
-              if (_googlePayAvailable)
-                Expanded(
-                  child: _buildPaymentOption(
-                    isDark: isDark,
-                    icon: Icons.android,
-                    label: 'Google Pay',
-                    selected: false,
-                    onTap: () {},
-                  ),
+              ),
+              Expanded(
+                child: _buildPaymentOption(
+                  isDark: isDark,
+                  icon: Icons.android,
+                  label: 'Google Pay',
+                  selected: false,
+                  onTap: () {},
                 ),
+              ),
               Expanded(
                 child: _buildPaymentOption(
                   isDark: isDark,
@@ -691,7 +736,7 @@ class _SubscriptionScreenState extends BaseScreenState<SubscriptionScreen> {
             : Text(
                 _selectedPlan != -1
                     ? _hasFreeTrial
-                          ? 'Start ${_freeTrialDays}-Day Free Trial'
+                          ? 'Start $_freeTrialDays-Day Free Trial'
                           : 'Subscribe Now'
                     : 'Select a Plan',
                 style: const TextStyle(
@@ -744,7 +789,7 @@ class _SubscriptionScreenState extends BaseScreenState<SubscriptionScreen> {
         ),
         const SizedBox(height: 8),
         TextButton(
-          onPressed: () => _showTermsDialog(),
+          onPressed: _showTermsDialog,
           child: Text(
             'Terms & Conditions | Privacy Policy',
             style: TextStyle(
@@ -795,8 +840,8 @@ class _SubscriptionScreenState extends BaseScreenState<SubscriptionScreen> {
                 color: isDark ? const Color(0xFF1E1E1E) : Colors.grey[100],
                 borderRadius: BorderRadius.circular(12),
               ),
-              child: Column(
-                children: const [
+              child: const Column(
+                children: [
                   Text('✅ All premium features unlocked'),
                   SizedBox(height: 8),
                   Text('✅ Audio recitations available'),
@@ -823,147 +868,6 @@ class _SubscriptionScreenState extends BaseScreenState<SubscriptionScreen> {
             ),
           ],
         ),
-      ),
-    );
-  }
-
-  // ========== PAYMENT LOGIC ==========
-  Future<void> _handleSubscription() async {
-    setState(() => _isProcessing = true);
-
-    try {
-      final selectedPlan = _plans.keys.toList()[_selectedPlan];
-      final price = _isAnnual
-          ? _plans[selectedPlan]!['annual']
-          : _plans[selectedPlan]!['monthly'];
-      final period = _isAnnual ? 'year' : 'month';
-
-      // For demo: Use Stripe Apple Pay
-      // For production: Use appropriate payment method based on platform
-
-      final result = await _processPayment(
-        planId: selectedPlan,
-        price: price,
-        period: period,
-        hasFreeTrial: _hasFreeTrial && !_isAnnual,
-      );
-
-      if (result['success'] == true) {
-        // Save subscription status locally
-        final prefs = await SharedPreferences.getInstance();
-        final expiry = DateTime.now().add(const Duration(days: 30));
-        await prefs.setString('subscription_expiry', expiry.toIso8601String());
-
-        setState(() => _isSubscribed = true);
-
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(result['message'] ?? 'Subscription successful!'),
-            backgroundColor: Colors.green,
-          ),
-        );
-      } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(result['message'] ?? 'Payment failed'),
-            backgroundColor: Colors.red,
-          ),
-        );
-      }
-    } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error: $e'), backgroundColor: Colors.red),
-      );
-    }
-
-    setState(() => _isProcessing = false);
-  }
-
-  Future<Map<String, dynamic>> _processPayment({
-    required String planId,
-    required double price,
-    required String period,
-    required bool hasFreeTrial,
-  }) async {
-    // ===== STEP 1: Create Payment Intent on Backend =====
-    final auth = AuthService();
-    final token = await auth.getToken();
-
-    final response = await http.post(
-      Uri.parse('https://sunnahsource.org/QRN/api/payments.php'),
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer $token',
-      },
-      body: jsonEncode({
-        'action': 'create_subscription',
-        'plan_id': planId,
-        'price': price,
-        'period': period,
-        'free_trial': hasFreeTrial,
-        'trial_days': _freeTrialDays,
-        'payment_method': 'apple_pay', // or 'google_pay', 'card'
-      }),
-    );
-
-    if (response.statusCode != 200) {
-      return {'success': false, 'message': 'Failed to create payment intent'};
-    }
-
-    final data = jsonDecode(response.body);
-
-    if (data['success'] != true) {
-      return {'success': false, 'message': data['message'] ?? 'Payment failed'};
-    }
-
-    // ===== STEP 2: Process Apple Pay (if available) =====
-    // ===== STEP 3: Verify Payment on Backend =====
-    // ===== STEP 4: Activate Subscription =====
-
-    return {
-      'success': true,
-      'message': 'Subscription activated!',
-      'data': data['data'],
-    };
-  }
-
-  Future<void> _restorePurchases() async {
-    setState(() => _isProcessing = true);
-
-    // Implement restore logic based on payment method
-    // Apple: _purchase.restorePurchases()
-    // Stripe: Check backend for active subscription
-
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('Purchases restored successfully!'),
-        backgroundColor: Colors.green,
-      ),
-    );
-
-    setState(() => _isProcessing = false);
-  }
-
-  void _showTermsDialog() {
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('Terms & Conditions'),
-        content: const SingleChildScrollView(
-          child: Text(
-            '1. Subscription automatically renews unless cancelled 24 hours before renewal.\n\n'
-            '2. Free trial available for new subscribers only.\n\n'
-            '3. Manage subscriptions in App Store/Google Play settings.\n\n'
-            '4. Payment processed through Apple/Google/Stripe.\n\n'
-            '5. Refunds are subject to Apple/Google/Stripe policies.',
-          ),
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text('Close'),
-          ),
-        ],
       ),
     );
   }

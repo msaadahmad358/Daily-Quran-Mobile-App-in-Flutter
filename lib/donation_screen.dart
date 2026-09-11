@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'translations.dart';
 import 'base_screen.dart';
+// import 'package:flutter_stripe/flutter_stripe.dart'; // TODO: uncomment when Stripe is set up
+// import 'dart:convert';                                  // TODO: uncomment when payment logic is added
+// import 'package:http/http.dart' as http;                // TODO: uncomment when payment logic is added
+// import 'package:shared_preferences/shared_preferences.dart'; // TODO
+// import 'auth_service.dart';                             // TODO
 
 class DonationScreen extends StatefulWidget {
   final bool isDarkMode;
@@ -23,94 +27,124 @@ class _DonationScreenState extends BaseScreenState<DonationScreen> {
   final TextEditingController _customAmountController = TextEditingController();
   bool _isCustom = false;
   bool _isProcessing = false;
-  bool _applePayAvailable = false;
-  bool _googlePayAvailable = false;
+
+  // Unused for now, kept for future payment logic
+  // bool _applePayAvailable = false;
+  // bool _googlePayAvailable = false;
 
   final List<double> _presetAmounts = [5, 10, 25, 50, 100];
 
   @override
   void initState() {
     super.initState();
-    _checkPaymentAvailability();
+    // _checkPaymentAvailability(); // TODO: enable when Stripe is configured
   }
 
-  Future<void> _checkPaymentAvailability() async {
-    try {
-      final applePay = await Stripe.instance.isApplePaySupported();
-      final googlePay = await Stripe.instance.isGooglePaySupported();
-      setState(() {
-        _applePayAvailable = applePay;
-        _googlePayAvailable = googlePay;
-      });
-    } catch (e) {
-      // Silent fail
-    }
-  }
+  // ============================================================
+  // TODO: PAYMENT LOGIC — uncomment & adapt when ready
+  // ============================================================
+  //
+  // Future<void> _checkPaymentAvailability() async {
+  //   try {
+  //     final applePay = await Stripe.instance.isPlatformPaySupported();
+  //     final googlePay = await Stripe.instance.isPlatformPaySupported(
+  //       googlePay: const IsGooglePaySupportedParams(testEnv: true),
+  //     );
+  //     setState(() {
+  //       _applePayAvailable = applePay;
+  //       _googlePayAvailable = googlePay;
+  //     });
+  //   } catch (e) {
+  //     // Silent fail
+  //   }
+  // }
+  //
+  // Future<void> _donateWithApplePay() async {
+  //   if (_selectedAmount <= 0) return;
+  //   setState(() => _isProcessing = true);
+  //   try {
+  //     final response = await http.post(
+  //       Uri.parse('https://sunnahsource.org/QRN/api/payments.php'),
+  //       headers: {'Content-Type': 'application/json'},
+  //       body: jsonEncode({
+  //         'action': 'create_donation',
+  //         'amount': (_selectedAmount * 100).toInt(),
+  //         'currency': 'usd',
+  //         'recurring': _isRecurring,
+  //         'payment_method': 'apple_pay',
+  //       }),
+  //     );
+  //     if (response.statusCode != 200) {
+  //       throw Exception('Failed to create payment intent');
+  //     }
+  //     final data = jsonDecode(response.body);
+  //
+  //     await Stripe.instance.initPaymentSheet(
+  //       paymentSheetParameters: SetupPaymentSheetParameters(
+  //         paymentIntentClientSecret: data['clientSecret'],
+  //         merchantDisplayName: 'Daily Quran',
+  //         applePay: const PaymentSheetApplePay(
+  //           merchantCountryCode: 'US',
+  //           cartItems: [
+  //             ApplePayCartSummaryItem.immediate(
+  //               label: 'Donation to Daily Quran',
+  //               amount: '1000', // amount in cents as String
+  //             ),
+  //           ],
+  //         ),
+  //       ),
+  //     );
+  //
+  //     await Stripe.instance.presentPaymentSheet();
+  //     _showThankYouDialog();
+  //   } catch (e) {
+  //     if (mounted) {
+  //       ScaffoldMessenger.of(context).showSnackBar(
+  //         SnackBar(
+  //           content: Text('Donation failed: $e'),
+  //           backgroundColor: Colors.red,
+  //         ),
+  //       );
+  //     }
+  //   }
+  //   if (mounted) setState(() => _isProcessing = false);
+  // }
 
-  // ========== NEW: DONATE WITH APPLE PAY ==========
-  Future<void> _donateWithApplePay() async {
-    if (_selectedAmount <= 0) return;
-
+  /// Placeholder handler — shows a snackbar until payment logic is wired up.
+  Future<void> _handleDonate() async {
     setState(() => _isProcessing = true);
-
-    try {
-      // Create PaymentIntent on backend
-      final response = await http.post(
-        Uri.parse('https://sunnahsource.org/QRN/api/payments.php'),
-        headers: {'Content-Type': 'application/json'},
-        body: jsonEncode({
-          'action': 'create_donation',
-          'amount': (_selectedAmount * 100).toInt(),
-          'currency': 'usd',
-          'recurring': _isRecurring,
-          'payment_method': 'apple_pay',
-        }),
-      );
-
-      if (response.statusCode != 200) {
-        throw Exception('Failed to create payment intent');
-      }
-
-      final data = jsonDecode(response.body);
-
-      // Initialize Stripe payment sheet
-      await Stripe.instance.initPaymentSheet(
-        paymentSheetParameters: SetupPaymentSheetParameters(
-          paymentIntentClientSecret: data['clientSecret'],
-          merchantDisplayName: 'Daily Quran',
-          applePay: PaymentSheetApplePay(
-            merchantCountryCode: 'US',
-            paymentSummaryItems: [
-              PaymentSummaryItem(
-                label: 'Donation to Daily Quran',
-                amount: (_selectedAmount * 100).toInt(),
-              ),
-              PaymentSummaryItem(
-                label: 'Total',
-                amount: (_selectedAmount * 100).toInt(),
-                type: PaymentSummaryItemType.final_,
-              ),
-            ],
-          ),
-        ),
-      );
-
-      // Present Apple Pay
-      await Stripe.instance.presentPaymentSheet();
-
-      // Success
-      _showThankYouDialog();
-    } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Donation failed: $e'),
-          backgroundColor: Colors.red,
-        ),
-      );
-    }
-
+    await Future.delayed(const Duration(milliseconds: 400));
+    if (!mounted) return;
     setState(() => _isProcessing = false);
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          'Donation of \$${_selectedAmount.toStringAsFixed(2)} — payment coming soon',
+        ),
+        backgroundColor: const Color(0xFF1A5F4A),
+      ),
+    );
   }
+
+  /// TODO: replace with a proper thank-you dialog when payment works
+  // void _showThankYouDialog() {
+  //   showDialog(
+  //     context: context,
+  //     builder: (_) => AlertDialog(
+  //       title: Text(getText('thankYou')),
+  //       content: Text(getText('thankYouDonation').replaceAll(
+  //         '{amount}', '\$${_selectedAmount.toStringAsFixed(2)}',
+  //       )),
+  //       actions: [
+  //         TextButton(
+  //           onPressed: () => Navigator.pop(context),
+  //           child: Text(getText('close')),
+  //         ),
+  //       ],
+  //     ),
+  //   );
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -140,7 +174,7 @@ class _DonationScreenState extends BaseScreenState<DonationScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Header
+            // ===== Header =====
             Container(
               padding: const EdgeInsets.all(24),
               decoration: BoxDecoration(
@@ -187,7 +221,10 @@ class _DonationScreenState extends BaseScreenState<DonationScreen> {
                         ),
                         Text(
                           getText('supportTheApp'),
-                          style: TextStyle(fontSize: 14, color: Colors.white70),
+                          style: const TextStyle(
+                            fontSize: 14,
+                            color: Colors.white70,
+                          ),
                         ),
                       ],
                     ),
@@ -198,7 +235,7 @@ class _DonationScreenState extends BaseScreenState<DonationScreen> {
 
             const SizedBox(height: 24),
 
-            // Recurring Toggle
+            // ===== Recurring Toggle =====
             Container(
               padding: const EdgeInsets.all(4),
               decoration: BoxDecoration(
@@ -271,7 +308,7 @@ class _DonationScreenState extends BaseScreenState<DonationScreen> {
 
             const SizedBox(height: 24),
 
-            // Preset Amounts
+            // ===== Preset Amounts =====
             Text(
               getText('selectAmount'),
               style: TextStyle(
@@ -359,7 +396,7 @@ class _DonationScreenState extends BaseScreenState<DonationScreen> {
 
             const SizedBox(height: 12),
 
-            // Custom Amount
+            // ===== Custom Amount =====
             GestureDetector(
               onTap: () => setState(() => _isCustom = true),
               child: Container(
@@ -441,13 +478,13 @@ class _DonationScreenState extends BaseScreenState<DonationScreen> {
 
             const SizedBox(height: 24),
 
-            // Donate Button - Opens Website
+            // ===== Donate Button =====
             SizedBox(
               width: double.infinity,
               height: 56,
               child: ElevatedButton(
                 onPressed: _selectedAmount > 0 && !_isProcessing
-                    ? _donateWithApplePay
+                    ? _handleDonate
                     : null,
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFF1A5F4A),
@@ -460,29 +497,37 @@ class _DonationScreenState extends BaseScreenState<DonationScreen> {
                       ? Colors.grey[800]
                       : Colors.grey[300],
                 ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Icon(
-                      Icons.open_in_browser,
-                      color: Colors.white,
-                      size: 20,
-                    ),
-                    const SizedBox(width: 10),
-                    Text(
-                      _selectedAmount > 0
-                          ? getText('donateOnWebsite').replaceAll(
-                              '{amount}',
-                              '\$${_selectedAmount.toStringAsFixed(2)}',
-                            )
-                          : getText('donateNow'),
-                      style: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
+                child: _isProcessing
+                    ? const SizedBox(
+                        width: 24,
+                        height: 24,
+                        child: CircularProgressIndicator(
+                          strokeWidth: 2,
+                          valueColor: AlwaysStoppedAnimation<Color>(
+                            Colors.white,
+                          ),
+                        ),
+                      )
+                    : Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Icon(
+                            Icons.favorite,
+                            color: Colors.white,
+                            size: 20,
+                          ),
+                          const SizedBox(width: 10),
+                          Text(
+                            _selectedAmount > 0
+                                ? getText('donateNow')
+                                : getText('donateNow'),
+                            style: const TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ],
                       ),
-                    ),
-                  ],
-                ),
               ),
             ),
 
