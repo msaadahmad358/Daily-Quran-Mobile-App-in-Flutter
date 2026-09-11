@@ -3,6 +3,7 @@ description: "Daily Quran - Your daily Quran companion"
 publish_to: 'none'
 
 version: 1.0.1+1
+
 environment:
   sdk: ^3.11.3
 
@@ -21,6 +22,27 @@ dependencies:
   geolocator: ^10.1.0
   permission_handler: ^11.0.0
   flutter_launcher_icons: ^0.13.1
+
+
+
+  # ===== PAYMENT PROCESSING =====
+  flutter_stripe: ^10.0.0          # Stripe + Apple Pay + Google Pay
+  stripe: 
+  in_app_purchase: ^3.1.0          # Apple IAP
+  # google_play_billing: ^0.5.0      # Google Play Billing
+  
+  # ===== SUBSCRIPTION MANAGEMENT =====
+  purchases_flutter: ^6.0.0        # RevenueCat (optional)
+  
+  # ===== PUSH NOTIFICATIONS =====
+  firebase_messaging: ^14.0.0      # FCM for push
+  flutter_local_notifications: ^17.0.0  # Local notifications
+  
+  # ===== UTILITIES =====
+  
+  
+  intl: ^0.18.0                    # Date formatting
+
 
 dev_dependencies:
   flutter_test:

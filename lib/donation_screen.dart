@@ -22,93 +22,94 @@ class _DonationScreenState extends BaseScreenState<DonationScreen> {
   double _selectedAmount = 10.0;
   final TextEditingController _customAmountController = TextEditingController();
   bool _isCustom = false;
+  bool _isProcessing = false;
+  bool _applePayAvailable = false;
+  bool _googlePayAvailable = false;
 
   final List<double> _presetAmounts = [5, 10, 25, 50, 100];
 
-  Future<void> _openDonationWebsite() async {
-    final Uri donationUrl = Uri.parse(
-      'https://sunnahsource.org/QRN/donate.html',
-    );
+  @override
+  void initState() {
+    super.initState();
+    _checkPaymentAvailability();
+  }
+
+  Future<void> _checkPaymentAvailability() async {
     try {
-      if (await canLaunchUrl(donationUrl)) {
-        await launchUrl(donationUrl, mode: LaunchMode.externalApplication);
-      } else {
-        // Fallback: Show dialog
-        _showThankYouDialog();
-      }
+      final applePay = await Stripe.instance.isApplePaySupported();
+      final googlePay = await Stripe.instance.isGooglePaySupported();
+      setState(() {
+        _applePayAvailable = applePay;
+        _googlePayAvailable = googlePay;
+      });
     } catch (e) {
-      _showThankYouDialog();
+      // Silent fail
     }
   }
 
-  void _showThankYouDialog() {
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        backgroundColor: widget.isDarkMode
-            ? const Color(0xFF1E1E1E)
-            : Colors.white,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        title: Row(
-          children: [
-            const Icon(Icons.favorite, color: Color(0xFF1A5F4A)),
-            const SizedBox(width: 8),
-            Text(Translations.getText(widget.currentLanguage, 'thankYou')),
-          ],
-        ),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Container(
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color: const Color(0xFF1A5F4A).withValues(alpha: 0.1),
-                shape: BoxShape.circle,
+  // ========== NEW: DONATE WITH APPLE PAY ==========
+  Future<void> _donateWithApplePay() async {
+    if (_selectedAmount <= 0) return;
+
+    setState(() => _isProcessing = true);
+
+    try {
+      // Create PaymentIntent on backend
+      final response = await http.post(
+        Uri.parse('https://sunnahsource.org/QRN/api/payments.php'),
+        headers: {'Content-Type': 'application/json'},
+        body: jsonEncode({
+          'action': 'create_donation',
+          'amount': (_selectedAmount * 100).toInt(),
+          'currency': 'usd',
+          'recurring': _isRecurring,
+          'payment_method': 'apple_pay',
+        }),
+      );
+
+      if (response.statusCode != 200) {
+        throw Exception('Failed to create payment intent');
+      }
+
+      final data = jsonDecode(response.body);
+
+      // Initialize Stripe payment sheet
+      await Stripe.instance.initPaymentSheet(
+        paymentSheetParameters: SetupPaymentSheetParameters(
+          paymentIntentClientSecret: data['clientSecret'],
+          merchantDisplayName: 'Daily Quran',
+          applePay: PaymentSheetApplePay(
+            merchantCountryCode: 'US',
+            paymentSummaryItems: [
+              PaymentSummaryItem(
+                label: 'Donation to Daily Quran',
+                amount: (_selectedAmount * 100).toInt(),
               ),
-              child: const Icon(
-                Icons.favorite,
-                color: Color(0xFF1A5F4A),
-                size: 48,
+              PaymentSummaryItem(
+                label: 'Total',
+                amount: (_selectedAmount * 100).toInt(),
+                type: PaymentSummaryItemType.final_,
               ),
-            ),
-            const SizedBox(height: 16),
-            Text(
-              getText('thankYouDonation').replaceAll(
-                '{amount}',
-                '\$${_selectedAmount.toStringAsFixed(2)}',
-              ),
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w500,
-                color: widget.isDarkMode ? Colors.white : Colors.black87,
-              ),
-            ),
-            const SizedBox(height: 8),
-            Text(
-              getText('supportMessage'),
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 14,
-                color: widget.isDarkMode ? Colors.grey[400] : Colors.grey[600],
-              ),
-            ),
-          ],
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: Text(
-              getText('close'),
-              style: TextStyle(
-                color: const Color(0xFF1A5F4A),
-                fontWeight: FontWeight.w600,
-              ),
-            ),
+            ],
           ),
-        ],
-      ),
-    );
+        ),
+      );
+
+      // Present Apple Pay
+      await Stripe.instance.presentPaymentSheet();
+
+      // Success
+      _showThankYouDialog();
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Donation failed: $e'),
+          backgroundColor: Colors.red,
+        ),
+      );
+    }
+
+    setState(() => _isProcessing = false);
   }
 
   @override
@@ -445,7 +446,9 @@ class _DonationScreenState extends BaseScreenState<DonationScreen> {
               width: double.infinity,
               height: 56,
               child: ElevatedButton(
-                onPressed: _selectedAmount > 0 ? _openDonationWebsite : null,
+                onPressed: _selectedAmount > 0 && !_isProcessing
+                    ? _donateWithApplePay
+                    : null,
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFF1A5F4A),
                   foregroundColor: Colors.white,
