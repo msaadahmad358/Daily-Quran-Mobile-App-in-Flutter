@@ -18,8 +18,7 @@ class HomeScreen extends StatefulWidget {
   final Function(String) onLanguageChange;
   final String currentLanguage;
   final bool isDarkMode;
-  final VoidCallback onNavigateToSubscription;
-  final VoidCallback onNavigateToDonation;
+
   final VoidCallback onNavigateToQibla;
 
   const HomeScreen({
@@ -28,8 +27,7 @@ class HomeScreen extends StatefulWidget {
     required this.onLanguageChange,
     required this.currentLanguage,
     required this.isDarkMode,
-    required this.onNavigateToSubscription,
-    required this.onNavigateToDonation,
+
     required this.onNavigateToQibla,
   });
 
@@ -62,8 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
       HomeTab(
         isDarkMode: widget.isDarkMode,
         currentLanguage: widget.currentLanguage,
-        onNavigateToSubscription: widget.onNavigateToSubscription,
-        onNavigateToDonation: widget.onNavigateToDonation,
+
         onNavigateToQibla: widget.onNavigateToQibla,
         onNavigateToHistory: () {
           Navigator.push(
@@ -195,8 +192,7 @@ class _HomeScreenState extends State<HomeScreen> {
 class HomeTab extends StatefulWidget {
   final bool isDarkMode;
   final String currentLanguage;
-  final VoidCallback onNavigateToSubscription;
-  final VoidCallback onNavigateToDonation;
+
   final VoidCallback onNavigateToQibla;
   final VoidCallback onNavigateToHistory;
   final VoidCallback onNavigateToStatistics;
@@ -208,8 +204,7 @@ class HomeTab extends StatefulWidget {
     super.key,
     required this.isDarkMode,
     required this.currentLanguage,
-    required this.onNavigateToSubscription,
-    required this.onNavigateToDonation,
+
     required this.onNavigateToQibla,
     required this.onNavigateToHistory,
     required this.onNavigateToStatistics,
@@ -802,12 +797,6 @@ class _HomeTabState extends State<HomeTab> {
         'label': getText('stats'),
         'color': const Color(0xFF2E86C1),
         'tap': widget.onNavigateToStatistics,
-      },
-      {
-        'icon': Icons.star_outline,
-        'label': getText('subscription'),
-        'color': const Color(0xFF9B59B6),
-        'tap': widget.onNavigateToSubscription,
       },
     ];
 

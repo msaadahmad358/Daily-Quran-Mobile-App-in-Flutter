@@ -25,10 +25,7 @@ dependencies:
   permission_handler: ^11.0.0
   flutter_launcher_icons: ^0.13.1
 
-  # ===== PAYMENT PROCESSING =====
-  flutter_stripe: ^12.0.2        # Modern Stripe SDK (Apple Pay + Google Pay)
-  in_app_purchase: ^3.1.0        # Native Apple / Google IAP
-
+ 
   # ===== PUSH NOTIFICATIONS =====
   
   flutter_local_notifications: ^17.0.0

@@ -6,8 +6,7 @@ import 'splash_screen.dart';
 import 'onboarding_screen.dart';
 import 'login_screen.dart';
 import 'home_screen.dart';
-import 'subscription_screen.dart';
-import 'donation_screen.dart';
+
 import 'qibla_compass_screen.dart';
 import 'forgot_password_screen.dart';
 import 'stats.dart';
@@ -212,26 +211,7 @@ class _MyAppState extends State<MyApp> {
                               setState(() => _currentLanguage = language),
                           currentLanguage: _currentLanguage,
                           isDarkMode: _isDarkMode,
-                          onNavigateToSubscription: () {
-                            navigatorKey.currentState?.push(
-                              MaterialPageRoute(
-                                builder: (context) => SubscriptionScreen(
-                                  isDarkMode: _isDarkMode,
-                                  currentLanguage: _currentLanguage,
-                                ),
-                              ),
-                            );
-                          },
-                          onNavigateToDonation: () {
-                            navigatorKey.currentState?.push(
-                              MaterialPageRoute(
-                                builder: (context) => DonationScreen(
-                                  isDarkMode: _isDarkMode,
-                                  currentLanguage: _currentLanguage,
-                                ),
-                              ),
-                            );
-                          },
+
                           onNavigateToQibla: () {
                             navigatorKey.currentState?.push(
                               MaterialPageRoute(
