@@ -51,7 +51,12 @@ class User {
 // ============================================================
 class AuthService {
   // ============ API CONFIGURATION ============
-  static const String baseUrl = 'https://sunnahsource.org/QRN/api/auth.php';
+  // Auth operations (register, login, verify, password reset) live here:
+  static const String authUrl = 'https://sunnahsource.org/QRN/api/auth.php';
+
+  // Profile operations (get/update profile, change password, delete) live here:
+  static const String userUrl = 'https://sunnahsource.org/QRN/api/user.php';
+
   static const String _tokenKey = 'auth_token';
   static const String _userKey = 'user_data';
 
@@ -62,25 +67,21 @@ class AuthService {
 
   // ============ STORAGE METHODS ============
 
-  /// Save authentication token
   Future<void> saveToken(String token) async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString(_tokenKey, token);
   }
 
-  /// Get stored token
   Future<String?> getToken() async {
     final prefs = await SharedPreferences.getInstance();
     return prefs.getString(_tokenKey);
   }
 
-  /// Save user data
   Future<void> saveUser(User user) async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString(_userKey, jsonEncode(user.toJson()));
   }
 
-  /// Get stored user
   Future<User?> getUser() async {
     final prefs = await SharedPreferences.getInstance();
     final data = prefs.getString(_userKey);
@@ -90,13 +91,11 @@ class AuthService {
     return null;
   }
 
-  /// Check if user is logged in
   Future<bool> isLoggedIn() async {
     final token = await getToken();
     return token != null && token.isNotEmpty;
   }
 
-  /// Clear all session data
   Future<void> logout() async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.remove(_tokenKey);
@@ -105,13 +104,14 @@ class AuthService {
 
   // ============ HTTP HELPERS ============
 
-  /// Make POST request without authentication
+  /// POST without auth → defaults to auth.php
   Future<Map<String, dynamic>> _post(
     String action,
-    Map<String, dynamic> data,
-  ) async {
+    Map<String, dynamic> data, {
+    String? endpoint,
+  }) async {
     try {
-      final url = Uri.parse(baseUrl);
+      final url = Uri.parse(endpoint ?? authUrl);
       final body = {'action': action, ...data};
 
       final response = await http.post(
@@ -136,18 +136,19 @@ class AuthService {
     }
   }
 
-  /// Make POST request with authentication
+  /// POST with auth → defaults to user.php (profile ops live there)
   Future<Map<String, dynamic>> _postWithAuth(
     String action,
-    Map<String, dynamic> data,
-  ) async {
+    Map<String, dynamic> data, {
+    String? endpoint,
+  }) async {
     try {
       final token = await getToken();
       if (token == null || token.isEmpty) {
         return {'success': false, 'message': 'Not authenticated'};
       }
 
-      final url = Uri.parse(baseUrl);
+      final url = Uri.parse(endpoint ?? userUrl);
       final body = {'action': action, ...data};
 
       final response = await http.post(
@@ -180,12 +181,9 @@ class AuthService {
   }
 
   // ============================================================
-  // AUTHENTICATION API METHODS
+  // AUTH API METHODS (auth.php)
   // ============================================================
 
-  // ---------- REGISTER ----------
-  /// Register a new user
-  /// Returns: { success, message, data: { user_id, email, requires_verification } }
   Future<Map<String, dynamic>> register({
     required String email,
     required String password,
@@ -198,9 +196,6 @@ class AuthService {
     });
   }
 
-  // ---------- VERIFY EMAIL ----------
-  /// Verify email with 6-digit code
-  /// Returns: { success, message, data: { token, user } }
   Future<Map<String, dynamic>> verifyEmail({
     required String email,
     required String code,
@@ -213,26 +208,28 @@ class AuthService {
     // Auto-login on successful verification
     if (result['success'] == true && result['data'] != null) {
       final token = result['data']['token'];
-      final userData = result['data']['user'];
       if (token != null) {
         await saveToken(token);
-        await saveUser(User.fromJson(userData));
+
+        // Try saving user from response, but the response may lack name —
+        // fall back to fetching full profile from user.php
+        final userData = result['data']['user'];
+        if (userData != null) {
+          await saveUser(User.fromJson(userData));
+        }
+        // Always fetch fresh profile to get complete info (name, verified, etc.)
+        await getProfile();
       }
     }
     return result;
   }
 
-  // ---------- RESEND VERIFICATION CODE ----------
-  /// Resend verification code to email
   Future<Map<String, dynamic>> resendVerificationCode({
     required String email,
   }) async {
     return _post('resend-code', {'email': email.trim()});
   }
 
-  // ---------- LOGIN ----------
-  /// Login with email and password
-  /// Returns: { success, message, data: { token, user } }
   Future<Map<String, dynamic>> login({
     required String email,
     required String password,
@@ -242,84 +239,23 @@ class AuthService {
       'password': password,
     });
 
-    // Auto-save session on successful login
     if (result['success'] == true && result['data'] != null) {
       final token = result['data']['token'];
       final userData = result['data']['user'];
       if (token != null) {
         await saveToken(token);
-        await saveUser(User.fromJson(userData));
+        if (userData != null) {
+          await saveUser(User.fromJson(userData));
+        }
       }
     }
     return result;
   }
 
-  // ---------- GOOGLE LOGIN ----------
-  /// Login with Google
-  /// Returns: { success, message, data: { token, user } }
-  Future<Map<String, dynamic>> loginWithGoogle({
-    required String token,
-    required String email,
-    required String name,
-    required String providerId,
-  }) async {
-    final result = await _post('google', {
-      'token': token,
-      'email': email.trim(),
-      'name': name.trim(),
-      'provider_id': providerId,
-    });
-
-    // Auto-save session on successful login
-    if (result['success'] == true && result['data'] != null) {
-      final authToken = result['data']['token'];
-      final userData = result['data']['user'];
-      if (authToken != null) {
-        await saveToken(authToken);
-        await saveUser(User.fromJson(userData));
-      }
-    }
-    return result;
-  }
-
-  // ---------- APPLE LOGIN ----------
-  /// Login with Apple
-  /// Returns: { success, message, data: { token, user } }
-  Future<Map<String, dynamic>> loginWithApple({
-    required String token,
-    required String email,
-    required String name,
-    required String providerId,
-  }) async {
-    final result = await _post('apple', {
-      'token': token,
-      'email': email.trim(),
-      'name': name.trim(),
-      'provider_id': providerId,
-    });
-
-    // Auto-save session on successful login
-    if (result['success'] == true && result['data'] != null) {
-      final authToken = result['data']['token'];
-      final userData = result['data']['user'];
-      if (authToken != null) {
-        await saveToken(authToken);
-        await saveUser(User.fromJson(userData));
-      }
-    }
-    return result;
-  }
-
-  // ---------- FORGOT PASSWORD ----------
-  /// Send password reset code to email
-  /// Returns: { success, message }
   Future<Map<String, dynamic>> forgotPassword({required String email}) async {
     return _post('forgot-password', {'email': email.trim()});
   }
 
-  // ---------- VERIFY RESET CODE ----------
-  /// Verify password reset code
-  /// Returns: { success, message, data: { reset_id } }
   Future<Map<String, dynamic>> verifyResetCode({
     required String email,
     required String code,
@@ -330,9 +266,6 @@ class AuthService {
     });
   }
 
-  // ---------- RESET PASSWORD ----------
-  /// Reset password with code
-  /// Returns: { success, message }
   Future<Map<String, dynamic>> resetPassword({
     required String email,
     required String code,
@@ -345,40 +278,39 @@ class AuthService {
     });
   }
 
-  // ---------- GET PROFILE ----------
-  /// Get current user profile (requires authentication)
-  /// Returns: { success, message, data: { user } }
-  Future<Map<String, dynamic>> getProfile() async {
-    return _postWithAuth('get-profile', {});
+  Future<void> logoutUser() async {
+    await _post('logout', {});
+    await logout();
   }
 
-  // ---------- UPDATE PROFILE ----------
-  /// Update user profile (requires authentication)
-  /// Returns: { success, message }
-  Future<Map<String, dynamic>> updateProfile({required String name}) async {
-    final result = await _postWithAuth('update-profile', {'name': name.trim()});
+  // ============================================================
+  // USER API METHODS (user.php) — go through _postWithAuth
+  // ============================================================
 
-    // Refresh user data if successful
-    if (result['success'] == true) {
-      final user = await getUser();
-      if (user != null) {
-        final updatedUser = User(
-          id: user.id,
-          email: user.email,
-          name: name.trim(),
-          emailVerified: user.emailVerified,
-          authProvider: user.authProvider,
-          createdAt: user.createdAt,
-        );
-        await saveUser(updatedUser);
+  /// Get profile from user.php and refresh cached user
+  Future<Map<String, dynamic>> getProfile() async {
+    final result = await _postWithAuth('get-profile', {});
+
+    if (result['success'] == true && result['data'] != null) {
+      final userData = result['data']['user'];
+      if (userData != null) {
+        await saveUser(User.fromJson(userData));
       }
     }
     return result;
   }
 
-  // ---------- CHANGE PASSWORD ----------
-  /// Change user password (requires authentication)
-  /// Returns: { success, message }
+  /// Update profile via user.php
+  Future<Map<String, dynamic>> updateProfile({required String name}) async {
+    final result = await _postWithAuth('update-profile', {'name': name.trim()});
+
+    if (result['success'] == true) {
+      // Refresh from server to get authoritative data
+      await getProfile();
+    }
+    return result;
+  }
+
   Future<Map<String, dynamic>> changePassword({
     required String oldPassword,
     required String newPassword,
@@ -389,9 +321,6 @@ class AuthService {
     });
   }
 
-  // ---------- DELETE ACCOUNT ----------
-  /// Delete user account (requires authentication)
-  /// Returns: { success, message }
   Future<Map<String, dynamic>> deleteAccount() async {
     final result = await _postWithAuth('delete-account', {});
     if (result['success'] == true) {
@@ -400,18 +329,10 @@ class AuthService {
     return result;
   }
 
-  // ---------- LOGOUT ----------
-  /// Logout user (clear local session)
-  Future<void> logoutUser() async {
-    await _post('logout', {});
-    await logout();
-  }
-
   // ============================================================
   // UTILITY METHODS
   // ============================================================
 
-  /// Validate email format
   bool isValidEmail(String email) {
     final emailRegex = RegExp(
       r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',
@@ -419,7 +340,6 @@ class AuthService {
     return emailRegex.hasMatch(email);
   }
 
-  /// Validate password strength
   String? validatePassword(String password) {
     if (password.length < 8) {
       return 'Password must be at least 8 characters';
@@ -433,12 +353,10 @@ class AuthService {
     return null;
   }
 
-  /// Get current user (cached)
   Future<User?> getCurrentUser() async {
     return await getUser();
   }
 
-  /// Check if token is valid (ping server)
   Future<bool> isTokenValid() async {
     try {
       final result = await getProfile();

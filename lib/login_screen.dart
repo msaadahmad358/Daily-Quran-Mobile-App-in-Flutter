@@ -377,58 +377,6 @@ class _LoginScreenState extends BaseScreenState<LoginScreen> {
                     ),
                   ],
                 ),
-
-                const SizedBox(height: 20),
-
-                // Divider
-                Row(
-                  children: [
-                    Expanded(
-                      child: Divider(
-                        color: isDark ? Colors.grey[700] : Colors.grey[300],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
-                      child: Text(
-                        getText('orContinueWith'),
-                        style: TextStyle(
-                          color: isDark ? Colors.grey[400] : Colors.grey[600],
-                          fontSize: 12,
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      child: Divider(
-                        color: isDark ? Colors.grey[700] : Colors.grey[300],
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 16),
-
-                // Social Buttons
-                Row(
-                  children: [
-                    Expanded(
-                      child: _buildSocialButton(
-                        Icons.g_mobiledata,
-                        getText('google'),
-                        isDark,
-                        _loginWithGoogle,
-                      ),
-                    ),
-                    const SizedBox(width: 12),
-                    Expanded(
-                      child: _buildSocialButton(
-                        Icons.apple,
-                        getText('apple'),
-                        isDark,
-                        _loginWithApple,
-                      ),
-                    ),
-                  ],
-                ),
               ],
               const SizedBox(height: 30),
             ],
@@ -535,83 +483,7 @@ class _LoginScreenState extends BaseScreenState<LoginScreen> {
     setState(() => _isLoading = false);
   }
 
-  Future<void> _loginWithGoogle() async {
-    setState(() => _isLoading = true);
-
-    // TODO: Implement Google Sign-In
-    // For now, demo login
-    final result = await _auth.loginWithGoogle(
-      token: 'google_token_demo',
-      email: 'google_user@example.com',
-      name: 'Google User',
-      providerId: 'google_123',
-    );
-
-    if (result['success'] == true) {
-      widget.onLogin();
-    } else {
-      _showError(result['message'] ?? getText('googleLoginFailed'));
-    }
-
-    setState(() => _isLoading = false);
-  }
-
-  Future<void> _loginWithApple() async {
-    setState(() => _isLoading = true);
-
-    // TODO: Implement Apple Sign-In
-    final result = await _auth.loginWithApple(
-      token: 'apple_token_demo',
-      email: 'apple_user@example.com',
-      name: 'Apple User',
-      providerId: 'apple_123',
-    );
-
-    if (result['success'] == true) {
-      widget.onLogin();
-    } else {
-      _showError(result['message'] ?? getText('appleLoginFailed'));
-    }
-
-    setState(() => _isLoading = false);
-  }
-
   // ========== UI HELPERS ==========
-
-  Widget _buildSocialButton(
-    IconData icon,
-    String label,
-    bool isDark,
-    VoidCallback onTap,
-  ) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        height: 50,
-        decoration: BoxDecoration(
-          color: isDark ? const Color(0xFF1E1E1E) : Colors.white,
-          borderRadius: BorderRadius.circular(16),
-          border: Border.all(
-            color: isDark ? Colors.grey[700]! : Colors.grey[300]!,
-          ),
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(icon, color: isDark ? Colors.white : Colors.black, size: 24),
-            const SizedBox(width: 8),
-            Text(
-              label,
-              style: TextStyle(
-                color: isDark ? Colors.white : Colors.black,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
 
   void _showError(String message) {
     ScaffoldMessenger.of(context).showSnackBar(

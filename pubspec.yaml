@@ -25,9 +25,7 @@ dependencies:
   permission_handler: ^11.0.0
   flutter_launcher_icons: ^0.13.1
 
- 
   # ===== PUSH NOTIFICATIONS =====
-  
   flutter_local_notifications: ^17.0.0
 
   # ===== UTILITIES =====

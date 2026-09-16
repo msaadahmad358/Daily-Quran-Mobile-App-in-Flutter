@@ -6,7 +6,6 @@ import 'splash_screen.dart';
 import 'onboarding_screen.dart';
 import 'login_screen.dart';
 import 'home_screen.dart';
-
 import 'qibla_compass_screen.dart';
 import 'forgot_password_screen.dart';
 import 'stats.dart';
@@ -100,7 +99,8 @@ class AppTheme {
 }
 
 // ============ MAIN APP ============
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(DevicePreview(enabled: false, builder: (context) => const MyApp()));
 }
 
@@ -158,6 +158,14 @@ class _MyAppState extends State<MyApp> {
     await tracker.initAndSync();
   }
 
+  Future<void> _refreshUser() async {
+    final auth = AuthService();
+    final user = await auth.getCurrentUser();
+    if (mounted) {
+      setState(() => _currentUser = user);
+    }
+  }
+
   void _handleLogin() {
     setState(() {
       _isLoggedIn = true;
@@ -180,10 +188,14 @@ class _MyAppState extends State<MyApp> {
       theme: _isDarkMode ? AppTheme.darkTheme : AppTheme.lightTheme,
       navigatorKey: navigatorKey,
       builder: (context, child) {
+        final mediaQuery = MediaQuery.of(context);
         return MediaQuery(
-          data: MediaQuery.of(
-            context,
-          ).copyWith(textScaler: const TextScaler.linear(1.0)),
+          data: mediaQuery.copyWith(
+            // Lock font scaling to 1.0 — ignores device font size settings
+            textScaler: const TextScaler.linear(1.0),
+            // Optional: also lock by clamping textScaleFactor for older Flutter
+            // textScaleFactor: 1.0,
+          ),
           child: child!,
         );
       },
@@ -207,6 +219,8 @@ class _MyAppState extends State<MyApp> {
                       : HomeScreen(
                           onThemeToggle: (value) =>
                               setState(() => _isDarkMode = value),
+                          onUserUpdated: _refreshUser, // ← ADD
+
                           onLanguageChange: (language) =>
                               setState(() => _currentLanguage = language),
                           currentLanguage: _currentLanguage,

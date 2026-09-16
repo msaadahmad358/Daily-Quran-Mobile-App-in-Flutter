@@ -18,6 +18,7 @@ class HomeScreen extends StatefulWidget {
   final Function(String) onLanguageChange;
   final String currentLanguage;
   final bool isDarkMode;
+  final VoidCallback? onUserUpdated; // ← ADD
 
   final VoidCallback onNavigateToQibla;
 
@@ -27,6 +28,7 @@ class HomeScreen extends StatefulWidget {
     required this.onLanguageChange,
     required this.currentLanguage,
     required this.isDarkMode,
+    this.onUserUpdated, // ← ADD
 
     required this.onNavigateToQibla,
   });
@@ -50,8 +52,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void _loadUser() async {
     final user = await _auth.getCurrentUser();
+    if (!mounted) return;
     setState(() {
       _currentUser = user;
+      _initializeScreens(); // ← rebuild screens with new user
     });
   }
 
@@ -109,6 +113,7 @@ class _HomeScreenState extends State<HomeScreen> {
         onLanguageChange: widget.onLanguageChange,
         currentLanguage: widget.currentLanguage,
         isDarkMode: widget.isDarkMode,
+        onUserUpdated: widget.onUserUpdated, // ← ADD
       ),
     ];
   }
@@ -138,7 +143,13 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         child: BottomNavigationBar(
           currentIndex: _selectedIndex,
-          onTap: (index) => setState(() => _selectedIndex = index),
+          onTap: (index) {
+            setState(() => _selectedIndex = index);
+            // Reload user whenever returning to home tab so banner stays fresh
+            if (index == 0 || index == 3) {
+              _loadUser();
+            }
+          },
           backgroundColor: widget.isDarkMode
               ? const Color(0xFF1A1A1A)
               : Colors.white,

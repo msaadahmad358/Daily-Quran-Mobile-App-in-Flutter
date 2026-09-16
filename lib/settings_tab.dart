@@ -9,6 +9,7 @@ class SettingsTab extends StatefulWidget {
   final Function(String) onLanguageChange;
   final String currentLanguage;
   final bool isDarkMode;
+  final VoidCallback? onUserUpdated; // ← ADD
 
   const SettingsTab({
     super.key,
@@ -16,6 +17,7 @@ class SettingsTab extends StatefulWidget {
     required this.onLanguageChange,
     required this.currentLanguage,
     required this.isDarkMode,
+    this.onUserUpdated, // ← ADD
   });
 
   @override
@@ -111,6 +113,8 @@ class _SettingsTabState extends State<SettingsTab> {
               setState(() => _isLoading = false);
               if (result['success'] == true) {
                 _loadUser();
+                widget.onUserUpdated?.call(); // ← ADD: refresh top banner
+
                 Navigator.pop(context);
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
