@@ -398,6 +398,8 @@ class _LoginScreenState extends BaseScreenState<LoginScreen> {
       // LOGIN
       final result = await _auth.login(email: email, password: password);
 
+      print(result);
+
       if (result['success'] == true) {
         widget.onLogin();
       } else {

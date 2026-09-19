@@ -219,7 +219,10 @@ class _PrayerTimesScreenState extends BaseScreenState<PrayerTimesScreen> {
     }
 
     // Mobile: Request location permission
-    final locationStatus = await Permission.location.request();
+    var locationStatus = await Permission.locationWhenInUse.request();
+    if (!locationStatus.isGranted) {
+      locationStatus = await Permission.location.request();
+    }
 
     if (locationStatus.isGranted) {
       try {

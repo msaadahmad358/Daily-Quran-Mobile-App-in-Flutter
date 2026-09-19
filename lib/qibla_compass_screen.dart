@@ -141,25 +141,39 @@ class _QiblaCompassScreenState extends BaseScreenState<QiblaCompassScreen>
 
   Future<void> _requestPermissions() async {
     try {
-      // Request location permission
-      final locationStatus = await Permission.location.request();
+      // Request location permission (use locationWhenInUse for iOS/Android)
+      var locationStatus = await Permission.locationWhenInUse.request();
+      if (!locationStatus.isGranted) {
+        locationStatus = await Permission.location.request();
+      }
 
       // Request sensor permission (iOS specific)
       PermissionStatus sensorStatus = PermissionStatus.granted;
       if (Platform.isIOS) {
-        sensorStatus = await Permission.sensors.request();
+        try {
+          sensorStatus = await Permission.sensors.request();
+        } catch (_) {
+          // Simulators or certain devices may throw or fail for sensors
+          sensorStatus = PermissionStatus.granted;
+        }
       } else {
         // On Android, sensors permission is not required separately
         sensorStatus = PermissionStatus.granted;
       }
 
-      // Check both permissions
-      if (locationStatus.isGranted && sensorStatus.isGranted) {
+      // If location is granted, allow location functionality even if simulator lacks sensors
+      if (locationStatus.isGranted) {
         setState(() {
           _hasPermissions = true;
+          if (!sensorStatus.isGranted) {
+            _isManualControl = true;
+            _isSimulating = true;
+          }
         });
         await _getUserLocation();
-        _listenToSensors();
+        if (sensorStatus.isGranted) {
+          _listenToSensors();
+        }
         setState(() {
           _isLoading = false;
         });
@@ -258,7 +272,10 @@ class _QiblaCompassScreenState extends BaseScreenState<QiblaCompassScreen>
   Future<void> _getUserLocation() async {
     try {
       // Check if location permission is granted
-      final locationStatus = await Permission.location.status;
+      var locationStatus = await Permission.locationWhenInUse.status;
+      if (!locationStatus.isGranted) {
+        locationStatus = await Permission.location.status;
+      }
       if (!locationStatus.isGranted) {
         setState(() {
           _errorMessage =
@@ -1434,14 +1451,14 @@ class _QiblaCompassScreenState extends BaseScreenState<QiblaCompassScreen>
 
   List<Widget> _buildCompassRose(bool isDark) {
     final directions = [
-      {'label': 'N', 'angle': 0, 'isNorth': true},
-      {'label': 'E', 'angle': 90, 'isNorth': false},
-      {'label': 'S', 'angle': 180, 'isNorth': false},
-      {'label': 'W', 'angle': 270, 'isNorth': false},
+      {'label': 'N', 'angle': 0.0, 'isNorth': true},
+      {'label': 'E', 'angle': 90.0, 'isNorth': false},
+      {'label': 'S', 'angle': 180.0, 'isNorth': false},
+      {'label': 'W', 'angle': 270.0, 'isNorth': false},
     ];
 
     return directions.map((dir) {
-      final angle = dir['angle'] as double;
+      final angle = (dir['angle'] as num).toDouble();
       final radians = angle * pi / 180;
       final radius = 135.0;
       final x = radius * sin(radians);

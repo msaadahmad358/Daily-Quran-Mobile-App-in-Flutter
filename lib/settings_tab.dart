@@ -144,6 +144,7 @@ class _SettingsTabState extends State<SettingsTab> {
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: const Color(0xFF1A5F4A),
+              foregroundColor: Colors.white,
             ),
             child: _isLoading
                 ? const SizedBox(
@@ -154,7 +155,13 @@ class _SettingsTabState extends State<SettingsTab> {
                       valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
                     ),
                   )
-                : Text(Translations.getText(widget.currentLanguage, 'save')),
+                : Text(
+                    Translations.getText(widget.currentLanguage, 'save'),
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
           ),
         ],
       ),
@@ -306,6 +313,7 @@ class _SettingsTabState extends State<SettingsTab> {
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: const Color(0xFF1A5F4A),
+              foregroundColor: Colors.white,
             ),
             child: _isLoading
                 ? const SizedBox(
