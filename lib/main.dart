@@ -113,7 +113,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   bool _isDarkMode = false;
-  String _currentLanguage = 'French';
+  String _currentLanguage = 'English';
   bool _isLoggedIn = false;
   bool _showOnboarding = true;
   bool _showSplash = true;
@@ -173,6 +173,13 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
+  void _handleSkipLogin() {
+    setState(() {
+      _isLoggedIn = false;
+      _showWelcome = false;
+    });
+  }
+
   void _handleLogout() {
     setState(() {
       _isLoggedIn = false;
@@ -207,39 +214,40 @@ class _MyAppState extends State<MyApp> {
               currentLanguage: _currentLanguage,
               isDarkMode: _isDarkMode,
             )
-          : (_isLoggedIn
-                ? _showWelcome
-                      ? WelcomeScreen(
-                          onContinue: () =>
-                              setState(() => _showWelcome = false),
-                          isDarkMode: _isDarkMode,
-                          currentLanguage: _currentLanguage,
-                          userName: _currentUser?.name ?? 'Guest',
-                        )
-                      : HomeScreen(
-                          onThemeToggle: (value) =>
-                              setState(() => _isDarkMode = value),
-                          onUserUpdated: _refreshUser, // ← ADD
+          : (_showWelcome
+                ? WelcomeScreen(
+                    onContinue: () => setState(() => _showWelcome = false),
+                    isDarkMode: _isDarkMode,
+                    currentLanguage: _currentLanguage,
+                    userName: _currentUser?.name ?? 'Guest',
+                  )
+                : (_isLoggedIn ||
+                      true) // Always show HomeScreen, logged in or not
+                ? HomeScreen(
+                    onThemeToggle: (value) =>
+                        setState(() => _isDarkMode = value),
+                    onUserUpdated: _refreshUser,
 
-                          onLanguageChange: (language) =>
-                              setState(() => _currentLanguage = language),
-                          currentLanguage: _currentLanguage,
-                          isDarkMode: _isDarkMode,
+                    onLanguageChange: (language) =>
+                        setState(() => _currentLanguage = language),
+                    currentLanguage: _currentLanguage,
+                    isDarkMode: _isDarkMode,
 
-                          onNavigateToQibla: () {
-                            navigatorKey.currentState?.push(
-                              MaterialPageRoute(
-                                builder: (context) => QiblaCompassScreen(
-                                  isDarkMode: _isDarkMode,
-                                  currentLanguage: _currentLanguage,
-                                ),
-                              ),
-                            );
-                          },
-                        )
+                    onNavigateToQibla: () {
+                      navigatorKey.currentState?.push(
+                        MaterialPageRoute(
+                          builder: (context) => QiblaCompassScreen(
+                            isDarkMode: _isDarkMode,
+                            currentLanguage: _currentLanguage,
+                          ),
+                        ),
+                      );
+                    },
+                  )
                 : LoginScreen(
                     onLogin: _handleLogin,
                     onSignup: _handleLogin,
+                    onSkipLogin: _handleSkipLogin,
                     onForgotPassword: () {
                       navigatorKey.currentState?.push(
                         MaterialPageRoute(

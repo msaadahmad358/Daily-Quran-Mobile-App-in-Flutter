@@ -4,6 +4,8 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'translations.dart';
 import 'base_screen.dart';
+import 'auth_service.dart';
+import 'login_screen.dart';
 // ============================================================
 // MODELS
 // ============================================================
@@ -696,15 +698,28 @@ class _StatsScreenState extends BaseScreenState<StatsScreen>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
   final ReadingTracker _tracker = ReadingTracker();
+  final AuthService _auth = AuthService();
   ReadingSummary? _summary;
   bool _isLoading = true;
   bool _isClearing = false;
+  bool _isLoggedIn = false;
+  User? _currentUser;
 
   @override
   void initState() {
     super.initState();
     _tabController = TabController(length: 3, vsync: this);
     _loadData();
+    _checkLoginStatus();
+  }
+
+  Future<void> _checkLoginStatus() async {
+    final isLoggedIn = await _auth.isLoggedIn();
+    final user = await _auth.getCurrentUser();
+    setState(() {
+      _isLoggedIn = isLoggedIn;
+      _currentUser = user;
+    });
   }
 
   Future<void> _loadData() async {
@@ -873,6 +888,113 @@ class _StatsScreenState extends BaseScreenState<StatsScreen>
         padding: const EdgeInsets.all(16),
         child: Column(
           children: [
+            // Create Account Prompt
+            if (!_isLoggedIn) ...[
+              Container(
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: isDark
+                        ? [
+                            const Color(0xFF1A5F4A).withValues(alpha: 0.3),
+                            const Color(0xFF2D7A62).withValues(alpha: 0.3),
+                          ]
+                        : [
+                            const Color(0xFF1A5F4A).withValues(alpha: 0.1),
+                            const Color(0xFF2D7A62).withValues(alpha: 0.1),
+                          ],
+                  ),
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(
+                    color: const Color(0xFF1A5F4A).withValues(alpha: 0.3),
+                    width: 1,
+                  ),
+                ),
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.cloud_upload_outlined,
+                          color: const Color(0xFF1A5F4A),
+                          size: 24,
+                        ),
+                        const SizedBox(width: 12),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                getText('createAccount'),
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
+                                  color: isDark ? Colors.white : Colors.black87,
+                                ),
+                              ),
+                              Text(
+                                getText('createAccountStatsMessage'),
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  color: isDark
+                                      ? Colors.grey[400]
+                                      : Colors.grey[600],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 12),
+                    SizedBox(
+                      width: double.infinity,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => LoginScreen(
+                                onLogin: () {
+                                  Navigator.of(context).pop();
+                                  _checkLoginStatus();
+                                },
+                                onSignup: () {
+                                  Navigator.of(context).pop();
+                                  _checkLoginStatus();
+                                },
+                                onForgotPassword: () {},
+                                onSkipLogin: () {
+                                  Navigator.of(context).pop();
+                                },
+                                currentLanguage: widget.currentLanguage,
+                                isDarkMode: isDark,
+                              ),
+                            ),
+                          );
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: const Color(0xFF1A5F4A),
+                          padding: const EdgeInsets.symmetric(vertical: 10),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                        ),
+                        child: Text(
+                          getText('signUpNow'),
+                          style: const TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 20),
+            ],
+
             // Stats Grid
             GridView.count(
               shrinkWrap: true,

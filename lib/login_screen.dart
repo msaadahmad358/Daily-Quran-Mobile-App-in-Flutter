@@ -8,6 +8,7 @@ class LoginScreen extends StatefulWidget {
   final VoidCallback onLogin;
   final VoidCallback onSignup;
   final VoidCallback onForgotPassword;
+  final VoidCallback onSkipLogin;
   final String currentLanguage;
   final bool isDarkMode;
 
@@ -16,6 +17,7 @@ class LoginScreen extends StatefulWidget {
     required this.onLogin,
     required this.onSignup,
     required this.onForgotPassword,
+    required this.onSkipLogin,
     required this.currentLanguage,
     required this.isDarkMode,
   });
@@ -53,16 +55,6 @@ class _LoginScreenState extends BaseScreenState<LoginScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 20),
-
-              // Back Button
-              IconButton(
-                onPressed: () {},
-                icon: Icon(
-                  Icons.arrow_back_ios,
-                  color: isDark ? Colors.white : const Color(0xFF1A5F4A),
-                ),
-              ),
               const SizedBox(height: 20),
 
               // Title
@@ -348,6 +340,34 @@ class _LoginScreenState extends BaseScreenState<LoginScreen> {
                               fontWeight: FontWeight.w600,
                             ),
                           ),
+                  ),
+                ),
+
+                const SizedBox(height: 16),
+
+                // Skip Now Button
+                SizedBox(
+                  width: double.infinity,
+                  height: 48,
+                  child: OutlinedButton(
+                    onPressed: widget.onSkipLogin,
+                    style: OutlinedButton.styleFrom(
+                      side: BorderSide(
+                        color: isDark ? Colors.grey[600]! : Colors.grey[400]!,
+                        width: 1.5,
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                    ),
+                    child: Text(
+                      getText('skipNow'),
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                        color: isDark ? Colors.grey[300] : Colors.grey[700],
+                      ),
+                    ),
                   ),
                 ),
 

@@ -368,6 +368,7 @@ class _SettingsTabState extends State<SettingsTab> {
               onForgotPassword: () {},
               currentLanguage: widget.currentLanguage,
               isDarkMode: widget.isDarkMode,
+              onSkipLogin: () {},
             ),
           ),
           (route) => false,
@@ -417,6 +418,7 @@ class _SettingsTabState extends State<SettingsTab> {
                 onForgotPassword: () {},
                 currentLanguage: widget.currentLanguage,
                 isDarkMode: widget.isDarkMode,
+                onSkipLogin: () {},
               ),
             ),
             (route) => false,
@@ -886,38 +888,88 @@ class _SettingsTabState extends State<SettingsTab> {
                   _buildSectionHeader('🔐', getText('account'), isDark),
                   const SizedBox(height: 12),
 
-                  _buildMenuItem(
-                    icon: Icons.person_outline,
-                    title: getText('editProfile'),
-                    isDark: isDark,
-                    onTap: _showEditProfileDialog,
-                  ),
-                  const SizedBox(height: 8),
+                  if (_currentUser != null) ...[
+                    _buildMenuItem(
+                      icon: Icons.person_outline,
+                      title: getText('editProfile'),
+                      isDark: isDark,
+                      onTap: _showEditProfileDialog,
+                    ),
+                    const SizedBox(height: 8),
 
-                  _buildMenuItem(
-                    icon: Icons.lock_outline,
-                    title: getText('changePassword'),
-                    isDark: isDark,
-                    onTap: _showChangePasswordDialog,
-                  ),
-                  const SizedBox(height: 8),
+                    _buildMenuItem(
+                      icon: Icons.lock_outline,
+                      title: getText('changePassword'),
+                      isDark: isDark,
+                      onTap: _showChangePasswordDialog,
+                    ),
+                    const SizedBox(height: 8),
 
-                  _buildMenuItem(
-                    icon: Icons.logout,
-                    title: getText('logout'),
-                    isDark: isDark,
-                    iconColor: Colors.red,
-                    onTap: _logout,
-                  ),
-                  const SizedBox(height: 8),
+                    _buildMenuItem(
+                      icon: Icons.logout,
+                      title: getText('logout'),
+                      isDark: isDark,
+                      iconColor: Colors.red,
+                      onTap: _logout,
+                    ),
+                    const SizedBox(height: 8),
 
-                  _buildMenuItem(
-                    icon: Icons.delete_outline,
-                    title: getText('deleteAccount'),
-                    isDark: isDark,
-                    iconColor: Colors.red,
-                    onTap: _deleteAccount,
-                  ),
+                    _buildMenuItem(
+                      icon: Icons.delete_outline,
+                      title: getText('deleteAccount'),
+                      isDark: isDark,
+                      iconColor: Colors.red,
+                      onTap: _deleteAccount,
+                    ),
+                  ] else ...[
+                    _buildMenuItem(
+                      icon: Icons.person_add_outlined,
+                      title: getText('createAccount'),
+                      isDark: isDark,
+                      onTap: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => LoginScreen(
+                              onLogin: () {
+                                Navigator.of(context).pop();
+                                widget.onUserUpdated?.call();
+                                _loadUser();
+                              },
+                              onSignup: () {
+                                Navigator.of(context).pop();
+                                widget.onUserUpdated?.call();
+                                _loadUser();
+                              },
+                              onForgotPassword: () {},
+                              onSkipLogin: () {
+                                Navigator.of(context).pop();
+                              },
+                              currentLanguage: widget.currentLanguage,
+                              isDarkMode: isDark,
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                    const SizedBox(height: 8),
+                    Container(
+                      padding: const EdgeInsets.all(12),
+                      decoration: BoxDecoration(
+                        color: isDark
+                            ? const Color(0xFF2A2A2A)
+                            : Colors.blue.withValues(alpha: 0.1),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Text(
+                        getText('createAccountMessage'),
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: isDark ? Colors.grey[400] : Colors.grey[600],
+                          fontStyle: FontStyle.italic,
+                        ),
+                      ),
+                    ),
+                  ],
 
                   const SizedBox(height: 24),
 

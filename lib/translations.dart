@@ -268,6 +268,13 @@ class Translations {
       'accountDeleted': 'Account deleted successfully',
       'guestUser': 'Guest User',
       'notSignedIn': 'Not signed in',
+      'skipNow': 'Skip Now',
+      'createAccount': 'Create Account',
+      'createAccountMessage':
+          'Create an account to save your data and sync across devices',
+      'createAccountStatsMessage':
+          'Save your reading stats to the cloud and access them anywhere',
+      'signUpNow': 'Sign Up Now',
       'verified': '✓ Verified',
       'notVerified': '⚠️ Not Verified',
       'nameCannotBeEmpty': 'Name cannot be empty',
@@ -665,6 +672,13 @@ class Translations {
       'accountDeleted': 'Compte supprimé avec succès',
       'guestUser': 'Utilisateur invité',
       'notSignedIn': 'Non connecté',
+      'skipNow': 'Ignorer maintenant',
+      'createAccount': 'Créer un compte',
+      'createAccountMessage':
+          'Créez un compte pour enregistrer vos données et les synchroniser sur tous les appareils',
+      'createAccountStatsMessage':
+          'Enregistrez vos statistiques de lecture dans le cloud et accédez-y partout',
+      'signUpNow': 'Inscrivez-vous maintenant',
       'verified': '✓ Vérifié',
       'notVerified': '⚠️ Non vérifié',
       'nameCannotBeEmpty': 'Le nom ne peut pas être vide',
