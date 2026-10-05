@@ -1,0 +1,188 @@
+{
+  "id": "umrah",
+  "title": {
+    "ar": "طريقة العمرة",
+    "en": "How to Perform Umrah",
+    "fr": "La manière d'accomplir la Omra"
+  },
+  "description": {
+    "ar": "بيان عملي للعمرة: الإحرام، والطواف، والسعي، والحلق أو التقصير، مع الأدعية والأحكام التي يحتاجها المعتمر.",
+    "en": "A practical account of Umrah: ihram, tawaf, sa'i, and shaving or shortening the hair, with the supplications and rulings a pilgrim needs. Details of schools should be checked with a reliable scholar.",
+    "fr": "Un exposé pratique de la Omra : l'ihram, le tawaf, le sa'y, et le rasage ou le raccourcissement des cheveux, avec les invocations et les règles dont le pèlerin a besoin. Les détails des écoles se vérifient auprès d'un savant fiable."
+  },
+  "definition": {
+    "ar": "العمرة زيارة البيت الحرام بإحرام، وطواف، وسعي، وحلق أو تقصير.",
+    "en": "Umrah is a visit to the Sacred House with ihram, tawaf, sa'i, and shaving or shortening the hair.",
+    "fr": "La Omra est une visite de la Maison sacrée avec l'ihram, le tawaf, le sa'y, et le rasage ou le raccourcissement des cheveux."
+  },
+  "pillars": [
+    { "ar": "الإحرام", "en": "Ihram", "fr": "L'ihram" },
+    { "ar": "الطواف بالبيت سبعة أشواط", "en": "Tawaf of the House, seven circuits", "fr": "Le tawaf de la Maison, sept tours" },
+    { "ar": "السعي بين الصفا والمروة سبعة أشواط", "en": "Sa'i between Safa and Marwah, seven walks", "fr": "Le sa'y entre Safa et Marwa, sept parcours" },
+    { "ar": "الحلق أو التقصير عند جمهور العلماء", "en": "Shaving or shortening the hair, according to the majority of scholars", "fr": "Se raser ou raccourcir les cheveux, selon la majorité des savants" }
+  ],
+  "miqat": {
+    "title": { "ar": "المواقيت", "en": "The miqats", "fr": "Les miqats" },
+    "english": "A person coming for Umrah enters ihram at the miqat of his route, and does not pass it without ihram. The five miqats fixed by the Prophet, peace and blessings be upon him, are Dhul Hulayfah for the people of Madinah, Al-Juhfah for the people of Sham, Qarn al-Manazil for the people of Najd, Yalamlam for the people of Yemen, and Dhat Irq for the people of Iraq. One who is already inside the miqat, such as the people of Makkah, enters ihram for Umrah from outside the Haram, commonly from at-Tan'im.",
+    "french": "Celui qui vient pour la Omra entre en ihram au miqat de sa route, et ne le dépasse pas sans ihram. Les cinq miqats fixés par le Prophète, que la paix et les bénédictions d'Allah soient sur lui, sont Dhul Hulayfa pour les gens de Médine, Al-Juhfa pour les gens du Cham, Qarn al-Manazil pour les gens du Najd, Yalamlam pour les gens du Yémen, et Dhat Irq pour les gens d'Irak. Celui qui est déjà à l'intérieur du miqat, comme les gens de La Mecque, entre en ihram pour la Omra depuis l'extérieur du Haram, souvent depuis at-Tan'im.",
+    "reference": "Sahih al-Bukhari 1524; Sahih Muslim 1181"
+  },
+  "ihramProhibitions": {
+    "title": { "ar": "محظورات الإحرام", "en": "What is forbidden in ihram", "fr": "Ce qui est interdit en ihram" },
+    "items": [
+      { "ar": "الجماع ومقدماته", "en": "Marital relations and what leads to them", "fr": "Les rapports conjugaux et ce qui y mène" },
+      { "ar": "إزالة الشعر وتقليم الأظفار", "en": "Removing hair and cutting the nails", "fr": "Ôter les cheveux et couper les ongles" },
+      { "ar": "الطيب", "en": "Perfume", "fr": "Le parfum" },
+      { "ar": "لبس الرجل للمخيط المحيط، وتغطية رأسه", "en": "For a man, fitted stitched clothing that encloses the body, and covering the head", "fr": "Pour l'homme, le vêtement cousu qui épouse le corps, et se couvrir la tête" },
+      { "ar": "تغطية المرأة وجهها بالنقاب ويديها بالقفازين على التفصيل المعروف", "en": "For a woman, covering the face with a niqab and the hands with gloves, according to the known detail. She covers her face before non-mahram men with something that does not touch the face if needed.", "fr": "Pour la femme, couvrir le visage d'un niqab et les mains de gants, selon le détail connu. Elle couvre son visage devant les hommes étrangers avec un voile qui ne touche pas le visage si besoin." },
+      { "ar": "قتل الصيد البري", "en": "Killing land game", "fr": "Tuer le gibier terrestre" },
+      { "ar": "عقد النكاح", "en": "Contracting a marriage", "fr": "Conclure un mariage" }
+    ]
+  },
+  "steps": [
+    {
+      "order": 1,
+      "name": { "ar": "الغسل والطيب قبل الإحرام", "en": "Bathing and perfume before ihram", "fr": "Le bain et le parfum avant l'ihram" },
+      "description": {
+        "ar": "يُستحب الغسل، وتنظيف البدن، وأن يتطيب الرجل في بدنه قبل عقد الإحرام لا في ثوبي الإحرام. والمرأة تفعل ذلك بما لا يُرى للرجال الأجانب.",
+        "en": "It is recommended to bathe and clean the body. A man may apply perfume to his body before entering ihram, not to the two ihram cloths. A woman may do so in a way that is not seen by non-mahram men.",
+        "fr": "Il est recommandé de se laver et de se nettoyer. L'homme peut parfumer son corps avant d'entrer en ihram, non les deux pièces de l'ihram. La femme peut le faire d'une manière qui n'est pas vue par les hommes étrangers."
+      },
+      "arabic": "",
+      "english": "",
+      "french": "",
+      "reference": "Sahih al-Bukhari 1539; Sahih Muslim 1190"
+    },
+    {
+      "order": 2,
+      "name": { "ar": "لباس الإحرام", "en": "The clothing of ihram", "fr": "Le vêtement de l'ihram" },
+      "description": {
+        "ar": "الرجل يلبس إزارًا ورداءً غير مخيطين، ونعلين. والمرأة تلبس لباسها المعتاد الساتر، بغير نقاب ولا قفازين.",
+        "en": "A man wears an izar and a rida, two unstitched cloths, and sandals. A woman wears her usual covering clothes, without a niqab and without gloves.",
+        "fr": "L'homme porte un izar et un rida, deux pièces non cousues, et des sandales. La femme porte ses vêtements couvrants habituels, sans niqab ni gants."
+      },
+      "arabic": "",
+      "english": "",
+      "french": "",
+      "reference": "Sahih al-Bukhari 1542; Sahih Muslim 1177"
+    },
+    {
+      "order": 3,
+      "name": { "ar": "النية والتلبية", "en": "The intention and the talbiyah", "fr": "L'intention et la talbiya" },
+      "description": {
+        "ar": "عند الميقات ينوي العمرة بقلبه، ويلبي. إن أراد التمتع قال: لبيك عمرة. ويستمر في التلبية حتى يبدأ الطواف.",
+        "en": "At the miqat he intends Umrah in his heart and recites the talbiyah. If he is performing tamattu he says: Labbayk for Umrah. He continues the talbiyah until he begins tawaf.",
+        "fr": "Au miqat, il forme l'intention de la Omra dans son cœur et prononce la talbiya. S'il fait le tamattu, il dit : Labbayka pour une Omra. Il poursuit la talbiya jusqu'à commencer le tawaf."
+      },
+      "arabic": "لَبَّيْكَ اللَّهُمَّ لَبَّيْكَ، لَبَّيْكَ لَا شَرِيكَ لَكَ لَبَّيْكَ، إِنَّ الْحَمْدَ وَالنِّعْمَةَ لَكَ وَالْمُلْكَ، لَا شَرِيكَ لَكَ",
+      "english": "Here I am, O Allah, here I am. Here I am, You have no partner, here I am. Indeed, praise and favour belong to You, and the dominion. You have no partner.",
+      "french": "Me voici, ô Allah, me voici. Me voici, Tu n'as pas d'associé, me voici. Certes, la louange et le bienfait T'appartiennent, ainsi que la royauté. Tu n'as pas d'associé.",
+      "reference": "Sahih al-Bukhari 1549; Sahih Muslim 1184"
+    },
+    {
+      "order": 4,
+      "name": { "ar": "دخول المسجد الحرام", "en": "Entering the Sacred Mosque", "fr": "Entrer dans la Mosquée sacrée" },
+      "description": {
+        "ar": "يدخل برجله اليمنى، ويدعو بدعاء دخول المسجد، ثم يتجه إلى الحجر الأسود ليبدأ الطواف.",
+        "en": "Enter with the right foot, say the dua of entering the mosque, then go to the Black Stone to begin tawaf.",
+        "fr": "Entrez du pied droit, dites l'invocation d'entrée à la mosquée, puis allez à la Pierre noire pour commencer le tawaf."
+      },
+      "arabic": "اللَّهُمَّ افْتَحْ لِي أَبْوَابَ رَحْمَتِكَ",
+      "english": "O Allah, open for me the gates of Your mercy.",
+      "french": "Ô Allah, ouvre-moi les portes de Ta miséricorde.",
+      "reference": "Sahih Muslim 713"
+    },
+    {
+      "order": 5,
+      "name": { "ar": "الطواف", "en": "Tawaf", "fr": "Le tawaf" },
+      "description": {
+        "ar": "يجعل البيت عن يساره، ويبدأ من الحجر الأسود، ويطوف سبعة أشواط. يستلم الحجر أو يشير إليه عند كل شوط إن تيسر، ويكبّر. يضطبع الرجل في طواف العمرة، ويرمل في الأشواط الثلاثة الأولى إن تيسر ولم يؤذِ أحدًا. والمرأة لا تضطبع ولا ترمل. يدعو بما شاء، ومن الوارد بين الركن اليماني والحجر: ربنا آتنا في الدنيا حسنة.",
+        "en": "Keep the House on the left and begin at the Black Stone. Walk seven circuits. Touch the Stone or point to it at the start of each circuit if possible, and say Allahu akbar. A man uncovers his right shoulder in the tawaf of Umrah, and walks briskly in the first three circuits if he can do so without harming anyone. A woman does neither. He supplicates as he wishes. Between the Yemeni Corner and the Black Stone, the reported words are: Our Lord, give us good in this world.",
+        "fr": "Gardez la Maison à votre gauche et commencez à la Pierre noire. Faites sept tours. Touchez la Pierre ou pointez vers elle au début de chaque tour si possible, et dites Allahou akbar. L'homme découvre l'épaule droite dans le tawaf de la Omra, et marche d'un pas rapide dans les trois premiers tours s'il peut le faire sans gêner personne. La femme ne fait ni l'un ni l'autre. Il invoque comme il veut. Entre l'angle yéménite et la Pierre noire, les paroles rapportées sont : Seigneur, accorde-nous une belle part ici-bas."
+      },
+      "arabic": "بِسْمِ اللَّهِ، وَاللَّهُ أَكْبَرُ. رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ",
+      "english": "In the name of Allah, and Allah is the Greatest. Our Lord, give us good in this world and good in the Hereafter, and protect us from the punishment of the Fire.",
+      "french": "Au nom d'Allah, et Allah est le Plus Grand. Seigneur, accorde-nous une belle part ici-bas et une belle part dans l'au-delà, et protège-nous du châtiment du Feu.",
+      "reference": "Sahih Muslim 1218; Sunan Abi Dawud 1892"
+    },
+    {
+      "order": 6,
+      "name": { "ar": "ركعتا الطواف", "en": "Two units after tawaf", "fr": "Deux unités après le tawaf" },
+      "description": {
+        "ar": "يصلي ركعتين خلف المقام إن تيسر، وإلا في أي موضع من المسجد. يقرأ في الأولى الكافرون وفي الثانية الإخلاص. ثم يشرب من زمزم.",
+        "en": "Pray two units behind the Maqam if possible, otherwise anywhere in the mosque. Recite Al-Kafirun in the first and Al-Ikhlas in the second. Then drink from Zamzam.",
+        "fr": "Priez deux unités derrière le Maqam si possible, sinon n'importe où dans la mosquée. Récitez Al-Kafirun dans la première et Al-Ikhlas dans la seconde. Puis buvez de Zamzam."
+      },
+      "arabic": "",
+      "english": "The water of Zamzam is for whatever it is drunk for.",
+      "french": "L'eau de Zamzam est pour ce pour quoi on la boit.",
+      "reference": "Sahih Muslim 1218; Sunan Ibn Majah 3062"
+    },
+    {
+      "order": 7,
+      "name": { "ar": "السعي", "en": "Sa'i", "fr": "Le sa'y" },
+      "description": {
+        "ar": "يخرج إلى الصفا، ويبدأ منه، ويختم بالمروة. سبعة أشواط. الذهاب شوط والرجوع شوط. يصعد الصفا ويستقبل البيت، ويكبّر ويهلل ويدعو. يهرول الرجل بين العلمين الأخضرين إن استطاع. والمرأة تمشي.",
+        "en": "Go out to Safa and begin there, and finish at Marwah. Seven walks: going is one and returning is one. Climb Safa, face the House, magnify Allah, declare His oneness, and supplicate. A man jogs between the two green markers if he can. A woman walks.",
+        "fr": "Sortez vers Safa et commencez là, et terminez à Marwa. Sept parcours : l'aller est un, le retour est un. Montez sur Safa, tournez-vous vers la Maison, magnifiez Allah, proclamez Son unicité et invoquez. L'homme accélère entre les deux repères verts s'il le peut. La femme marche."
+      },
+      "arabic": "إِنَّ الصَّفَا وَالْمَرْوَةَ مِن شَعَائِرِ اللَّهِ. أَبْدَأُ بِمَا بَدَأَ اللَّهُ بِهِ. لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ، وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ. لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ، أَنْجَزَ وَعْدَهُ، وَنَصَرَ عَبْدَهُ، وَهَزَمَ الْأَحْزَابَ وَحْدَهُ",
+      "english": "Safa and Marwah are among the symbols of Allah. I begin with what Allah began with. There is no god worthy of worship except Allah alone, with no partner. To Him belongs the dominion and praise, and He is able to do all things. There is no god worthy of worship except Allah alone. He fulfilled His promise, helped His servant, and defeated the confederates alone.",
+      "french": "Safa et Marwa sont parmi les rites d'Allah. Je commence par ce par quoi Allah a commencé. Il n'y a de divinité digne d'adoration qu'Allah, Seul, sans associé. À Lui la royauté et la louange, et Il est capable de toute chose. Il n'y a de divinité digne d'adoration qu'Allah, Seul. Il a tenu Sa promesse, secouru Son serviteur et défait les coalisés, Lui seul.",
+      "reference": "Qur'an, Al-Baqarah 2:158; Sahih Muslim 1218"
+    },
+    {
+      "order": 8,
+      "name": { "ar": "الحلق أو التقصير", "en": "Shaving or shortening", "fr": "Le rasage ou le raccourcissement" },
+      "description": {
+        "ar": "يحل الرجل الإحرام بالحلق، وهو أفضل، أو التقصير من جميع الرأس. والمرأة تقص من طرف شعرها قدر أنملة، ولا تحلق. وبهذا تتم العمرة ويحل كل شيء.",
+        "en": "A man leaves ihram by shaving the head, which is better, or by shortening the hair from all of the head. A woman cuts from the end of her hair about a fingertip, and she does not shave. With this, Umrah is complete and everything becomes lawful again.",
+        "fr": "L'homme sort de l'ihram en se rasant la tête, ce qui est meilleur, ou en raccourcissant les cheveux sur toute la tête. La femme coupe le bout de ses cheveux d'environ un bout de doigt, et elle ne se rase pas. Ainsi la Omra est achevée et tout redevient licite."
+      },
+      "arabic": "اللَّهُمَّ تَقَبَّلْ مِنِّي",
+      "english": "O Allah, accept this from me.",
+      "french": "Ô Allah, agrée ceci de moi.",
+      "reference": "Sahih al-Bukhari 1727; Sahih Muslim 1301"
+    }
+  ],
+  "notes": [
+    {
+      "en": "A menstruating woman does not perform tawaf until she is pure. She may enter ihram, make the intention, and recite the talbiyah. She delays tawaf and sa'i until she can perform tawaf.",
+      "fr": "La femme qui a ses menstrues n'accomplit pas le tawaf avant d'être pure. Elle peut entrer en ihram, former l'intention et dire la talbiya. Elle retarde le tawaf et le sa'y jusqu'à pouvoir faire le tawaf.",
+      "ar": "الحائض لا تطوف حتى تطهر. تُحرم وتنوي وتلبي، وتؤخر الطواف والسعي حتى تتمكن من الطواف."
+    },
+    {
+      "en": "If a person is prevented from completing Umrah, he exits ihram by a sacrifice where he is prevented, then shaves or shortens, as in the year of al-Hudaybiyah.",
+      "fr": "Si l'on est empêché d'achever la Omra, on sort de l'ihram par un sacrifice là où l'on est empêché, puis on se rase ou on raccourcit, comme l'année d'al-Hudaybiya.",
+      "ar": "إن أُحصِر عن إتمام العمرة تحلل بالهدي حيث أُحصر، ثم حلق أو قصّر، كما في الحديبية."
+    }
+  ],
+  "quranAyahs": [
+    { "id": "q-2-158", "surah": 2, "ayah": 158, "surahName": { "ar": "البقرة", "en": "Al-Baqarah", "fr": "Al-Baqara" }, "arabic": "إِنَّ الصَّفَا وَالْمَرْوَةَ مِن شَعَائِرِ اللَّهِ ۖ فَمَنْ حَجَّ الْبَيْتَ أَوِ اعْتَمَرَ فَلَا جُنَاحَ عَلَيْهِ أَن يَطَّوَّفَ بِهِمَا", "english": "Safa and Marwah are among the symbols of Allah. So whoever performs Hajj or Umrah to the House, there is no blame on him for walking between them.", "french": "Safa et Marwa sont parmi les rites d'Allah. Quiconque fait le Hajj ou la Omra à la Maison ne commet pas de faute en parcourant la distance entre elles.", "reference": "Al-Baqarah 2:158" },
+    { "id": "q-2-196", "surah": 2, "ayah": 196, "surahName": { "ar": "البقرة", "en": "Al-Baqarah", "fr": "Al-Baqara" }, "arabic": "وَأَتِمُّوا الْحَجَّ وَالْعُمْرَةَ لِلَّهِ", "english": "Complete the Hajj and the Umrah for Allah.", "french": "Accomplissez le Hajj et la Omra pour Allah.", "reference": "Al-Baqarah 2:196" },
+    { "id": "q-2-125", "surah": 2, "ayah": 125, "surahName": { "ar": "البقرة", "en": "Al-Baqarah", "fr": "Al-Baqara" }, "arabic": "وَإِذْ جَعَلْنَا الْبَيْتَ مَثَابَةً لِّلنَّاسِ وَأَمْنًا", "english": "And when We made the House a place of return for the people and a place of safety.", "french": "Et lorsque Nous fîmes de la Maison un lieu de retour pour les gens et un lieu sûr.", "reference": "Al-Baqarah 2:125" },
+    { "id": "q-3-96", "surah": 3, "ayah": 96, "surahName": { "ar": "آل عمران", "en": "Aal Imran", "fr": "Al Imran" }, "arabic": "إِنَّ أَوَّلَ بَيْتٍ وُضِعَ لِلنَّاسِ لَلَّذِي بِبَكَّةَ مُبَارَكًا وَهُدًى لِّلْعَالَمِينَ", "english": "The first House established for mankind is the one at Bakkah, blessed and a guidance for the worlds.", "french": "La première Maison établie pour les gens est celle de Bakka, bénie et guidance pour les mondes.", "reference": "Aal Imran 3:96" },
+    { "id": "q-3-97", "surah": 3, "ayah": 97, "surahName": { "ar": "آل عمران", "en": "Aal Imran", "fr": "Al Imran" }, "arabic": "وَلِلَّهِ عَلَى النَّاسِ حِجُّ الْبَيْتِ مَنِ اسْتَطَاعَ إِلَيْهِ سَبِيلًا", "english": "Pilgrimage to the House is a duty people owe to Allah, for whoever is able to find a way.", "french": "Le pèlerinage à la Maison est un devoir envers Allah pour les gens qui en ont les moyens.", "reference": "Aal Imran 3:97" },
+    { "id": "q-22-26", "surah": 22, "ayah": 26, "surahName": { "ar": "الحج", "en": "Al-Hajj", "fr": "Al-Hajj" }, "arabic": "وَطَهِّرْ بَيْتِيَ لِلطَّائِفِينَ وَالْقَائِمِينَ وَالرُّكَّعِ السُّجُودِ", "english": "Purify My House for those who circle it, those who stand, and those who bow and prostrate.", "french": "Purifie Ma Maison pour ceux qui en font le tour, ceux qui s'y tiennent debout, et ceux qui s'inclinent et se prosternent.", "reference": "Al-Hajj 22:26" },
+    { "id": "q-22-29", "surah": 22, "ayah": 29, "surahName": { "ar": "الحج", "en": "Al-Hajj", "fr": "Al-Hajj" }, "arabic": "ثُمَّ لْيَقْضُوا تَفَثَهُمْ وَلْيُوفُوا نُذُورَهُمْ وَلْيَطَّوَّفُوا بِالْبَيْتِ الْعَتِيقِ", "english": "Then let them complete their prescribed rites, fulfil their vows, and circle the Ancient House.", "french": "Puis qu'ils mettent fin à leurs interdits, qu'ils accomplissent leurs vœux et qu'ils fassent le tour de l'Antique Maison.", "reference": "Al-Hajj 22:29" },
+    { "id": "q-2-189", "surah": 2, "ayah": 189, "surahName": { "ar": "البقرة", "en": "Al-Baqarah", "fr": "Al-Baqara" }, "arabic": "وَأْتُوا الْبُيُوتَ مِنْ أَبْوَابِهَا ۚ وَاتَّقُوا اللَّهَ لَعَلَّكُمْ تُفْلِحُونَ", "english": "Enter houses through their doors, and be mindful of Allah so that you may succeed.", "french": "Entrez dans les maisons par leurs portes, et craignez Allah afin de réussir.", "reference": "Al-Baqarah 2:189" },
+    { "id": "q-5-97", "surah": 5, "ayah": 97, "surahName": { "ar": "المائدة", "en": "Al-Ma'idah", "fr": "Al-Ma'ida" }, "arabic": "جَعَلَ اللَّهُ الْكَعْبَةَ الْبَيْتَ الْحَرَامَ قِيَامًا لِّلنَّاسِ", "english": "Allah has made the Ka'bah, the Sacred House, a support for the people.", "french": "Allah a fait de la Kaaba, la Maison sacrée, un maintien pour les gens.", "reference": "Al-Ma'idah 5:97" },
+    { "id": "q-14-37", "surah": 14, "ayah": 37, "surahName": { "ar": "إبراهيم", "en": "Ibrahim", "fr": "Ibrahim" }, "arabic": "رَّبَّنَا إِنِّي أَسْكَنتُ مِن ذُرِّيَّتِي بِوَادٍ غَيْرِ ذِي زَرْعٍ عِندَ بَيْتِكَ الْمُحَرَّمِ", "english": "Our Lord, I have settled some of my offspring in a valley without cultivation, by Your Sacred House.", "french": "Seigneur, j'ai établi une partie de ma descendance dans une vallée sans culture, auprès de Ta Maison sacrée.", "reference": "Ibrahim 14:37" },
+    { "id": "q-2-127", "surah": 2, "ayah": 127, "surahName": { "ar": "البقرة", "en": "Al-Baqarah", "fr": "Al-Baqara" }, "arabic": "رَبَّنَا تَقَبَّلْ مِنَّا ۖ إِنَّكَ أَنتَ السَّمِيعُ الْعَلِيمُ", "english": "Our Lord, accept this from us. You are the All-Hearing, the All-Knowing.", "french": "Seigneur, agrée ceci de nous. Tu es l'Audient, l'Omniscient.", "reference": "Al-Baqarah 2:127" },
+    { "id": "q-22-32", "surah": 22, "ayah": 32, "surahName": { "ar": "الحج", "en": "Al-Hajj", "fr": "Al-Hajj" }, "arabic": "وَمَن يُعَظِّمْ شَعَائِرَ اللَّهِ فَإِنَّهَا مِن تَقْوَى الْقُلُوبِ", "english": "Whoever honours the symbols of Allah, that comes from the mindfulness of hearts.", "french": "Quiconque honore les rites d'Allah, cela vient de la piété des cœurs.", "reference": "Al-Hajj 22:32" }
+  ],
+  "hadiths": [
+    { "id": "h-umrah-01", "narrator": { "ar": "أبو هريرة", "en": "Abu Hurayrah", "fr": "Abu Hurayra" }, "arabic": "الْعُمْرَةُ إِلَى الْعُمْرَةِ كَفَّارَةٌ لِمَا بَيْنَهُمَا", "english": "One Umrah to the next is an expiation for what is between them.", "french": "D'une Omra à l'autre, il y a expiation de ce qui se trouve entre elles.", "reference": "Sahih al-Bukhari 1773; Sahih Muslim 1349", "grade": "Sahih" },
+    { "id": "h-umrah-02", "narrator": { "ar": "أبو هريرة", "en": "Abu Hurayrah", "fr": "Abu Hurayra" }, "arabic": "وَالْحَجُّ الْمَبْرُورُ لَيْسَ لَهُ جَزَاءٌ إِلَّا الْجَنَّةُ", "english": "And the accepted Hajj has no reward except Paradise.", "french": "Et le Hajj agréé n'a d'autre récompense que le Paradis.", "reference": "Sahih al-Bukhari 1773; Sahih Muslim 1349", "grade": "Sahih" },
+    { "id": "h-umrah-03", "narrator": { "ar": "عبد الله بن عمر", "en": "Abdullah ibn Umar", "fr": "Abdallah ibn Umar" }, "arabic": "وَقَّتَ رَسُولُ اللَّهِ ﷺ لِأَهْلِ الْمَدِينَةِ ذَا الْحُلَيْفَةِ", "english": "The Messenger of Allah fixed Dhul Hulayfah as the miqat for the people of Madinah, and he fixed the other miqats for the other regions.", "french": "Le Messager d'Allah fixa Dhul Hulayfa comme miqat pour les gens de Médine, et il fixa les autres miqats pour les autres régions.", "reference": "Sahih al-Bukhari 1524; Sahih Muslim 1181", "grade": "Sahih" },
+    { "id": "h-umrah-04", "narrator": { "ar": "جابر بن عبد الله", "en": "Jabir ibn Abdullah", "fr": "Jabir ibn Abdallah" }, "arabic": "لِتَأْخُذُوا مَنَاسِكَكُمْ", "english": "Learn your rites from me.", "french": "Apprenez vos rites de moi.", "reference": "Sahih Muslim 1297", "grade": "Sahih" },
+    { "id": "h-umrah-05", "narrator": { "ar": "عائشة", "en": "Aishah", "fr": "Aicha" }, "arabic": "طَوَافُكَ بِالْبَيْتِ وَبَيْنَ الصَّفَا وَالْمَرْوَةِ يَكْفِيكِ لِحَجَّتِكِ وَعُمْرَتِكِ", "english": "Your tawaf of the House and between Safa and Marwah is enough for your Hajj and your Umrah.", "french": "Ton tawaf de la Maison et entre Safa et Marwa te suffit pour ton Hajj et ta Omra.", "reference": "Sahih Muslim 1211", "grade": "Sahih" },
+    { "id": "h-umrah-06", "narrator": { "ar": "عبد الله بن عباس", "en": "Abdullah ibn Abbas", "fr": "Abdallah ibn Abbas" }, "arabic": "الطَّوَافُ بِالْبَيْتِ صَلَاةٌ", "english": "Tawaf around the House is a prayer, except that you may speak in it.", "french": "Le tawaf autour de la Maison est une prière, si ce n'est que vous pouvez y parler.", "reference": "Sunan at-Tirmidhi 960; Sunan an-Nasa'i", "grade": "Sahih as a statement of Ibn Abbas, and raised in some chains" },
+    { "id": "h-umrah-07", "narrator": { "ar": "عبد الله بن عمر", "en": "Abdullah ibn Umar", "fr": "Abdallah ibn Umar" }, "arabic": "رَحِمَ اللَّهُ الْمُحَلِّقِينَ. قَالُوا: وَالْمُقَصِّرِينَ؟ قَالَ: رَحِمَ اللَّهُ الْمُحَلِّقِينَ", "english": "May Allah have mercy on those who shave their heads. They said: And those who shorten? He said again: May Allah have mercy on those who shave. Then he included those who shorten.", "french": "Qu'Allah fasse miséricorde à ceux qui se rasent. Ils dirent : Et ceux qui raccourcissent ? Il dit encore : Qu'Allah fasse miséricorde à ceux qui se rasent. Puis il inclut ceux qui raccourcissent.", "reference": "Sahih al-Bukhari 1727; Sahih Muslim 1301", "grade": "Sahih" },
+    { "id": "h-umrah-08", "narrator": { "ar": "أبو هريرة", "en": "Abu Hurayrah", "fr": "Abu Hurayra" }, "arabic": "مَنْ أَتَى هَذَا الْبَيْتَ فَلَمْ يَرْفُثْ وَلَمْ يَفْسُقْ رَجَعَ كَيَوْمِ وَلَدَتْهُ أُمُّهُ", "english": "Whoever comes to this House and does not commit obscenity or sin returns as on the day his mother bore him.", "french": "Celui qui vient à cette Maison sans obscénité ni perversité revient comme au jour où sa mère l'a mis au monde.", "reference": "Sahih al-Bukhari 1819; Sahih Muslim 1350", "grade": "Sahih" },
+    { "id": "h-umrah-09", "narrator": { "ar": "ابن عباس", "en": "Ibn Abbas", "fr": "Ibn Abbas" }, "arabic": "مَاءُ زَمْزَمَ لِمَا شُرِبَ لَهُ", "english": "The water of Zamzam is for whatever it is drunk for.", "french": "L'eau de Zamzam est pour ce pour quoi on la boit.", "reference": "Sunan Ibn Majah 3062", "grade": "Hasan" },
+    { "id": "h-umrah-10", "narrator": { "ar": "عائشة", "en": "Aishah", "fr": "Aicha" }, "arabic": "افْعَلِي مَا يَفْعَلُ الْحَاجُّ غَيْرَ أَنْ لَا تَطُوفِي بِالْبَيْتِ حَتَّى تَطْهُرِي", "english": "Do what the pilgrim does, except that you do not circle the House until you are pure.", "french": "Fais ce que fait le pèlerin, sauf que tu ne tournes pas autour de la Maison avant d'être pure.", "reference": "Sahih al-Bukhari 305; Sahih Muslim 1211", "grade": "Sahih" },
+    { "id": "h-umrah-11", "narrator": { "ar": "جابر", "en": "Jabir", "fr": "Jabir" }, "arabic": "دَخَلَ مَكَّةَ فَاسْتَلَمَ الرُّكْنَ فَرَمَلَ ثَلَاثًا وَمَشَى أَرْبَعًا", "english": "He entered Makkah, touched the corner, then walked briskly for three circuits and walked for four.", "french": "Il entra à La Mecque, toucha l'angle, puis marcha rapidement trois tours et marcha quatre tours.", "reference": "Sahih Muslim 1218", "grade": "Sahih" },
+    { "id": "h-umrah-12", "narrator": { "ar": "عبد الله بن عباس", "en": "Abdullah ibn Abbas", "fr": "Abdallah ibn Abbas" }, "arabic": "إِنَّ اللَّهَ حَرَّمَ مَكَّةَ فَلَمْ تَحِلَّ لِأَحَدٍ قَبْلِي وَلَا تَحِلُّ لِأَحَدٍ بَعْدِي", "english": "Allah made Makkah sacred. It was not lawful for anyone before me, and it is not lawful for anyone after me, to shed blood in it.", "french": "Allah a rendu La Mecque sacrée. Elle n'a été licite pour personne avant moi, et elle ne le sera pour personne après moi.", "reference": "Sahih al-Bukhari 1834; Sahih Muslim 1353", "grade": "Sahih" }
+  ]
+}

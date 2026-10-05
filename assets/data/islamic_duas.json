@@ -1,0 +1,1272 @@
+{
+  "id": "islamic_duas",
+  "title": {
+    "ar": "الأدعية الإسلامية",
+    "en": "Islamic Duas",
+    "fr": "Invocations islamiques"
+  },
+  "description": {
+    "ar": "مئة دعاء: خمسون دعاءً طويلًا وخمسون دعاءً قصيرًا، بالعربية مع الترجمة الإنجليزية والفرنسية والمصدر.",
+    "en": "One hundred supplications: fifty longer duas and fifty short duas, in Arabic with respectful English and French meanings and a source for each.",
+    "fr": "Cent invocations : cinquante invocations longues et cinquante courtes, en arabe, avec un sens respectueux en anglais et en français, et une source pour chacune."
+  },
+  "note": {
+    "ar": "النص العربي هو الأصل. الترجمتان بيان للمعنى للتعلم. صلوات الله وسلامه على النبي ﷺ حيثما ذُكر.",
+    "en": "The Arabic is the primary text. The English and French render the meaning for learning. Peace and blessings be upon the Prophet wherever he is mentioned.",
+    "fr": "L'arabe est le texte de référence. L'anglais et le français en donnent le sens pour l'apprentissage. Que la paix et les bénédictions d'Allah soient sur le Prophète partout où il est mentionné."
+  },
+  "counts": { "total": 100, "long": 50, "short": 50 },
+  "duas": [
+    {
+      "id": "d001",
+      "length": "short",
+      "category": { "ar": "ذكر", "en": "Remembrance", "fr": "Évocation" },
+      "title": { "ar": "البسملة", "en": "Beginning in Allah's name", "fr": "Commencer au nom d'Allah" },
+      "arabic": "بِسْمِ اللَّهِ",
+      "english": "In the name of Allah.",
+      "french": "Au nom d'Allah.",
+      "reference": "Practised at the start of lawful acts; see Sahih al-Bukhari, the hadith of beginning with the name of Allah."
+    },
+    {
+      "id": "d002",
+      "length": "short",
+      "category": { "ar": "ذكر", "en": "Remembrance", "fr": "Évocation" },
+      "title": { "ar": "الحمد", "en": "Praise of Allah", "fr": "Louange d'Allah" },
+      "arabic": "الْحَمْدُ لِلَّهِ",
+      "english": "All praise belongs to Allah.",
+      "french": "Toute louange appartient à Allah.",
+      "reference": "Qur'an, Al-Fatihah 1:2"
+    },
+    {
+      "id": "d003",
+      "length": "short",
+      "category": { "ar": "ذكر", "en": "Remembrance", "fr": "Évocation" },
+      "title": { "ar": "التسبيح", "en": "Glorifying Allah", "fr": "Glorifier Allah" },
+      "arabic": "سُبْحَانَ اللَّهِ",
+      "english": "Glory be to Allah.",
+      "french": "Gloire à Allah.",
+      "reference": "Sahih Muslim, the virtues of tasbih, tahmid, and takbir."
+    },
+    {
+      "id": "d004",
+      "length": "short",
+      "category": { "ar": "ذكر", "en": "Remembrance", "fr": "Évocation" },
+      "title": { "ar": "التكبير", "en": "Declaring Allah's greatness", "fr": "Proclamer la grandeur d'Allah" },
+      "arabic": "اللَّهُ أَكْبَرُ",
+      "english": "Allah is the Greatest.",
+      "french": "Allah est le Plus Grand.",
+      "reference": "Said in the prayer and the adhan; Sahih al-Bukhari and Sahih Muslim."
+    },
+    {
+      "id": "d005",
+      "length": "short",
+      "category": { "ar": "توحيد", "en": "Tawhid", "fr": "Unicité d'Allah" },
+      "title": { "ar": "كلمة التوحيد", "en": "The word of tawhid", "fr": "La parole du tawhid" },
+      "arabic": "لَا إِلَهَ إِلَّا اللَّهُ",
+      "english": "There is no god worthy of worship except Allah.",
+      "french": "Il n'y a de divinité digne d'adoration qu'Allah.",
+      "reference": "Sahih al-Bukhari 6403; Sahih Muslim"
+    },
+    {
+      "id": "d006",
+      "length": "short",
+      "category": { "ar": "استغفار", "en": "Seeking forgiveness", "fr": "Demande de pardon" },
+      "title": { "ar": "الاستغفار", "en": "I seek Allah's forgiveness", "fr": "Je demande pardon à Allah" },
+      "arabic": "أَسْتَغْفِرُ اللَّهَ",
+      "english": "I seek forgiveness from Allah.",
+      "french": "Je demande pardon à Allah.",
+      "reference": "The Prophet sought forgiveness often; Sahih al-Bukhari 6307."
+    },
+    {
+      "id": "d007",
+      "length": "short",
+      "category": { "ar": "ذكر", "en": "Remembrance", "fr": "Évocation" },
+      "title": { "ar": "سبحان الله وبحمده", "en": "Glory and praise", "fr": "Gloire et louange" },
+      "arabic": "سُبْحَانَ اللَّهِ وَبِحَمْدِهِ",
+      "english": "Glory be to Allah and praise belongs to Him.",
+      "french": "Gloire à Allah et louange à Lui.",
+      "reference": "Sahih al-Bukhari 6405; Sahih Muslim 2691"
+    },
+    {
+      "id": "d008",
+      "length": "short",
+      "category": { "ar": "ذكر", "en": "Remembrance", "fr": "Évocation" },
+      "title": { "ar": "سبحان الله العظيم", "en": "Glory to the Magnificent", "fr": "Gloire au Magnifique" },
+      "arabic": "سُبْحَانَ اللَّهِ الْعَظِيمِ",
+      "english": "Glory be to Allah, the Magnificent.",
+      "french": "Gloire à Allah, le Magnifique.",
+      "reference": "Sahih al-Bukhari 6682; Sahih Muslim 2694"
+    },
+    {
+      "id": "d009",
+      "length": "short",
+      "category": { "ar": "تفويض", "en": "Reliance", "fr": "Remise confiante" },
+      "title": { "ar": "لا حول ولا قوة", "en": "No power except with Allah", "fr": "Nulle force sinon par Allah" },
+      "arabic": "لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ",
+      "english": "There is no power and no strength except with Allah.",
+      "french": "Il n'y a de force ni de puissance qu'en Allah.",
+      "reference": "Sahih al-Bukhari 4205; Sahih Muslim 2704"
+    },
+    {
+      "id": "d010",
+      "length": "short",
+      "category": { "ar": "كرب", "en": "Distress", "fr": "Détresse" },
+      "title": { "ar": "حسبنا الله", "en": "Allah is sufficient for us", "fr": "Allah nous suffit" },
+      "arabic": "حَسْبُنَا اللَّهُ وَنِعْمَ الْوَكِيلُ",
+      "english": "Allah is sufficient for us, and He is the best Disposer of affairs.",
+      "french": "Allah nous suffit, et Il est le meilleur Garant.",
+      "reference": "Qur'an, Aal Imran 3:173"
+    },
+    {
+      "id": "d011",
+      "length": "short",
+      "category": { "ar": "علم", "en": "Knowledge", "fr": "Savoir" },
+      "title": { "ar": "رب زدني علما", "en": "Increase me in knowledge", "fr": "Augmente mon savoir" },
+      "arabic": "رَبِّ زِدْنِي عِلْمًا",
+      "english": "My Lord, increase me in knowledge.",
+      "french": "Seigneur, augmente-moi en savoir.",
+      "reference": "Qur'an, Ta-Ha 20:114"
+    },
+    {
+      "id": "d012",
+      "length": "short",
+      "category": { "ar": "مغفرة", "en": "Forgiveness", "fr": "Pardon" },
+      "title": { "ar": "رب اغفر لي", "en": "My Lord, forgive me", "fr": "Seigneur, pardonne-moi" },
+      "arabic": "رَبِّ اغْفِرْ لِي",
+      "english": "My Lord, forgive me.",
+      "french": "Seigneur, pardonne-moi.",
+      "reference": "Qur'an, Nuh 71:28; said between the two prostrations in a narration of Sunan Abi Dawud and Sunan an-Nasa'i."
+    },
+    {
+      "id": "d013",
+      "length": "short",
+      "category": { "ar": "جنة", "en": "Paradise", "fr": "Paradis" },
+      "title": { "ar": "سؤال الجنة", "en": "Asking for Paradise", "fr": "Demander le Paradis" },
+      "arabic": "اللَّهُمَّ إِنِّي أَسْأَلُكَ الْجَنَّةَ",
+      "english": "O Allah, I ask You for Paradise.",
+      "french": "Ô Allah, je Te demande le Paradis.",
+      "reference": "Sunan Abi Dawud 792; Sunan Ibn Majah"
+    },
+    {
+      "id": "d014",
+      "length": "short",
+      "category": { "ar": "نار", "en": "Protection from the Fire", "fr": "Protection contre le Feu" },
+      "title": { "ar": "النار", "en": "Protection from the Fire", "fr": "Protection contre le Feu" },
+      "arabic": "اللَّهُمَّ أَجِرْنِي مِنَ النَّارِ",
+      "english": "O Allah, protect me from the Fire.",
+      "french": "Ô Allah, protège-moi du Feu.",
+      "reference": "Sunan Abi Dawud 5079"
+    },
+    {
+      "id": "d015",
+      "length": "short",
+      "category": { "ar": "ذكر", "en": "Remembrance", "fr": "Évocation" },
+      "title": { "ar": "العون على الذكر", "en": "Help to remember Allah", "fr": "Aide pour évoquer Allah" },
+      "arabic": "اللَّهُمَّ أَعِنِّي عَلَى ذِكْرِكَ وَشُكْرِكَ وَحُسْنِ عِبَادَتِكَ",
+      "english": "O Allah, help me to remember You, to thank You, and to worship You well.",
+      "french": "Ô Allah, aide-moi à T'évoquer, à Te remercier et à T'adorer de la meilleure manière.",
+      "reference": "Sunan Abi Dawud 1522; Sunan an-Nasa'i"
+    },
+    {
+      "id": "d016",
+      "length": "short",
+      "category": { "ar": "والدان", "en": "Parents", "fr": "Parents" },
+      "title": { "ar": "رحمة الوالدين", "en": "Mercy for parents", "fr": "Miséricorde pour les parents" },
+      "arabic": "رَبِّ ارْحَمْهُمَا كَمَا رَبَّيَانِي صَغِيرًا",
+      "english": "My Lord, have mercy on them both, as they raised me when I was small.",
+      "french": "Seigneur, fais-leur miséricorde à tous deux, comme ils m'ont élevé lorsque j'étais petit.",
+      "reference": "Qur'an, Al-Isra 17:24"
+    },
+    {
+      "id": "d017",
+      "length": "short",
+      "category": { "ar": "نوم", "en": "Sleep", "fr": "Sommeil" },
+      "title": { "ar": "عند النوم", "en": "When going to sleep", "fr": "Au moment de dormir" },
+      "arabic": "بِاسْمِكَ اللَّهُمَّ أَمُوتُ وَأَحْيَا",
+      "english": "In Your name, O Allah, I die and I live.",
+      "french": "En Ton nom, ô Allah, je meurs et je vis.",
+      "reference": "Sahih al-Bukhari 6324"
+    },
+    {
+      "id": "d018",
+      "length": "short",
+      "category": { "ar": "استيقاظ", "en": "Waking", "fr": "Réveil" },
+      "title": { "ar": "عند الاستيقاظ", "en": "Upon waking", "fr": "Au réveil" },
+      "arabic": "الْحَمْدُ لِلَّهِ الَّذِي أَحْيَانَا بَعْدَ مَا أَمَاتَنَا وَإِلَيْهِ النُّشُورُ",
+      "english": "Praise belongs to Allah, who gave us life after He had caused us to die, and to Him is the return.",
+      "french": "Louange à Allah, qui nous a rendus à la vie après nous avoir fait mourir, et c'est vers Lui que se fera le retour.",
+      "reference": "Sahih al-Bukhari 6312"
+    },
+    {
+      "id": "d019",
+      "length": "short",
+      "category": { "ar": "خلاء", "en": "Entering the toilet", "fr": "Entrer aux toilettes" },
+      "title": { "ar": "دخول الخلاء", "en": "Before entering the toilet", "fr": "Avant d'entrer aux toilettes" },
+      "arabic": "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْخُبُثِ وَالْخَبَائِثِ",
+      "english": "O Allah, I seek refuge in You from male and female devils.",
+      "french": "Ô Allah, je cherche protection auprès de Toi contre les démons mâles et femelles.",
+      "reference": "Sahih al-Bukhari 142; Sahih Muslim 375"
+    },
+    {
+      "id": "d020",
+      "length": "short",
+      "category": { "ar": "خلاء", "en": "Leaving the toilet", "fr": "Sortir des toilettes" },
+      "title": { "ar": "الخروج من الخلاء", "en": "After leaving the toilet", "fr": "En sortant des toilettes" },
+      "arabic": "غُفْرَانَكَ",
+      "english": "I seek Your forgiveness.",
+      "french": "Je demande Ton pardon.",
+      "reference": "Sunan Abi Dawud 30; Sunan at-Tirmidhi 7"
+    },
+    {
+      "id": "d021",
+      "length": "short",
+      "category": { "ar": "طعام", "en": "Food", "fr": "Nourriture" },
+      "title": { "ar": "قبل الطعام", "en": "Before eating", "fr": "Avant de manger" },
+      "arabic": "بِسْمِ اللَّهِ",
+      "english": "In the name of Allah.",
+      "french": "Au nom d'Allah.",
+      "reference": "Sunan Abi Dawud 3767; Sunan at-Tirmidhi 1858"
+    },
+    {
+      "id": "d022",
+      "length": "short",
+      "category": { "ar": "طعام", "en": "Food", "fr": "Nourriture" },
+      "title": { "ar": "بعد الطعام", "en": "After eating", "fr": "Après avoir mangé" },
+      "arabic": "الْحَمْدُ لِلَّهِ الَّذِي أَطْعَمَنِي هَذَا وَرَزَقَنِيهِ مِنْ غَيْرِ حَوْلٍ مِنِّي وَلَا قُوَّةٍ",
+      "english": "Praise belongs to Allah, who fed me this and provided it for me without any power or strength from me.",
+      "french": "Louange à Allah, qui m'a nourri de ceci et me l'a accordé sans force ni puissance de ma part.",
+      "reference": "Sunan Abi Dawud 4023; Sunan at-Tirmidhi 3458"
+    },
+    {
+      "id": "d023",
+      "length": "short",
+      "category": { "ar": "بيت", "en": "Home", "fr": "Demeure" },
+      "title": { "ar": "دخول البيت", "en": "Entering the home", "fr": "Entrer chez soi" },
+      "arabic": "بِسْمِ اللَّهِ وَلَجْنَا، وَبِسْمِ اللَّهِ خَرَجْنَا، وَعَلَى اللَّهِ رَبِّنَا تَوَكَّلْنَا",
+      "english": "In the name of Allah we enter, in the name of Allah we leave, and upon Allah, our Lord, we rely.",
+      "french": "Au nom d'Allah nous entrons, au nom d'Allah nous sortons, et c'est en Allah, notre Seigneur, que nous plaçons notre confiance.",
+      "reference": "Sunan Abi Dawud 5096"
+    },
+    {
+      "id": "d024",
+      "length": "short",
+      "category": { "ar": "خروج", "en": "Leaving", "fr": "Sortie" },
+      "title": { "ar": "الخروج من البيت", "en": "Leaving the home", "fr": "Quitter la maison" },
+      "arabic": "بِسْمِ اللَّهِ، تَوَكَّلْتُ عَلَى اللَّهِ، وَلَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ",
+      "english": "In the name of Allah, I place my trust in Allah, and there is no power and no strength except with Allah.",
+      "french": "Au nom d'Allah, je place ma confiance en Allah, et il n'y a de force ni de puissance qu'en Allah.",
+      "reference": "Sunan Abi Dawud 5095; Sunan at-Tirmidhi 3426"
+    },
+    {
+      "id": "d025",
+      "length": "short",
+      "category": { "ar": "مسجد", "en": "Mosque", "fr": "Mosquée" },
+      "title": { "ar": "دخول المسجد", "en": "Entering the mosque", "fr": "Entrer à la mosquée" },
+      "arabic": "اللَّهُمَّ افْتَحْ لِي أَبْوَابَ رَحْمَتِكَ",
+      "english": "O Allah, open for me the gates of Your mercy.",
+      "french": "Ô Allah, ouvre-moi les portes de Ta miséricorde.",
+      "reference": "Sahih Muslim 713"
+    },
+    {
+      "id": "d026",
+      "length": "short",
+      "category": { "ar": "مسجد", "en": "Mosque", "fr": "Mosquée" },
+      "title": { "ar": "الخروج من المسجد", "en": "Leaving the mosque", "fr": "Sortir de la mosquée" },
+      "arabic": "اللَّهُمَّ إِنِّي أَسْأَلُكَ مِنْ فَضْلِكَ",
+      "english": "O Allah, I ask You from Your bounty.",
+      "french": "Ô Allah, je Te demande de Ta grâce.",
+      "reference": "Sahih Muslim 713"
+    },
+    {
+      "id": "d027",
+      "length": "short",
+      "category": { "ar": "لباس", "en": "Clothing", "fr": "Vêtement" },
+      "title": { "ar": "لبس الثوب", "en": "When wearing a garment", "fr": "En mettant un vêtement" },
+      "arabic": "الْحَمْدُ لِلَّهِ الَّذِي كَسَانِي هَذَا وَرَزَقَنِيهِ مِنْ غَيْرِ حَوْلٍ مِنِّي وَلَا قُوَّةٍ",
+      "english": "Praise belongs to Allah, who clothed me with this and provided it without any power or strength from me.",
+      "french": "Louange à Allah, qui m'a vêtu de ceci et me l'a accordé sans force ni puissance de ma part.",
+      "reference": "Sunan Abi Dawud 4023; Sunan at-Tirmidhi 3458"
+    },
+    {
+      "id": "d028",
+      "length": "short",
+      "category": { "ar": "لباس", "en": "New clothes", "fr": "Vêtement neuf" },
+      "title": { "ar": "الثوب الجديد", "en": "When wearing something new", "fr": "En portant du neuf" },
+      "arabic": "اللَّهُمَّ لَكَ الْحَمْدُ أَنْتَ كَسَوْتَنِيهِ، أَسْأَلُكَ خَيْرَهُ وَخَيْرَ مَا صُنِعَ لَهُ، وَأَعُوذُ بِكَ مِنْ شَرِّهِ وَشَرِّ مَا صُنِعَ لَهُ",
+      "english": "O Allah, praise belongs to You. You have clothed me with it. I ask You for its good and the good of what it was made for, and I seek refuge in You from its evil and the evil of what it was made for.",
+      "french": "Ô Allah, à Toi la louange. C'est Toi qui m'en as vêtu. Je Te demande son bien et le bien de ce pour quoi il a été fait, et je cherche protection auprès de Toi contre son mal et le mal de ce pour quoi il a été fait.",
+      "reference": "Sunan Abi Dawud 4020; Sunan at-Tirmidhi 1767"
+    },
+    {
+      "id": "d029",
+      "length": "short",
+      "category": { "ar": "مرآة", "en": "Mirror", "fr": "Miroir" },
+      "title": { "ar": "النظر في المرآة", "en": "Looking in the mirror", "fr": "Se regarder dans le miroir" },
+      "arabic": "اللَّهُمَّ أَنْتَ حَسَّنْتَ خَلْقِي فَحَسِّنْ خُلُقِي",
+      "english": "O Allah, You have made my outward form beautiful, so make my character beautiful.",
+      "french": "Ô Allah, Tu as embelli ma création, embellis donc mon caractère.",
+      "reference": "Musnad Ahmad; reported among the supplications for good character. A similar wording is in Sahih Muslim 2018 without the mirror setting."
+    },
+    {
+      "id": "d030",
+      "length": "short",
+      "category": { "ar": "عطاس", "en": "Sneezing", "fr": "Éternuement" },
+      "title": { "ar": "تشميت العاطس", "en": "Reply to one who sneezes", "fr": "Réponse à celui qui éternue" },
+      "arabic": "يَرْحَمُكَ اللَّهُ",
+      "english": "May Allah have mercy on you.",
+      "french": "Qu'Allah te fasse miséricorde.",
+      "reference": "Sahih al-Bukhari 6224; Sahih Muslim 2991"
+    },
+    {
+      "id": "d031",
+      "length": "short",
+      "category": { "ar": "غضب", "en": "Anger", "fr": "Colère" },
+      "title": { "ar": "عند الغضب", "en": "When angry", "fr": "Dans la colère" },
+      "arabic": "أَعُوذُ بِاللَّهِ مِنَ الشَّيْطَانِ الرَّجِيمِ",
+      "english": "I seek refuge in Allah from the accursed devil.",
+      "french": "Je cherche protection auprès d'Allah contre le diable lapidé.",
+      "reference": "Sahih al-Bukhari 6115; Sahih Muslim 2610"
+    },
+    {
+      "id": "d032",
+      "length": "short",
+      "category": { "ar": "مطر", "en": "Rain", "fr": "Pluie" },
+      "title": { "ar": "عند نزول المطر", "en": "When rain falls", "fr": "Lorsque la pluie tombe" },
+      "arabic": "اللَّهُمَّ صَيِّبًا نَافِعًا",
+      "english": "O Allah, make it a beneficial downpour.",
+      "french": "Ô Allah, fais-en une pluie utile.",
+      "reference": "Sahih al-Bukhari 1032"
+    },
+    {
+      "id": "d033",
+      "length": "short",
+      "category": { "ar": "رعد", "en": "Thunder", "fr": "Tonnerre" },
+      "title": { "ar": "عند الرعد", "en": "Upon hearing thunder", "fr": "En entendant le tonnerre" },
+      "arabic": "سُبْحَانَ الَّذِي يُسَبِّحُ الرَّعْدُ بِحَمْدِهِ وَالْمَلَائِكَةُ مِنْ خِيفَتِهِ",
+      "english": "Glory be to the One whom the thunder glorifies with His praise, and so do the angels, out of fear of Him.",
+      "french": "Gloire à Celui que le tonnerre glorifie par Sa louange, ainsi que les anges, par crainte de Lui.",
+      "reference": "Muwatta Malik, the report of Abdullah ibn az-Zubayr; also related to Qur'an, Ar-Ra'd 13:13"
+    },
+    {
+      "id": "d034",
+      "length": "short",
+      "category": { "ar": "سفر", "en": "Travel", "fr": "Voyage" },
+      "title": { "ar": "ركوب الدابة", "en": "When mounting a vehicle", "fr": "En montant en véhicule" },
+      "arabic": "سُبْحَانَ الَّذِي سَخَّرَ لَنَا هَذَا وَمَا كُنَّا لَهُ مُقْرِنِينَ وَإِنَّا إِلَى رَبِّنَا لَمُنقَلِبُونَ",
+      "english": "Glory be to the One who has subjected this to us, and we could not have subdued it ourselves. And indeed, to our Lord we shall return.",
+      "french": "Gloire à Celui qui a mis ceci à notre service, alors que nous n'aurions pas pu le maîtriser. Et c'est vers notre Seigneur que nous retournerons.",
+      "reference": "Qur'an, Az-Zukhruf 43:13-14; Sunan Abi Dawud 2602"
+    },
+    {
+      "id": "d035",
+      "length": "short",
+      "category": { "ar": "سوق", "en": "Market", "fr": "Marché" },
+      "title": { "ar": "دخول السوق", "en": "Entering the market", "fr": "Entrer au marché" },
+      "arabic": "لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ، يُحْيِي وَيُمِيتُ، وَهُوَ حَيٌّ لَا يَمُوتُ، بِيَدِهِ الْخَيْرُ، وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ",
+      "english": "There is no god worthy of worship except Allah alone, with no partner. To Him belongs the dominion and to Him belongs praise. He gives life and causes death, and He is the Ever-Living who does not die. In His hand is all good, and He is able to do all things.",
+      "french": "Il n'y a de divinité digne d'adoration qu'Allah, Seul, sans associé. À Lui la royauté et à Lui la louange. Il donne la vie et Il donne la mort. Il est le Vivant qui ne meurt pas. En Sa main est tout bien, et Il est capable de toute chose.",
+      "reference": "Sunan at-Tirmidhi 3428; Sunan Ibn Majah 2235"
+    },
+    {
+      "id": "d036",
+      "length": "short",
+      "category": { "ar": "وضوء", "en": "Wudu", "fr": "Ablutions" },
+      "title": { "ar": "بعد الوضوء", "en": "After wudu", "fr": "Après les ablutions" },
+      "arabic": "أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ",
+      "english": "I bear witness that there is no god worthy of worship except Allah alone, with no partner, and I bear witness that Muhammad is His servant and His Messenger.",
+      "french": "J'atteste qu'il n'y a de divinité digne d'adoration qu'Allah, Seul, sans associé, et j'atteste que Muhammad est Son serviteur et Son Messager.",
+      "reference": "Sahih Muslim 234"
+    },
+    {
+      "id": "d037",
+      "length": "short",
+      "category": { "ar": "وضوء", "en": "Wudu", "fr": "Ablutions" },
+      "title": { "ar": "بدء الوضوء", "en": "Starting wudu", "fr": "Commencer les ablutions" },
+      "arabic": "بِسْمِ اللَّهِ",
+      "english": "In the name of Allah.",
+      "french": "Au nom d'Allah.",
+      "reference": "Sunan Abi Dawud 101; Sunan at-Tirmidhi"
+    },
+    {
+      "id": "d038",
+      "length": "short",
+      "category": { "ar": "صيام", "en": "Fasting", "fr": "Jeûne" },
+      "title": { "ar": "إفطار", "en": "Breaking the fast", "fr": "Rompre le jeûne" },
+      "arabic": "ذَهَبَ الظَّمَأُ وَابْتَلَّتِ الْعُرُوقُ وَثَبَتَ الْأَجْرُ إِنْ شَاءَ اللَّهُ",
+      "english": "The thirst has gone, the veins are moistened, and the reward is confirmed, if Allah wills.",
+      "french": "La soif est partie, les veines se sont humidifiées, et la récompense est assurée, si Allah le veut.",
+      "reference": "Sunan Abi Dawud 2357"
+    },
+    {
+      "id": "d039",
+      "length": "short",
+      "category": { "ar": "هلال", "en": "New moon", "fr": "Nouvelle lune" },
+      "title": { "ar": "رؤية الهلال", "en": "Upon seeing the new moon", "fr": "En voyant le croissant" },
+      "arabic": "اللَّهُمَّ أَهِلَّهُ عَلَيْنَا بِالْأَمْنِ وَالْإِيمَانِ، وَالسَّلَامَةِ وَالْإِسْلَامِ، رَبِّي وَرَبُّكَ اللَّهُ",
+      "english": "O Allah, bring it over us with security and faith, and with safety and Islam. My Lord and your Lord is Allah.",
+      "french": "Ô Allah, fais-le se lever sur nous avec la sécurité et la foi, la préservation et l'islam. Mon Seigneur et ton Seigneur est Allah.",
+      "reference": "Sunan at-Tirmidhi 3451"
+    },
+    {
+      "id": "d040",
+      "length": "short",
+      "category": { "ar": "صلاة", "en": "Prayer", "fr": "Prière" },
+      "title": { "ar": "بعد السلام", "en": "After the salam", "fr": "Après le salam" },
+      "arabic": "اللَّهُمَّ أَنْتَ السَّلَامُ وَمِنْكَ السَّلَامُ، تَبَارَكْتَ يَا ذَا الْجَلَالِ وَالْإِكْرَامِ",
+      "english": "O Allah, You are Peace and from You comes peace. Blessed are You, O Owner of majesty and honour.",
+      "french": "Ô Allah, Tu es la Paix et de Toi vient la paix. Tu es béni, ô Détenteur de la majesté et de la générosité.",
+      "reference": "Sahih Muslim 591"
+    },
+    {
+      "id": "d041",
+      "length": "short",
+      "category": { "ar": "أذان", "en": "Adhan", "fr": "Adhan" },
+      "title": { "ar": "بين الأذان والإقامة", "en": "Between adhan and iqamah", "fr": "Entre l'adhan et l'iqama" },
+      "arabic": "اللَّهُمَّ رَبَّ هَذِهِ الدَّعْوَةِ التَّامَّةِ وَالصَّلَاةِ الْقَائِمَةِ، آتِ مُحَمَّدًا الْوَسِيلَةَ وَالْفَضِيلَةَ، وَابْعَثْهُ مَقَامًا مَحْمُودًا الَّذِي وَعَدْتَهُ",
+      "english": "O Allah, Lord of this perfect call and of the prayer that is about to be established, grant Muhammad the wasilah and excellence, and raise him to the praised station that You have promised him.",
+      "french": "Ô Allah, Seigneur de cet appel parfait et de la prière qui va être accomplie, accorde à Muhammad la wasila et le mérite, et élève-le à la station louée que Tu lui as promise.",
+      "reference": "Sahih al-Bukhari 614"
+    },
+    {
+      "id": "d042",
+      "length": "short",
+      "category": { "ar": "سرور", "en": "Joy", "fr": "Joie" },
+      "title": { "ar": "عند أمر يسر", "en": "When something pleasing happens", "fr": "Lorsqu'une chose réjouit" },
+      "arabic": "الْحَمْدُ لِلَّهِ الَّذِي بِنِعْمَتِهِ تَتِمُّ الصَّالِحَاتُ",
+      "english": "Praise belongs to Allah, by whose blessing righteous deeds are completed.",
+      "french": "Louange à Allah, par le bienfait de qui les œuvres bonnes s'accomplissent.",
+      "reference": "Mustadrak al-Hakim; Ibn Majah 3803, graded hasan by a number of scholars."
+    },
+    {
+      "id": "d043",
+      "length": "short",
+      "category": { "ar": "كرب", "en": "Dislike", "fr": "Épreuve" },
+      "title": { "ar": "عند أمر يكره", "en": "When something disliked happens", "fr": "Lorsqu'une chose déplaît" },
+      "arabic": "الْحَمْدُ لِلَّهِ عَلَى كُلِّ حَالٍ",
+      "english": "Praise belongs to Allah in every condition.",
+      "french": "Louange à Allah en toute situation.",
+      "reference": "Sunan Ibn Majah 3803"
+    },
+    {
+      "id": "d044",
+      "length": "short",
+      "category": { "ar": "مريض", "en": "The sick", "fr": "Le malade" },
+      "title": { "ar": "عيادة المريض", "en": "Visiting the sick", "fr": "Visite au malade" },
+      "arabic": "لَا بَأْسَ طَهُورٌ إِنْ شَاءَ اللَّهُ",
+      "english": "No harm. It is a purification, if Allah wills.",
+      "french": "Pas de mal. C'est une purification, si Allah le veut.",
+      "reference": "Sahih al-Bukhari 3616"
+    },
+    {
+      "id": "d045",
+      "length": "short",
+      "category": { "ar": "يونس", "en": "The dua of Yunus", "fr": "L'invocation de Yunus" },
+      "title": { "ar": "دعوة ذي النون", "en": "The call of Yunus", "fr": "L'appel de Yunus" },
+      "arabic": "لَا إِلَهَ إِلَّا أَنْتَ سُبْحَانَكَ إِنِّي كُنْتُ مِنَ الظَّالِمِينَ",
+      "english": "There is no god worthy of worship except You. Glory be to You. Indeed, I have been among the wrongdoers.",
+      "french": "Il n'y a de divinité digne d'adoration que Toi. Gloire à Toi. J'étais certes parmi les injustes.",
+      "reference": "Qur'an, Al-Anbiya 21:87; Sunan at-Tirmidhi 3505"
+    },
+    {
+      "id": "d046",
+      "length": "short",
+      "category": { "ar": "صلاة", "en": "Prayer", "fr": "Prière" },
+      "title": { "ar": "بين السجدتين", "en": "Between the two prostrations", "fr": "Entre les deux prosternations" },
+      "arabic": "رَبِّ اغْفِرْ لِي، رَبِّ اغْفِرْ لِي",
+      "english": "My Lord, forgive me. My Lord, forgive me.",
+      "french": "Seigneur, pardonne-moi. Seigneur, pardonne-moi.",
+      "reference": "Sunan Abi Dawud 874; Sunan Ibn Majah"
+    },
+    {
+      "id": "d047",
+      "length": "short",
+      "category": { "ar": "ركوع", "en": "Bowing", "fr": "Inclinaison" },
+      "title": { "ar": "تسبيح الركوع", "en": "Glorification in ruku", "fr": "Glorification dans le ruku" },
+      "arabic": "سُبْحَانَ رَبِّيَ الْعَظِيمِ",
+      "english": "Glory be to my Lord, the Magnificent.",
+      "french": "Gloire à mon Seigneur, le Magnifique.",
+      "reference": "Sunan Abi Dawud 869; Sahih Muslim 772 for the command to glorify in ruku and sujud."
+    },
+    {
+      "id": "d048",
+      "length": "short",
+      "category": { "ar": "سجود", "en": "Prostration", "fr": "Prosternation" },
+      "title": { "ar": "تسبيح السجود", "en": "Glorification in sujud", "fr": "Glorification dans le sujud" },
+      "arabic": "سُبْحَانَ رَبِّيَ الْأَعْلَى",
+      "english": "Glory be to my Lord, the Most High.",
+      "french": "Gloire à mon Seigneur, le Très-Haut.",
+      "reference": "Sunan Abi Dawud 869"
+    },
+    {
+      "id": "d049",
+      "length": "short",
+      "category": { "ar": "تلبية", "en": "Talbiyah", "fr": "Talbiya" },
+      "title": { "ar": "التلبية", "en": "The talbiyah", "fr": "La talbiya" },
+      "arabic": "لَبَّيْكَ اللَّهُمَّ لَبَّيْكَ، لَبَّيْكَ لَا شَرِيكَ لَكَ لَبَّيْكَ، إِنَّ الْحَمْدَ وَالنِّعْمَةَ لَكَ وَالْمُلْكَ، لَا شَرِيكَ لَكَ",
+      "english": "Here I am, O Allah, here I am. Here I am, You have no partner, here I am. Indeed, praise and favour belong to You, and the dominion. You have no partner.",
+      "french": "Me voici, ô Allah, me voici. Me voici, Tu n'as pas d'associé, me voici. Certes, la louange et le bienfait T'appartiennent, ainsi que la royauté. Tu n'as pas d'associé.",
+      "reference": "Sahih al-Bukhari 1549; Sahih Muslim 1184"
+    },
+    {
+      "id": "d050",
+      "length": "short",
+      "category": { "ar": "قدر", "en": "Laylat al-Qadr", "fr": "Laylat al-Qadr" },
+      "title": { "ar": "ليلة القدر", "en": "The dua of Laylat al-Qadr", "fr": "L'invocation de Laylat al-Qadr" },
+      "arabic": "اللَّهُمَّ إِنَّكَ عَفُوٌّ تُحِبُّ الْعَفْوَ فَاعْفُ عَنِّي",
+      "english": "O Allah, You are Pardoning and You love to pardon, so pardon me.",
+      "french": "Ô Allah, Tu es Indulgent et Tu aimes l'indulgence, alors pardonne-moi.",
+      "reference": "Sunan at-Tirmidhi 3513"
+    },
+    {
+      "id": "d051",
+      "length": "long",
+      "category": { "ar": "استغفار", "en": "Seeking forgiveness", "fr": "Demande de pardon" },
+      "title": { "ar": "سيد الاستغفار", "en": "The master supplication for forgiveness", "fr": "La plus éminente demande de pardon" },
+      "arabic": "اللَّهُمَّ أَنْتَ رَبِّي لَا إِلَهَ إِلَّا أَنْتَ، خَلَقْتَنِي وَأَنَا عَبْدُكَ، وَأَنَا عَلَى عَهْدِكَ وَوَعْدِكَ مَا اسْتَطَعْتُ، أَعُوذُ بِكَ مِنْ شَرِّ مَا صَنَعْتُ، أَبُوءُ لَكَ بِنِعْمَتِكَ عَلَيَّ، وَأَبُوءُ بِذَنْبِي، فَاغْفِرْ لِي، فَإِنَّهُ لَا يَغْفِرُ الذُّنُوبَ إِلَّا أَنْتَ",
+      "english": "O Allah, You are my Lord. There is no god worthy of worship except You. You created me and I am Your servant, and I am upon Your covenant and promise as much as I am able. I seek refuge in You from the evil of what I have done. I acknowledge Your favour upon me, and I acknowledge my sin, so forgive me. None forgives sins except You.",
+      "french": "Ô Allah, Tu es mon Seigneur. Il n'y a de divinité digne d'adoration que Toi. Tu m'as créé et je suis Ton serviteur. Je suis sur Ton pacte et Ta promesse autant que je le puis. Je cherche protection auprès de Toi contre le mal de ce que j'ai fait. Je reconnais Ton bienfait envers moi et je reconnais mon péché. Pardonne-moi donc, car nul ne pardonne les péchés sinon Toi.",
+      "reference": "Sahih al-Bukhari 6306"
+    },
+    {
+      "id": "d052",
+      "length": "long",
+      "category": { "ar": "استخارة", "en": "Seeking guidance", "fr": "Demande de bon choix" },
+      "title": { "ar": "دعاء الاستخارة", "en": "The dua of istikhara", "fr": "L'invocation de l'istikhara" },
+      "arabic": "اللَّهُمَّ إِنِّي أَسْتَخِيرُكَ بِعِلْمِكَ، وَأَسْتَقْدِرُكَ بِقُدْرَتِكَ، وَأَسْأَلُكَ مِنْ فَضْلِكَ الْعَظِيمِ، فَإِنَّكَ تَقْدِرُ وَلَا أَقْدِرُ، وَتَعْلَمُ وَلَا أَعْلَمُ، وَأَنْتَ عَلَّامُ الْغُيُوبِ. اللَّهُمَّ إِنْ كُنْتَ تَعْلَمُ أَنَّ هَذَا الْأَمْرَ خَيْرٌ لِي فِي دِينِي وَمَعَاشِي وَعَاقِبَةِ أَمْرِي، فَاقْدُرْهُ لِي وَيَسِّرْهُ لِي، ثُمَّ بَارِكْ لِي فِيهِ. وَإِنْ كُنْتَ تَعْلَمُ أَنَّ هَذَا الْأَمْرَ شَرٌّ لِي فِي دِينِي وَمَعَاشِي وَعَاقِبَةِ أَمْرِي، فَاصْرِفْهُ عَنِّي وَاصْرِفْنِي عَنْهُ، وَاقْدُرْ لِيَ الْخَيْرَ حَيْثُ كَانَ، ثُمَّ أَرْضِنِي بِهِ",
+      "english": "O Allah, I ask You to choose for me by Your knowledge, and I ask You to decree for me by Your power, and I ask You from Your immense bounty. You are able and I am not. You know and I do not. You are the Knower of the unseen. O Allah, if You know that this matter is good for me in my religion, my livelihood, and the outcome of my affair, then decree it for me, make it easy for me, and bless me in it. And if You know that this matter is bad for me in my religion, my livelihood, and the outcome of my affair, then turn it away from me and turn me away from it, decree good for me wherever it is, and make me content with it.",
+      "french": "Ô Allah, je Te demande de choisir pour moi par Ta science, je Te demande de décréter pour moi par Ta puissance, et je Te demande de Ton immense grâce. Tu es capable et je ne le suis pas. Tu sais et je ne sais pas. Tu es le Connaisseur de l'invisible. Ô Allah, si Tu sais que cette affaire est un bien pour moi dans ma religion, ma subsistance et l'issue de mon affaire, alors décrète-la pour moi, facilite-la-moi et bénis-moi en elle. Et si Tu sais qu'elle est un mal pour moi dans ma religion, ma subsistance et l'issue de mon affaire, alors éloigne-la de moi et éloigne-moi d'elle, décrète pour moi le bien où qu'il soit, puis rends-m'en satisfait.",
+      "reference": "Sahih al-Bukhari 6382. The person names the matter in place of the words this matter."
+    },
+    {
+      "id": "d053",
+      "length": "long",
+      "category": { "ar": "قنوت", "en": "Qunut", "fr": "Qunut" },
+      "title": { "ar": "دعاء القنوت", "en": "The dua of qunut", "fr": "L'invocation du qunut" },
+      "arabic": "اللَّهُمَّ اهْدِنِي فِيمَنْ هَدَيْتَ، وَعَافِنِي فِيمَنْ عَافَيْتَ، وَتَوَلَّنِي فِيمَنْ تَوَلَّيْتَ، وَبَارِكْ لِي فِيمَا أَعْطَيْتَ، وَقِنِي شَرَّ مَا قَضَيْتَ، فَإِنَّكَ تَقْضِي وَلَا يُقْضَى عَلَيْكَ، وَإِنَّهُ لَا يَذِلُّ مَنْ وَالَيْتَ، وَلَا يَعِزُّ مَنْ عَادَيْتَ، تَبَارَكْتَ رَبَّنَا وَتَعَالَيْتَ",
+      "english": "O Allah, guide me among those You have guided, grant me well-being among those You have granted well-being, take me into Your care among those You have taken into Your care, bless me in what You have given, and protect me from the evil of what You have decreed. You decree and none decrees over You. Whomever You protect is not humiliated, and whomever You oppose is not honoured. Blessed are You, our Lord, and Exalted.",
+      "french": "Ô Allah, guide-moi parmi ceux que Tu as guidés, accorde-moi la préservation parmi ceux à qui Tu l'as accordée, prends-moi en charge parmi ceux que Tu as pris en charge, bénis-moi dans ce que Tu as donné, et préserve-moi du mal de ce que Tu as décrété. Tu décrètes et nul ne décrète sur Toi. Celui que Tu prends pour allié n'est pas humilié, et celui que Tu prends pour ennemi n'est pas honoré. Tu es béni, notre Seigneur, et Tu es élevé.",
+      "reference": "Sunan Abi Dawud 1425; Sunan at-Tirmidhi 464; Sunan an-Nasa'i"
+    },
+    {
+      "id": "d054",
+      "length": "long",
+      "category": { "ar": "هم", "en": "Anxiety", "fr": "Angoisse" },
+      "title": { "ar": "دعاء الهم والحزن", "en": "Dua against anxiety and grief", "fr": "Invocation contre l'angoisse et la tristesse" },
+      "arabic": "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْهَمِّ وَالْحَزَنِ، وَالْعَجْزِ وَالْكَسَلِ، وَالْبُخْلِ وَالْجُبْنِ، وَضَلَعِ الدَّيْنِ، وَغَلَبَةِ الرِّجَالِ",
+      "english": "O Allah, I seek refuge in You from anxiety and grief, from inability and laziness, from miserliness and cowardice, from the burden of debt and from being overpowered by men.",
+      "french": "Ô Allah, je cherche protection auprès de Toi contre l'angoisse et la tristesse, contre l'incapacité et la paresse, contre l'avarice et la lâcheté, contre le poids de la dette et contre la domination des hommes.",
+      "reference": "Sahih al-Bukhari 6369"
+    },
+    {
+      "id": "d055",
+      "length": "long",
+      "category": { "ar": "كرب", "en": "Distress", "fr": "Détresse" },
+      "title": { "ar": "دعاء الكرب", "en": "Dua in severe distress", "fr": "Invocation dans une grande détresse" },
+      "arabic": "لَا إِلَهَ إِلَّا اللَّهُ الْعَظِيمُ الْحَلِيمُ، لَا إِلَهَ إِلَّا اللَّهُ رَبُّ الْعَرْشِ الْعَظِيمِ، لَا إِلَهَ إِلَّا اللَّهُ رَبُّ السَّمَاوَاتِ وَرَبُّ الْأَرْضِ وَرَبُّ الْعَرْشِ الْكَرِيمِ",
+      "english": "There is no god worthy of worship except Allah, the Magnificent, the Forbearing. There is no god worthy of worship except Allah, Lord of the Magnificent Throne. There is no god worthy of worship except Allah, Lord of the heavens, Lord of the earth, and Lord of the Noble Throne.",
+      "french": "Il n'y a de divinité digne d'adoration qu'Allah, le Magnifique, le Longanime. Il n'y a de divinité digne d'adoration qu'Allah, Seigneur du Trône magnifique. Il n'y a de divinité digne d'adoration qu'Allah, Seigneur des cieux, Seigneur de la terre et Seigneur du Trône noble.",
+      "reference": "Sahih al-Bukhari 6346; Sahih Muslim 2730"
+    },
+    {
+      "id": "d056",
+      "length": "long",
+      "category": { "ar": "صلاة", "en": "Prayer", "fr": "Prière" },
+      "title": { "ar": "بعد التشهد", "en": "After the tashahhud", "fr": "Après le tashahhud" },
+      "arabic": "اللَّهُمَّ إِنِّي ظَلَمْتُ نَفْسِي ظُلْمًا كَثِيرًا، وَلَا يَغْفِرُ الذُّنُوبَ إِلَّا أَنْتَ، فَاغْفِرْ لِي مَغْفِرَةً مِنْ عِنْدِكَ، وَارْحَمْنِي، إِنَّكَ أَنْتَ الْغَفُورُ الرَّحِيمُ",
+      "english": "O Allah, I have wronged myself greatly, and none forgives sins except You, so grant me a forgiveness from Yourself and have mercy on me. You are the All-Forgiving, the Most Merciful.",
+      "french": "Ô Allah, j'ai été injuste envers moi-même d'une grande injustice, et nul ne pardonne les péchés sinon Toi. Accorde-moi donc un pardon venant de Toi et fais-moi miséricorde. Tu es le Pardonneur, le Très Miséricordieux.",
+      "reference": "Sahih al-Bukhari 834; Sahih Muslim 2705"
+    },
+    {
+      "id": "d057",
+      "length": "long",
+      "category": { "ar": "صلاة", "en": "Prayer", "fr": "Prière" },
+      "title": { "ar": "دعاء الاستفتاح", "en": "The opening dua of the prayer", "fr": "L'invocation d'ouverture de la prière" },
+      "arabic": "سُبْحَانَكَ اللَّهُمَّ وَبِحَمْدِكَ، وَتَبَارَكَ اسْمُكَ، وَتَعَالَى جَدُّكَ، وَلَا إِلَهَ غَيْرُكَ",
+      "english": "Glory be to You, O Allah, and praise belongs to You. Blessed is Your name, exalted is Your majesty, and there is no god worthy of worship besides You.",
+      "french": "Gloire à Toi, ô Allah, et louange à Toi. Béni est Ton nom, élevée est Ta majesté, et il n'y a de divinité digne d'adoration en dehors de Toi.",
+      "reference": "Sunan Abi Dawud 775; Sunan at-Tirmidhi 242; Sunan Ibn Majah"
+    },
+    {
+      "id": "d058",
+      "length": "long",
+      "category": { "ar": "صلاة", "en": "Prayer", "fr": "Prière" },
+      "title": { "ar": "وجهت وجهي", "en": "I have turned my face", "fr": "J'ai tourné mon visage" },
+      "arabic": "وَجَّهْتُ وَجْهِيَ لِلَّذِي فَطَرَ السَّمَاوَاتِ وَالْأَرْضَ حَنِيفًا، وَمَا أَنَا مِنَ الْمُشْرِكِينَ. إِنَّ صَلَاتِي وَنُسُكِي وَمَحْيَايَ وَمَمَاتِي لِلَّهِ رَبِّ الْعَالَمِينَ، لَا شَرِيكَ لَهُ، وَبِذَلِكَ أُمِرْتُ وَأَنَا مِنَ الْمُسْلِمِينَ",
+      "english": "I have turned my face to the One who originated the heavens and the earth, as a person of pure faith, and I am not of those who associate partners with Him. My prayer, my rites, my life, and my death are for Allah, Lord of the worlds. He has no partner. With that I have been commanded, and I am of the Muslims.",
+      "french": "J'ai tourné mon visage vers Celui qui a créé les cieux et la terre, en pur adorateur, et je ne suis pas de ceux qui Lui donnent des associés. Ma prière, mon rite, ma vie et ma mort appartiennent à Allah, Seigneur des mondes. Il n'a pas d'associé. C'est là ce qui m'a été ordonné, et je suis parmi les musulmans.",
+      "reference": "Sahih Muslim 771; the wording draws on Qur'an, Al-An'am 6:79 and 6:162-163"
+    },
+    {
+      "id": "d059",
+      "length": "long",
+      "category": { "ar": "صباح", "en": "Morning", "fr": "Matin" },
+      "title": { "ar": "أصبحنا وأصبح الملك", "en": "Morning remembrance", "fr": "Évocation du matin" },
+      "arabic": "أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ، لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ، وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ. رَبِّ أَسْأَلُكَ خَيْرَ مَا فِي هَذَا الْيَوْمِ وَخَيْرَ مَا بَعْدَهُ، وَأَعُوذُ بِكَ مِنْ شَرِّ مَا فِي هَذَا الْيَوْمِ وَشَرِّ مَا بَعْدَهُ. رَبِّ أَعُوذُ بِكَ مِنَ الْكَسَلِ وَسُوءِ الْكِبَرِ. رَبِّ أَعُوذُ بِكَ مِنْ عَذَابٍ فِي النَّارِ وَعَذَابٍ فِي الْقَبْرِ",
+      "english": "We have entered the morning and the dominion belongs to Allah. Praise belongs to Allah. There is no god worthy of worship except Allah alone, with no partner. To Him belongs the dominion and praise, and He is able to do all things. My Lord, I ask You for the good of this day and the good of what follows it, and I seek refuge in You from the evil of this day and the evil of what follows it. My Lord, I seek refuge in You from laziness and the evil of old age. My Lord, I seek refuge in You from punishment in the Fire and punishment in the grave.",
+      "french": "Nous voici au matin, et la royauté appartient à Allah. Louange à Allah. Il n'y a de divinité digne d'adoration qu'Allah, Seul, sans associé. À Lui la royauté et la louange, et Il est capable de toute chose. Seigneur, je Te demande le bien de ce jour et le bien de ce qui vient après, et je cherche protection auprès de Toi contre le mal de ce jour et le mal de ce qui vient après. Seigneur, je cherche protection auprès de Toi contre la paresse et le mal de la vieillesse. Seigneur, je cherche protection auprès de Toi contre le châtiment du Feu et le châtiment de la tombe.",
+      "reference": "Sahih Muslim 2723"
+    },
+    {
+      "id": "d060",
+      "length": "long",
+      "category": { "ar": "مساء", "en": "Evening", "fr": "Soir" },
+      "title": { "ar": "أمسينا وأمسى الملك", "en": "Evening remembrance", "fr": "Évocation du soir" },
+      "arabic": "أَمْسَيْنَا وَأَمْسَى الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ، لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ، وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ. رَبِّ أَسْأَلُكَ خَيْرَ مَا فِي هَذِهِ اللَّيْلَةِ وَخَيْرَ مَا بَعْدَهَا، وَأَعُوذُ بِكَ مِنْ شَرِّ مَا فِي هَذِهِ اللَّيْلَةِ وَشَرِّ مَا بَعْدَهَا. رَبِّ أَعُوذُ بِكَ مِنَ الْكَسَلِ وَسُوءِ الْكِبَرِ. رَبِّ أَعُوذُ بِكَ مِنْ عَذَابٍ فِي النَّارِ وَعَذَابٍ فِي الْقَبْرِ",
+      "english": "We have entered the evening and the dominion belongs to Allah. Praise belongs to Allah. There is no god worthy of worship except Allah alone, with no partner. To Him belongs the dominion and praise, and He is able to do all things. My Lord, I ask You for the good of this night and the good of what follows it, and I seek refuge in You from the evil of this night and the evil of what follows it. My Lord, I seek refuge in You from laziness and the evil of old age. My Lord, I seek refuge in You from punishment in the Fire and punishment in the grave.",
+      "french": "Nous voici au soir, et la royauté appartient à Allah. Louange à Allah. Il n'y a de divinité digne d'adoration qu'Allah, Seul, sans associé. À Lui la royauté et la louange, et Il est capable de toute chose. Seigneur, je Te demande le bien de cette nuit et le bien de ce qui vient après, et je cherche protection auprès de Toi contre le mal de cette nuit et le mal de ce qui vient après. Seigneur, je cherche protection auprès de Toi contre la paresse et le mal de la vieillesse. Seigneur, je cherche protection auprès de Toi contre le châtiment du Feu et le châtiment de la tombe.",
+      "reference": "Sahih Muslim 2723"
+    },
+    {
+      "id": "d061",
+      "length": "long",
+      "category": { "ar": "حماية", "en": "Protection", "fr": "Protection" },
+      "title": { "ar": "آية الكرسي", "en": "Ayat al-Kursi", "fr": "Ayat al-Kursi" },
+      "arabic": "اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ ۚ لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ ۚ لَّهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ ۗ مَن ذَا الَّذِي يَشْفَعُ عِندَهُ إِلَّا بِإِذْنِهِ ۚ يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ ۖ وَلَا يُحِيطُونَ بِشَيْءٍ مِّنْ عِلْمِهِ إِلَّا بِمَا شَاءَ ۚ وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالْأَرْضَ ۖ وَلَا يَئُودُهُ حِفْظُهُمَا ۚ وَهُوَ الْعَلِيُّ الْعَظِيمُ",
+      "english": "Allah, there is no god worthy of worship except Him, the Ever-Living, the Sustainer of all. Neither drowsiness nor sleep overtakes Him. To Him belongs whatever is in the heavens and whatever is on the earth. Who can intercede with Him except by His permission? He knows what is before them and what is behind them, and they encompass nothing of His knowledge except what He wills. His Kursi extends over the heavens and the earth, and guarding them does not tire Him. He is the Most High, the Magnificent.",
+      "french": "Allah, il n'y a de divinité digne d'adoration que Lui, le Vivant, Celui qui subsiste par Lui-même. Ni somnolence ni sommeil ne Le saisissent. À Lui appartient ce qui est dans les cieux et sur la terre. Qui peut intercéder auprès de Lui sans Sa permission ? Il sait ce qui est devant eux et ce qui est derrière eux, et ils n'embrassent de Sa science que ce qu'Il veut. Son Kursi s'étend sur les cieux et la terre, et leur garde ne Lui pèse pas. Il est le Très-Haut, le Magnifique.",
+      "reference": "Qur'an, Al-Baqarah 2:255. Its virtue as a protection is in Sahih al-Bukhari 2311 and 5010."
+    },
+    {
+      "id": "d062",
+      "length": "long",
+      "category": { "ar": "حماية", "en": "Protection", "fr": "Protection" },
+      "title": { "ar": "آخر آيتين من البقرة", "en": "The last two verses of Al-Baqarah", "fr": "Les deux derniers versets d'Al-Baqara" },
+      "arabic": "آمَنَ الرَّسُولُ بِمَا أُنزِلَ إِلَيْهِ مِن رَّبِّهِ وَالْمُؤْمِنُونَ ۚ كُلٌّ آمَنَ بِاللَّهِ وَمَلَائِكَتِهِ وَكُتُبِهِ وَرُسُلِهِ لَا نُفَرِّقُ بَيْنَ أَحَدٍ مِّن رُّسُلِهِ ۚ وَقَالُوا سَمِعْنَا وَأَطَعْنَا ۖ غُفْرَانَكَ رَبَّنَا وَإِلَيْكَ الْمَصِيرُ. لَا يُكَلِّفُ اللَّهُ نَفْسًا إِلَّا وُسْعَهَا ۚ لَهَا مَا كَسَبَتْ وَعَلَيْهَا مَا اكْتَسَبَتْ ۗ رَبَّنَا لَا تُؤَاخِذْنَا إِن نَّسِينَا أَوْ أَخْطَأْنَا ۚ رَبَّنَا وَلَا تَحْمِلْ عَلَيْنَا إِصْرًا كَمَا حَمَلْتَهُ عَلَى الَّذِينَ مِن قَبْلِنَا ۚ رَبَّنَا وَلَا تُحَمِّلْنَا مَا لَا طَاقَةَ لَنَا بِهِ ۖ وَاعْفُ عَنَّا وَاغْفِرْ لَنَا وَارْحَمْنَا ۚ أَنتَ مَوْلَانَا فَانصُرْنَا عَلَى الْقَوْمِ الْكَافِرِينَ",
+      "english": "The Messenger has believed in what was sent down to him from his Lord, and so have the believers. All of them have believed in Allah, His angels, His books, and His messengers. We make no distinction between any of His messengers. And they say: We hear and we obey. Your forgiveness, our Lord, and to You is the return. Allah does not burden a soul beyond its capacity. It has what it has earned, and against it is what it has acquired. Our Lord, do not take us to task if we forget or make a mistake. Our Lord, do not lay upon us a burden as You laid upon those before us. Our Lord, do not burden us with what we have no strength to bear. Pardon us, forgive us, and have mercy on us. You are our Protector, so help us against the people who reject the truth.",
+      "french": "Le Messager a cru en ce qui lui a été révélé de la part de son Seigneur, et les croyants aussi. Tous ont cru en Allah, en Ses anges, en Ses livres et en Ses messagers. Nous ne faisons aucune distinction entre Ses messagers. Et ils ont dit : Nous avons entendu et nous avons obéi. Ton pardon, notre Seigneur, et c'est vers Toi le retour. Allah n'impose à aucune âme plus que ce qu'elle peut porter. Elle a ce qu'elle a acquis, et contre elle est ce qu'elle a commis. Seigneur, ne nous tiens pas rigueur si nous oublions ou si nous commettons une erreur. Seigneur, ne nous charge pas d'un fardeau comme Tu en as chargé ceux qui furent avant nous. Seigneur, ne nous impose pas ce que nous n'avons pas la force de supporter. Efface nos fautes, pardonne-nous et fais-nous miséricorde. Tu es notre Protecteur. Donne-nous donc la victoire sur les gens mécréants.",
+      "reference": "Qur'an, Al-Baqarah 2:285-286. Whoever recites them at night, they suffice him: Sahih al-Bukhari 4008; Sahih Muslim 807."
+    },
+    {
+      "id": "d063",
+      "length": "long",
+      "category": { "ar": "قرآن", "en": "Qur'anic dua", "fr": "Invocation coranique" },
+      "title": { "ar": "ربنا آتنا", "en": "Good in this world and the next", "fr": "Le bien ici-bas et dans l'au-delà" },
+      "arabic": "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ",
+      "english": "Our Lord, give us good in this world and good in the Hereafter, and protect us from the punishment of the Fire.",
+      "french": "Seigneur, accorde-nous une belle part ici-bas et une belle part dans l'au-delà, et protège-nous du châtiment du Feu.",
+      "reference": "Qur'an, Al-Baqarah 2:201. The Prophet used it often: Sahih al-Bukhari 4522; Sahih Muslim 2690."
+    },
+    {
+      "id": "d064",
+      "length": "long",
+      "category": { "ar": "قرآن", "en": "Qur'anic dua", "fr": "Invocation coranique" },
+      "title": { "ar": "ربنا لا تزغ قلوبنا", "en": "Do not let our hearts swerve", "fr": "Ne laisse pas dévier nos cœurs" },
+      "arabic": "رَبَّنَا لَا تُزِغْ قُلُوبَنَا بَعْدَ إِذْ هَدَيْتَنَا وَهَبْ لَنَا مِن لَّدُنكَ رَحْمَةً ۚ إِنَّكَ أَنتَ الْوَهَّابُ",
+      "english": "Our Lord, do not let our hearts swerve after You have guided us, and grant us mercy from Yourself. You are the Bestower.",
+      "french": "Seigneur, ne laisse pas dévier nos cœurs après nous avoir guidés, et accorde-nous une miséricorde venant de Toi. Tu es Celui qui donne.",
+      "reference": "Qur'an, Aal Imran 3:8"
+    },
+    {
+      "id": "d065",
+      "length": "long",
+      "category": { "ar": "قرآن", "en": "Qur'anic dua", "fr": "Invocation coranique" },
+      "title": { "ar": "دعاء آدم", "en": "The dua of Adam and Hawwa", "fr": "L'invocation d'Adam et Hawwa" },
+      "arabic": "رَبَّنَا ظَلَمْنَا أَنفُسَنَا وَإِن لَّمْ تَغْفِرْ لَنَا وَتَرْحَمْنَا لَنَكُونَنَّ مِنَ الْخَاسِرِينَ",
+      "english": "Our Lord, we have wronged ourselves. If You do not forgive us and have mercy on us, we shall be among the losers.",
+      "french": "Seigneur, nous avons été injustes envers nous-mêmes. Si Tu ne nous pardonnes pas et ne nous fais pas miséricorde, nous serons parmi les perdants.",
+      "reference": "Qur'an, Al-A'raf 7:23"
+    },
+    {
+      "id": "d066",
+      "length": "long",
+      "category": { "ar": "قرآن", "en": "Qur'anic dua", "fr": "Invocation coranique" },
+      "title": { "ar": "شرح الصدر", "en": "Expand my chest", "fr": "Ouvre ma poitrine" },
+      "arabic": "رَبِّ اشْرَحْ لِي صَدْرِي وَيَسِّرْ لِي أَمْرِي وَاحْلُلْ عُقْدَةً مِّن لِّسَانِي يَفْقَهُوا قَوْلِي",
+      "english": "My Lord, expand my chest for me, make my task easy for me, and untie a knot from my tongue so that they may understand my speech.",
+      "french": "Seigneur, ouvre-moi la poitrine, facilite-moi mon affaire, et dénoue un nœud de ma langue afin qu'ils comprennent mes paroles.",
+      "reference": "Qur'an, Ta-Ha 20:25-28"
+    },
+    {
+      "id": "d067",
+      "length": "long",
+      "category": { "ar": "قرآن", "en": "Qur'anic dua", "fr": "Invocation coranique" },
+      "title": { "ar": "دعاء إبراهيم للذرية", "en": "Ibrahim's dua for his offspring", "fr": "L'invocation d'Ibrahim pour sa descendance" },
+      "arabic": "رَبِّ اجْعَلْنِي مُقِيمَ الصَّلَاةِ وَمِن ذُرِّيَّتِي ۚ رَبَّنَا وَتَقَبَّلْ دُعَاءِ. رَبَّنَا اغْفِرْ لِي وَلِوَالِدَيَّ وَلِلْمُؤْمِنِينَ يَوْمَ يَقُومُ الْحِسَابُ",
+      "english": "My Lord, make me one who establishes the prayer, and also from my descendants. Our Lord, accept my supplication. Our Lord, forgive me, my parents, and the believers on the Day the account is established.",
+      "french": "Seigneur, fais de moi quelqu'un qui accomplisse la prière, ainsi que parmi mes descendants. Seigneur, agrée mon invocation. Seigneur, pardonne-moi, à mes parents et aux croyants, le Jour où se dressera le compte.",
+      "reference": "Qur'an, Ibrahim 14:40-41"
+    },
+    {
+      "id": "d068",
+      "length": "long",
+      "category": { "ar": "قرآن", "en": "Qur'anic dua", "fr": "Invocation coranique" },
+      "title": { "ar": "دعاء للذرية", "en": "Dua for family", "fr": "Invocation pour la famille" },
+      "arabic": "رَبَّنَا هَبْ لَنَا مِنْ أَزْوَاجِنَا وَذُرِّيَّاتِنَا قُرَّةَ أَعْيُنٍ وَاجْعَلْنَا لِلْمُتَّقِينَ إِمَامًا",
+      "english": "Our Lord, grant us from our spouses and our children comfort to our eyes, and make us a model for the God-fearing.",
+      "french": "Seigneur, accorde-nous, de nos épouses et de nos enfants, la fraîcheur des yeux, et fais de nous un guide pour les pieux.",
+      "reference": "Qur'an, Al-Furqan 25:74"
+    },
+    {
+      "id": "d069",
+      "length": "long",
+      "category": { "ar": "شكر", "en": "Gratitude", "fr": "Reconnaissance" },
+      "title": { "ar": "دعاء سليمان", "en": "The dua of Sulayman", "fr": "L'invocation de Sulayman" },
+      "arabic": "رَبِّ أَوْزِعْنِي أَنْ أَشْكُرَ نِعْمَتَكَ الَّتِي أَنْعَمْتَ عَلَيَّ وَعَلَىٰ وَالِدَيَّ وَأَنْ أَعْمَلَ صَالِحًا تَرْضَاهُ وَأَدْخِلْنِي بِرَحْمَتِكَ فِي عِبَادِكَ الصَّالِحِينَ",
+      "english": "My Lord, enable me to be grateful for Your blessing which You have bestowed upon me and upon my parents, and to do righteous work that pleases You, and admit me by Your mercy among Your righteous servants.",
+      "french": "Seigneur, inspire-moi de rendre grâce pour le bienfait dont Tu m'as comblé, ainsi que mes parents, d'œuvrer en bien d'une manière qui Te plaise, et fais-moi entrer, par Ta miséricorde, parmi Tes serviteurs vertueux.",
+      "reference": "Qur'an, An-Naml 27:19"
+    },
+    {
+      "id": "d070",
+      "length": "long",
+      "category": { "ar": "والدان", "en": "Parents", "fr": "Parents" },
+      "title": { "ar": "دعاء بلوغ الأربعين", "en": "The dua at forty", "fr": "L'invocation à quarante ans" },
+      "arabic": "رَبِّ أَوْزِعْنِي أَنْ أَشْكُرَ نِعْمَتَكَ الَّتِي أَنْعَمْتَ عَلَيَّ وَعَلَىٰ وَالِدَيَّ وَأَنْ أَعْمَلَ صَالِحًا تَرْضَاهُ وَأَصْلِحْ لِي فِي ذُرِّيَّتِي ۖ إِنِّي تُبْتُ إِلَيْكَ وَإِنِّي مِنَ الْمُسْلِمِينَ",
+      "english": "My Lord, enable me to be grateful for Your blessing which You have bestowed upon me and upon my parents, to do righteous work that pleases You, and make my descendants righteous for me. I have turned to You in repentance, and I am of the Muslims.",
+      "french": "Seigneur, inspire-moi de rendre grâce pour le bienfait dont Tu m'as comblé, ainsi que mes parents, d'œuvrer en bien d'une manière qui Te plaise, et rends ma descendance vertueuse pour moi. Je reviens à Toi repentant, et je suis parmi les musulmans.",
+      "reference": "Qur'an, Al-Ahqaf 46:15"
+    },
+    {
+      "id": "d071",
+      "length": "long",
+      "category": { "ar": "حماية", "en": "Protection", "fr": "Protection" },
+      "title": { "ar": "المعوذات في المعنى", "en": "Seeking refuge in the Lord of daybreak", "fr": "Chercher protection auprès du Seigneur de l'aube" },
+      "arabic": "قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ مِن شَرِّ مَا خَلَقَ وَمِن شَرِّ غَاسِقٍ إِذَا وَقَبَ وَمِن شَرِّ النَّفَّاثَاتِ فِي الْعُقَدِ وَمِن شَرِّ حَاسِدٍ إِذَا حَسَدَ",
+      "english": "Say: I seek refuge in the Lord of the daybreak, from the evil of what He created, from the evil of darkness when it settles, from the evil of those who blow on knots, and from the evil of an envier when he envies.",
+      "french": "Dis : Je cherche protection auprès du Seigneur de l'aube, contre le mal de ce qu'Il a créé, contre le mal de l'obscurité lorsqu'elle s'étend, contre le mal de celles qui soufflent sur les nœuds, et contre le mal de l'envieux lorsqu'il envie.",
+      "reference": "Qur'an, Al-Falaq 113:1-5. Recited for protection with Al-Ikhlas and An-Nas: Sunan Abi Dawud 5082; Sunan at-Tirmidhi."
+    },
+    {
+      "id": "d072",
+      "length": "long",
+      "category": { "ar": "حماية", "en": "Protection", "fr": "Protection" },
+      "title": { "ar": "سورة الناس", "en": "Seeking refuge in the Lord of mankind", "fr": "Chercher protection auprès du Seigneur des hommes" },
+      "arabic": "قُلْ أَعُوذُ بِرَبِّ النَّاسِ مَلِكِ النَّاسِ إِلَٰهِ النَّاسِ مِن شَرِّ الْوَسْوَاسِ الْخَنَّاسِ الَّذِي يُوَسْوِسُ فِي صُدُورِ النَّاسِ مِنَ الْجِنَّةِ وَالنَّاسِ",
+      "english": "Say: I seek refuge in the Lord of mankind, the King of mankind, the God of mankind, from the evil of the whispering retreater, who whispers into the chests of mankind, from among jinn and mankind.",
+      "french": "Dis : Je cherche protection auprès du Seigneur des hommes, le Roi des hommes, le Dieu des hommes, contre le mal du mauvais conseiller furtif, qui souffle le doute dans les poitrines des hommes, qu'il soit un djinn ou un humain.",
+      "reference": "Qur'an, An-Nas 114:1-6"
+    },
+    {
+      "id": "d073",
+      "length": "long",
+      "category": { "ar": "نوم", "en": "Sleep", "fr": "Sommeil" },
+      "title": { "ar": "دعاء قبل النوم", "en": "A longer dua before sleep", "fr": "Une invocation plus longue avant le sommeil" },
+      "arabic": "اللَّهُمَّ قِنِي عَذَابَكَ يَوْمَ تَبْعَثُ عِبَادَكَ",
+      "english": "O Allah, protect me from Your punishment on the Day You raise Your servants.",
+      "french": "Ô Allah, préserve-moi de Ton châtiment le Jour où Tu ressusciteras Tes serviteurs.",
+      "reference": "Sunan Abi Dawud 5045; Sunan at-Tirmidhi 3398"
+    },
+    {
+      "id": "d074",
+      "length": "long",
+      "category": { "ar": "نوم", "en": "Sleep", "fr": "Sommeil" },
+      "title": { "ar": "باسمك ربي وضعت جنبي", "en": "In Your name I lay down", "fr": "En Ton nom je me couche" },
+      "arabic": "بِاسْمِكَ رَبِّي وَضَعْتُ جَنْبِي، وَبِكَ أَرْفَعُهُ، إِنْ أَمْسَكْتَ نَفْسِي فَارْحَمْهَا، وَإِنْ أَرْسَلْتَهَا فَاحْفَظْهَا بِمَا تَحْفَظُ بِهِ عِبَادَكَ الصَّالِحِينَ",
+      "english": "In Your name, my Lord, I lay down my side, and by You I raise it. If You take my soul, have mercy on it, and if You send it back, protect it with what You protect Your righteous servants.",
+      "french": "En Ton nom, mon Seigneur, je pose mon flanc, et par Toi je le relève. Si Tu retiens mon âme, fais-lui miséricorde, et si Tu la renvoies, garde-la par ce dont Tu gardes Tes serviteurs vertueux.",
+      "reference": "Sahih al-Bukhari 6320; Sahih Muslim 2714"
+    },
+    {
+      "id": "d075",
+      "length": "long",
+      "category": { "ar": "صبح", "en": "Morning and evening", "fr": "Matin et soir" },
+      "title": { "ar": "العفو والعافية", "en": "Pardon and well-being", "fr": "Pardon et préservation" },
+      "arabic": "اللَّهُمَّ إِنِّي أَسْأَلُكَ الْعَفْوَ وَالْعَافِيَةَ فِي الدُّنْيَا وَالْآخِرَةِ. اللَّهُمَّ إِنِّي أَسْأَلُكَ الْعَفْوَ وَالْعَافِيَةَ فِي دِينِي وَدُنْيَايَ وَأَهْلِي وَمَالِي. اللَّهُمَّ اسْتُرْ عَوْرَاتِي وَآمِنْ رَوْعَاتِي. اللَّهُمَّ احْفَظْنِي مِنْ بَيْنِ يَدَيَّ وَمِنْ خَلْفِي وَعَنْ يَمِينِي وَعَنْ شِمَالِي وَمِنْ فَوْقِي، وَأَعُوذُ بِعَظَمَتِكَ أَنْ أُغْتَالَ مِنْ تَحْتِي",
+      "english": "O Allah, I ask You for pardon and well-being in this world and the Hereafter. O Allah, I ask You for pardon and well-being in my religion, my worldly life, my family, and my wealth. O Allah, cover my faults and calm my fears. O Allah, protect me from in front of me, from behind me, from my right, from my left, and from above me, and I seek refuge in Your greatness from being taken from beneath me.",
+      "french": "Ô Allah, je Te demande le pardon et la préservation dans ce monde et dans l'au-delà. Ô Allah, je Te demande le pardon et la préservation dans ma religion, ma vie ici-bas, ma famille et mes biens. Ô Allah, couvre mes défauts et apaise mes frayeurs. Ô Allah, protège-moi de devant moi, de derrière moi, de ma droite, de ma gauche et d'au-dessus de moi, et je cherche protection dans Ta grandeur contre le fait d'être surpris par en dessous.",
+      "reference": "Sunan Abi Dawud 5074; Sunan Ibn Majah"
+    },
+    {
+      "id": "d076",
+      "length": "long",
+      "category": { "ar": "دين", "en": "Debt", "fr": "Dette" },
+      "title": { "ar": "دعاء الدَّين", "en": "Dua concerning debt", "fr": "Invocation au sujet de la dette" },
+      "arabic": "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْمَأْثَمِ وَالْمَغْرَمِ",
+      "english": "O Allah, I seek refuge in You from sin and from debt.",
+      "french": "Ô Allah, je cherche protection auprès de Toi contre le péché et contre la dette.",
+      "reference": "Sahih al-Bukhari 832; Sahih Muslim 589"
+    },
+    {
+      "id": "d077",
+      "length": "long",
+      "category": { "ar": "دين", "en": "Debt", "fr": "Dette" },
+      "title": { "ar": "قضاء الدين", "en": "A dua taught for settling debt", "fr": "Une invocation enseignée pour régler la dette" },
+      "arabic": "اللَّهُمَّ اكْفِنِي بِحَلَالِكَ عَنْ حَرَامِكَ، وَأَغْنِنِي بِفَضْلِكَ عَمَّنْ سِوَاكَ",
+      "english": "O Allah, suffice me with what You have made lawful against what You have made unlawful, and make me independent, by Your bounty, of everyone besides You.",
+      "french": "Ô Allah, contente-moi par ce que Tu as rendu licite plutôt que par ce que Tu as interdit, et rends-moi, par Ta grâce, indépendant de tout autre que Toi.",
+      "reference": "Sunan at-Tirmidhi 3563"
+    },
+    {
+      "id": "d078",
+      "length": "long",
+      "category": { "ar": "مطر", "en": "Rain", "fr": "Pluie" },
+      "title": { "ar": "الاستسقاء", "en": "Asking for rain", "fr": "Demander la pluie" },
+      "arabic": "اللَّهُمَّ اسْقِنَا غَيْثًا مُغِيثًا، مَرِيئًا مَرِيعًا، نَافِعًا غَيْرَ ضَارٍّ، عَاجِلًا غَيْرَ آجِلٍ",
+      "english": "O Allah, give us a rain that brings relief, that is wholesome and fertile, beneficial and not harmful, soon and not delayed.",
+      "french": "Ô Allah, abreuve-nous d'une pluie secourable, saine et féconde, utile et non nuisible, prompte et non tardive.",
+      "reference": "Sunan Abi Dawud 1169"
+    },
+    {
+      "id": "d079",
+      "length": "long",
+      "category": { "ar": "سفر", "en": "Travel", "fr": "Voyage" },
+      "title": { "ar": "دعاء السفر", "en": "The dua of travel", "fr": "L'invocation du voyage" },
+      "arabic": "اللَّهُمَّ إِنَّا نَسْأَلُكَ فِي سَفَرِنَا هَذَا الْبِرَّ وَالتَّقْوَى، وَمِنَ الْعَمَلِ مَا تَرْضَى. اللَّهُمَّ هَوِّنْ عَلَيْنَا سَفَرَنَا هَذَا وَاطْوِ عَنَّا بُعْدَهُ. اللَّهُمَّ أَنْتَ الصَّاحِبُ فِي السَّفَرِ، وَالْخَلِيفَةُ فِي الْأَهْلِ. اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ وَعْثَاءِ السَّفَرِ، وَكَآبَةِ الْمَنْظَرِ، وَسُوءِ الْمُنْقَلَبِ فِي الْمَالِ وَالْأَهْلِ",
+      "english": "O Allah, we ask You in this journey of ours for righteousness and mindfulness of You, and for deeds with which You are pleased. O Allah, make this journey easy for us and fold up its distance for us. O Allah, You are the Companion in travel and the Guardian over the family. O Allah, I seek refuge in You from the hardship of travel, from a distressing sight, and from a bad return in wealth and family.",
+      "french": "Ô Allah, nous Te demandons, dans ce voyage, la droiture et la piété, et des œuvres dont Tu sois satisfait. Ô Allah, facilite-nous ce voyage et raccourcis-nous sa distance. Ô Allah, Tu es le Compagnon dans le voyage et le Gardien de la famille. Ô Allah, je cherche protection auprès de Toi contre les peines du voyage, contre un spectacle affligeant et contre un mauvais retour dans les biens et la famille.",
+      "reference": "Sahih Muslim 1342"
+    },
+    {
+      "id": "d080",
+      "length": "long",
+      "category": { "ar": "سفر", "en": "Return from travel", "fr": "Retour de voyage" },
+      "title": { "ar": "الرجوع من السفر", "en": "Returning from a journey", "fr": "Au retour du voyage" },
+      "arabic": "آيِبُونَ تَائِبُونَ عَابِدُونَ لِرَبِّنَا حَامِدُونَ",
+      "english": "We return, repentant, worshipping our Lord, and praising Him.",
+      "french": "Nous revenons, repentants, adorant notre Seigneur et Le louant.",
+      "reference": "Sahih Muslim 1342"
+    },
+    {
+      "id": "d081",
+      "length": "long",
+      "category": { "ar": "عرفات", "en": "Arafah", "fr": "Arafat" },
+      "title": { "ar": "خير الدعاء يوم عرفة", "en": "The best dua on the Day of Arafah", "fr": "La meilleure invocation le jour d'Arafat" },
+      "arabic": "لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ، وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ",
+      "english": "There is no god worthy of worship except Allah alone, with no partner. To Him belongs the dominion and to Him belongs praise, and He is able to do all things.",
+      "french": "Il n'y a de divinité digne d'adoration qu'Allah, Seul, sans associé. À Lui la royauté et à Lui la louange, et Il est capable de toute chose.",
+      "reference": "Sunan at-Tirmidhi 3585"
+    },
+    {
+      "id": "d082",
+      "length": "long",
+      "category": { "ar": "حج", "en": "Between the Rukn and the Maqam", "fr": "Entre le Rukn et le Maqam" },
+      "title": { "ar": "دعاء الطواف", "en": "A reported dua of tawaf", "fr": "Une invocation rapportée du tawaf" },
+      "arabic": "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ",
+      "english": "Our Lord, give us good in this world and good in the Hereafter, and protect us from the punishment of the Fire.",
+      "french": "Seigneur, accorde-nous une belle part ici-bas et une belle part dans l'au-delà, et protège-nous du châtiment du Feu.",
+      "reference": "Sunan Abi Dawud 1892, reported between the Yemeni Corner and the Black Stone."
+    },
+    {
+      "id": "d083",
+      "length": "long",
+      "category": { "ar": "جنازة", "en": "Funeral", "fr": "Funérailles" },
+      "title": { "ar": "الدعاء للميت", "en": "Dua for the deceased", "fr": "Invocation pour le défunt" },
+      "arabic": "اللَّهُمَّ اغْفِرْ لَهُ وَارْحَمْهُ، وَعَافِهِ وَاعْفُ عَنْهُ، وَأَكْرِمْ نُزُلَهُ، وَوَسِّعْ مُدْخَلَهُ، وَاغْسِلْهُ بِالْمَاءِ وَالثَّلْجِ وَالْبَرَدِ، وَنَقِّهِ مِنَ الْخَطَايَا كَمَا نَقَّيْتَ الثَّوْبَ الْأَبْيَضَ مِنَ الدَّنَسِ، وَأَبْدِلْهُ دَارًا خَيْرًا مِنْ دَارِهِ، وَأَهْلًا خَيْرًا مِنْ أَهْلِهِ، وَزَوْجًا خَيْرًا مِنْ زَوْجِهِ، وَأَدْخِلْهُ الْجَنَّةَ، وَأَعِذْهُ مِنْ عَذَابِ الْقَبْرِ وَمِنْ عَذَابِ النَّارِ",
+      "english": "O Allah, forgive him, have mercy on him, grant him well-being, and pardon him. Honour his reception, expand his entrance, wash him with water, snow, and hail, and cleanse him of sins as a white garment is cleansed of dirt. Give him a home better than his home, a family better than his family, and a spouse better than his spouse. Admit him to Paradise and protect him from the punishment of the grave and the punishment of the Fire.",
+      "french": "Ô Allah, pardonne-lui, fais-lui miséricorde, accorde-lui la préservation et efface ses fautes. Honore son accueil, élargis son entrée, lave-le avec l'eau, la neige et la grêle, et purifie-le des fautes comme on purifie le vêtement blanc de la souillure. Donne-lui une demeure meilleure que la sienne, une famille meilleure que la sienne et un conjoint meilleur que le sien. Fais-le entrer au Paradis et protège-le du châtiment de la tombe et du châtiment du Feu.",
+      "reference": "Sahih Muslim 963. The pronouns are changed for a woman."
+    },
+    {
+      "id": "d084",
+      "length": "long",
+      "category": { "ar": "قبر", "en": "Graves", "fr": "Tombes" },
+      "title": { "ar": "زيارة القبور", "en": "When visiting the graves", "fr": "En visitant les tombes" },
+      "arabic": "السَّلَامُ عَلَيْكُمْ أَهْلَ الدِّيَارِ مِنَ الْمُؤْمِنِينَ وَالْمُسْلِمِينَ، وَإِنَّا إِنْ شَاءَ اللَّهُ بِكُمْ لَاحِقُونَ، أَسْأَلُ اللَّهَ لَنَا وَلَكُمُ الْعَافِيَةَ",
+      "english": "Peace be upon you, people of these dwellings, among the believers and the Muslims. We, if Allah wills, shall join you. I ask Allah for well-being for us and for you.",
+      "french": "Que la paix soit sur vous, habitants de ces demeures, parmi les croyants et les musulmans. Nous vous rejoindrons, si Allah le veut. Je demande à Allah la préservation pour nous et pour vous.",
+      "reference": "Sahih Muslim 975"
+    },
+    {
+      "id": "d085",
+      "length": "long",
+      "category": { "ar": "وتر", "en": "Witr", "fr": "Witr" },
+      "title": { "ar": "بعد الوتر", "en": "After Witr", "fr": "Après le witr" },
+      "arabic": "سُبْحَانَ الْمَلِكِ الْقُدُّوسِ",
+      "english": "Glory be to the King, the Most Holy. It is said three times, raising the voice the third time.",
+      "french": "Gloire au Roi, le Très Saint. On le dit trois fois, en élevant la voix la troisième fois.",
+      "reference": "Sunan Abi Dawud 1430; Sunan an-Nasa'i"
+    },
+    {
+      "id": "d086",
+      "length": "long",
+      "category": { "ar": "ليل", "en": "Night prayer", "fr": "Prière de nuit" },
+      "title": { "ar": "دعاء التهجد", "en": "A dua of the night prayer", "fr": "Une invocation de la prière de nuit" },
+      "arabic": "اللَّهُمَّ لَكَ الْحَمْدُ أَنْتَ قَيِّمُ السَّمَاوَاتِ وَالْأَرْضِ وَمَنْ فِيهِنَّ، وَلَكَ الْحَمْدُ أَنْتَ نُورُ السَّمَاوَاتِ وَالْأَرْضِ وَمَنْ فِيهِنَّ، وَلَكَ الْحَمْدُ أَنْتَ مَلِكُ السَّمَاوَاتِ وَالْأَرْضِ وَمَنْ فِيهِنَّ، وَلَكَ الْحَمْدُ أَنْتَ الْحَقُّ، وَوَعْدُكَ الْحَقُّ، وَلِقَاؤُكَ حَقٌّ، وَقَوْلُكَ حَقٌّ، وَالْجَنَّةُ حَقٌّ، وَالنَّارُ حَقٌّ، وَالنَّبِيُّونَ حَقٌّ، وَمُحَمَّدٌ حَقٌّ، وَالسَّاعَةُ حَقٌّ. اللَّهُمَّ لَكَ أَسْلَمْتُ، وَبِكَ آمَنْتُ، وَعَلَيْكَ تَوَكَّلْتُ، وَإِلَيْكَ أَنَبْتُ، وَبِكَ خَاصَمْتُ، وَإِلَيْكَ حَاكَمْتُ، فَاغْفِرْ لِي مَا قَدَّمْتُ وَمَا أَخَّرْتُ، وَمَا أَسْرَرْتُ وَمَا أَعْلَنْتُ، أَنْتَ الْمُقَدِّمُ وَأَنْتَ الْمُؤَخِّرُ، لَا إِلَهَ إِلَّا أَنْتَ",
+      "english": "O Allah, to You belongs praise. You are the Sustainer of the heavens and the earth and whoever is in them. To You belongs praise. You are the Light of the heavens and the earth and whoever is in them. To You belongs praise. You are the King of the heavens and the earth and whoever is in them. To You belongs praise. You are the Truth. Your promise is true, the meeting with You is true, Your word is true, Paradise is true, the Fire is true, the prophets are true, Muhammad is true, and the Hour is true. O Allah, to You I have submitted, in You I have believed, upon You I have relied, to You I have turned, by You I have argued, and to You I have taken my judgment. Forgive me what I have sent ahead and what I have left behind, what I have concealed and what I have declared. You are the One who brings forward and the One who delays. There is no god worthy of worship except You.",
+      "french": "Ô Allah, à Toi la louange. Tu es le Soutien des cieux et de la terre et de ceux qui s'y trouvent. À Toi la louange. Tu es la Lumière des cieux et de la terre et de ceux qui s'y trouvent. À Toi la louange. Tu es le Roi des cieux et de la terre et de ceux qui s'y trouvent. À Toi la louange. Tu es la Vérité. Ta promesse est vérité, la rencontre avec Toi est vérité, Ta parole est vérité, le Paradis est vérité, le Feu est vérité, les prophètes sont vérité, Muhammad est vérité, et l'Heure est vérité. Ô Allah, c'est à Toi que je me suis soumis, en Toi que j'ai cru, sur Toi que je me suis confié, vers Toi que je suis revenu, par Toi que j'ai disputé, et vers Toi que j'ai porté mon jugement. Pardonne-moi ce que j'ai avancé et ce que j'ai retardé, ce que j'ai caché et ce que j'ai montré. Tu es Celui qui avance et Celui qui retarde. Il n'y a de divinité digne d'adoration que Toi.",
+      "reference": "Sahih al-Bukhari 1120; Sahih Muslim 769"
+    },
+    {
+      "id": "d087",
+      "length": "long",
+      "category": { "ar": "علم", "en": "Knowledge", "fr": "Savoir" },
+      "title": { "ar": "دعاء العلم النافع", "en": "Dua for beneficial knowledge", "fr": "Invocation pour un savoir utile" },
+      "arabic": "اللَّهُمَّ إِنِّي أَسْأَلُكَ عِلْمًا نَافِعًا، وَرِزْقًا طَيِّبًا، وَعَمَلًا مُتَقَبَّلًا",
+      "english": "O Allah, I ask You for beneficial knowledge, wholesome provision, and deeds that are accepted.",
+      "french": "Ô Allah, je Te demande un savoir utile, une subsistance pure et une œuvre agréée.",
+      "reference": "Sunan Ibn Majah 925"
+    },
+    {
+      "id": "d088",
+      "length": "long",
+      "category": { "ar": "ثبات", "en": "Steadfastness", "fr": "Fermeté" },
+      "title": { "ar": "يا مقلب القلوب", "en": "O Turner of the hearts", "fr": "Ô Toi qui tournes les cœurs" },
+      "arabic": "يَا مُقَلِّبَ الْقُلُوبِ ثَبِّتْ قَلْبِي عَلَى دِينِكَ",
+      "english": "O Turner of the hearts, make my heart firm upon Your religion.",
+      "french": "Ô Toi qui tournes les cœurs, affermis mon cœur sur Ta religion.",
+      "reference": "Sunan at-Tirmidhi 2140"
+    },
+    {
+      "id": "d089",
+      "length": "long",
+      "category": { "ar": "دين ودنيا", "en": "Religion and life", "fr": "Religion et vie" },
+      "title": { "ar": "إصلاح الدين والدنيا والآخرة", "en": "Set right my religion, my life, and my end", "fr": "Rétablis ma religion, ma vie et ma fin" },
+      "arabic": "اللَّهُمَّ أَصْلِحْ لِي دِينِي الَّذِي هُوَ عِصْمَةُ أَمْرِي، وَأَصْلِحْ لِي دُنْيَايَ الَّتِي فِيهَا مَعَاشِي، وَأَصْلِحْ لِي آخِرَتِي الَّتِي فِيهَا مَعَادِي، وَاجْعَلِ الْحَيَاةَ زِيَادَةً لِي فِي كُلِّ خَيْرٍ، وَاجْعَلِ الْمَوْتَ رَاحَةً لِي مِنْ كُلِّ شَرٍّ",
+      "english": "O Allah, set right for me my religion, which is the safeguard of my affair. Set right for me my worldly life, in which is my living. Set right for me my Hereafter, to which is my return. Make life an increase for me in every good, and make death a rest for me from every evil.",
+      "french": "Ô Allah, réforme pour moi ma religion, qui est la protection de mon affaire. Réforme pour moi ma vie d'ici-bas, dans laquelle est ma subsistance. Réforme pour moi mon au-delà, vers lequel est mon retour. Fais que la vie soit pour moi un accroissement en tout bien, et fais que la mort soit pour moi un repos de tout mal.",
+      "reference": "Sahih Muslim 2720"
+    },
+    {
+      "id": "d090",
+      "length": "long",
+      "category": { "ar": "زواج", "en": "Marriage", "fr": "Mariage" },
+      "title": { "ar": "دعاء العرس", "en": "The wedding dua", "fr": "L'invocation des noces" },
+      "arabic": "بَارَكَ اللَّهُ لَكَ، وَبَارَكَ عَلَيْكَ، وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ",
+      "english": "May Allah bless you, send blessing upon you, and join you both in goodness.",
+      "french": "Qu'Allah te bénisse, répande Sa bénédiction sur toi et vous unisse tous deux dans le bien.",
+      "reference": "Sunan Abi Dawud 2130; Sunan at-Tirmidhi 1091; Sunan Ibn Majah"
+    },
+    {
+      "id": "d091",
+      "length": "long",
+      "category": { "ar": "نفس", "en": "The soul", "fr": "L'âme" },
+      "title": { "ar": "تزكية النفس", "en": "Purify my soul", "fr": "Purifie mon âme" },
+      "arabic": "اللَّهُمَّ آتِ نَفْسِي تَقْوَاهَا، وَزَكِّهَا أَنْتَ خَيْرُ مَنْ زَكَّاهَا، أَنْتَ وَلِيُّهَا وَمَوْلَاهَا. اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ عِلْمٍ لَا يَنْفَعُ، وَمِنْ قَلْبٍ لَا يَخْشَعُ، وَمِنْ نَفْسٍ لَا تَشْبَعُ، وَمِنْ دَعْوَةٍ لَا يُسْتَجَابُ لَهَا",
+      "english": "O Allah, grant my soul its mindfulness of You, and purify it. You are the best to purify it. You are its Guardian and its Master. O Allah, I seek refuge in You from knowledge that does not benefit, from a heart that does not humble itself, from a soul that is never satisfied, and from a supplication that is not answered.",
+      "french": "Ô Allah, donne à mon âme sa piété, et purifie-la. Tu es le meilleur à la purifier. Tu es son Gardien et son Maître. Ô Allah, je cherche protection auprès de Toi contre un savoir qui n'est pas utile, contre un cœur qui ne s'humilie pas, contre une âme qui n'est jamais rassasiée, et contre une invocation qui n'est pas exaucée.",
+      "reference": "Sahih Muslim 2722"
+    },
+    {
+      "id": "d092",
+      "length": "long",
+      "category": { "ar": "سجود", "en": "Prostration", "fr": "Prosternation" },
+      "title": { "ar": "دعاء السجود", "en": "A dua in prostration", "fr": "Une invocation dans la prosternation" },
+      "arabic": "اللَّهُمَّ اغْفِرْ لِي ذَنْبِي كُلَّهُ، دِقَّهُ وَجِلَّهُ، وَأَوَّلَهُ وَآخِرَهُ، وَعَلَانِيَتَهُ وَسِرَّهُ",
+      "english": "O Allah, forgive me all my sin, the small of it and the great of it, the first of it and the last of it, the open of it and the secret of it.",
+      "french": "Ô Allah, pardonne-moi tout mon péché, le petit et le grand, le premier et le dernier, celui qui est apparent et celui qui est caché.",
+      "reference": "Sahih Muslim 483"
+    },
+    {
+      "id": "d093",
+      "length": "long",
+      "category": { "ar": "أذان", "en": "After the adhan", "fr": "Après l'adhan" },
+      "title": { "ar": "الصلاة على النبي بعد الأذان", "en": "Blessings upon the Prophet after the adhan", "fr": "La prière sur le Prophète après l'adhan" },
+      "arabic": "اللَّهُمَّ صَلِّ وَسَلِّمْ عَلَى نَبِيِّنَا مُحَمَّدٍ",
+      "english": "O Allah, send prayers and peace upon our Prophet Muhammad. The fuller dua of the adhan then asks for the wasilah.",
+      "french": "Ô Allah, prie et répands la paix sur notre Prophète Muhammad. L'invocation plus complète de l'adhan demande ensuite la wasila.",
+      "reference": "Sahih Muslim 384; the full dua is Sahih al-Bukhari 614"
+    },
+    {
+      "id": "d094",
+      "length": "long",
+      "category": { "ar": "صيام", "en": "Fasting", "fr": "Jeûne" },
+      "title": { "ar": "نية الصوم والدعاء", "en": "When intending to fast", "fr": "En formulant l'intention du jeûne" },
+      "arabic": "اللَّهُمَّ لَكَ صُمْتُ، وَعَلَى رِزْقِكَ أَفْطَرْتُ",
+      "english": "O Allah, for You I have fasted, and upon Your provision I break my fast.",
+      "french": "Ô Allah, c'est pour Toi que j'ai jeûné, et c'est de Ta subsistance que je romps le jeûne.",
+      "reference": "Sunan Abi Dawud 2358. The chain is discussed by the scholars; the meaning agrees with fasting for Allah alone."
+    },
+    {
+      "id": "d095",
+      "length": "long",
+      "category": { "ar": "مغفرة", "en": "Forgiveness", "fr": "Pardon" },
+      "title": { "ar": "غسل الخطايا", "en": "Wash away my sins", "fr": "Lave mes fautes" },
+      "arabic": "اللَّهُمَّ اغْسِلْ خَطَايَايَ بِمَاءِ الثَّلْجِ وَالْبَرَدِ، وَنَقِّ قَلْبِي مِنَ الْخَطَايَا كَمَا نَقَّيْتَ الثَّوْبَ الْأَبْيَضَ مِنَ الدَّنَسِ، وَبَاعِدْ بَيْنِي وَبَيْنَ خَطَايَايَ كَمَا بَاعَدْتَ بَيْنَ الْمَشْرِقِ وَالْمَغْرِبِ",
+      "english": "O Allah, wash away my sins with water, snow, and hail. Cleanse my heart of sins as a white garment is cleansed of dirt. Distance me from my sins as You have distanced the east from the west.",
+      "french": "Ô Allah, lave mes fautes avec l'eau, la neige et la grêle. Purifie mon cœur des fautes comme on purifie le vêtement blanc de la souillure. Éloigne-moi de mes fautes comme Tu as éloigné l'orient de l'occident.",
+      "reference": "Sahih al-Bukhari 744; Sahih Muslim 598"
+    },
+    {
+      "id": "d096",
+      "length": "long",
+      "category": { "ar": "بيت", "en": "A new home", "fr": "Une nouvelle demeure" },
+      "title": { "ar": "دخول المنزل الجديد", "en": "Entering a new home", "fr": "Entrer dans une nouvelle demeure" },
+      "arabic": "اللَّهُمَّ إِنِّي أَسْأَلُكَ خَيْرَ الْمَوْلَجِ وَخَيْرَ الْمَخْرَجِ، بِسْمِ اللَّهِ وَلَجْنَا، وَبِسْمِ اللَّهِ خَرَجْنَا، وَعَلَى اللَّهِ رَبِّنَا تَوَكَّلْنَا",
+      "english": "O Allah, I ask You for the best entering and the best leaving. In the name of Allah we enter, in the name of Allah we leave, and upon Allah, our Lord, we rely.",
+      "french": "Ô Allah, je Te demande la meilleure entrée et la meilleure sortie. Au nom d'Allah nous entrons, au nom d'Allah nous sortons, et c'est en Allah, notre Seigneur, que nous plaçons notre confiance.",
+      "reference": "Sunan Abi Dawud 5096"
+    },
+    {
+      "id": "d097",
+      "length": "long",
+      "category": { "ar": "ريح", "en": "Wind", "fr": "Vent" },
+      "title": { "ar": "عند الريح", "en": "When the wind blows", "fr": "Lorsque le vent souffle" },
+      "arabic": "اللَّهُمَّ إِنِّي أَسْأَلُكَ خَيْرَهَا، وَأَعُوذُ بِكَ مِنْ شَرِّهَا",
+      "english": "O Allah, I ask You for its good, and I seek refuge in You from its evil.",
+      "french": "Ô Allah, je Te demande son bien, et je cherche protection auprès de Toi contre son mal.",
+      "reference": "Sunan Abi Dawud 5097; Sunan at-Tirmidhi"
+    },
+    {
+      "id": "d098",
+      "length": "long",
+      "category": { "ar": "مجلس", "en": "A gathering", "fr": "Une assemblée" },
+      "title": { "ar": "كفارة المجلس", "en": "The atonement of a gathering", "fr": "L'expiation d'une assemblée" },
+      "arabic": "سُبْحَانَكَ اللَّهُمَّ وَبِحَمْدِكَ، أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا أَنْتَ، أَسْتَغْفِرُكَ وَأَتُوبُ إِلَيْكَ",
+      "english": "Glory be to You, O Allah, and praise belongs to You. I bear witness that there is no god worthy of worship except You. I seek Your forgiveness and I turn to You in repentance.",
+      "french": "Gloire à Toi, ô Allah, et louange à Toi. J'atteste qu'il n'y a de divinité digne d'adoration que Toi. Je Te demande pardon et je reviens à Toi repentant.",
+      "reference": "Sunan Abi Dawud 4859; Sunan at-Tirmidhi 3433"
+    },
+    {
+      "id": "d099",
+      "length": "long",
+      "category": { "ar": "فتنة", "en": "Trials", "fr": "Épreuves" },
+      "title": { "ar": "التعوذ من الفتن", "en": "Seeking refuge from trials", "fr": "Chercher protection contre les épreuves" },
+      "arabic": "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ عَذَابِ جَهَنَّمَ، وَمِنْ عَذَابِ الْقَبْرِ، وَمِنْ فِتْنَةِ الْمَحْيَا وَالْمَمَاتِ، وَمِنْ شَرِّ فِتْنَةِ الْمَسِيحِ الدَّجَّالِ",
+      "english": "O Allah, I seek refuge in You from the punishment of Hell, from the punishment of the grave, from the trial of life and death, and from the evil of the trial of the False Messiah.",
+      "french": "Ô Allah, je cherche protection auprès de Toi contre le châtiment de l'Enfer, contre le châtiment de la tombe, contre l'épreuve de la vie et de la mort, et contre le mal de l'épreuve du faux messie.",
+      "reference": "Sahih Muslim 588"
+    },
+    {
+      "id": "d100",
+      "length": "long",
+      "category": { "ar": "ليل", "en": "The last part of the night", "fr": "La fin de la nuit" },
+      "title": { "ar": "دعاء الأسحار", "en": "A dua of the late night", "fr": "Une invocation de la fin de la nuit" },
+      "arabic": "اللَّهُمَّ إِنِّي أَسْأَلُكَ مِنَ الْخَيْرِ كُلِّهِ، عَاجِلِهِ وَآجِلِهِ، مَا عَلِمْتُ مِنْهُ وَمَا لَمْ أَعْلَمْ، وَأَعُوذُ بِكَ مِنَ الشَّرِّ كُلِّهِ، عَاجِلِهِ وَآجِلِهِ، مَا عَلِمْتُ مِنْهُ وَمَا لَمْ أَعْلَمْ. اللَّهُمَّ إِنِّي أَسْأَلُكَ مِنْ خَيْرِ مَا سَأَلَكَ عَبْدُكَ وَنَبِيُّكَ، وَأَعُوذُ بِكَ مِنْ شَرِّ مَا عَاذَ مِنْهُ عَبْدُكَ وَنَبِيُّكَ. اللَّهُمَّ إِنِّي أَسْأَلُكَ الْجَنَّةَ وَمَا قَرَّبَ إِلَيْهَا مِنْ قَوْلٍ أَوْ عَمَلٍ، وَأَعُوذُ بِكَ مِنَ النَّارِ وَمَا قَرَّبَ إِلَيْهَا مِنْ قَوْلٍ أَوْ عَمَلٍ، وَأَسْأَلُكَ أَنْ تَجْعَلَ كُلَّ قَضَاءٍ قَضَيْتَهُ لِي خَيْرًا",
+      "english": "O Allah, I ask You for all good, immediate and later, what I know of it and what I do not know, and I seek refuge in You from all evil, immediate and later, what I know of it and what I do not know. O Allah, I ask You for the good of what Your servant and Prophet asked You, and I seek refuge in You from the evil from which Your servant and Prophet sought refuge. O Allah, I ask You for Paradise and for whatever word or deed brings one near to it, and I seek refuge in You from the Fire and from whatever word or deed brings one near to it. And I ask You to make every decree You have decreed for me good.",
+      "french": "Ô Allah, je Te demande tout bien, proche et lointain, celui que je connais et celui que je ne connais pas, et je cherche protection auprès de Toi contre tout mal, proche et lointain, celui que je connais et celui que je ne connais pas. Ô Allah, je Te demande le bien de ce que Ton serviteur et Prophète T'a demandé, et je cherche protection auprès de Toi contre le mal dont Ton serviteur et Prophète a cherché protection. Ô Allah, je Te demande le Paradis et ce qui en rapproche, parole ou acte, et je cherche protection auprès de Toi contre le Feu et ce qui en rapproche, parole ou acte. Et je Te demande de faire que tout décret que Tu as décidé pour moi soit un bien.",
+      "reference": "Sunan Ibn Majah 3846; Musnad Ahmad, from Aishah, may Allah be pleased with her."
+    }
+  ],
+  "quranAyahs": [
+    {
+      "id": "q-2-186",
+      "surah": 2,
+      "ayah": 186,
+      "surahName": { "ar": "البقرة", "en": "Al-Baqarah", "fr": "Al-Baqara" },
+      "arabic": "وَإِذَا سَأَلَكَ عِبَادِي عَنِّي فَإِنِّي قَرِيبٌ ۖ أُجِيبُ دَعْوَةَ الدَّاعِ إِذَا دَعَانِ ۖ فَلْيَسْتَجِيبُوا لِي وَلْيُؤْمِنُوا بِي لَعَلَّهُمْ يَرْشُدُونَ",
+      "english": "When My servants ask you about Me, I am near. I answer the call of the caller when he calls Me. So let them respond to Me and believe in Me, that they may be guided.",
+      "french": "Si Mes serviteurs t'interrogent à Mon sujet, Je suis tout proche. Je réponds à l'appel de celui qui M'invoque lorsqu'il M'invoque. Qu'ils Me répondent donc et qu'ils croient en Moi, afin qu'ils soient bien guidés.",
+      "reference": "Al-Baqarah 2:186"
+    },
+    {
+      "id": "q-40-60",
+      "surah": 40,
+      "ayah": 60,
+      "surahName": { "ar": "غافر", "en": "Ghafir", "fr": "Ghafir" },
+      "arabic": "وَقَالَ رَبُّكُمُ ادْعُونِي أَسْتَجِبْ لَكُمْ",
+      "english": "Your Lord has said: Call upon Me; I will answer you.",
+      "french": "Votre Seigneur a dit : Invoquez-Moi, Je vous répondrai.",
+      "reference": "Ghafir 40:60"
+    },
+    {
+      "id": "q-2-201",
+      "surah": 2,
+      "ayah": 201,
+      "surahName": { "ar": "البقرة", "en": "Al-Baqarah", "fr": "Al-Baqara" },
+      "arabic": "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ",
+      "english": "Our Lord, give us good in this world and good in the Hereafter, and protect us from the punishment of the Fire.",
+      "french": "Seigneur, accorde-nous une belle part ici-bas et une belle part dans l'au-delà, et protège-nous du châtiment du Feu.",
+      "reference": "Al-Baqarah 2:201"
+    },
+    {
+      "id": "q-7-23",
+      "surah": 7,
+      "ayah": 23,
+      "surahName": { "ar": "الأعراف", "en": "Al-A'raf", "fr": "Al-A'raf" },
+      "arabic": "رَبَّنَا ظَلَمْنَا أَنفُسَنَا وَإِن لَّمْ تَغْفِرْ لَنَا وَتَرْحَمْنَا لَنَكُونَنَّ مِنَ الْخَاسِرِينَ",
+      "english": "Our Lord, we have wronged ourselves. If You do not forgive us and have mercy on us, we shall be among the losers.",
+      "french": "Seigneur, nous avons été injustes envers nous-mêmes. Si Tu ne nous pardonnes pas et ne nous fais pas miséricorde, nous serons parmi les perdants.",
+      "reference": "Al-A'raf 7:23"
+    },
+    {
+      "id": "q-3-8",
+      "surah": 3,
+      "ayah": 8,
+      "surahName": { "ar": "آل عمران", "en": "Aal Imran", "fr": "Al Imran" },
+      "arabic": "رَبَّنَا لَا تُزِغْ قُلُوبَنَا بَعْدَ إِذْ هَدَيْتَنَا وَهَبْ لَنَا مِن لَّدُنكَ رَحْمَةً ۚ إِنَّكَ أَنتَ الْوَهَّابُ",
+      "english": "Our Lord, do not let our hearts swerve after You have guided us, and grant us mercy from Yourself. You are the Bestower.",
+      "french": "Seigneur, ne laisse pas dévier nos cœurs après nous avoir guidés, et accorde-nous une miséricorde venant de Toi. Tu es Celui qui donne.",
+      "reference": "Aal Imran 3:8"
+    },
+    {
+      "id": "q-14-40",
+      "surah": 14,
+      "ayah": 40,
+      "surahName": { "ar": "إبراهيم", "en": "Ibrahim", "fr": "Ibrahim" },
+      "arabic": "رَبِّ اجْعَلْنِي مُقِيمَ الصَّلَاةِ وَمِن ذُرِّيَّتِي ۚ رَبَّنَا وَتَقَبَّلْ دُعَاءِ",
+      "english": "My Lord, make me one who establishes the prayer, and also from my descendants. Our Lord, accept my supplication.",
+      "french": "Seigneur, fais de moi quelqu'un qui accomplisse la prière, ainsi que parmi mes descendants. Seigneur, agrée mon invocation.",
+      "reference": "Ibrahim 14:40"
+    },
+    {
+      "id": "q-17-24",
+      "surah": 17,
+      "ayah": 24,
+      "surahName": { "ar": "الإسراء", "en": "Al-Isra", "fr": "Al-Isra" },
+      "arabic": "وَقُل رَّبِّ ارْحَمْهُمَا كَمَا رَبَّيَانِي صَغِيرًا",
+      "english": "And say: My Lord, have mercy on them both, as they raised me when I was small.",
+      "french": "Et dis : Seigneur, fais-leur miséricorde à tous deux, comme ils m'ont élevé lorsque j'étais petit.",
+      "reference": "Al-Isra 17:24"
+    },
+    {
+      "id": "q-21-87",
+      "surah": 21,
+      "ayah": 87,
+      "surahName": { "ar": "الأنبياء", "en": "Al-Anbiya", "fr": "Al-Anbiya" },
+      "arabic": "لَّا إِلَٰهَ إِلَّا أَنتَ سُبْحَانَكَ إِنِّي كُنتُ مِنَ الظَّالِمِينَ",
+      "english": "There is no god worthy of worship except You. Glory be to You. I have been among the wrongdoers.",
+      "french": "Il n'y a de divinité digne d'adoration que Toi. Gloire à Toi. J'étais parmi les injustes.",
+      "reference": "Al-Anbiya 21:87"
+    },
+    {
+      "id": "q-25-74",
+      "surah": 25,
+      "ayah": 74,
+      "surahName": { "ar": "الفرقان", "en": "Al-Furqan", "fr": "Al-Furqan" },
+      "arabic": "رَبَّنَا هَبْ لَنَا مِنْ أَزْوَاجِنَا وَذُرِّيَّاتِنَا قُرَّةَ أَعْيُنٍ وَاجْعَلْنَا لِلْمُتَّقِينَ إِمَامًا",
+      "english": "Our Lord, grant us from our spouses and our children comfort to our eyes, and make us a model for the God-fearing.",
+      "french": "Seigneur, accorde-nous, de nos épouses et de nos enfants, la fraîcheur des yeux, et fais de nous un guide pour les pieux.",
+      "reference": "Al-Furqan 25:74"
+    },
+    {
+      "id": "q-27-62",
+      "surah": 27,
+      "ayah": 62,
+      "surahName": { "ar": "النمل", "en": "An-Naml", "fr": "An-Naml" },
+      "arabic": "أَمَّن يُجِيبُ الْمُضْطَرَّ إِذَا دَعَاهُ وَيَكْشِفُ السُّوءَ",
+      "english": "Who answers the distressed person when he calls Him, and removes the harm?",
+      "french": "Qui répond à celui qui est dans la détresse lorsqu'il L'invoque, et qui dissipe le mal ?",
+      "reference": "An-Naml 27:62"
+    },
+    {
+      "id": "q-2-286",
+      "surah": 2,
+      "ayah": 286,
+      "surahName": { "ar": "البقرة", "en": "Al-Baqarah", "fr": "Al-Baqara" },
+      "arabic": "رَبَّنَا لَا تُؤَاخِذْنَا إِن نَّسِينَا أَوْ أَخْطَأْنَا ۚ رَبَّنَا وَلَا تَحْمِلْ عَلَيْنَا إِصْرًا كَمَا حَمَلْتَهُ عَلَى الَّذِينَ مِن قَبْلِنَا ۚ رَبَّنَا وَلَا تُحَمِّلْنَا مَا لَا طَاقَةَ لَنَا بِهِ ۖ وَاعْفُ عَنَّا وَاغْفِرْ لَنَا وَارْحَمْنَا ۚ أَنتَ مَوْلَانَا فَانصُرْنَا عَلَى الْقَوْمِ الْكَافِرِينَ",
+      "english": "Our Lord, do not take us to task if we forget or err. Our Lord, do not lay upon us a burden as You laid upon those before us. Our Lord, do not burden us with more than we can bear. Pardon us, forgive us, and have mercy on us. You are our Protector, so help us against the people who reject the truth.",
+      "french": "Seigneur, ne nous tiens pas rigueur si nous oublions ou si nous errons. Seigneur, ne nous charge pas d'un fardeau comme Tu en as chargé ceux d'avant nous. Seigneur, ne nous impose pas ce que nous ne pouvons porter. Efface nos fautes, pardonne-nous et fais-nous miséricorde. Tu es notre Protecteur. Donne-nous la victoire sur les gens mécréants.",
+      "reference": "Al-Baqarah 2:286"
+    },
+    {
+      "id": "q-3-16",
+      "surah": 3,
+      "ayah": 16,
+      "surahName": { "ar": "آل عمران", "en": "Aal Imran", "fr": "Al Imran" },
+      "arabic": "رَبَّنَا إِنَّنَا آمَنَّا فَاغْفِرْ لَنَا ذُنُوبَنَا وَقِنَا عَذَابَ النَّارِ",
+      "english": "Our Lord, we have believed, so forgive us our sins and protect us from the punishment of the Fire.",
+      "french": "Seigneur, nous avons cru. Pardonne-nous donc nos péchés et protège-nous du châtiment du Feu.",
+      "reference": "Aal Imran 3:16"
+    },
+    {
+      "id": "q-23-97",
+      "surah": 23,
+      "ayah": 97,
+      "surahName": { "ar": "المؤمنون", "en": "Al-Mu'minun", "fr": "Al-Mu'minun" },
+      "arabic": "رَّبِّ أَعُوذُ بِكَ مِنْ هَمَزَاتِ الشَّيَاطِينِ وَأَعُوذُ بِكَ رَبِّ أَن يَحْضُرُونِ",
+      "english": "My Lord, I seek refuge in You from the promptings of the devils, and I seek refuge in You, my Lord, from their coming near me.",
+      "french": "Seigneur, je cherche protection auprès de Toi contre les suggestions des diables, et je cherche protection auprès de Toi, Seigneur, contre leur présence auprès de moi.",
+      "reference": "Al-Mu'minun 23:97-98"
+    }
+  ],
+  "hadiths": [
+    {
+      "id": "h-dua-01",
+      "narrator": { "ar": "النعمان بن بشير", "en": "An-Nu'man ibn Bashir", "fr": "An-Nu'man ibn Bashir" },
+      "arabic": "الدُّعَاءُ هُوَ الْعِبَادَةُ",
+      "english": "Supplication is worship itself.",
+      "french": "L'invocation est l'adoration même.",
+      "reference": "Sunan at-Tirmidhi 3372; Sunan Abi Dawud 1479",
+      "grade": "Hasan sahih according to at-Tirmidhi"
+    },
+    {
+      "id": "h-dua-02",
+      "narrator": { "ar": "أبو هريرة", "en": "Abu Hurayrah", "fr": "Abu Hurayra" },
+      "arabic": "لَيْسَ شَيْءٌ أَكْرَمَ عَلَى اللَّهِ مِنَ الدُّعَاءِ",
+      "english": "Nothing is more honourable to Allah than supplication.",
+      "french": "Rien n'est plus honorable auprès d'Allah que l'invocation.",
+      "reference": "Sunan at-Tirmidhi 3370; Sunan Ibn Majah 3829",
+      "grade": "Hasan"
+    },
+    {
+      "id": "h-dua-03",
+      "narrator": { "ar": "أبو هريرة", "en": "Abu Hurayrah", "fr": "Abu Hurayra" },
+      "arabic": "مَنْ لَمْ يَسْأَلِ اللَّهَ يَغْضَبْ عَلَيْهِ",
+      "english": "Whoever does not ask of Allah, He becomes displeased with him.",
+      "french": "Celui qui ne demande rien à Allah, Allah Se met en colère contre lui.",
+      "reference": "Sunan at-Tirmidhi 3373",
+      "grade": "Hasan"
+    },
+    {
+      "id": "h-dua-04",
+      "narrator": { "ar": "أبو هريرة", "en": "Abu Hurayrah", "fr": "Abu Hurayra" },
+      "arabic": "ثَلَاثُ دَعَوَاتٍ مُسْتَجَابَاتٌ لَا شَكَّ فِيهِنَّ: دَعْوَةُ الْمَظْلُومِ، وَدَعْوَةُ الْمُسَافِرِ، وَدَعْوَةُ الْوَالِدِ لِوَلَدِهِ",
+      "english": "Three supplications are answered, without doubt: the supplication of the wronged, the supplication of the traveller, and the supplication of a parent for his child.",
+      "french": "Trois invocations sont exaucées, sans doute : l'invocation de l'opprimé, l'invocation du voyageur et l'invocation du parent pour son enfant.",
+      "reference": "Sunan Abi Dawud 1536; Sunan at-Tirmidhi 1905",
+      "grade": "Hasan"
+    },
+    {
+      "id": "h-dua-05",
+      "narrator": { "ar": "سلمان الفارسي", "en": "Salman al-Farisi", "fr": "Salman al-Farisi" },
+      "arabic": "إِنَّ رَبَّكُمْ حَيِيٌّ كَرِيمٌ، يَسْتَحْيِي مِنْ عَبْدِهِ إِذَا رَفَعَ يَدَيْهِ إِلَيْهِ أَنْ يَرُدَّهُمَا صِفْرًا",
+      "english": "Your Lord is Modest and Generous. He is too modest, when His servant raises his hands to Him, to return them empty.",
+      "french": "Votre Seigneur est Pudique et Généreux. Il a trop de pudeur, lorsque Son serviteur lève les mains vers Lui, pour les lui rendre vides.",
+      "reference": "Sunan Abi Dawud 1488; Sunan at-Tirmidhi 3556",
+      "grade": "Sahih according to a number of hadith scholars"
+    },
+    {
+      "id": "h-dua-06",
+      "narrator": { "ar": "شداد بن أوس", "en": "Shaddad ibn Aws", "fr": "Shaddad ibn Aws" },
+      "arabic": "سَيِّدُ الِاسْتِغْفَارِ أَنْ تَقُولَ: اللَّهُمَّ أَنْتَ رَبِّي لَا إِلَهَ إِلَّا أَنْتَ",
+      "english": "The master formula of seeking forgiveness is that you say: O Allah, You are my Lord, there is no god worthy of worship except You.",
+      "french": "La plus éminente formule de demande de pardon est de dire : Ô Allah, Tu es mon Seigneur, il n'y a de divinité digne d'adoration que Toi.",
+      "reference": "Sahih al-Bukhari 6306",
+      "grade": "Sahih"
+    },
+    {
+      "id": "h-dua-07",
+      "narrator": { "ar": "سعد بن أبي وقاص", "en": "Sa'd ibn Abi Waqqas", "fr": "Sa'd ibn Abi Waqqas" },
+      "arabic": "دَعْوَةُ ذِي النُّونِ إِذْ دَعَا وَهُوَ فِي بَطْنِ الْحُوتِ: لَا إِلَهَ إِلَّا أَنْتَ سُبْحَانَكَ إِنِّي كُنْتُ مِنَ الظَّالِمِينَ. لَمْ يَدْعُ بِهَا رَجُلٌ مُسْلِمٌ فِي شَيْءٍ قَطُّ إِلَّا اسْتَجَابَ اللَّهُ لَهُ",
+      "english": "The supplication of Dhun-Nun, when he called from inside the whale, was: There is no god worthy of worship except You. Glory be to You. I have been among the wrongdoers. No Muslim man calls with it for anything except that Allah answers him.",
+      "french": "L'invocation de Dhun-Nun, lorsqu'il invoqua du ventre du poisson, fut : Il n'y a de divinité digne d'adoration que Toi. Gloire à Toi. J'étais parmi les injustes. Aucun musulman ne l'adresse pour une chose sans qu'Allah la lui exauce.",
+      "reference": "Sunan at-Tirmidhi 3505",
+      "grade": "Hasan"
+    },
+    {
+      "id": "h-dua-08",
+      "narrator": { "ar": "عائشة", "en": "Aishah", "fr": "Aicha" },
+      "arabic": "قُولِي: اللَّهُمَّ إِنَّكَ عَفُوٌّ تُحِبُّ الْعَفْوَ فَاعْفُ عَنِّي",
+      "english": "Say: O Allah, You are Pardoning and You love to pardon, so pardon me.",
+      "french": "Dis : Ô Allah, Tu es Indulgent et Tu aimes l'indulgence, alors pardonne-moi.",
+      "reference": "Sunan at-Tirmidhi 3513",
+      "grade": "Sahih"
+    },
+    {
+      "id": "h-dua-09",
+      "narrator": { "ar": "أنس بن مالك", "en": "Anas ibn Malik", "fr": "Anas ibn Malik" },
+      "arabic": "الدُّعَاءُ لَا يُرَدُّ بَيْنَ الْأَذَانِ وَالْإِقَامَةِ",
+      "english": "Supplication is not rejected between the adhan and the iqamah.",
+      "french": "L'invocation n'est pas repoussée entre l'adhan et l'iqama.",
+      "reference": "Sunan Abi Dawud 521; Sunan at-Tirmidhi 212",
+      "grade": "Sahih"
+    },
+    {
+      "id": "h-dua-10",
+      "narrator": { "ar": "أبو هريرة", "en": "Abu Hurayrah", "fr": "Abu Hurayra" },
+      "arabic": "أَقْرَبُ مَا يَكُونُ الْعَبْدُ مِنْ رَبِّهِ وَهُوَ سَاجِدٌ، فَأَكْثِرُوا الدُّعَاءَ",
+      "english": "The closest a servant is to his Lord is while he is prostrating, so increase in supplication.",
+      "french": "Le serviteur est le plus proche de son Seigneur lorsqu'il est prosterné. Multipliez donc les invocations.",
+      "reference": "Sahih Muslim 482",
+      "grade": "Sahih"
+    },
+    {
+      "id": "h-dua-11",
+      "narrator": { "ar": "أبو هريرة", "en": "Abu Hurayrah", "fr": "Abu Hurayra" },
+      "arabic": "يَنْزِلُ رَبُّنَا تَبَارَكَ وَتَعَالَى كُلَّ لَيْلَةٍ إِلَى السَّمَاءِ الدُّنْيَا حِينَ يَبْقَى ثُلُثُ اللَّيْلِ الْآخِرُ، فَيَقُولُ: مَنْ يَدْعُونِي فَأَسْتَجِيبَ لَهُ",
+      "english": "Our Lord, Blessed and Exalted, descends every night to the lowest heaven when the last third of the night remains, and He says: Who calls upon Me, that I may answer him?",
+      "french": "Notre Seigneur, béni et élevé, descend chaque nuit au ciel le plus bas lorsqu'il reste le dernier tiers de la nuit, et Il dit : Qui M'invoque, afin que Je lui réponde ?",
+      "reference": "Sahih al-Bukhari 1145; Sahih Muslim 758",
+      "grade": "Sahih"
+    },
+    {
+      "id": "h-dua-12",
+      "narrator": { "ar": "أبو هريرة", "en": "Abu Hurayrah", "fr": "Abu Hurayra" },
+      "arabic": "مَنْ قَالَ: سُبْحَانَ اللَّهِ وَبِحَمْدِهِ، فِي يَوْمٍ مِائَةَ مَرَّةٍ، حُطَّتْ خَطَايَاهُ وَإِنْ كَانَتْ مِثْلَ زَبَدِ الْبَحْرِ",
+      "english": "Whoever says, Glory be to Allah and praise belongs to Him, one hundred times in a day, his sins are removed even if they are like the foam of the sea.",
+      "french": "Celui qui dit : Gloire à Allah et louange à Lui, cent fois dans une journée, ses fautes lui sont ôtées, même si elles sont semblables à l'écume de la mer.",
+      "reference": "Sahih al-Bukhari 6405; Sahih Muslim 2691",
+      "grade": "Sahih"
+    },
+    {
+      "id": "h-dua-13",
+      "narrator": { "ar": "أبو موسى الأشعري", "en": "Abu Musa al-Ash'ari", "fr": "Abu Musa al-Ash'ari" },
+      "arabic": "أَلَا أَدُلُّكَ عَلَى كَنْزٍ مِنْ كُنُوزِ الْجَنَّةِ؟ لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ",
+      "english": "Shall I not guide you to a treasure from the treasures of Paradise? There is no power and no strength except with Allah.",
+      "french": "Ne t'indiquerai-je pas un trésor parmi les trésors du Paradis ? Il n'y a de force ni de puissance qu'en Allah.",
+      "reference": "Sahih al-Bukhari 4205; Sahih Muslim 2704",
+      "grade": "Sahih"
+    }
+  ]
+}

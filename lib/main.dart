@@ -3,15 +3,18 @@ import 'package:flutter/services.dart';
 import 'dart:convert';
 import 'package:device_preview/device_preview.dart';
 import 'splash_screen.dart';
-import 'onboarding_screen.dart';
-import 'login_screen.dart';
 import 'home_screen.dart';
-import 'qibla_compass_screen.dart';
-import 'forgot_password_screen.dart';
+import 'more/qibla_page.dart';
 import 'stats.dart';
 import 'auth_service.dart';
-import 'welcome_screen.dart';
 import 'translations.dart';
+import 'package:timezone/data/latest.dart' as tz;
+import 'package:timezone/timezone.dart' as tz;
+import 'services/quran_data_service.dart';
+import 'package:provider/provider.dart';
+import 'services/global_surah_audio_service.dart';
+import 'services/app_language_prefs.dart';
+import 'services/prayer_notification_service.dart';
 
 // ============ THEME ============
 class AppTheme {
@@ -101,7 +104,18 @@ class AppTheme {
 // ============ MAIN APP ============
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(DevicePreview(enabled: false, builder: (context) => const MyApp()));
+  tz.initializeTimeZones();
+  await QuranDataService.instance.load();
+  await PrayerNotificationService.instance.init();
+  runApp(
+    DevicePreview(
+      enabled: false,
+      builder: (context) => ChangeNotifierProvider(
+        create: (_) => GlobalSurahAudioService(),
+        child: const MyApp(),
+      ),
+    ),
+  );
 }
 
 class MyApp extends StatefulWidget {
@@ -113,11 +127,10 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   bool _isDarkMode = false;
-  String _currentLanguage = 'English';
+  String _currentLanguage = 'French';
   bool _isLoggedIn = false;
-  bool _showOnboarding = true;
   bool _showSplash = true;
-  bool _showWelcome = false;
+  bool _bootReady = false;
   User? _currentUser;
 
   final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
@@ -125,14 +138,22 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    _checkAuthStatus();
-    _initStatsTracker();
+    _boot();
+  }
 
-    Future.delayed(const Duration(seconds: 2), () {
-      if (mounted) {
-        setState(() => _showSplash = false);
-      }
-    });
+  Future<void> _boot() async {
+    final savedLang = await AppLanguagePrefs.get();
+    await AppLanguagePrefs.set(savedLang);
+    await Future.wait([
+      _checkAuthStatus(),
+      _initStatsTracker(),
+    ]);
+    if (mounted) {
+      setState(() {
+        _currentLanguage = savedLang;
+        _bootReady = true;
+      });
+    }
   }
 
   Future<void> _checkAuthStatus() async {
@@ -144,13 +165,12 @@ class _MyAppState extends State<MyApp> {
       setState(() {
         _isLoggedIn = isLoggedIn;
         _currentUser = user;
-        if (isLoggedIn) {
-          _showOnboarding = false;
-          _showSplash = false;
-          _showWelcome = true;
-        }
       });
     }
+  }
+
+  void _onSplashFinished() {
+    if (mounted) setState(() => _showSplash = false);
   }
 
   Future<void> _initStatsTracker() async {
@@ -166,24 +186,9 @@ class _MyAppState extends State<MyApp> {
     }
   }
 
-  void _handleLogin() {
-    setState(() {
-      _isLoggedIn = true;
-      _showWelcome = true;
-    });
-  }
-
-  void _handleSkipLogin() {
-    setState(() {
-      _isLoggedIn = false;
-      _showWelcome = false;
-    });
-  }
-
   void _handleLogout() {
     setState(() {
       _isLoggedIn = false;
-      _showWelcome = false;
     });
   }
 
@@ -206,61 +211,39 @@ class _MyAppState extends State<MyApp> {
           child: child!,
         );
       },
-      home: _showSplash
-          ? const SplashScreen()
-          : _showOnboarding
-          ? OnboardingScreen(
-              onComplete: () => setState(() => _showOnboarding = false),
+      home: _showSplash || !_bootReady
+          ? SplashScreen(
+              onFinished: _onSplashFinished,
+              appTitle: Translations.getText(
+                _currentLanguage,
+                'appTitleShort',
+              ),
+              subtitle: Translations.getText(
+                _currentLanguage,
+                'splashSubtitle',
+              ),
+            )
+          : HomeScreen(
+              onThemeToggle: (value) => setState(() => _isDarkMode = value),
+              onUserUpdated: _refreshUser,
+              onLanguageChange: (language) async {
+                setState(() => _currentLanguage = language);
+                await AppLanguagePrefs.set(language);
+                await PrayerNotificationService.instance.rescheduleFromCache();
+              },
               currentLanguage: _currentLanguage,
               isDarkMode: _isDarkMode,
-            )
-          : (_showWelcome
-                ? WelcomeScreen(
-                    onContinue: () => setState(() => _showWelcome = false),
-                    isDarkMode: _isDarkMode,
-                    currentLanguage: _currentLanguage,
-                    userName: _currentUser?.name ?? 'Guest',
-                  )
-                : (_isLoggedIn ||
-                      true) // Always show HomeScreen, logged in or not
-                ? HomeScreen(
-                    onThemeToggle: (value) =>
-                        setState(() => _isDarkMode = value),
-                    onUserUpdated: _refreshUser,
-
-                    onLanguageChange: (language) =>
-                        setState(() => _currentLanguage = language),
-                    currentLanguage: _currentLanguage,
-                    isDarkMode: _isDarkMode,
-
-                    onNavigateToQibla: () {
-                      navigatorKey.currentState?.push(
-                        MaterialPageRoute(
-                          builder: (context) => QiblaCompassScreen(
-                            isDarkMode: _isDarkMode,
-                            currentLanguage: _currentLanguage,
-                          ),
-                        ),
-                      );
-                    },
-                  )
-                : LoginScreen(
-                    onLogin: _handleLogin,
-                    onSignup: _handleLogin,
-                    onSkipLogin: _handleSkipLogin,
-                    onForgotPassword: () {
-                      navigatorKey.currentState?.push(
-                        MaterialPageRoute(
-                          builder: (context) => ForgotPasswordScreen(
-                            isDarkMode: _isDarkMode,
-                            currentLanguage: _currentLanguage,
-                          ),
-                        ),
-                      );
-                    },
-                    currentLanguage: _currentLanguage,
-                    isDarkMode: _isDarkMode,
-                  )),
+              onNavigateToQibla: () {
+                navigatorKey.currentState?.push(
+                  MaterialPageRoute(
+                    builder: (context) => QiblaPage(
+                      isDarkMode: _isDarkMode,
+                      currentLanguage: _currentLanguage,
+                    ),
+                  ),
+                );
+              },
+            ),
     );
   }
 }

@@ -1,0 +1,420 @@
+{
+  "id": "namaz",
+  "title": {
+    "ar": "طريقة الصلاة",
+    "en": "How to Pray",
+    "fr": "La manière d'accomplir la prière"
+  },
+  "description": {
+    "ar": "بيان عملي للصلاة على ما ثبت عن النبي ﷺ، مع الألفاظ العربية وترجمتها، والتنبيه إلى أن بعض الهيئات تختلف بين المذاهب المعتبرة.",
+    "en": "A practical account of the prayer according to what is established from the Prophet, peace and blessings be upon him, with the Arabic words and their meanings. Some postures differ among the recognised schools. Follow a reliable scholar in those details.",
+    "fr": "Un exposé pratique de la prière selon ce qui est établi du Prophète, que la paix et les bénédictions d'Allah soient sur lui, avec les paroles arabes et leur sens. Certaines postures diffèrent entre les écoles reconnues. Suivez un savant fiable pour ces détails."
+  },
+  "prayerTimes": [
+    { "id": "fajr", "rakahsFard": 2, "name": { "ar": "الفجر", "en": "Fajr", "fr": "Fajr" } },
+    { "id": "dhuhr", "rakahsFard": 4, "name": { "ar": "الظهر", "en": "Dhuhr", "fr": "Dhuhr" } },
+    { "id": "asr", "rakahsFard": 4, "name": { "ar": "العصر", "en": "Asr", "fr": "Asr" } },
+    { "id": "maghrib", "rakahsFard": 3, "name": { "ar": "المغرب", "en": "Maghrib", "fr": "Maghrib" } },
+    { "id": "isha", "rakahsFard": 4, "name": { "ar": "العشاء", "en": "Isha", "fr": "Isha" } }
+  ],
+  "conditions": {
+    "title": { "ar": "شروط الصلاة", "en": "Conditions of the prayer", "fr": "Conditions de la prière" },
+    "items": [
+      {
+        "ar": "الإسلام، والعقل، والتمييز.",
+        "en": "Islam, sanity, and being of an age to understand.",
+        "fr": "L'islam, la raison et l'âge du discernement."
+      },
+      {
+        "ar": "الطهارة من الحدث الأكبر والأصغر، وطهارة البدن والثوب والمكان.",
+        "en": "Purity from major and minor ritual impurity, and purity of the body, the clothing, and the place.",
+        "fr": "La pureté de l'impureté majeure et mineure, et la pureté du corps, du vêtement et du lieu."
+      },
+      {
+        "ar": "ستر العورة. الرجل يستر ما بين السرة والركبة على المشهور، والمرأة تستَر بدنها في الصلاة إلا الوجه والكفين على قول كثير من العلماء.",
+        "en": "Covering the awrah. A man covers what is between the navel and the knee according to the well-known view. A woman covers her body in prayer except the face and the hands, according to many scholars.",
+        "fr": "Couvrir la awra. L'homme couvre ce qui est entre le nombril et le genou selon l'avis connu. La femme couvre son corps dans la prière, sauf le visage et les mains, selon de nombreux savants."
+      },
+      {
+        "ar": "استقبال القبلة، مع القدرة.",
+        "en": "Facing the Qiblah, when one is able.",
+        "fr": "Se tourner vers la Qibla, lorsque l'on en est capable."
+      },
+      {
+        "ar": "دخول الوقت.",
+        "en": "The time of the prayer having entered.",
+        "fr": "L'entrée de l'heure de la prière."
+      },
+      {
+        "ar": "النية في القلب، ولا يُشترط التلفظ بها.",
+        "en": "The intention in the heart. Speaking it aloud is not required.",
+        "fr": "L'intention dans le cœur. La prononcer à voix haute n'est pas exigée."
+      }
+    ]
+  },
+  "wudu": {
+    "title": { "ar": "الوضوء", "en": "Wudu", "fr": "Les ablutions" },
+    "steps": [
+      {
+        "order": 1,
+        "name": { "ar": "النية والتسمية", "en": "Intention and the name of Allah", "fr": "L'intention et le nom d'Allah" },
+        "arabic": "بِسْمِ اللَّهِ",
+        "english": "Intend wudu in the heart, then say: In the name of Allah.",
+        "french": "Formez l'intention des ablutions dans le cœur, puis dites : Au nom d'Allah.",
+        "reference": "Sunan Abi Dawud 101"
+      },
+      {
+        "order": 2,
+        "name": { "ar": "غسل الكفين", "en": "Washing the hands", "fr": "Laver les mains" },
+        "arabic": "",
+        "english": "Wash both hands up to the wrists three times.",
+        "french": "Lavez les deux mains jusqu'aux poignets trois fois.",
+        "reference": "Sahih al-Bukhari 159; Sahih Muslim 226"
+      },
+      {
+        "order": 3,
+        "name": { "ar": "المضمضة والاستنشاق", "en": "Rinsing the mouth and the nose", "fr": "Rincer la bouche et le nez" },
+        "arabic": "",
+        "english": "Rinse the mouth and sniff water into the nose, then blow it out, three times.",
+        "french": "Rincez la bouche, aspirez l'eau par le nez puis rejetez-la, trois fois.",
+        "reference": "Sahih al-Bukhari 159"
+      },
+      {
+        "order": 4,
+        "name": { "ar": "غسل الوجه", "en": "Washing the face", "fr": "Laver le visage" },
+        "arabic": "",
+        "english": "Wash the face from the hairline to the chin, and from ear to ear, three times.",
+        "french": "Lavez le visage de la naissance des cheveux au menton, et d'une oreille à l'autre, trois fois.",
+        "reference": "Sahih Muslim 226"
+      },
+      {
+        "order": 5,
+        "name": { "ar": "غسل اليدين إلى المرفقين", "en": "Washing the arms", "fr": "Laver les bras" },
+        "arabic": "",
+        "english": "Wash the right arm to the elbow, including the elbow, three times, then the left.",
+        "french": "Lavez le bras droit jusqu'au coude, coude compris, trois fois, puis le gauche.",
+        "reference": "Qur'an, Al-Ma'idah 5:6"
+      },
+      {
+        "order": 6,
+        "name": { "ar": "مسح الرأس", "en": "Wiping the head", "fr": "Essuyer la tête" },
+        "arabic": "",
+        "english": "Wipe the head once. Wipe the ears with the same water, as is established in the sunnah.",
+        "french": "Essuyez la tête une fois. Essuyez les oreilles avec la même eau, comme cela est établi dans la sunna.",
+        "reference": "Sunan Abi Dawud 123; Sahih Muslim 226"
+      },
+      {
+        "order": 7,
+        "name": { "ar": "غسل الرجلين", "en": "Washing the feet", "fr": "Laver les pieds" },
+        "arabic": "",
+        "english": "Wash the right foot to the ankle, including the ankle, three times, then the left, and pass water between the toes.",
+        "french": "Lavez le pied droit jusqu'à la cheville, cheville comprise, trois fois, puis le gauche, et faites passer l'eau entre les orteils.",
+        "reference": "Sahih al-Bukhari 159"
+      },
+      {
+        "order": 8,
+        "name": { "ar": "الذكر بعده", "en": "The words after wudu", "fr": "Les paroles après les ablutions" },
+        "arabic": "أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ. اللَّهُمَّ اجْعَلْنِي مِنَ التَّوَّابِينَ وَاجْعَلْنِي مِنَ الْمُتَطَهِّرِينَ",
+        "english": "I bear witness that there is no god worthy of worship except Allah alone, with no partner, and I bear witness that Muhammad is His servant and Messenger. O Allah, make me among those who repent and among those who purify themselves.",
+        "french": "J'atteste qu'il n'y a de divinité digne d'adoration qu'Allah, Seul, sans associé, et j'atteste que Muhammad est Son serviteur et Son Messager. Ô Allah, fais de moi quelqu'un parmi ceux qui se repentent et parmi ceux qui se purifient.",
+        "reference": "Sahih Muslim 234; Sunan at-Tirmidhi 55"
+      }
+    ]
+  },
+  "pillars": {
+    "title": { "ar": "أركان الصلاة", "en": "Pillars of the prayer", "fr": "Piliers de la prière" },
+    "note": {
+      "en": "The schools differ slightly in counting some pillars and obligations. The following are the acts without which the prayer is not valid according to the great majority.",
+      "fr": "Les écoles diffèrent légèrement dans le compte de certains piliers et devoirs. Ce qui suit sont les actes sans lesquels la prière n'est pas valable selon la grande majorité."
+    },
+    "items": [
+      { "ar": "النية", "en": "The intention", "fr": "L'intention" },
+      { "ar": "تكبيرة الإحرام", "en": "The opening takbir", "fr": "Le takbir d'ouverture" },
+      { "ar": "القيام في الفرض للقادر", "en": "Standing in the obligatory prayer, for the one who is able", "fr": "Se tenir debout dans la prière obligatoire, pour celui qui le peut" },
+      { "ar": "قراءة الفاتحة", "en": "Reciting Al-Fatihah", "fr": "Réciter Al-Fatiha" },
+      { "ar": "الركوع", "en": "Bowing", "fr": "L'inclinaison" },
+      { "ar": "الاعتدال منه", "en": "Rising from the bow until one is straight", "fr": "Se redresser de l'inclinaison jusqu'à être droit" },
+      { "ar": "السجود مرتين", "en": "Two prostrations", "fr": "Deux prosternations" },
+      { "ar": "الجلوس بينهما", "en": "Sitting between the two prostrations", "fr": "S'asseoir entre les deux prosternations" },
+      { "ar": "الطمأنينة", "en": "Stillness in each pillar", "fr": "L'immobilité dans chaque pilier" },
+      { "ar": "التشهد الأخير والجلوس له", "en": "The final tashahhud and sitting for it", "fr": "Le dernier tashahhud et le fait de s'asseoir pour lui" },
+      { "ar": "الصلاة على النبي ﷺ عند كثير من العلماء", "en": "Sending prayers upon the Prophet, according to many scholars", "fr": "Prier sur le Prophète, selon de nombreux savants" },
+      { "ar": "التسليم", "en": "The salam", "fr": "Le salam" },
+      { "ar": "الترتيب", "en": "Keeping this order", "fr": "Respecter cet ordre" }
+    ]
+  },
+  "steps": [
+    {
+      "order": 1,
+      "name": { "ar": "النية والاستقبال", "en": "Intention and facing the Qiblah", "fr": "L'intention et l'orientation vers la Qibla" },
+      "description": {
+        "ar": "يقف مستقبلًا القبلة، ويستر عورته، وينوي الصلاة بقلبه.",
+        "en": "Stand facing the Qiblah, cover the awrah, and intend the prayer in the heart.",
+        "fr": "Tenez-vous face à la Qibla, couvrez la awra et formez l'intention de la prière dans le cœur."
+      },
+      "arabic": "",
+      "english": "",
+      "french": "",
+      "reference": "Sahih al-Bukhari 1"
+    },
+    {
+      "order": 2,
+      "name": { "ar": "تكبيرة الإحرام", "en": "The opening takbir", "fr": "Le takbir d'ouverture" },
+      "description": {
+        "ar": "يرفع يديه حذو منكبيه أو أذنيه، ويقول: الله أكبر. ثم يضع يده اليمنى على اليسرى على صدره. ورفع اليدين ثابت، وتركه في غير التكبيرة الأولى موضع خلاف بين المذاهب.",
+        "en": "Raise the hands to the shoulders or the ears and say Allahu akbar. Then place the right hand over the left on the chest. Raising the hands is established. Whether to raise them again later is a point on which the schools differ.",
+        "fr": "Levez les mains à hauteur des épaules ou des oreilles et dites Allahou akbar. Puis posez la main droite sur la gauche, sur la poitrine. Lever les mains est établi. Les relever ensuite est un point sur lequel les écoles diffèrent."
+      },
+      "arabic": "اللَّهُ أَكْبَرُ",
+      "english": "Allah is the Greatest.",
+      "french": "Allah est le Plus Grand.",
+      "reference": "Sahih al-Bukhari 735; Sahih Muslim 390"
+    },
+    {
+      "order": 3,
+      "name": { "ar": "دعاء الاستفتاح", "en": "The opening supplication", "fr": "L'invocation d'ouverture" },
+      "description": {
+        "ar": "يُقال سرًّا بعد التكبير وقبل الفاتحة.",
+        "en": "It is said quietly after the takbir and before Al-Fatihah.",
+        "fr": "On la dit à voix basse après le takbir et avant Al-Fatiha."
+      },
+      "arabic": "سُبْحَانَكَ اللَّهُمَّ وَبِحَمْدِكَ، وَتَبَارَكَ اسْمُكَ، وَتَعَالَى جَدُّكَ، وَلَا إِلَهَ غَيْرُكَ",
+      "english": "Glory be to You, O Allah, and praise belongs to You. Blessed is Your name, exalted is Your majesty, and there is no god worthy of worship besides You.",
+      "french": "Gloire à Toi, ô Allah, et louange à Toi. Béni est Ton nom, élevée est Ta majesté, et il n'y a de divinité digne d'adoration en dehors de Toi.",
+      "reference": "Sunan Abi Dawud 775; Sunan at-Tirmidhi 242"
+    },
+    {
+      "order": 4,
+      "name": { "ar": "الاستعاذة والبسملة", "en": "Seeking refuge and the basmalah", "fr": "La demande de protection et la basmala" },
+      "description": {
+        "ar": "أعوذ بالله من الشيطان الرجيم، ثم بسم الله الرحمن الرحيم. والجهر بالبسملة أو الإسرار بها من مسائل الخلاف.",
+        "en": "Say: I seek refuge in Allah from the accursed devil, then: In the name of Allah, the Entirely Merciful, the Especially Merciful. Reciting the basmalah aloud or quietly is a matter of difference.",
+        "fr": "Dites : Je cherche protection auprès d'Allah contre le diable lapidé, puis : Au nom d'Allah, le Tout Miséricordieux, le Très Miséricordieux. Dire la basmala à voix haute ou basse est un sujet de divergence."
+      },
+      "arabic": "أَعُوذُ بِاللَّهِ مِنَ الشَّيْطَانِ الرَّجِيمِ. بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ",
+      "english": "I seek refuge in Allah from the accursed devil. In the name of Allah, the Entirely Merciful, the Especially Merciful.",
+      "french": "Je cherche protection auprès d'Allah contre le diable lapidé. Au nom d'Allah, le Tout Miséricordieux, le Très Miséricordieux.",
+      "reference": "Qur'an, An-Nahl 16:98; Al-Fatihah 1:1"
+    },
+    {
+      "order": 5,
+      "name": { "ar": "الفاتحة", "en": "Al-Fatihah", "fr": "Al-Fatiha" },
+      "description": {
+        "ar": "تُقرأ في كل ركعة. يقول المأموم آمين بعد الفاتحة.",
+        "en": "It is recited in every unit. The follower says Amin after it.",
+        "fr": "On la récite dans chaque unité. Celui qui prie derrière l'imam dit Amin après elle."
+      },
+      "arabic": "الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ. الرَّحْمَٰنِ الرَّحِيمِ. مَالِكِ يَوْمِ الدِّينِ. إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ. اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ. صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ",
+      "english": "All praise belongs to Allah, Lord of the worlds. The Entirely Merciful, the Especially Merciful. Master of the Day of Judgment. You alone we worship and You alone we ask for help. Guide us to the straight path, the path of those You have blessed, not of those who earned anger nor of those who went astray.",
+      "french": "Toute louange appartient à Allah, Seigneur des mondes. Le Tout Miséricordieux, le Très Miséricordieux. Maître du Jour de la rétribution. C'est Toi seul que nous adorons et c'est Toi seul dont nous implorons l'aide. Guide-nous sur le droit chemin, le chemin de ceux que Tu as comblés, non de ceux qui ont encouru Ta colère ni des égarés.",
+      "reference": "Qur'an, Al-Fatihah 1:2-7; Sahih al-Bukhari 756"
+    },
+    {
+      "order": 6,
+      "name": { "ar": "سورة بعد الفاتحة", "en": "A passage after Al-Fatihah", "fr": "Un passage après Al-Fatiha" },
+      "description": {
+        "ar": "في الركعتين الأوليين من الفرض، وفي كل ركعة من النافلة، يُقرأ شيء من القرآن بعد الفاتحة.",
+        "en": "In the first two units of an obligatory prayer, and in every unit of a voluntary prayer, recite something of the Qur'an after Al-Fatihah.",
+        "fr": "Dans les deux premières unités d'une prière obligatoire, et dans chaque unité d'une prière surérogatoire, récitez quelque chose du Coran après Al-Fatiha."
+      },
+      "arabic": "قُلْ هُوَ اللَّهُ أَحَدٌ. اللَّهُ الصَّمَدُ. لَمْ يَلِدْ وَلَمْ يُولَدْ. وَلَمْ يَكُن لَّهُ كُفُوًا أَحَدٌ",
+      "english": "A short surah may be recited, such as Al-Ikhlas: Say: He is Allah, One. Allah, the Eternal Refuge. He neither begets nor is born. And there is none comparable to Him.",
+      "french": "On peut réciter une sourate courte, comme Al-Ikhlas : Dis : Il est Allah, Unique. Allah, Le Seul à être imploré. Il n'a pas engendré et n'a pas été engendré. Et nul n'est égal à Lui.",
+      "reference": "Qur'an, Al-Ikhlas 112:1-4; Sahih Muslim 451"
+    },
+    {
+      "order": 7,
+      "name": { "ar": "الركوع", "en": "The bow", "fr": "L'inclinaison" },
+      "description": {
+        "ar": "يكبّر ويركع حتى يطمئن ظهره، وتُوضع اليدان على الركبتين.",
+        "en": "Say Allahu akbar and bow until the back is still, with the hands on the knees.",
+        "fr": "Dites Allahou akbar et inclinez-vous jusqu'à ce que le dos soit immobile, les mains sur les genoux."
+      },
+      "arabic": "اللَّهُ أَكْبَرُ. سُبْحَانَ رَبِّيَ الْعَظِيمِ",
+      "english": "Allah is the Greatest. Glory be to my Lord, the Magnificent. This glorification is said three times or more.",
+      "french": "Allah est le Plus Grand. Gloire à mon Seigneur, le Magnifique. Cette glorification se dit trois fois ou davantage.",
+      "reference": "Sunan Abi Dawud 869; Sahih Muslim 479"
+    },
+    {
+      "order": 8,
+      "name": { "ar": "الرفع من الركوع", "en": "Rising from the bow", "fr": "Se redresser de l'inclinaison" },
+      "description": {
+        "ar": "يرفع رأسه حتى يعتدل قائمًا، ويطمئن.",
+        "en": "Raise the head until you are standing straight, and remain still.",
+        "fr": "Relevez la tête jusqu'à être debout et droit, et demeurez immobile."
+      },
+      "arabic": "سَمِعَ اللَّهُ لِمَنْ حَمِدَهُ. رَبَّنَا وَلَكَ الْحَمْدُ",
+      "english": "The imam and the one praying alone say: Allah hears the one who praises Him. Then everyone says: Our Lord, to You belongs praise.",
+      "french": "L'imam et celui qui prie seul disent : Allah entend celui qui Le loue. Puis chacun dit : Notre Seigneur, à Toi la louange.",
+      "reference": "Sahih al-Bukhari 789; Sahih Muslim 392"
+    },
+    {
+      "order": 9,
+      "name": { "ar": "السجود", "en": "The prostration", "fr": "La prosternation" },
+      "description": {
+        "ar": "يكبّر ويسجد على سبعة أعضاء: الجبهة مع الأنف، واليدين، والركبتين، وأطراف القدمين. ويجافي عضديه، ولا يبسط ذراعيه.",
+        "en": "Say Allahu akbar and prostrate on seven parts: the forehead with the nose, the two hands, the two knees, and the toes of both feet. Keep the arms away from the sides and do not spread the forearms on the ground.",
+        "fr": "Dites Allahou akbar et prosternez-vous sur sept membres : le front avec le nez, les deux mains, les deux genoux et les orteils des deux pieds. Écartez les bras des flancs et ne posez pas les avant-bras au sol."
+      },
+      "arabic": "اللَّهُ أَكْبَرُ. سُبْحَانَ رَبِّيَ الْأَعْلَى",
+      "english": "Allah is the Greatest. Glory be to my Lord, the Most High.",
+      "french": "Allah est le Plus Grand. Gloire à mon Seigneur, le Très-Haut.",
+      "reference": "Sahih al-Bukhari 812; Sahih Muslim 490; Sunan Abi Dawud 869"
+    },
+    {
+      "order": 10,
+      "name": { "ar": "الجلوس بين السجدتين", "en": "Sitting between the prostrations", "fr": "S'asseoir entre les prosternations" },
+      "description": {
+        "ar": "يرفع رأسه مكبرًا، ويجلس مطمئنًا، ثم يسجد السجدة الثانية كالأولى.",
+        "en": "Raise the head while saying Allahu akbar, sit still, then perform the second prostration as the first.",
+        "fr": "Relevez la tête en disant Allahou akbar, asseyez-vous immobile, puis faites la seconde prosternation comme la première."
+      },
+      "arabic": "رَبِّ اغْفِرْ لِي، رَبِّ اغْفِرْ لِي",
+      "english": "My Lord, forgive me. My Lord, forgive me.",
+      "french": "Seigneur, pardonne-moi. Seigneur, pardonne-moi.",
+      "reference": "Sunan Abi Dawud 874"
+    },
+    {
+      "order": 11,
+      "name": { "ar": "القيام للركعة الثانية", "en": "Rising for the next unit", "fr": "Se lever pour l'unité suivante" },
+      "description": {
+        "ar": "بعد السجدة الثانية يقوم للركعة التالية، ويقرأ الفاتحة وما تيسر. وبعد ركعتين يجلس للتشهد الأول في الصلاة الثلاثية والرباعية.",
+        "en": "After the second prostration, stand for the next unit and recite Al-Fatihah and what is easy. After two units, sit for the first tashahhud in a three-unit or four-unit prayer.",
+        "fr": "Après la seconde prosternation, levez-vous pour l'unité suivante et récitez Al-Fatiha et ce qui vous est facile. Après deux unités, asseyez-vous pour le premier tashahhud dans une prière de trois ou quatre unités."
+      },
+      "arabic": "اللَّهُ أَكْبَرُ",
+      "english": "Allah is the Greatest.",
+      "french": "Allah est le Plus Grand.",
+      "reference": "Sahih al-Bukhari 789"
+    },
+    {
+      "order": 12,
+      "name": { "ar": "التشهد", "en": "The tashahhud", "fr": "Le tashahhud" },
+      "description": {
+        "ar": "يجلس مفترشًا في التشهد الأول، ومتورّكًا في الأخير على الهيئة الثابتة. يشير بالسبابة عند الشهادة على ما ورد.",
+        "en": "Sit on the left foot in the first tashahhud. In the final sitting the tawarruk posture is established. The index finger is raised at the testimony, as reported.",
+        "fr": "Asseyez-vous sur le pied gauche au premier tashahhud. Dans la dernière assise, la posture du tawarruk est établie. L'index est levé lors de l'attestation, comme cela est rapporté."
+      },
+      "arabic": "التَّحِيَّاتُ لِلَّهِ وَالصَّلَوَاتُ وَالطَّيِّبَاتُ، السَّلَامُ عَلَيْكَ أَيُّهَا النَّبِيُّ وَرَحْمَةُ اللَّهِ وَبَرَكَاتُهُ، السَّلَامُ عَلَيْنَا وَعَلَى عِبَادِ اللَّهِ الصَّالِحِينَ، أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ",
+      "english": "Greetings belong to Allah, and prayers and good words. Peace be upon you, O Prophet, and the mercy of Allah and His blessings. Peace be upon us and upon the righteous servants of Allah. I bear witness that there is no god worthy of worship except Allah, and I bear witness that Muhammad is His servant and Messenger.",
+      "french": "Les salutations appartiennent à Allah, ainsi que les prières et les paroles pures. Que la paix soit sur toi, ô Prophète, ainsi que la miséricorde d'Allah et Ses bénédictions. Que la paix soit sur nous et sur les serviteurs vertueux d'Allah. J'atteste qu'il n'y a de divinité digne d'adoration qu'Allah, et j'atteste que Muhammad est Son serviteur et Son Messager.",
+      "reference": "Sahih al-Bukhari 831; Sahih Muslim 402"
+    },
+    {
+      "order": 13,
+      "name": { "ar": "الصلاة على النبي ﷺ", "en": "Prayers upon the Prophet", "fr": "La prière sur le Prophète" },
+      "description": {
+        "ar": "تقال في التشهد الأخير.",
+        "en": "This is said in the final tashahhud.",
+        "fr": "On la dit dans le dernier tashahhud."
+      },
+      "arabic": "اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ، كَمَا صَلَّيْتَ عَلَى إِبْرَاهِيمَ وَعَلَى آلِ إِبْرَاهِيمَ، إِنَّكَ حَمِيدٌ مَجِيدٌ. اللَّهُمَّ بَارِكْ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ، كَمَا بَارَكْتَ عَلَى إِبْرَاهِيمَ وَعَلَى آلِ إِبْرَاهِيمَ، إِنَّكَ حَمِيدٌ مَجِيدٌ",
+      "english": "O Allah, send prayers upon Muhammad and upon the family of Muhammad, as You sent prayers upon Ibrahim and upon the family of Ibrahim. You are Praiseworthy, Glorious. O Allah, bless Muhammad and the family of Muhammad, as You blessed Ibrahim and the family of Ibrahim. You are Praiseworthy, Glorious.",
+      "french": "Ô Allah, prie sur Muhammad et sur la famille de Muhammad, comme Tu as prié sur Ibrahim et sur la famille d'Ibrahim. Tu es Digne de louange, Glorieux. Ô Allah, bénis Muhammad et la famille de Muhammad, comme Tu as béni Ibrahim et la famille d'Ibrahim. Tu es Digne de louange, Glorieux.",
+      "reference": "Sahih al-Bukhari 3370; Sahih Muslim 406"
+    },
+    {
+      "order": 14,
+      "name": { "ar": "الدعاء قبل السلام", "en": "Supplication before the salam", "fr": "L'invocation avant le salam" },
+      "description": {
+        "ar": "ثم يتخير من الدعاء ما شاء، ومن أجمعه التعوذ من أربع.",
+        "en": "Then one may ask Allah for whatever one wishes. A comprehensive supplication seeks refuge from four things.",
+        "fr": "Ensuite on demande à Allah ce que l'on veut. Une invocation qui rassemble beaucoup cherche protection contre quatre choses."
+      },
+      "arabic": "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ عَذَابِ جَهَنَّمَ، وَمِنْ عَذَابِ الْقَبْرِ، وَمِنْ فِتْنَةِ الْمَحْيَا وَالْمَمَاتِ، وَمِنْ شَرِّ فِتْنَةِ الْمَسِيحِ الدَّجَّالِ",
+      "english": "O Allah, I seek refuge in You from the punishment of Hell, from the punishment of the grave, from the trial of life and death, and from the evil of the trial of the False Messiah.",
+      "french": "Ô Allah, je cherche protection auprès de Toi contre le châtiment de l'Enfer, contre le châtiment de la tombe, contre l'épreuve de la vie et de la mort, et contre le mal de l'épreuve du faux messie.",
+      "reference": "Sahih Muslim 588"
+    },
+    {
+      "order": 15,
+      "name": { "ar": "السلام", "en": "The salam", "fr": "Le salam" },
+      "description": {
+        "ar": "يسلّم عن يمينه وعن يساره، وبهذا تنتهي الصلاة.",
+        "en": "Give salam to the right and to the left. The prayer ends with this.",
+        "fr": "Adressez le salam à droite puis à gauche. La prière s'achève ainsi."
+      },
+      "arabic": "السَّلَامُ عَلَيْكُمْ وَرَحْمَةُ اللَّهِ",
+      "english": "Peace be upon you, and the mercy of Allah.",
+      "french": "Que la paix soit sur vous, ainsi que la miséricorde d'Allah.",
+      "reference": "Sunan Abi Dawud 996; Sunan at-Tirmidhi 295"
+    },
+    {
+      "order": 16,
+      "name": { "ar": "الذكر بعد السلام", "en": "Remembrance after the salam", "fr": "L'évocation après le salam" },
+      "description": {
+        "ar": "يستغفر ثلاثًا، ثم يقول الدعاء المشهور، ثم يسبّح ويحمد ويكبّر.",
+        "en": "Seek forgiveness three times, then say the well-known supplication, then glorify, praise, and magnify Allah.",
+        "fr": "Demandez pardon trois fois, puis dites l'invocation connue, puis glorifiez, louez et magnifiez Allah."
+      },
+      "arabic": "أَسْتَغْفِرُ اللَّهَ، أَسْتَغْفِرُ اللَّهَ، أَسْتَغْفِرُ اللَّهَ. اللَّهُمَّ أَنْتَ السَّلَامُ وَمِنْكَ السَّلَامُ، تَبَارَكْتَ يَا ذَا الْجَلَالِ وَالْإِكْرَامِ",
+      "english": "I seek Allah's forgiveness, three times. O Allah, You are Peace and from You comes peace. Blessed are You, O Owner of majesty and honour.",
+      "french": "Je demande pardon à Allah, trois fois. Ô Allah, Tu es la Paix et de Toi vient la paix. Tu es béni, ô Détenteur de la majesté et de la générosité.",
+      "reference": "Sahih Muslim 591"
+    }
+  ],
+  "rakahPattern": {
+    "title": { "ar": "عدد الركعات", "en": "How the units are arranged", "fr": "Comment les unités s'organisent" },
+    "english": "Fajr is two units, with the tashahhud and salam at the end. Maghrib is three: tashahhud after two, then a third unit with Al-Fatihah, then the final tashahhud and salam. Dhuhr, Asr, and Isha are four: tashahhud after two, then two further units with Al-Fatihah, then the final tashahhud and salam. In the third and fourth units of the obligatory prayer, Al-Fatihah alone is recited.",
+    "french": "Le fajr compte deux unités, avec le tashahhud et le salam à la fin. Le maghrib en compte trois : tashahhud après deux, puis une troisième unité avec Al-Fatiha, puis le dernier tashahhud et le salam. Le dhuhr, le asr et le icha en comptent quatre : tashahhud après deux, puis deux unités encore avec Al-Fatiha, puis le dernier tashahhud et le salam. Dans la troisième et la quatrième unité de la prière obligatoire, on récite Al-Fatiha seule."
+  },
+  "rawatib": {
+    "title": { "ar": "السنن الرواتب", "en": "The regular sunnah prayers", "fr": "Les prières surérogatoires régulières" },
+    "english": "A well-known set which the Prophet, peace and blessings be upon him, did not leave is: two before Fajr, four before Dhuhr and two after it, two after Maghrib, and two after Isha. Witr is prayed after Isha, as one, three, or more odd units.",
+    "french": "Un ensemble bien connu, que le Prophète, que la paix et les bénédictions d'Allah soient sur lui, ne délaissait pas, est : deux avant le fajr, quatre avant le dhuhr et deux après, deux après le maghrib, et deux après le icha. Le witr se prie après le icha, en une, trois ou davantage d'unités impaires.",
+    "reference": "Sahih al-Bukhari 1182; Sahih Muslim 729"
+  },
+  "nullifiers": {
+    "title": { "ar": "مبطلات الصلاة", "en": "What invalidates the prayer", "fr": "Ce qui invalide la prière" },
+    "items": [
+      { "en": "Losing wudu.", "fr": "Perdre les ablutions.", "ar": "انتقاض الوضوء." },
+      { "en": "Deliberately speaking words outside the prayer.", "fr": "Parler volontairement de paroles étrangères à la prière.", "ar": "الكلام عمدًا بما هو خارج الصلاة." },
+      { "en": "Much continuous movement that is not part of the prayer.", "fr": "Un mouvement abondant et continu qui n'appartient pas à la prière.", "ar": "العمل الكثير المتوالي الخارج عن الصلاة." },
+      { "en": "Leaving a pillar on purpose, or leaving it by forgetfulness and not repairing it.", "fr": "Délaisser un pilier volontairement, ou l'omettre par oubli sans le réparer.", "ar": "ترك ركن عمدًا، أو تركه سهوًا من غير تدارك." },
+      { "en": "Turning the chest away from the Qiblah without a valid excuse.", "fr": "Détourner la poitrine de la Qibla sans excuse valable.", "ar": "الانحراف بالصدر عن القبلة بغير عذر." },
+      { "en": "Eating or drinking on purpose.", "fr": "Manger ou boire volontairement.", "ar": "الأكل أو الشرب عمدًا." },
+      { "en": "Laughing out loud.", "fr": "Rire aux éclats.", "ar": "الضحك بصوت." }
+    ]
+  },
+  "sujudSahw": {
+    "title": { "ar": "سجود السهو", "en": "The prostration of forgetfulness", "fr": "La prosternation de l'oubli" },
+    "english": "If a person adds something by mistake, such as an extra unit, he prostrates two prostrations before or after the salam, according to the case reported. If he leaves something required and remembers before leaving the prayer, he makes it up and then prostrates. If he doubts the number of units, he builds on what he is certain of and prostrates. The schools differ on whether these two prostrations come before or after the salam. The purpose is to repair the prayer with humility, not to restart it for every small slip.",
+    "french": "Si l'on ajoute quelque chose par erreur, comme une unité en trop, on fait deux prosternations avant ou après le salam, selon le cas rapporté. Si l'on omet un acte exigé et qu'on s'en souvient avant de quitter la prière, on le répare puis on se prosterne. Si l'on doute du nombre d'unités, on se fonde sur ce dont on est certain et l'on se prosterne. Les écoles diffèrent sur le fait que ces deux prosternations viennent avant ou après le salam. Le but est de réparer la prière avec humilité, non de la recommencer pour chaque petit oubli.",
+    "reference": "Sahih al-Bukhari 1226; Sahih Muslim 389 and 571"
+  },
+  "khushu": {
+    "title": { "ar": "الخشوع", "en": "Presence of heart", "fr": "La présence du cœur" },
+    "english": "Pray as if you see Allah, and know that even if you do not see Him, He sees you. Recite with care, pause in each posture, and do not look about. The prayer is not a race of movements. It is standing before Allah.",
+    "french": "Priez comme si vous voyiez Allah, et sachez que si vous ne Le voyez pas, Lui vous voit. Récitez avec soin, demeurez dans chaque posture, et ne regardez pas de tous côtés. La prière n'est pas une course de mouvements. C'est se tenir devant Allah.",
+    "reference": "Sahih Muslim 8, the hadith of Jibril; Sahih al-Bukhari 757"
+  },
+  "quranAyahs": [
+    { "id": "q-2-238", "surah": 2, "ayah": 238, "surahName": { "ar": "البقرة", "en": "Al-Baqarah", "fr": "Al-Baqara" }, "arabic": "حَافِظُوا عَلَى الصَّلَوَاتِ وَالصَّلَاةِ الْوُسْطَىٰ وَقُومُوا لِلَّهِ قَانِتِينَ", "english": "Guard the prayers, and the middle prayer, and stand before Allah in devout obedience.", "french": "Observez strictement les prières, et surtout la prière médiane, et tenez-vous debout devant Allah avec humilité.", "reference": "Al-Baqarah 2:238" },
+    { "id": "q-4-103", "surah": 4, "ayah": 103, "surahName": { "ar": "النساء", "en": "An-Nisa", "fr": "An-Nisa" }, "arabic": "إِنَّ الصَّلَاةَ كَانَتْ عَلَى الْمُؤْمِنِينَ كِتَابًا مَّوْقُوتًا", "english": "The prayer is prescribed for the believers at fixed times.", "french": "La prière demeure, pour les croyants, une prescription à des temps déterminés.", "reference": "An-Nisa 4:103" },
+    { "id": "q-29-45", "surah": 29, "ayah": 45, "surahName": { "ar": "العنكبوت", "en": "Al-Ankabut", "fr": "Al-Ankabut" }, "arabic": "إِنَّ الصَّلَاةَ تَنْهَىٰ عَنِ الْفَحْشَاءِ وَالْمُنكَرِ", "english": "The prayer restrains from shameful and wrong deeds.", "french": "La prière préserve de la turpitude et du blâmable.", "reference": "Al-Ankabut 29:45" },
+    { "id": "q-2-45", "surah": 2, "ayah": 45, "surahName": { "ar": "البقرة", "en": "Al-Baqarah", "fr": "Al-Baqara" }, "arabic": "وَاسْتَعِينُوا بِالصَّبْرِ وَالصَّلَاةِ", "english": "Seek help through patience and prayer.", "french": "Cherchez secours dans l'endurance et la prière.", "reference": "Al-Baqarah 2:45" },
+    { "id": "q-20-14", "surah": 20, "ayah": 14, "surahName": { "ar": "طه", "en": "Ta-Ha", "fr": "Ta-Ha" }, "arabic": "وَأَقِمِ الصَّلَاةَ لِذِكْرِي", "english": "Establish the prayer for My remembrance.", "french": "Accomplis la prière pour M'évoquer.", "reference": "Ta-Ha 20:14" },
+    { "id": "q-5-6", "surah": 5, "ayah": 6, "surahName": { "ar": "المائدة", "en": "Al-Ma'idah", "fr": "Al-Ma'ida" }, "arabic": "يَا أَيُّهَا الَّذِينَ آمَنُوا إِذَا قُمْتُمْ إِلَى الصَّلَاةِ فَاغْسِلُوا وُجُوهَكُمْ وَأَيْدِيَكُمْ إِلَى الْمَرَافِقِ وَامْسَحُوا بِرُءُوسِكُمْ وَأَرْجُلَكُمْ إِلَى الْكَعْبَيْنِ", "english": "O you who believe, when you rise for prayer, wash your faces and your arms to the elbows, wipe your heads, and wash your feet to the ankles.", "french": "Ô vous qui croyez, lorsque vous vous levez pour la prière, lavez vos visages et vos mains jusqu'aux coudes, passez les mains mouillées sur vos têtes, et lavez vos pieds jusqu'aux chevilles.", "reference": "Al-Ma'idah 5:6" },
+    { "id": "q-23-1", "surah": 23, "ayah": 1, "surahName": { "ar": "المؤمنون", "en": "Al-Mu'minun", "fr": "Al-Mu'minun" }, "arabic": "قَدْ أَفْلَحَ الْمُؤْمِنُونَ الَّذِينَ هُمْ فِي صَلَاتِهِمْ خَاشِعُونَ", "english": "The believers have succeeded: those who are humble in their prayer.", "french": "Bienheureux sont les croyants, ceux qui sont humbles dans leur prière.", "reference": "Al-Mu'minun 23:1-2" },
+    { "id": "q-70-34", "surah": 70, "ayah": 34, "surahName": { "ar": "المعارج", "en": "Al-Ma'arij", "fr": "Al-Ma'arij" }, "arabic": "وَالَّذِينَ هُمْ عَلَىٰ صَلَاتِهِمْ يُحَافِظُونَ", "english": "And those who carefully maintain their prayer.", "french": "Et ceux qui observent soigneusement leur prière.", "reference": "Al-Ma'arij 70:34" },
+    { "id": "q-17-78", "surah": 17, "ayah": 78, "surahName": { "ar": "الإسراء", "en": "Al-Isra", "fr": "Al-Isra" }, "arabic": "أَقِمِ الصَّلَاةَ لِدُلُوكِ الشَّمْسِ إِلَىٰ غَسَقِ اللَّيْلِ وَقُرْآنَ الْفَجْرِ ۖ إِنَّ قُرْآنَ الْفَجْرِ كَانَ مَشْهُودًا", "english": "Establish the prayer from the decline of the sun until the darkness of the night, and the recitation of dawn. The dawn recitation is witnessed.", "french": "Accomplis la prière au déclin du soleil jusqu'à l'obscurité de la nuit, ainsi que la récitation de l'aube. La récitation de l'aube est attestée.", "reference": "Al-Isra 17:78" },
+    { "id": "q-62-9", "surah": 62, "ayah": 9, "surahName": { "ar": "الجمعة", "en": "Al-Jumu'ah", "fr": "Al-Jumu'a" }, "arabic": "يَا أَيُّهَا الَّذِينَ آمَنُوا إِذَا نُودِيَ لِلصَّلَاةِ مِن يَوْمِ الْجُمُعَةِ فَاسْعَوْا إِلَىٰ ذِكْرِ اللَّهِ وَذَرُوا الْبَيْعَ", "english": "O you who believe, when the call is made for prayer on Friday, hasten to the remembrance of Allah and leave trade.", "french": "Ô vous qui croyez, lorsque l'appel à la prière du vendredi retentit, accourez à l'évocation d'Allah et laissez toute transaction.", "reference": "Al-Jumu'ah 62:9" },
+    { "id": "q-107-4", "surah": 107, "ayah": 4, "surahName": { "ar": "الماعون", "en": "Al-Ma'un", "fr": "Al-Ma'un" }, "arabic": "فَوَيْلٌ لِّلْمُصَلِّينَ الَّذِينَ هُمْ عَن صَلَاتِهِمْ سَاهُونَ", "english": "Woe to those who pray but are heedless of their prayer.", "french": "Malheur à ceux qui prient tout en étant insouciants de leur prière.", "reference": "Al-Ma'un 107:4-5" },
+    { "id": "q-48-29", "surah": 48, "ayah": 29, "surahName": { "ar": "الفتح", "en": "Al-Fath", "fr": "Al-Fath" }, "arabic": "تَرَاهُمْ رُكَّعًا سُجَّدًا يَبْتَغُونَ فَضْلًا مِّنَ اللَّهِ وَرِضْوَانًا", "english": "You see them bowing and prostrating, seeking bounty from Allah and His pleasure.", "french": "Tu les vois inclinés, prosternés, recherchant une grâce d'Allah et Son agrément.", "reference": "Al-Fath 48:29" }
+  ],
+  "hadiths": [
+    { "id": "h-salah-01", "narrator": { "ar": "عمر بن الخطاب", "en": "Umar ibn al-Khattab", "fr": "Umar ibn al-Khattab" }, "arabic": "إِنَّمَا الْأَعْمَالُ بِالنِّيَّاتِ", "english": "Actions are only by intentions.", "french": "Les actes ne valent que par les intentions.", "reference": "Sahih al-Bukhari 1; Sahih Muslim 1907", "grade": "Sahih" },
+    { "id": "h-salah-02", "narrator": { "ar": "أبو هريرة", "en": "Abu Hurayrah", "fr": "Abu Hurayra" }, "arabic": "بُنِيَ الْإِسْلَامُ عَلَى خَمْسٍ", "english": "Islam is built upon five. One of them is establishing the prayer.", "french": "L'islam est bâti sur cinq piliers. L'un d'eux est d'accomplir la prière.", "reference": "Sahih al-Bukhari 8; Sahih Muslim 16", "grade": "Sahih" },
+    { "id": "h-salah-03", "narrator": { "ar": "مالك بن الحويرث", "en": "Malik ibn al-Huwayrith", "fr": "Malik ibn al-Huwayrith" }, "arabic": "صَلُّوا كَمَا رَأَيْتُمُونِي أُصَلِّي", "english": "Pray as you have seen me pray.", "french": "Priez comme vous m'avez vu prier.", "reference": "Sahih al-Bukhari 631", "grade": "Sahih" },
+    { "id": "h-salah-04", "narrator": { "ar": "أبو هريرة", "en": "Abu Hurayrah", "fr": "Abu Hurayra" }, "arabic": "الطُّهُورُ شَطْرُ الْإِيمَانِ", "english": "Purification is half of faith.", "french": "La purification est la moitié de la foi.", "reference": "Sahih Muslim 223", "grade": "Sahih" },
+    { "id": "h-salah-05", "narrator": { "ar": "علي بن أبي طالب", "en": "Ali ibn Abi Talib", "fr": "Ali ibn Abi Talib" }, "arabic": "مِفْتَاحُ الصَّلَاةِ الطُّهُورُ، وَتَحْرِيمُهَا التَّكْبِيرُ، وَتَحْلِيلُهَا التَّسْلِيمُ", "english": "The key of the prayer is purification, its opening consecration is the takbir, and its release is the salam.", "french": "La clé de la prière est la purification, ce qui la rend sacrée est le takbir, et ce qui l'achève est le salam.", "reference": "Sunan Abi Dawud 61; Sunan at-Tirmidhi 3", "grade": "Hasan" },
+    { "id": "h-salah-06", "narrator": { "ar": "أبو هريرة", "en": "Abu Hurayrah", "fr": "Abu Hurayra" }, "arabic": "إِنَّ أَوَّلَ مَا يُحَاسَبُ بِهِ الْعَبْدُ يَوْمَ الْقِيَامَةِ مِنْ عَمَلِهِ صَلَاتُهُ", "english": "The first of a servant's deeds for which he will be brought to account on the Day of Resurrection is his prayer.", "french": "La première des œuvres du serviteur sur laquelle il sera interrogé au Jour de la Résurrection est sa prière.", "reference": "Sunan at-Tirmidhi 413; Sunan Abi Dawud 864; Sunan an-Nasa'i", "grade": "Sahih" },
+    { "id": "h-salah-07", "narrator": { "ar": "جابر بن عبد الله", "en": "Jabir ibn Abdullah", "fr": "Jabir ibn Abdallah" }, "arabic": "بَيْنَ الرَّجُلِ وَبَيْنَ الشِّرْكِ وَالْكُفْرِ تَرْكُ الصَّلَاةِ", "english": "Between a man and associating partners with Allah, and disbelief, is abandoning the prayer.", "french": "Entre l'homme, l'association et la mécréance, il y a l'abandon de la prière.", "reference": "Sahih Muslim 82", "grade": "Sahih" },
+    { "id": "h-salah-08", "narrator": { "ar": "عبد الله بن مسعود", "en": "Abdullah ibn Mas'ud", "fr": "Abdallah ibn Mas'ud" }, "arabic": "سَأَلْتُ النَّبِيَّ ﷺ: أَيُّ الْعَمَلِ أَحَبُّ إِلَى اللَّهِ؟ قَالَ: الصَّلَاةُ عَلَى وَقْتِهَا", "english": "I asked the Prophet which deed is dearest to Allah. He said: The prayer at its time.", "french": "J'ai demandé au Prophète quelle œuvre est la plus aimée d'Allah. Il dit : La prière à son heure.", "reference": "Sahih al-Bukhari 527; Sahih Muslim 85", "grade": "Sahih" },
+    { "id": "h-salah-09", "narrator": { "ar": "أنس بن مالك", "en": "Anas ibn Malik", "fr": "Anas ibn Malik" }, "arabic": "جُعِلَتْ قُرَّةُ عَيْنِي فِي الصَّلَاةِ", "english": "The coolness of my eyes has been placed in the prayer.", "french": "La fraîcheur de mes yeux a été placée dans la prière.", "reference": "Sunan an-Nasa'i 3940", "grade": "Sahih" },
+    { "id": "h-salah-10", "narrator": { "ar": "أبو هريرة", "en": "Abu Hurayrah", "fr": "Abu Hurayra" }, "arabic": "أَقْرَبُ مَا يَكُونُ الْعَبْدُ مِنْ رَبِّهِ وَهُوَ سَاجِدٌ", "english": "The closest a servant is to his Lord is while he is prostrating.", "french": "Le serviteur est le plus proche de son Seigneur lorsqu'il est prosterné.", "reference": "Sahih Muslim 482", "grade": "Sahih" },
+    { "id": "h-salah-11", "narrator": { "ar": "أبو هريرة", "en": "Abu Hurayrah", "fr": "Abu Hurayra" }, "arabic": "الصَّلَوَاتُ الْخَمْسُ، وَالْجُمُعَةُ إِلَى الْجُمُعَةِ، وَرَمَضَانُ إِلَى رَمَضَانَ، مُكَفِّرَاتٌ مَا بَيْنَهُنَّ إِذَا اجْتُنِبَتِ الْكَبَائِرُ", "english": "The five prayers, from one Friday to the next, and from one Ramadan to the next, expiate what is between them when the major sins are avoided.", "french": "Les cinq prières, d'un vendredi à l'autre et d'un ramadan à l'autre, expient ce qui se trouve entre elles lorsque les grands péchés sont évités.", "reference": "Sahih Muslim 233", "grade": "Sahih" },
+    { "id": "h-salah-12", "narrator": { "ar": "عبادة بن الصامت", "en": "Ubadah ibn as-Samit", "fr": "Ubada ibn as-Samit" }, "arabic": "خَمْسُ صَلَوَاتٍ كَتَبَهُنَّ اللَّهُ عَلَى الْعِبَادِ", "english": "Five prayers Allah has prescribed upon the servants. Whoever performs them and does not neglect anything of them out of disregard has a covenant with Allah that He will admit him to Paradise.", "french": "Cinq prières qu'Allah a prescrites aux serviteurs. Celui qui les accomplit sans en négliger aucune par dédain a un pacte avec Allah : Il le fera entrer au Paradis.", "reference": "Sunan Abi Dawud 425; Sunan an-Nasa'i; Sunan Ibn Majah", "grade": "Sahih" },
+    { "id": "h-salah-13", "narrator": { "ar": "أبو هريرة", "en": "Abu Hurayrah", "fr": "Abu Hurayra" }, "arabic": "لَا صَلَاةَ لِمَنْ لَمْ يَقْرَأْ بِفَاتِحَةِ الْكِتَابِ", "english": "There is no prayer for the one who does not recite the Opening of the Book.", "french": "Point de prière pour celui qui ne récite pas l'Ouverture du Livre.", "reference": "Sahih al-Bukhari 756; Sahih Muslim 394", "grade": "Sahih" }
+  ]
+}

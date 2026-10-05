@@ -1,0 +1,2995 @@
+{
+  "id": "feeling_ayats",
+  "title": {
+    "ar": "آيات المشاعر",
+    "en": "Feeling Ayahs",
+    "fr": "Versets selon les sentiments"
+  },
+  "description": {
+    "ar": "مئتا آية مرتبة على عشرين حالًا من أحوال القلب، بالعربية مع المعنى الإنجليزي والفرنسي والمرجع.",
+    "en": "Two hundred verses arranged under twenty states of the heart, in Arabic with an English meaning, a French meaning, and the reference.",
+    "fr": "Deux cents versets classés selon vingt états du cœur, en arabe, avec un sens en anglais, un sens en français et la référence."
+  },
+  "note": {
+    "en": "These verses are a mercy to recite and reflect on. They are not a replacement for medical care or for asking a person of knowledge when a ruling is needed. Allah's nearness in the Qur'an is His knowledge, care, and help.",
+    "fr": "Ces versets sont une miséricorde à réciter et à méditer. Ils ne remplacent ni le soin médical ni le fait de demander à une personne de science lorsqu'un jugement est nécessaire. La proximité d'Allah dans le Coran est Sa science, Sa sollicitude et Son secours."
+  },
+  "topics": [
+    {
+      "id": "sadness",
+      "title": {
+        "ar": "عند الحزن",
+        "en": "When the heart is sad",
+        "fr": "Lorsque le cœur est triste"
+      },
+      "ayahs": [
+        {
+          "surah": 94,
+          "ayah": 5,
+          "surahName": {
+            "ar": "الشرح",
+            "en": "Ash-Sharh",
+            "fr": "Ash-Sharh"
+          },
+          "arabic": "فَإِنَّ مَعَ الْعُسْرِ يُسْرًا",
+          "english": "For indeed, with hardship comes ease.",
+          "french": "À côté de la difficulté est, certes, une facilité.",
+          "reference": "Ash-Sharh 94:5"
+        },
+        {
+          "surah": 94,
+          "ayah": 6,
+          "surahName": {
+            "ar": "الشرح",
+            "en": "Ash-Sharh",
+            "fr": "Ash-Sharh"
+          },
+          "arabic": "إِنَّ مَعَ الْعُسْرِ يُسْرًا",
+          "english": "Indeed, with hardship comes ease.",
+          "french": "À côté de la difficulté est, certes, une facilité.",
+          "reference": "Ash-Sharh 94:6"
+        },
+        {
+          "surah": 93,
+          "ayah": 3,
+          "surahName": {
+            "ar": "الضحى",
+            "en": "Ad-Duha",
+            "fr": "Ad-Duha"
+          },
+          "arabic": "مَا وَدَّعَكَ رَبُّكَ وَمَا قَلَىٰ",
+          "english": "Your Lord has not forsaken you, nor does He hate you.",
+          "french": "Ton Seigneur ne t'a ni abandonné ni détesté.",
+          "reference": "Ad-Duha 93:3"
+        },
+        {
+          "surah": 93,
+          "ayah": 4,
+          "surahName": {
+            "ar": "الضحى",
+            "en": "Ad-Duha",
+            "fr": "Ad-Duha"
+          },
+          "arabic": "وَلَلْآخِرَةُ خَيْرٌ لَّكَ مِنَ الْأُولَىٰ",
+          "english": "The Hereafter is better for you than the first life.",
+          "french": "La vie dernière est meilleure pour toi que la première.",
+          "reference": "Ad-Duha 93:4"
+        },
+        {
+          "surah": 93,
+          "ayah": 5,
+          "surahName": {
+            "ar": "الضحى",
+            "en": "Ad-Duha",
+            "fr": "Ad-Duha"
+          },
+          "arabic": "وَلَسَوْفَ يُعْطِيكَ رَبُّكَ فَتَرْضَىٰ",
+          "english": "Your Lord will give you, and you will be satisfied.",
+          "french": "Ton Seigneur t'accordera, et tu seras satisfait.",
+          "reference": "Ad-Duha 93:5"
+        },
+        {
+          "surah": 3,
+          "ayah": 139,
+          "surahName": {
+            "ar": "آل عمران",
+            "en": "Aal Imran",
+            "fr": "Al Imran"
+          },
+          "arabic": "وَلَا تَهِنُوا وَلَا تَحْزَنُوا وَأَنتُمُ الْأَعْلَوْنَ إِن كُنتُم مُّؤْمِنِينَ",
+          "english": "Do not lose heart and do not grieve, for you will have the upper hand if you are believers.",
+          "french": "Ne faiblissez pas et ne vous affligez pas, alors que vous avez le dessus, si vous êtes croyants.",
+          "reference": "Aal Imran 3:139"
+        },
+        {
+          "surah": 9,
+          "ayah": 40,
+          "surahName": {
+            "ar": "التوبة",
+            "en": "At-Tawbah",
+            "fr": "At-Tawba"
+          },
+          "arabic": "لَا تَحْزَنْ إِنَّ اللَّهَ مَعَنَا",
+          "english": "Do not grieve. Allah is with us.",
+          "french": "Ne t'attriste pas. Allah est avec nous.",
+          "reference": "At-Tawbah 9:40"
+        },
+        {
+          "surah": 12,
+          "ayah": 86,
+          "surahName": {
+            "ar": "يوسف",
+            "en": "Yusuf",
+            "fr": "Yusuf"
+          },
+          "arabic": "إِنَّمَا أَشْكُو بَثِّي وَحُزْنِي إِلَى اللَّهِ",
+          "english": "I only complain of my grief and my sorrow to Allah.",
+          "french": "Je ne me plains de ma détresse et de ma tristesse qu'auprès d'Allah.",
+          "reference": "Yusuf 12:86"
+        },
+        {
+          "surah": 2,
+          "ayah": 156,
+          "surahName": {
+            "ar": "البقرة",
+            "en": "Al-Baqarah",
+            "fr": "Al-Baqara"
+          },
+          "arabic": "الَّذِينَ إِذَا أَصَابَتْهُم مُّصِيبَةٌ قَالُوا إِنَّا لِلَّهِ وَإِنَّا إِلَيْهِ رَاجِعُونَ",
+          "english": "Those who, when a calamity strikes them, say: We belong to Allah, and to Him we return.",
+          "french": "Ceux qui, lorsqu'un malheur les atteint, disent : Nous appartenons à Allah, et c'est vers Lui que nous retournons.",
+          "reference": "Al-Baqarah 2:156"
+        },
+        {
+          "surah": 35,
+          "ayah": 34,
+          "surahName": {
+            "ar": "فاطر",
+            "en": "Fatir",
+            "fr": "Fatir"
+          },
+          "arabic": "وَقَالُوا الْحَمْدُ لِلَّهِ الَّذِي أَذْهَبَ عَنَّا الْحَزَنَ",
+          "english": "They will say: Praise belongs to Allah, who has removed grief from us.",
+          "french": "Ils diront : Louange à Allah, qui a écarté de nous la tristesse.",
+          "reference": "Fatir 35:34"
+        }
+      ]
+    },
+    {
+      "id": "anxiety",
+      "title": {
+        "ar": "عند القلق",
+        "en": "When you feel anxious",
+        "fr": "Lorsque l'angoisse vous prend"
+      },
+      "ayahs": [
+        {
+          "surah": 13,
+          "ayah": 28,
+          "surahName": {
+            "ar": "الرعد",
+            "en": "Ar-Ra'd",
+            "fr": "Ar-Ra'd"
+          },
+          "arabic": "أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ",
+          "english": "Surely in the remembrance of Allah hearts find rest.",
+          "french": "N'est-ce pas par l'évocation d'Allah que les cœurs s'apaisent ?",
+          "reference": "Ar-Ra'd 13:28"
+        },
+        {
+          "surah": 2,
+          "ayah": 286,
+          "surahName": {
+            "ar": "البقرة",
+            "en": "Al-Baqarah",
+            "fr": "Al-Baqara"
+          },
+          "arabic": "لَا يُكَلِّفُ اللَّهُ نَفْسًا إِلَّا وُسْعَهَا",
+          "english": "Allah does not burden a soul beyond its capacity.",
+          "french": "Allah n'impose à aucune âme plus que ce qu'elle peut porter.",
+          "reference": "Al-Baqarah 2:286"
+        },
+        {
+          "surah": 20,
+          "ayah": 25,
+          "surahName": {
+            "ar": "طه",
+            "en": "Ta-Ha",
+            "fr": "Ta-Ha"
+          },
+          "arabic": "رَبِّ اشْرَحْ لِي صَدْرِي",
+          "english": "My Lord, expand my chest for me.",
+          "french": "Seigneur, ouvre-moi la poitrine.",
+          "reference": "Ta-Ha 20:25"
+        },
+        {
+          "surah": 20,
+          "ayah": 26,
+          "surahName": {
+            "ar": "طه",
+            "en": "Ta-Ha",
+            "fr": "Ta-Ha"
+          },
+          "arabic": "وَيَسِّرْ لِي أَمْرِي",
+          "english": "And make my task easy for me.",
+          "french": "Et facilite-moi mon affaire.",
+          "reference": "Ta-Ha 20:26"
+        },
+        {
+          "surah": 3,
+          "ayah": 173,
+          "surahName": {
+            "ar": "آل عمران",
+            "en": "Aal Imran",
+            "fr": "Al Imran"
+          },
+          "arabic": "حَسْبُنَا اللَّهُ وَنِعْمَ الْوَكِيلُ",
+          "english": "Allah is sufficient for us, and He is the best Disposer of affairs.",
+          "french": "Allah nous suffit, et Il est le meilleur Garant.",
+          "reference": "Aal Imran 3:173"
+        },
+        {
+          "surah": 9,
+          "ayah": 51,
+          "surahName": {
+            "ar": "التوبة",
+            "en": "At-Tawbah",
+            "fr": "At-Tawba"
+          },
+          "arabic": "قُل لَّن يُصِيبَنَا إِلَّا مَا كَتَبَ اللَّهُ لَنَا",
+          "english": "Say: Nothing will befall us except what Allah has written for us.",
+          "french": "Dis : Rien ne nous atteindra en dehors de ce qu'Allah a prescrit pour nous.",
+          "reference": "At-Tawbah 9:51"
+        },
+        {
+          "surah": 65,
+          "ayah": 2,
+          "surahName": {
+            "ar": "الطلاق",
+            "en": "At-Talaq",
+            "fr": "At-Talaq"
+          },
+          "arabic": "وَمَن يَتَّقِ اللَّهَ يَجْعَل لَّهُ مَخْرَجًا",
+          "english": "Whoever is mindful of Allah, He will make a way out for him.",
+          "french": "Quiconque craint Allah, Il lui ménagera une issue.",
+          "reference": "At-Talaq 65:2"
+        },
+        {
+          "surah": 65,
+          "ayah": 3,
+          "surahName": {
+            "ar": "الطلاق",
+            "en": "At-Talaq",
+            "fr": "At-Talaq"
+          },
+          "arabic": "وَمَن يَتَوَكَّلْ عَلَى اللَّهِ فَهُوَ حَسْبُهُ",
+          "english": "Whoever relies upon Allah, He is sufficient for him.",
+          "french": "Quiconque place sa confiance en Allah, Il lui suffit.",
+          "reference": "At-Talaq 65:3"
+        },
+        {
+          "surah": 27,
+          "ayah": 62,
+          "surahName": {
+            "ar": "النمل",
+            "en": "An-Naml",
+            "fr": "An-Naml"
+          },
+          "arabic": "أَمَّن يُجِيبُ الْمُضْطَرَّ إِذَا دَعَاهُ وَيَكْشِفُ السُّوءَ",
+          "english": "Who answers the distressed when he calls, and removes the harm?",
+          "french": "Qui répond à l'angoissé lorsqu'il L'invoque, et dissipe le mal ?",
+          "reference": "An-Naml 27:62"
+        },
+        {
+          "surah": 48,
+          "ayah": 4,
+          "surahName": {
+            "ar": "الفتح",
+            "en": "Al-Fath",
+            "fr": "Al-Fath"
+          },
+          "arabic": "هُوَ الَّذِي أَنزَلَ السَّكِينَةَ فِي قُلُوبِ الْمُؤْمِنِينَ",
+          "english": "He is the One who sent down tranquillity into the hearts of the believers.",
+          "french": "C'est Lui qui a fait descendre la sérénité dans les cœurs des croyants.",
+          "reference": "Al-Fath 48:4"
+        }
+      ]
+    },
+    {
+      "id": "fear",
+      "title": {
+        "ar": "عند الخوف",
+        "en": "When you feel afraid",
+        "fr": "Lorsque la peur vous prend"
+      },
+      "ayahs": [
+        {
+          "surah": 10,
+          "ayah": 62,
+          "surahName": {
+            "ar": "يونس",
+            "en": "Yunus",
+            "fr": "Yunus"
+          },
+          "arabic": "أَلَا إِنَّ أَوْلِيَاءَ اللَّهِ لَا خَوْفٌ عَلَيْهِمْ وَلَا هُمْ يَحْزَنُونَ",
+          "english": "The close friends of Allah will have no fear, nor will they grieve.",
+          "french": "Les alliés d'Allah n'auront aucune crainte, et ils ne seront pas affligés.",
+          "reference": "Yunus 10:62"
+        },
+        {
+          "surah": 41,
+          "ayah": 30,
+          "surahName": {
+            "ar": "فصلت",
+            "en": "Fussilat",
+            "fr": "Fussilat"
+          },
+          "arabic": "أَلَّا تَخَافُوا وَلَا تَحْزَنُوا وَأَبْشِرُوا بِالْجَنَّةِ الَّتِي كُنتُمْ تُوعَدُونَ",
+          "english": "Do not fear and do not grieve, and receive good news of the Paradise you were promised.",
+          "french": "N'ayez pas peur et ne vous affligez pas, et recevez la bonne nouvelle du Paradis qui vous était promis.",
+          "reference": "Fussilat 41:30"
+        },
+        {
+          "surah": 3,
+          "ayah": 175,
+          "surahName": {
+            "ar": "آل عمران",
+            "en": "Aal Imran",
+            "fr": "Al Imran"
+          },
+          "arabic": "فَلَا تَخَافُوهُمْ وَخَافُونِ إِن كُنتُم مُّؤْمِنِينَ",
+          "english": "So do not fear them, but fear Me, if you are believers.",
+          "french": "Ne les craignez donc pas, mais craignez-Moi, si vous êtes croyants.",
+          "reference": "Aal Imran 3:175"
+        },
+        {
+          "surah": 2,
+          "ayah": 38,
+          "surahName": {
+            "ar": "البقرة",
+            "en": "Al-Baqarah",
+            "fr": "Al-Baqara"
+          },
+          "arabic": "فَمَن تَبِعَ هُدَايَ فَلَا خَوْفٌ عَلَيْهِمْ وَلَا هُمْ يَحْزَنُونَ",
+          "english": "Whoever follows My guidance will have no fear, nor will they grieve.",
+          "french": "Quiconque suit Ma guidée n'aura aucune crainte et ne sera pas affligé.",
+          "reference": "Al-Baqarah 2:38"
+        },
+        {
+          "surah": 2,
+          "ayah": 112,
+          "surahName": {
+            "ar": "البقرة",
+            "en": "Al-Baqarah",
+            "fr": "Al-Baqara"
+          },
+          "arabic": "بَلَىٰ مَنْ أَسْلَمَ وَجْهَهُ لِلَّهِ وَهُوَ مُحْسِنٌ فَلَهُ أَجْرُهُ عِندَ رَبِّهِ وَلَا خَوْفٌ عَلَيْهِمْ وَلَا هُمْ يَحْزَنُونَ",
+          "english": "Whoever submits his face to Allah while doing good will have his reward with his Lord. They will have no fear, nor will they grieve.",
+          "french": "Quiconque soumet son visage à Allah tout en faisant le bien aura sa récompense auprès de son Seigneur. Ils n'auront aucune crainte et ne seront pas affligés.",
+          "reference": "Al-Baqarah 2:112"
+        },
+        {
+          "surah": 2,
+          "ayah": 277,
+          "surahName": {
+            "ar": "البقرة",
+            "en": "Al-Baqarah",
+            "fr": "Al-Baqara"
+          },
+          "arabic": "إِنَّ الَّذِينَ آمَنُوا وَعَمِلُوا الصَّالِحَاتِ وَأَقَامُوا الصَّلَاةَ وَآتَوُا الزَّكَاةَ لَهُمْ أَجْرُهُمْ عِندَ رَبِّهِمْ وَلَا خَوْفٌ عَلَيْهِمْ وَلَا هُمْ يَحْزَنُونَ",
+          "english": "Those who believe, do righteous deeds, establish the prayer, and give zakat will have their reward with their Lord. They will have no fear, nor will they grieve.",
+          "french": "Ceux qui croient, font le bien, accomplissent la prière et acquittent la zakat auront leur récompense auprès de leur Seigneur. Ils n'auront aucune crainte et ne seront pas affligés.",
+          "reference": "Al-Baqarah 2:277"
+        },
+        {
+          "surah": 6,
+          "ayah": 48,
+          "surahName": {
+            "ar": "الأنعام",
+            "en": "Al-An'am",
+            "fr": "Al-An'am"
+          },
+          "arabic": "فَمَنْ آمَنَ وَأَصْلَحَ فَلَا خَوْفٌ عَلَيْهِمْ وَلَا هُمْ يَحْزَنُونَ",
+          "english": "Whoever believes and sets things right will have no fear, nor will they grieve.",
+          "french": "Quiconque croit et réforme n'aura aucune crainte et ne sera pas affligé.",
+          "reference": "Al-An'am 6:48"
+        },
+        {
+          "surah": 46,
+          "ayah": 13,
+          "surahName": {
+            "ar": "الأحقاف",
+            "en": "Al-Ahqaf",
+            "fr": "Al-Ahqaf"
+          },
+          "arabic": "إِنَّ الَّذِينَ قَالُوا رَبُّنَا اللَّهُ ثُمَّ اسْتَقَامُوا فَلَا خَوْفٌ عَلَيْهِمْ وَلَا هُمْ يَحْزَنُونَ",
+          "english": "Those who say, Our Lord is Allah, and then remain upright will have no fear, nor will they grieve.",
+          "french": "Ceux qui disent : Notre Seigneur est Allah, puis se tiennent droits, n'auront aucune crainte et ne seront pas affligés.",
+          "reference": "Al-Ahqaf 46:13"
+        },
+        {
+          "surah": 43,
+          "ayah": 68,
+          "surahName": {
+            "ar": "الزخرف",
+            "en": "Az-Zukhruf",
+            "fr": "Az-Zukhruf"
+          },
+          "arabic": "يَا عِبَادِ لَا خَوْفٌ عَلَيْكُمُ الْيَوْمَ وَلَا أَنتُمْ تَحْزَنُونَ",
+          "english": "O My servants, today you will have no fear, and you will not grieve.",
+          "french": "Ô Mes serviteurs, aujourd'hui vous n'aurez aucune crainte, et vous ne serez pas affligés.",
+          "reference": "Az-Zukhruf 43:68"
+        },
+        {
+          "surah": 2,
+          "ayah": 62,
+          "surahName": {
+            "ar": "البقرة",
+            "en": "Al-Baqarah",
+            "fr": "Al-Baqara"
+          },
+          "arabic": "مَنْ آمَنَ بِاللَّهِ وَالْيَوْمِ الْآخِرِ وَعَمِلَ صَالِحًا فَلَهُمْ أَجْرُهُمْ عِندَ رَبِّهِمْ وَلَا خَوْفٌ عَلَيْهِمْ وَلَا هُمْ يَحْزَنُونَ",
+          "english": "Whoever believes in Allah and the Last Day and does righteous work will have his reward with his Lord. They will have no fear, nor will they grieve.",
+          "french": "Quiconque croit en Allah et au Jour dernier et fait le bien aura sa récompense auprès de son Seigneur. Ils n'auront aucune crainte et ne seront pas affligés.",
+          "reference": "Al-Baqarah 2:62"
+        }
+      ]
+    },
+    {
+      "id": "hope",
+      "title": {
+        "ar": "عند الرجاء",
+        "en": "When you need hope",
+        "fr": "Lorsque vous avez besoin d'espérance"
+      },
+      "ayahs": [
+        {
+          "surah": 12,
+          "ayah": 87,
+          "surahName": {
+            "ar": "يوسف",
+            "en": "Yusuf",
+            "fr": "Yusuf"
+          },
+          "arabic": "وَلَا تَيْأَسُوا مِن رَّوْحِ اللَّهِ ۖ إِنَّهُ لَا يَيْأَسُ مِن رَّوْحِ اللَّهِ إِلَّا الْقَوْمُ الْكَافِرُونَ",
+          "english": "Do not despair of the mercy of Allah. None despairs of the mercy of Allah except the people who reject the truth.",
+          "french": "Ne désespérez pas de la miséricorde d'Allah. Seuls les gens mécréants désespèrent de la miséricorde d'Allah.",
+          "reference": "Yusuf 12:87"
+        },
+        {
+          "surah": 15,
+          "ayah": 49,
+          "surahName": {
+            "ar": "الحجر",
+            "en": "Al-Hijr",
+            "fr": "Al-Hijr"
+          },
+          "arabic": "نَبِّئْ عِبَادِي أَنِّي أَنَا الْغَفُورُ الرَّحِيمُ",
+          "english": "Tell My servants that I am the All-Forgiving, the Most Merciful.",
+          "french": "Annonce à Mes serviteurs que Je suis le Pardonneur, le Très Miséricordieux.",
+          "reference": "Al-Hijr 15:49"
+        },
+        {
+          "surah": 39,
+          "ayah": 53,
+          "surahName": {
+            "ar": "الزمر",
+            "en": "Az-Zumar",
+            "fr": "Az-Zumar"
+          },
+          "arabic": "قُلْ يَا عِبَادِيَ الَّذِينَ أَسْرَفُوا عَلَىٰ أَنفُسِهِمْ لَا تَقْنَطُوا مِن رَّحْمَةِ اللَّهِ ۚ إِنَّ اللَّهَ يَغْفِرُ الذُّنُوبَ جَمِيعًا ۚ إِنَّهُ هُوَ الْغَفُورُ الرَّحِيمُ",
+          "english": "Say: O My servants who have transgressed against themselves, do not despair of the mercy of Allah. Allah forgives all sins. He is the All-Forgiving, the Most Merciful.",
+          "french": "Dis : Ô Mes serviteurs qui avez été excessifs envers vous-mêmes, ne désespérez pas de la miséricorde d'Allah. Allah pardonne tous les péchés. Il est le Pardonneur, le Très Miséricordieux.",
+          "reference": "Az-Zumar 39:53"
+        },
+        {
+          "surah": 2,
+          "ayah": 186,
+          "surahName": {
+            "ar": "البقرة",
+            "en": "Al-Baqarah",
+            "fr": "Al-Baqara"
+          },
+          "arabic": "وَإِذَا سَأَلَكَ عِبَادِي عَنِّي فَإِنِّي قَرِيبٌ ۖ أُجِيبُ دَعْوَةَ الدَّاعِ إِذَا دَعَانِ",
+          "english": "When My servants ask you about Me, I am near. I answer the caller when he calls Me.",
+          "french": "Si Mes serviteurs t'interrogent à Mon sujet, Je suis tout proche. Je réponds à l'appel de celui qui M'invoque.",
+          "reference": "Al-Baqarah 2:186"
+        },
+        {
+          "surah": 7,
+          "ayah": 156,
+          "surahName": {
+            "ar": "الأعراف",
+            "en": "Al-A'raf",
+            "fr": "Al-A'raf"
+          },
+          "arabic": "وَرَحْمَتِي وَسِعَتْ كُلَّ شَيْءٍ",
+          "english": "My mercy encompasses all things.",
+          "french": "Ma miséricorde embrasse toute chose.",
+          "reference": "Al-A'raf 7:156"
+        },
+        {
+          "surah": 4,
+          "ayah": 110,
+          "surahName": {
+            "ar": "النساء",
+            "en": "An-Nisa",
+            "fr": "An-Nisa"
+          },
+          "arabic": "وَمَن يَعْمَلْ سُوءًا أَوْ يَظْلِمْ نَفْسَهُ ثُمَّ يَسْتَغْفِرِ اللَّهَ يَجِدِ اللَّهَ غَفُورًا رَّحِيمًا",
+          "english": "Whoever does evil or wrongs himself, then seeks Allah's forgiveness, will find Allah Forgiving and Merciful.",
+          "french": "Quiconque fait le mal ou se fait du tort, puis demande pardon à Allah, trouvera Allah Pardonneur et Miséricordieux.",
+          "reference": "An-Nisa 4:110"
+        },
+        {
+          "surah": 2,
+          "ayah": 218,
+          "surahName": {
+            "ar": "البقرة",
+            "en": "Al-Baqarah",
+            "fr": "Al-Baqara"
+          },
+          "arabic": "أُولَٰئِكَ يَرْجُونَ رَحْمَتَ اللَّهِ ۚ وَاللَّهُ غَفُورٌ رَّحِيمٌ",
+          "english": "Those hope for the mercy of Allah, and Allah is Forgiving, Merciful.",
+          "french": "Ceux-là espèrent la miséricorde d'Allah, et Allah est Pardonneur et Miséricordieux.",
+          "reference": "Al-Baqarah 2:218"
+        },
+        {
+          "surah": 39,
+          "ayah": 36,
+          "surahName": {
+            "ar": "الزمر",
+            "en": "Az-Zumar",
+            "fr": "Az-Zumar"
+          },
+          "arabic": "أَلَيْسَ اللَّهُ بِكَافٍ عَبْدَهُ",
+          "english": "Is Allah not sufficient for His servant?",
+          "french": "Allah ne suffit-Il pas à Son serviteur ?",
+          "reference": "Az-Zumar 39:36"
+        },
+        {
+          "surah": 6,
+          "ayah": 54,
+          "surahName": {
+            "ar": "الأنعام",
+            "en": "Al-An'am",
+            "fr": "Al-An'am"
+          },
+          "arabic": "كَتَبَ رَبُّكُمْ عَلَىٰ نَفْسِهِ الرَّحْمَةَ",
+          "english": "Your Lord has prescribed mercy for Himself.",
+          "french": "Votre Seigneur S'est prescrit à Lui-même la miséricorde.",
+          "reference": "Al-An'am 6:54"
+        },
+        {
+          "surah": 42,
+          "ayah": 19,
+          "surahName": {
+            "ar": "الشورى",
+            "en": "Ash-Shura",
+            "fr": "Ash-Shura"
+          },
+          "arabic": "اللَّهُ لَطِيفٌ بِعِبَادِهِ",
+          "english": "Allah is gentle with His servants.",
+          "french": "Allah est bienveillant envers Ses serviteurs.",
+          "reference": "Ash-Shura 42:19"
+        }
+      ]
+    },
+    {
+      "id": "gratitude",
+      "title": {
+        "ar": "عند الشكر",
+        "en": "When you want to give thanks",
+        "fr": "Lorsque vous voulez rendre grâce"
+      },
+      "ayahs": [
+        {
+          "surah": 14,
+          "ayah": 7,
+          "surahName": {
+            "ar": "إبراهيم",
+            "en": "Ibrahim",
+            "fr": "Ibrahim"
+          },
+          "arabic": "لَئِن شَكَرْتُمْ لَأَزِيدَنَّكُمْ",
+          "english": "If you are grateful, I will surely give you more.",
+          "french": "Si vous êtes reconnaissants, J'augmenterai certes Mes bienfaits.",
+          "reference": "Ibrahim 14:7"
+        },
+        {
+          "surah": 2,
+          "ayah": 152,
+          "surahName": {
+            "ar": "البقرة",
+            "en": "Al-Baqarah",
+            "fr": "Al-Baqara"
+          },
+          "arabic": "فَاذْكُرُونِي أَذْكُرْكُمْ وَاشْكُرُوا لِي وَلَا تَكْفُرُونِ",
+          "english": "Remember Me, and I will remember you. Be grateful to Me, and do not reject Me.",
+          "french": "Évoquez-Moi, Je vous évoquerai. Soyez reconnaissants envers Moi et ne soyez pas ingrats.",
+          "reference": "Al-Baqarah 2:152"
+        },
+        {
+          "surah": 27,
+          "ayah": 19,
+          "surahName": {
+            "ar": "النمل",
+            "en": "An-Naml",
+            "fr": "An-Naml"
+          },
+          "arabic": "رَبِّ أَوْزِعْنِي أَنْ أَشْكُرَ نِعْمَتَكَ الَّتِي أَنْعَمْتَ عَلَيَّ وَعَلَىٰ وَالِدَيَّ",
+          "english": "My Lord, enable me to be grateful for Your blessing which You bestowed upon me and upon my parents.",
+          "french": "Seigneur, inspire-moi de rendre grâce pour le bienfait dont Tu m'as comblé, ainsi que mes parents.",
+          "reference": "An-Naml 27:19"
+        },
+        {
+          "surah": 1,
+          "ayah": 2,
+          "surahName": {
+            "ar": "الفاتحة",
+            "en": "Al-Fatihah",
+            "fr": "Al-Fatiha"
+          },
+          "arabic": "الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ",
+          "english": "All praise belongs to Allah, Lord of the worlds.",
+          "french": "Toute louange appartient à Allah, Seigneur des mondes.",
+          "reference": "Al-Fatihah 1:2"
+        },
+        {
+          "surah": 16,
+          "ayah": 18,
+          "surahName": {
+            "ar": "النحل",
+            "en": "An-Nahl",
+            "fr": "An-Nahl"
+          },
+          "arabic": "وَإِن تَعُدُّوا نِعْمَةَ اللَّهِ لَا تُحْصُوهَا",
+          "english": "If you tried to count the blessing of Allah, you could not number it.",
+          "french": "Si vous comptiez les bienfaits d'Allah, vous ne sauriez les dénombrer.",
+          "reference": "An-Nahl 16:18"
+        },
+        {
+          "surah": 31,
+          "ayah": 12,
+          "surahName": {
+            "ar": "لقمان",
+            "en": "Luqman",
+            "fr": "Luqman"
+          },
+          "arabic": "أَنِ اشْكُرْ لِلَّهِ ۚ وَمَن يَشْكُرْ فَإِنَّمَا يَشْكُرُ لِنَفْسِهِ",
+          "english": "Be grateful to Allah. Whoever is grateful is grateful for his own soul.",
+          "french": "Sois reconnaissant envers Allah. Quiconque est reconnaissant ne l'est que pour lui-même.",
+          "reference": "Luqman 31:12"
+        },
+        {
+          "surah": 55,
+          "ayah": 13,
+          "surahName": {
+            "ar": "الرحمن",
+            "en": "Ar-Rahman",
+            "fr": "Ar-Rahman"
+          },
+          "arabic": "فَبِأَيِّ آلَاءِ رَبِّكُمَا تُكَذِّبَانِ",
+          "english": "Which of the favours of your Lord will you deny?",
+          "french": "Lequel des bienfaits de votre Seigneur nierez-vous ?",
+          "reference": "Ar-Rahman 55:13"
+        },
+        {
+          "surah": 93,
+          "ayah": 11,
+          "surahName": {
+            "ar": "الضحى",
+            "en": "Ad-Duha",
+            "fr": "Ad-Duha"
+          },
+          "arabic": "وَأَمَّا بِنِعْمَةِ رَبِّكَ فَحَدِّثْ",
+          "english": "And as for the blessing of your Lord, speak of it.",
+          "french": "Quant au bienfait de ton Seigneur, proclame-le.",
+          "reference": "Ad-Duha 93:11"
+        },
+        {
+          "surah": 2,
+          "ayah": 172,
+          "surahName": {
+            "ar": "البقرة",
+            "en": "Al-Baqarah",
+            "fr": "Al-Baqara"
+          },
+          "arabic": "كُلُوا مِن طَيِّبَاتِ مَا رَزَقْنَاكُمْ وَاشْكُرُوا لِلَّهِ",
+          "english": "Eat of the good things We have provided you, and be grateful to Allah.",
+          "french": "Mangez des bonnes choses que Nous vous avons accordées, et soyez reconnaissants envers Allah.",
+          "reference": "Al-Baqarah 2:172"
+        },
+        {
+          "surah": 16,
+          "ayah": 114,
+          "surahName": {
+            "ar": "النحل",
+            "en": "An-Nahl",
+            "fr": "An-Nahl"
+          },
+          "arabic": "وَاشْكُرُوا نِعْمَتَ اللَّهِ إِن كُنتُمْ إِيَّاهُ تَعْبُدُونَ",
+          "english": "Be grateful for the blessing of Allah, if it is Him that you worship.",
+          "french": "Soyez reconnaissants pour le bienfait d'Allah, si c'est Lui que vous adorez.",
+          "reference": "An-Nahl 16:114"
+        }
+      ]
+    },
+    {
+      "id": "patience",
+      "title": {
+        "ar": "عند الصبر",
+        "en": "When you need patience",
+        "fr": "Lorsque vous avez besoin de patience"
+      },
+      "ayahs": [
+        {
+          "surah": 2,
+          "ayah": 153,
+          "surahName": {
+            "ar": "البقرة",
+            "en": "Al-Baqarah",
+            "fr": "Al-Baqara"
+          },
+          "arabic": "يَا أَيُّهَا الَّذِينَ آمَنُوا اسْتَعِينُوا بِالصَّبْرِ وَالصَّلَاةِ ۚ إِنَّ اللَّهَ مَعَ الصَّابِرِينَ",
+          "english": "O you who believe, seek help through patience and prayer. Allah is with the patient.",
+          "french": "Ô vous qui croyez, cherchez secours dans la patience et la prière. Allah est avec les patients.",
+          "reference": "Al-Baqarah 2:153"
+        },
+        {
+          "surah": 2,
+          "ayah": 155,
+          "surahName": {
+            "ar": "البقرة",
+            "en": "Al-Baqarah",
+            "fr": "Al-Baqara"
+          },
+          "arabic": "وَلَنَبْلُوَنَّكُم بِشَيْءٍ مِّنَ الْخَوْفِ وَالْجُوعِ وَنَقْصٍ مِّنَ الْأَمْوَالِ وَالْأَنفُسِ وَالثَّمَرَاتِ ۗ وَبَشِّرِ الصَّابِرِينَ",
+          "english": "We will surely test you with something of fear, hunger, and loss of wealth, lives, and fruits. Give good news to the patient.",
+          "french": "Nous vous éprouverons certes par un peu de peur, de faim et de perte de biens, de vies et de fruits. Annonce la bonne nouvelle aux patients.",
+          "reference": "Al-Baqarah 2:155"
+        },
+        {
+          "surah": 3,
+          "ayah": 200,
+          "surahName": {
+            "ar": "آل عمران",
+            "en": "Aal Imran",
+            "fr": "Al Imran"
+          },
+          "arabic": "يَا أَيُّهَا الَّذِينَ آمَنُوا اصْبِرُوا وَصَابِرُوا وَرَابِطُوا وَاتَّقُوا اللَّهَ لَعَلَّكُمْ تُفْلِحُونَ",
+          "english": "O you who believe, be patient, outdo others in patience, remain stationed, and be mindful of Allah so that you may succeed.",
+          "french": "Ô vous qui croyez, soyez patients, rivalisez de patience, demeurez fermes et craignez Allah afin de réussir.",
+          "reference": "Aal Imran 3:200"
+        },
+        {
+          "surah": 39,
+          "ayah": 10,
+          "surahName": {
+            "ar": "الزمر",
+            "en": "Az-Zumar",
+            "fr": "Az-Zumar"
+          },
+          "arabic": "إِنَّمَا يُوَفَّى الصَّابِرُونَ أَجْرَهُم بِغَيْرِ حِسَابٍ",
+          "english": "The patient will be given their reward without measure.",
+          "french": "Les patients recevront leur récompense sans compter.",
+          "reference": "Az-Zumar 39:10"
+        },
+        {
+          "surah": 2,
+          "ayah": 45,
+          "surahName": {
+            "ar": "البقرة",
+            "en": "Al-Baqarah",
+            "fr": "Al-Baqara"
+          },
+          "arabic": "وَاسْتَعِينُوا بِالصَّبْرِ وَالصَّلَاةِ ۚ وَإِنَّهَا لَكَبِيرَةٌ إِلَّا عَلَى الْخَاشِعِينَ",
+          "english": "Seek help through patience and prayer. It is hard except for the humble.",
+          "french": "Cherchez secours dans la patience et la prière. Cela est difficile, sauf pour les humbles.",
+          "reference": "Al-Baqarah 2:45"
+        },
+        {
+          "surah": 103,
+          "ayah": 3,
+          "surahName": {
+            "ar": "العصر",
+            "en": "Al-Asr",
+            "fr": "Al-Asr"
+          },
+          "arabic": "وَتَوَاصَوْا بِالْحَقِّ وَتَوَاصَوْا بِالصَّبْرِ",
+          "english": "And counsel one another to truth, and counsel one another to patience.",
+          "french": "Et s'enjoignent mutuellement la vérité, et s'enjoignent mutuellement la patience.",
+          "reference": "Al-Asr 103:3"
+        },
+        {
+          "surah": 70,
+          "ayah": 5,
+          "surahName": {
+            "ar": "المعارج",
+            "en": "Al-Ma'arij",
+            "fr": "Al-Ma'arij"
+          },
+          "arabic": "فَاصْبِرْ صَبْرًا جَمِيلًا",
+          "english": "So be patient with a beautiful patience.",
+          "french": "Endure donc d'une belle patience.",
+          "reference": "Al-Ma'arij 70:5"
+        },
+        {
+          "surah": 16,
+          "ayah": 127,
+          "surahName": {
+            "ar": "النحل",
+            "en": "An-Nahl",
+            "fr": "An-Nahl"
+          },
+          "arabic": "وَاصْبِرْ وَمَا صَبْرُكَ إِلَّا بِاللَّهِ",
+          "english": "Be patient, and your patience is only through Allah.",
+          "french": "Endure, et ton endurance ne vient que d'Allah.",
+          "reference": "An-Nahl 16:127"
+        },
+        {
+          "surah": 8,
+          "ayah": 46,
+          "surahName": {
+            "ar": "الأنفال",
+            "en": "Al-Anfal",
+            "fr": "Al-Anfal"
+          },
+          "arabic": "وَاصْبِرُوا ۚ إِنَّ اللَّهَ مَعَ الصَّابِرِينَ",
+          "english": "Be patient. Allah is with the patient.",
+          "french": "Soyez patients. Allah est avec les patients.",
+          "reference": "Al-Anfal 8:46"
+        },
+        {
+          "surah": 73,
+          "ayah": 10,
+          "surahName": {
+            "ar": "المزمل",
+            "en": "Al-Muzzammil",
+            "fr": "Al-Muzzammil"
+          },
+          "arabic": "وَاصْبِرْ عَلَىٰ مَا يَقُولُونَ وَاهْجُرْهُمْ هَجْرًا جَمِيلًا",
+          "english": "Be patient over what they say, and part from them with a gracious parting.",
+          "french": "Endure ce qu'ils disent, et éloigne-toi d'eux d'une belle manière.",
+          "reference": "Al-Muzzammil 73:10"
+        }
+      ]
+    },
+    {
+      "id": "forgiveness",
+      "title": {
+        "ar": "عند طلب المغفرة",
+        "en": "When you seek forgiveness",
+        "fr": "Lorsque vous demandez pardon"
+      },
+      "ayahs": [
+        {
+          "surah": 7,
+          "ayah": 23,
+          "surahName": {
+            "ar": "الأعراف",
+            "en": "Al-A'raf",
+            "fr": "Al-A'raf"
+          },
+          "arabic": "رَبَّنَا ظَلَمْنَا أَنفُسَنَا وَإِن لَّمْ تَغْفِرْ لَنَا وَتَرْحَمْنَا لَنَكُونَنَّ مِنَ الْخَاسِرِينَ",
+          "english": "Our Lord, we have wronged ourselves. If You do not forgive us and have mercy on us, we shall be among the losers.",
+          "french": "Seigneur, nous avons été injustes envers nous-mêmes. Si Tu ne nous pardonnes pas et ne nous fais pas miséricorde, nous serons parmi les perdants.",
+          "reference": "Al-A'raf 7:23"
+        },
+        {
+          "surah": 3,
+          "ayah": 135,
+          "surahName": {
+            "ar": "آل عمران",
+            "en": "Aal Imran",
+            "fr": "Al Imran"
+          },
+          "arabic": "وَالَّذِينَ إِذَا فَعَلُوا فَاحِشَةً أَوْ ظَلَمُوا أَنفُسَهُمْ ذَكَرُوا اللَّهَ فَاسْتَغْفَرُوا لِذُنُوبِهِمْ",
+          "english": "And those who, when they commit an indecency or wrong themselves, remember Allah and seek forgiveness for their sins.",
+          "french": "Et ceux qui, lorsqu'ils commettent une turpitude ou se font du tort, évoquent Allah et demandent pardon pour leurs péchés.",
+          "reference": "Aal Imran 3:135"
+        },
+        {
+          "surah": 3,
+          "ayah": 16,
+          "surahName": {
+            "ar": "آل عمران",
+            "en": "Aal Imran",
+            "fr": "Al Imran"
+          },
+          "arabic": "رَبَّنَا إِنَّنَا آمَنَّا فَاغْفِرْ لَنَا ذُنُوبَنَا وَقِنَا عَذَابَ النَّارِ",
+          "english": "Our Lord, we have believed, so forgive us our sins and protect us from the punishment of the Fire.",
+          "french": "Seigneur, nous avons cru. Pardonne-nous nos péchés et protège-nous du châtiment du Feu.",
+          "reference": "Aal Imran 3:16"
+        },
+        {
+          "surah": 3,
+          "ayah": 147,
+          "surahName": {
+            "ar": "آل عمران",
+            "en": "Aal Imran",
+            "fr": "Al Imran"
+          },
+          "arabic": "رَبَّنَا اغْفِرْ لَنَا ذُنُوبَنَا وَإِسْرَافَنَا فِي أَمْرِنَا وَثَبِّتْ أَقْدَامَنَا",
+          "english": "Our Lord, forgive us our sins and our excess in our affairs, and make our feet firm.",
+          "french": "Seigneur, pardonne-nous nos péchés et nos excès dans nos affaires, et affermis nos pas.",
+          "reference": "Aal Imran 3:147"
+        },
+        {
+          "surah": 3,
+          "ayah": 193,
+          "surahName": {
+            "ar": "آل عمران",
+            "en": "Aal Imran",
+            "fr": "Al Imran"
+          },
+          "arabic": "رَّبَّنَا فَاغْفِرْ لَنَا ذُنُوبَنَا وَكَفِّرْ عَنَّا سَيِّئَاتِنَا وَتَوَفَّنَا مَعَ الْأَبْرَارِ",
+          "english": "Our Lord, forgive us our sins, wipe away our evil deeds, and take us in death with the righteous.",
+          "french": "Seigneur, pardonne-nous nos péchés, efface nos mauvaises actions et fais-nous mourir avec les vertueux.",
+          "reference": "Aal Imran 3:193"
+        },
+        {
+          "surah": 14,
+          "ayah": 41,
+          "surahName": {
+            "ar": "إبراهيم",
+            "en": "Ibrahim",
+            "fr": "Ibrahim"
+          },
+          "arabic": "رَبَّنَا اغْفِرْ لِي وَلِوَالِدَيَّ وَلِلْمُؤْمِنِينَ يَوْمَ يَقُومُ الْحِسَابُ",
+          "english": "Our Lord, forgive me, my parents, and the believers on the Day the account is established.",
+          "french": "Seigneur, pardonne-moi, à mes parents et aux croyants, le Jour où se dressera le compte.",
+          "reference": "Ibrahim 14:41"
+        },
+        {
+          "surah": 23,
+          "ayah": 118,
+          "surahName": {
+            "ar": "المؤمنون",
+            "en": "Al-Mu'minun",
+            "fr": "Al-Mu'minun"
+          },
+          "arabic": "وَقُل رَّبِّ اغْفِرْ وَارْحَمْ وَأَنتَ خَيْرُ الرَّاحِمِينَ",
+          "english": "And say: My Lord, forgive and have mercy, for You are the best of those who show mercy.",
+          "french": "Et dis : Seigneur, pardonne et fais miséricorde. Tu es le meilleur de ceux qui font miséricorde.",
+          "reference": "Al-Mu'minun 23:118"
+        },
+        {
+          "surah": 71,
+          "ayah": 10,
+          "surahName": {
+            "ar": "نوح",
+            "en": "Nuh",
+            "fr": "Nuh"
+          },
+          "arabic": "فَقُلْتُ اسْتَغْفِرُوا رَبَّكُمْ إِنَّهُ كَانَ غَفَّارًا",
+          "english": "I said: Seek forgiveness from your Lord. He is ever Forgiving.",
+          "french": "J'ai dit : Demandez pardon à votre Seigneur. Il est toujours Pardonneur.",
+          "reference": "Nuh 71:10"
+        },
+        {
+          "surah": 71,
+          "ayah": 28,
+          "surahName": {
+            "ar": "نوح",
+            "en": "Nuh",
+            "fr": "Nuh"
+          },
+          "arabic": "رَّبِّ اغْفِرْ لِي وَلِوَالِدَيَّ وَلِمَن دَخَلَ بَيْتِيَ مُؤْمِنًا وَلِلْمُؤْمِنِينَ وَالْمُؤْمِنَاتِ",
+          "english": "My Lord, forgive me, my parents, whoever enters my house as a believer, and the believing men and women.",
+          "french": "Seigneur, pardonne-moi, à mes parents, à quiconque entre dans ma demeure en croyant, et aux croyants et aux croyantes.",
+          "reference": "Nuh 71:28"
+        },
+        {
+          "surah": 40,
+          "ayah": 7,
+          "surahName": {
+            "ar": "غافر",
+            "en": "Ghafir",
+            "fr": "Ghafir"
+          },
+          "arabic": "رَبَّنَا وَسِعْتَ كُلَّ شَيْءٍ رَّحْمَةً وَعِلْمًا فَاغْفِرْ لِلَّذِينَ تَابُوا وَاتَّبَعُوا سَبِيلَكَ",
+          "english": "Our Lord, You have encompassed all things in mercy and knowledge, so forgive those who repent and follow Your way.",
+          "french": "Seigneur, Tu embrasses toute chose de miséricorde et de science. Pardonne donc à ceux qui se repentent et suivent Ton chemin.",
+          "reference": "Ghafir 40:7"
+        }
+      ]
+    },
+    {
+      "id": "loneliness",
+      "title": {
+        "ar": "عند الوحشة",
+        "en": "When you feel alone",
+        "fr": "Lorsque vous vous sentez seul"
+      },
+      "ayahs": [
+        {
+          "surah": 57,
+          "ayah": 4,
+          "surahName": {
+            "ar": "الحديد",
+            "en": "Al-Hadid",
+            "fr": "Al-Hadid"
+          },
+          "arabic": "وَهُوَ مَعَكُمْ أَيْنَ مَا كُنتُمْ",
+          "english": "And He is with you wherever you are.",
+          "french": "Et Il est avec vous où que vous soyez.",
+          "reference": "Al-Hadid 57:4"
+        },
+        {
+          "surah": 50,
+          "ayah": 16,
+          "surahName": {
+            "ar": "ق",
+            "en": "Qaf",
+            "fr": "Qaf"
+          },
+          "arabic": "وَلَقَدْ خَلَقْنَا الْإِنسَانَ وَنَعْلَمُ مَا تُوَسْوِسُ بِهِ نَفْسُهُ ۖ وَنَحْنُ أَقْرَبُ إِلَيْهِ مِنْ حَبْلِ الْوَرِيدِ",
+          "english": "We created man, and We know what his soul whispers to him. We are closer to him than his jugular vein.",
+          "french": "Nous avons créé l'homme, et Nous savons ce que lui suggère son âme. Nous sommes plus près de lui que sa veine jugulaire.",
+          "reference": "Qaf 50:16"
+        },
+        {
+          "surah": 58,
+          "ayah": 7,
+          "surahName": {
+            "ar": "المجادلة",
+            "en": "Al-Mujadila",
+            "fr": "Al-Mujadila"
+          },
+          "arabic": "مَا يَكُونُ مِن نَّجْوَىٰ ثَلَاثَةٍ إِلَّا هُوَ رَابِعُهُمْ",
+          "english": "There is no private conversation of three except that He is their fourth.",
+          "french": "Il n'est pas de conversation secrète de trois sans qu'Il en soit le quatrième.",
+          "reference": "Al-Mujadila 58:7"
+        },
+        {
+          "surah": 20,
+          "ayah": 46,
+          "surahName": {
+            "ar": "طه",
+            "en": "Ta-Ha",
+            "fr": "Ta-Ha"
+          },
+          "arabic": "قَالَ لَا تَخَافَا ۖ إِنَّنِي مَعَكُمَا أَسْمَعُ وَأَرَىٰ",
+          "english": "He said: Do not fear. I am with you both. I hear and I see.",
+          "french": "Il dit : N'ayez pas peur. Je suis avec vous deux. J'entends et Je vois.",
+          "reference": "Ta-Ha 20:46"
+        },
+        {
+          "surah": 16,
+          "ayah": 128,
+          "surahName": {
+            "ar": "النحل",
+            "en": "An-Nahl",
+            "fr": "An-Nahl"
+          },
+          "arabic": "إِنَّ اللَّهَ مَعَ الَّذِينَ اتَّقَوا وَّالَّذِينَ هُم مُّحْسِنُونَ",
+          "english": "Allah is with those who are mindful of Him and those who do good.",
+          "french": "Allah est avec ceux qui Le craignent et ceux qui font le bien.",
+          "reference": "An-Nahl 16:128"
+        },
+        {
+          "surah": 26,
+          "ayah": 62,
+          "surahName": {
+            "ar": "الشعراء",
+            "en": "Ash-Shu'ara",
+            "fr": "Ash-Shu'ara"
+          },
+          "arabic": "قَالَ كَلَّا ۖ إِنَّ مَعِيَ رَبِّي سَيَهْدِينِ",
+          "english": "He said: No. My Lord is with me. He will guide me.",
+          "french": "Il dit : Non. Mon Seigneur est avec moi. Il me guidera.",
+          "reference": "Ash-Shu'ara 26:62"
+        },
+        {
+          "surah": 9,
+          "ayah": 129,
+          "surahName": {
+            "ar": "التوبة",
+            "en": "At-Tawbah",
+            "fr": "At-Tawba"
+          },
+          "arabic": "فَإِن تَوَلَّوْا فَقُلْ حَسْبِيَ اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ ۖ عَلَيْهِ تَوَكَّلْتُ",
+          "english": "If they turn away, say: Allah is sufficient for me. There is no god worthy of worship except Him. Upon Him I rely.",
+          "french": "S'ils se détournent, dis : Allah me suffit. Il n'y a de divinité digne d'adoration que Lui. En Lui je place ma confiance.",
+          "reference": "At-Tawbah 9:129"
+        },
+        {
+          "surah": 3,
+          "ayah": 150,
+          "surahName": {
+            "ar": "آل عمران",
+            "en": "Aal Imran",
+            "fr": "Al Imran"
+          },
+          "arabic": "بَلِ اللَّهُ مَوْلَاكُمْ ۖ وَهُوَ خَيْرُ النَّاصِرِينَ",
+          "english": "Rather, Allah is your Protector, and He is the best of helpers.",
+          "french": "C'est Allah qui est votre Protecteur, et Il est le meilleur des secoureurs.",
+          "reference": "Aal Imran 3:150"
+        },
+        {
+          "surah": 8,
+          "ayah": 40,
+          "surahName": {
+            "ar": "الأنفال",
+            "en": "Al-Anfal",
+            "fr": "Al-Anfal"
+          },
+          "arabic": "وَإِن تَوَلَّوْا فَاعْلَمُوا أَنَّ اللَّهَ مَوْلَاكُمْ ۚ نِعْمَ الْمَوْلَىٰ وَنِعْمَ النَّصِيرُ",
+          "english": "If they turn away, know that Allah is your Protector. Excellent is the Protector, and excellent is the Helper.",
+          "french": "S'ils se détournent, sachez qu'Allah est votre Protecteur. Quel excellent Protecteur, et quel excellent Secoureur.",
+          "reference": "Al-Anfal 8:40"
+        },
+        {
+          "surah": 2,
+          "ayah": 257,
+          "surahName": {
+            "ar": "البقرة",
+            "en": "Al-Baqarah",
+            "fr": "Al-Baqara"
+          },
+          "arabic": "اللَّهُ وَلِيُّ الَّذِينَ آمَنُوا يُخْرِجُهُم مِّنَ الظُّلُمَاتِ إِلَى النُّورِ",
+          "english": "Allah is the Protector of those who believe. He brings them out of darkness into light.",
+          "french": "Allah est le Protecteur de ceux qui croient. Il les fait sortir des ténèbres vers la lumière.",
+          "reference": "Al-Baqarah 2:257"
+        }
+      ]
+    },
+    {
+      "id": "anger",
+      "title": {
+        "ar": "عند الغضب",
+        "en": "When anger rises",
+        "fr": "Lorsque la colère monte"
+      },
+      "ayahs": [
+        {
+          "surah": 3,
+          "ayah": 134,
+          "surahName": {
+            "ar": "آل عمران",
+            "en": "Aal Imran",
+            "fr": "Al Imran"
+          },
+          "arabic": "وَالْكَاظِمِينَ الْغَيْظَ وَالْعَافِينَ عَنِ النَّاسِ ۗ وَاللَّهُ يُحِبُّ الْمُحْسِنِينَ",
+          "english": "Those who restrain anger and pardon people. Allah loves those who do good.",
+          "french": "Ceux qui dominent leur rage et pardonnent aux gens. Allah aime les bienfaisants.",
+          "reference": "Aal Imran 3:134"
+        },
+        {
+          "surah": 42,
+          "ayah": 37,
+          "surahName": {
+            "ar": "الشورى",
+            "en": "Ash-Shura",
+            "fr": "Ash-Shura"
+          },
+          "arabic": "وَإِذَا مَا غَضِبُوا هُمْ يَغْفِرُونَ",
+          "english": "And when they are angry, they forgive.",
+          "french": "Et lorsqu'ils se mettent en colère, ils pardonnent.",
+          "reference": "Ash-Shura 42:37"
+        },
+        {
+          "surah": 7,
+          "ayah": 199,
+          "surahName": {
+            "ar": "الأعراف",
+            "en": "Al-A'raf",
+            "fr": "Al-A'raf"
+          },
+          "arabic": "خُذِ الْعَفْوَ وَأْمُرْ بِالْعُرْفِ وَأَعْرِضْ عَنِ الْجَاهِلِينَ",
+          "english": "Take what is freely given, enjoin what is right, and turn away from the ignorant.",
+          "french": "Pratique le pardon, ordonne le convenable et écarte-toi des ignorants.",
+          "reference": "Al-A'raf 7:199"
+        },
+        {
+          "surah": 41,
+          "ayah": 34,
+          "surahName": {
+            "ar": "فصلت",
+            "en": "Fussilat",
+            "fr": "Fussilat"
+          },
+          "arabic": "ادْفَعْ بِالَّتِي هِيَ أَحْسَنُ فَإِذَا الَّذِي بَيْنَكَ وَبَيْنَهُ عَدَاوَةٌ كَأَنَّهُ وَلِيٌّ حَمِيمٌ",
+          "english": "Repel evil with what is better, and the one between whom and you there was enmity will become like a close friend.",
+          "french": "Repousse le mal par ce qui est meilleur, et celui avec qui tu étais en inimitié deviendra comme un ami chaleureux.",
+          "reference": "Fussilat 41:34"
+        },
+        {
+          "surah": 3,
+          "ayah": 159,
+          "surahName": {
+            "ar": "آل عمران",
+            "en": "Aal Imran",
+            "fr": "Al Imran"
+          },
+          "arabic": "فَاعْفُ عَنْهُمْ وَاسْتَغْفِرْ لَهُمْ وَشَاوِرْهُمْ فِي الْأَمْرِ",
+          "english": "Pardon them, ask forgiveness for them, and consult them in the matter.",
+          "french": "Pardonne-leur, implore pour eux le pardon et consulte-les sur l'affaire.",
+          "reference": "Aal Imran 3:159"
+        },
+        {
+          "surah": 25,
+          "ayah": 63,
+          "surahName": {
+            "ar": "الفرقان",
+            "en": "Al-Furqan",
+            "fr": "Al-Furqan"
+          },
+          "arabic": "وَعِبَادُ الرَّحْمَٰنِ الَّذِينَ يَمْشُونَ عَلَى الْأَرْضِ هَوْنًا وَإِذَا خَاطَبَهُمُ الْجَاهِلُونَ قَالُوا سَلَامًا",
+          "english": "The servants of the Most Merciful walk humbly on the earth, and when the ignorant address them, they say: Peace.",
+          "french": "Les serviteurs du Tout Miséricordieux marchent humblement sur terre, et lorsque les ignorants s'adressent à eux, ils disent : Paix.",
+          "reference": "Al-Furqan 25:63"
+        },
+        {
+          "surah": 28,
+          "ayah": 55,
+          "surahName": {
+            "ar": "القصص",
+            "en": "Al-Qasas",
+            "fr": "Al-Qasas"
+          },
+          "arabic": "وَإِذَا سَمِعُوا اللَّغْوَ أَعْرَضُوا عَنْهُ وَقَالُوا لَنَا أَعْمَالُنَا وَلَكُمْ أَعْمَالُكُمْ",
+          "english": "When they hear vain talk, they turn away from it and say: Our deeds are ours and your deeds are yours.",
+          "french": "Lorsqu'ils entendent des futilités, ils s'en détournent et disent : Nos actes nous regardent, et vos actes vous regardent.",
+          "reference": "Al-Qasas 28:55"
+        },
+        {
+          "surah": 42,
+          "ayah": 40,
+          "surahName": {
+            "ar": "الشورى",
+            "en": "Ash-Shura",
+            "fr": "Ash-Shura"
+          },
+          "arabic": "فَمَنْ عَفَا وَأَصْلَحَ فَأَجْرُهُ عَلَى اللَّهِ",
+          "english": "Whoever pardons and sets things right, his reward is with Allah.",
+          "french": "Quiconque pardonne et réforme, sa récompense incombe à Allah.",
+          "reference": "Ash-Shura 42:40"
+        },
+        {
+          "surah": 5,
+          "ayah": 8,
+          "surahName": {
+            "ar": "المائدة",
+            "en": "Al-Ma'idah",
+            "fr": "Al-Ma'ida"
+          },
+          "arabic": "وَلَا يَجْرِمَنَّكُمْ شَنَآنُ قَوْمٍ عَلَىٰ أَلَّا تَعْدِلُوا ۚ اعْدِلُوا هُوَ أَقْرَبُ لِلتَّقْوَىٰ",
+          "english": "Let not hatred of a people make you fail to be just. Be just. That is nearer to mindfulness of Allah.",
+          "french": "Que la haine d'un peuple ne vous pousse pas à être injustes. Soyez justes. Cela est plus proche de la piété.",
+          "reference": "Al-Ma'idah 5:8"
+        },
+        {
+          "surah": 16,
+          "ayah": 126,
+          "surahName": {
+            "ar": "النحل",
+            "en": "An-Nahl",
+            "fr": "An-Nahl"
+          },
+          "arabic": "وَإِنْ عَاقَبْتُمْ فَعَاقِبُوا بِمِثْلِ مَا عُوقِبْتُم بِهِ ۖ وَلَئِن صَبَرْتُمْ لَهُوَ خَيْرٌ لِّلصَّابِرِينَ",
+          "english": "If you punish, punish with the like of what you were punished with. But if you are patient, that is better for the patient.",
+          "french": "Si vous punissez, punissez à la mesure de ce dont vous avez été punis. Et si vous patientez, cela est meilleur pour les patients.",
+          "reference": "An-Nahl 16:126"
+        }
+      ]
+    },
+    {
+      "id": "trust",
+      "title": {
+        "ar": "عند التوكل",
+        "en": "When you need to trust Allah",
+        "fr": "Lorsque vous devez vous en remettre à Allah"
+      },
+      "ayahs": [
+        {
+          "surah": 3,
+          "ayah": 122,
+          "surahName": {
+            "ar": "آل عمران",
+            "en": "Aal Imran",
+            "fr": "Al Imran"
+          },
+          "arabic": "وَعَلَى اللَّهِ فَلْيَتَوَكَّلِ الْمُؤْمِنُونَ",
+          "english": "And upon Allah let the believers rely.",
+          "french": "Et c'est en Allah que les croyants doivent placer leur confiance.",
+          "reference": "Aal Imran 3:122"
+        },
+        {
+          "surah": 3,
+          "ayah": 160,
+          "surahName": {
+            "ar": "آل عمران",
+            "en": "Aal Imran",
+            "fr": "Al Imran"
+          },
+          "arabic": "إِن يَنصُرْكُمُ اللَّهُ فَلَا غَالِبَ لَكُمْ",
+          "english": "If Allah helps you, none can overcome you.",
+          "french": "Si Allah vous secourt, nul ne peut vous vaincre.",
+          "reference": "Aal Imran 3:160"
+        },
+        {
+          "surah": 14,
+          "ayah": 12,
+          "surahName": {
+            "ar": "إبراهيم",
+            "en": "Ibrahim",
+            "fr": "Ibrahim"
+          },
+          "arabic": "وَمَا لَنَا أَلَّا نَتَوَكَّلَ عَلَى اللَّهِ وَقَدْ هَدَانَا سُبُلَنَا",
+          "english": "Why should we not rely upon Allah, when He has guided us to our ways?",
+          "french": "Pourquoi ne placerions-nous pas notre confiance en Allah, alors qu'Il nous a guidés sur nos chemins ?",
+          "reference": "Ibrahim 14:12"
+        },
+        {
+          "surah": 27,
+          "ayah": 79,
+          "surahName": {
+            "ar": "النمل",
+            "en": "An-Naml",
+            "fr": "An-Naml"
+          },
+          "arabic": "فَتَوَكَّلْ عَلَى اللَّهِ ۖ إِنَّكَ عَلَى الْحَقِّ الْمُبِينِ",
+          "english": "Rely upon Allah. You are upon the clear truth.",
+          "french": "Place ta confiance en Allah. Tu es sur la vérité évidente.",
+          "reference": "An-Naml 27:79"
+        },
+        {
+          "surah": 33,
+          "ayah": 3,
+          "surahName": {
+            "ar": "الأحزاب",
+            "en": "Al-Ahzab",
+            "fr": "Al-Ahzab"
+          },
+          "arabic": "وَتَوَكَّلْ عَلَى اللَّهِ ۚ وَكَفَىٰ بِاللَّهِ وَكِيلًا",
+          "english": "Rely upon Allah. Allah is sufficient as a Guardian.",
+          "french": "Place ta confiance en Allah. Allah suffit comme Protecteur.",
+          "reference": "Al-Ahzab 33:3"
+        },
+        {
+          "surah": 39,
+          "ayah": 38,
+          "surahName": {
+            "ar": "الزمر",
+            "en": "Az-Zumar",
+            "fr": "Az-Zumar"
+          },
+          "arabic": "قُلْ حَسْبِيَ اللَّهُ ۖ عَلَيْهِ يَتَوَكَّلُ الْمُتَوَكِّلُونَ",
+          "english": "Say: Allah is sufficient for me. Upon Him the reliant rely.",
+          "french": "Dis : Allah me suffit. C'est en Lui que placent leur confiance ceux qui s'en remettent à Lui.",
+          "reference": "Az-Zumar 39:38"
+        },
+        {
+          "surah": 64,
+          "ayah": 13,
+          "surahName": {
+            "ar": "التغابن",
+            "en": "At-Taghabun",
+            "fr": "At-Taghabun"
+          },
+          "arabic": "اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ ۚ وَعَلَى اللَّهِ فَلْيَتَوَكَّلِ الْمُؤْمِنُونَ",
+          "english": "Allah, there is no god worthy of worship except Him. Upon Allah let the believers rely.",
+          "french": "Allah, il n'y a de divinité digne d'adoration que Lui. C'est en Allah que les croyants doivent placer leur confiance.",
+          "reference": "At-Taghabun 64:13"
+        },
+        {
+          "surah": 67,
+          "ayah": 29,
+          "surahName": {
+            "ar": "الملك",
+            "en": "Al-Mulk",
+            "fr": "Al-Mulk"
+          },
+          "arabic": "قُلْ هُوَ الرَّحْمَٰنُ آمَنَّا بِهِ وَعَلَيْهِ تَوَكَّلْنَا",
+          "english": "Say: He is the Most Merciful. We believe in Him, and upon Him we rely.",
+          "french": "Dis : Il est le Tout Miséricordieux. Nous croyons en Lui, et c'est en Lui que nous plaçons notre confiance.",
+          "reference": "Al-Mulk 67:29"
+        },
+        {
+          "surah": 8,
+          "ayah": 2,
+          "surahName": {
+            "ar": "الأنفال",
+            "en": "Al-Anfal",
+            "fr": "Al-Anfal"
+          },
+          "arabic": "وَعَلَىٰ رَبِّهِمْ يَتَوَكَّلُونَ",
+          "english": "And upon their Lord they rely.",
+          "french": "Et c'est en leur Seigneur qu'ils placent leur confiance.",
+          "reference": "Al-Anfal 8:2"
+        },
+        {
+          "surah": 11,
+          "ayah": 123,
+          "surahName": {
+            "ar": "هود",
+            "en": "Hud",
+            "fr": "Hud"
+          },
+          "arabic": "فَاعْبُدْهُ وَتَوَكَّلْ عَلَيْهِ ۚ وَمَا رَبُّكَ بِغَافِلٍ عَمَّا تَعْمَلُونَ",
+          "english": "Worship Him and rely upon Him. Your Lord is not unaware of what you do.",
+          "french": "Adore-Le et place ta confiance en Lui. Ton Seigneur n'est pas inattentif à ce que vous faites.",
+          "reference": "Hud 11:123"
+        }
+      ]
+    },
+    {
+      "id": "strength",
+      "title": {
+        "ar": "عند الضعف",
+        "en": "When you feel weak",
+        "fr": "Lorsque vous vous sentez faible"
+      },
+      "ayahs": [
+        {
+          "surah": 2,
+          "ayah": 250,
+          "surahName": {
+            "ar": "البقرة",
+            "en": "Al-Baqarah",
+            "fr": "Al-Baqara"
+          },
+          "arabic": "رَبَّنَا أَفْرِغْ عَلَيْنَا صَبْرًا وَثَبِّتْ أَقْدَامَنَا وَانصُرْنَا عَلَى الْقَوْمِ الْكَافِرِينَ",
+          "english": "Our Lord, pour patience upon us, make our feet firm, and help us against the people who reject the truth.",
+          "french": "Seigneur, déverse sur nous l'endurance, affermis nos pas et donne-nous la victoire sur les gens mécréants.",
+          "reference": "Al-Baqarah 2:250"
+        },
+        {
+          "surah": 8,
+          "ayah": 45,
+          "surahName": {
+            "ar": "الأنفال",
+            "en": "Al-Anfal",
+            "fr": "Al-Anfal"
+          },
+          "arabic": "يَا أَيُّهَا الَّذِينَ آمَنُوا إِذَا لَقِيتُمْ فِئَةً فَاثْبُتُوا وَاذْكُرُوا اللَّهَ كَثِيرًا",
+          "english": "O you who believe, when you meet a force, stand firm and remember Allah much.",
+          "french": "Ô vous qui croyez, lorsque vous rencontrez une troupe, soyez fermes et évoquez Allah abondamment.",
+          "reference": "Al-Anfal 8:45"
+        },
+        {
+          "surah": 8,
+          "ayah": 65,
+          "surahName": {
+            "ar": "الأنفال",
+            "en": "Al-Anfal",
+            "fr": "Al-Anfal"
+          },
+          "arabic": "إِن يَكُن مِّنكُمْ عِشْرُونَ صَابِرُونَ يَغْلِبُوا مِائَتَيْنِ",
+          "english": "If there are twenty patient ones among you, they will overcome two hundred.",
+          "french": "S'il se trouve parmi vous vingt hommes patients, ils vaincront deux cents.",
+          "reference": "Al-Anfal 8:65"
+        },
+        {
+          "surah": 47,
+          "ayah": 7,
+          "surahName": {
+            "ar": "محمد",
+            "en": "Muhammad",
+            "fr": "Muhammad"
+          },
+          "arabic": "يَا أَيُّهَا الَّذِينَ آمَنُوا إِن تَنصُرُوا اللَّهَ يَنصُرْكُمْ وَيُثَبِّتْ أَقْدَامَكُمْ",
+          "english": "O you who believe, if you help Allah, He will help you and make your feet firm.",
+          "french": "Ô vous qui croyez, si vous secourez la cause d'Allah, Il vous secourra et affermira vos pas.",
+          "reference": "Muhammad 47:7"
+        },
+        {
+          "surah": 4,
+          "ayah": 104,
+          "surahName": {
+            "ar": "النساء",
+            "en": "An-Nisa",
+            "fr": "An-Nisa"
+          },
+          "arabic": "وَلَا تَهِنُوا فِي ابْتِغَاءِ الْقَوْمِ ۖ إِن تَكُونُوا تَأْلَمُونَ فَإِنَّهُمْ يَأْلَمُونَ كَمَا تَأْلَمُونَ",
+          "english": "Do not weaken in pursuing the people. If you are suffering, they are suffering as you are suffering.",
+          "french": "Ne faiblissez pas dans la poursuite de ces gens. Si vous souffrez, eux aussi souffrent comme vous souffrez.",
+          "reference": "An-Nisa 4:104"
+        },
+        {
+          "surah": 3,
+          "ayah": 146,
+          "surahName": {
+            "ar": "آل عمران",
+            "en": "Aal Imran",
+            "fr": "Al Imran"
+          },
+          "arabic": "فَمَا وَهَنُوا لِمَا أَصَابَهُمْ فِي سَبِيلِ اللَّهِ وَمَا ضَعُفُوا وَمَا اسْتَكَانُوا",
+          "english": "They did not weaken for what struck them in the way of Allah, nor did they give in or yield.",
+          "french": "Ils ne faiblirent pas pour ce qui les atteignit dans le chemin d'Allah, ils ne s'amollirent pas et ne cédèrent pas.",
+          "reference": "Aal Imran 3:146"
+        },
+        {
+          "surah": 61,
+          "ayah": 4,
+          "surahName": {
+            "ar": "الصف",
+            "en": "As-Saff",
+            "fr": "As-Saff"
+          },
+          "arabic": "إِنَّ اللَّهَ يُحِبُّ الَّذِينَ يُقَاتِلُونَ فِي سَبِيلِهِ صَفًّا كَأَنَّهُم بُنْيَانٌ مَّرْصُوصٌ",
+          "english": "Allah loves those who fight in His cause in a row, as though they were a solid structure.",
+          "french": "Allah aime ceux qui combattent dans Son chemin en rang, comme s'ils étaient une construction solide.",
+          "reference": "As-Saff 61:4"
+        },
+        {
+          "surah": 29,
+          "ayah": 69,
+          "surahName": {
+            "ar": "العنكبوت",
+            "en": "Al-Ankabut",
+            "fr": "Al-Ankabut"
+          },
+          "arabic": "وَالَّذِينَ جَاهَدُوا فِينَا لَنَهْدِيَنَّهُمْ سُبُلَنَا ۚ وَإِنَّ اللَّهَ لَمَعَ الْمُحْسِنِينَ",
+          "english": "Those who strive for Us, We will surely guide them to Our ways. Allah is with those who do good.",
+          "french": "Ceux qui luttent pour Notre cause, Nous les guiderons certes sur Nos chemins. Allah est avec les bienfaisants.",
+          "reference": "Al-Ankabut 29:69"
+        },
+        {
+          "surah": 94,
+          "ayah": 7,
+          "surahName": {
+            "ar": "الشرح",
+            "en": "Ash-Sharh",
+            "fr": "Ash-Sharh"
+          },
+          "arabic": "فَإِذَا فَرَغْتَ فَانصَبْ",
+          "english": "When you are free, then stand up in worship.",
+          "french": "Quand tu te libères, alors travaille avec effort.",
+          "reference": "Ash-Sharh 94:7"
+        },
+        {
+          "surah": 94,
+          "ayah": 8,
+          "surahName": {
+            "ar": "الشرح",
+            "en": "Ash-Sharh",
+            "fr": "Ash-Sharh"
+          },
+          "arabic": "وَإِلَىٰ رَبِّكَ فَارْغَب",
+          "english": "And to your Lord turn your longing.",
+          "french": "Et vers ton Seigneur tourne ton désir.",
+          "reference": "Ash-Sharh 94:8"
+        }
+      ]
+    },
+    {
+      "id": "illness",
+      "title": {
+        "ar": "عند المرض",
+        "en": "When you are ill",
+        "fr": "Lorsque vous êtes malade"
+      },
+      "ayahs": [
+        {
+          "surah": 26,
+          "ayah": 80,
+          "surahName": {
+            "ar": "الشعراء",
+            "en": "Ash-Shu'ara",
+            "fr": "Ash-Shu'ara"
+          },
+          "arabic": "وَإِذَا مَرِضْتُ فَهُوَ يَشْفِينِ",
+          "english": "And when I am ill, it is He who cures me.",
+          "french": "Et lorsque je suis malade, c'est Lui qui me guérit.",
+          "reference": "Ash-Shu'ara 26:80"
+        },
+        {
+          "surah": 26,
+          "ayah": 79,
+          "surahName": {
+            "ar": "الشعراء",
+            "en": "Ash-Shu'ara",
+            "fr": "Ash-Shu'ara"
+          },
+          "arabic": "وَالَّذِي هُوَ يُطْعِمُنِي وَيَسْقِينِ",
+          "english": "And He is the One who feeds me and gives me drink.",
+          "french": "Et c'est Lui qui me nourrit et me donne à boire.",
+          "reference": "Ash-Shu'ara 26:79"
+        },
+        {
+          "surah": 17,
+          "ayah": 82,
+          "surahName": {
+            "ar": "الإسراء",
+            "en": "Al-Isra",
+            "fr": "Al-Isra"
+          },
+          "arabic": "وَنُنَزِّلُ مِنَ الْقُرْآنِ مَا هُوَ شِفَاءٌ وَرَحْمَةٌ لِّلْمُؤْمِنِينَ",
+          "english": "We send down of the Qur'an that which is a healing and a mercy for the believers.",
+          "french": "Nous faisons descendre du Coran ce qui est une guérison et une miséricorde pour les croyants.",
+          "reference": "Al-Isra 17:82"
+        },
+        {
+          "surah": 10,
+          "ayah": 57,
+          "surahName": {
+            "ar": "يونس",
+            "en": "Yunus",
+            "fr": "Yunus"
+          },
+          "arabic": "يَا أَيُّهَا النَّاسُ قَدْ جَاءَتْكُم مَّوْعِظَةٌ مِّن رَّبِّكُمْ وَشِفَاءٌ لِّمَا فِي الصُّدُورِ",
+          "english": "O mankind, there has come to you an admonition from your Lord and a healing for what is in the chests.",
+          "french": "Ô gens, une exhortation de votre Seigneur vous est venue, ainsi qu'une guérison pour ce qui est dans les poitrines.",
+          "reference": "Yunus 10:57"
+        },
+        {
+          "surah": 16,
+          "ayah": 69,
+          "surahName": {
+            "ar": "النحل",
+            "en": "An-Nahl",
+            "fr": "An-Nahl"
+          },
+          "arabic": "يَخْرُجُ مِن بُطُونِهَا شَرَابٌ مُّخْتَلِفٌ أَلْوَانُهُ فِيهِ شِفَاءٌ لِّلنَّاسِ",
+          "english": "From their bellies comes a drink of varying colours in which there is healing for people.",
+          "french": "De leur ventre sort une boisson aux couleurs variées, dans laquelle il y a une guérison pour les gens.",
+          "reference": "An-Nahl 16:69"
+        },
+        {
+          "surah": 6,
+          "ayah": 17,
+          "surahName": {
+            "ar": "الأنعام",
+            "en": "Al-An'am",
+            "fr": "Al-An'am"
+          },
+          "arabic": "وَإِن يَمْسَسْكَ اللَّهُ بِضُرٍّ فَلَا كَاشِفَ لَهُ إِلَّا هُوَ",
+          "english": "If Allah touches you with harm, none can remove it except Him.",
+          "french": "Si Allah te touche d'un mal, nul ne peut l'écarter sinon Lui.",
+          "reference": "Al-An'am 6:17"
+        },
+        {
+          "surah": 10,
+          "ayah": 107,
+          "surahName": {
+            "ar": "يونس",
+            "en": "Yunus",
+            "fr": "Yunus"
+          },
+          "arabic": "وَإِن يَمْسَسْكَ اللَّهُ بِضُرٍّ فَلَا كَاشِفَ لَهُ إِلَّا هُوَ ۖ وَإِن يُرِدْكَ بِخَيْرٍ فَلَا رَادَّ لِفَضْلِهِ",
+          "english": "If Allah touches you with harm, none can remove it except Him. If He intends good for you, none can repel His bounty.",
+          "french": "Si Allah te touche d'un mal, nul ne peut l'écarter sinon Lui. S'Il te veut un bien, nul ne peut repousser Sa grâce.",
+          "reference": "Yunus 10:107"
+        },
+        {
+          "surah": 21,
+          "ayah": 83,
+          "surahName": {
+            "ar": "الأنبياء",
+            "en": "Al-Anbiya",
+            "fr": "Al-Anbiya"
+          },
+          "arabic": "أَنِّي مَسَّنِيَ الضُّرُّ وَأَنتَ أَرْحَمُ الرَّاحِمِينَ",
+          "english": "Harm has touched me, and You are the Most Merciful of the merciful.",
+          "french": "Le mal m'a touché, et Tu es le plus miséricordieux des miséricordieux.",
+          "reference": "Al-Anbiya 21:83"
+        },
+        {
+          "surah": 21,
+          "ayah": 84,
+          "surahName": {
+            "ar": "الأنبياء",
+            "en": "Al-Anbiya",
+            "fr": "Al-Anbiya"
+          },
+          "arabic": "فَاسْتَجَبْنَا لَهُ فَكَشَفْنَا مَا بِهِ مِن ضُرٍّ",
+          "english": "We answered him and removed the harm that was upon him.",
+          "french": "Nous l'exauçâmes et écartâmes le mal qui était sur lui.",
+          "reference": "Al-Anbiya 21:84"
+        },
+        {
+          "surah": 38,
+          "ayah": 41,
+          "surahName": {
+            "ar": "ص",
+            "en": "Sad",
+            "fr": "Sad"
+          },
+          "arabic": "أَنِّي مَسَّنِيَ الشَّيْطَانُ بِنُصْبٍ وَعَذَابٍ",
+          "english": "Satan has touched me with hardship and pain.",
+          "french": "Le diable m'a touché de fatigue et de tourment.",
+          "reference": "Sad 38:41"
+        }
+      ]
+    },
+    {
+      "id": "guidance",
+      "title": {
+        "ar": "عند طلب الهداية",
+        "en": "When you ask for guidance",
+        "fr": "Lorsque vous demandez la guidée"
+      },
+      "ayahs": [
+        {
+          "surah": 1,
+          "ayah": 5,
+          "surahName": {
+            "ar": "الفاتحة",
+            "en": "Al-Fatihah",
+            "fr": "Al-Fatiha"
+          },
+          "arabic": "إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ",
+          "english": "You alone we worship, and You alone we ask for help.",
+          "french": "C'est Toi seul que nous adorons, et c'est Toi seul dont nous implorons l'aide.",
+          "reference": "Al-Fatihah 1:5"
+        },
+        {
+          "surah": 1,
+          "ayah": 6,
+          "surahName": {
+            "ar": "الفاتحة",
+            "en": "Al-Fatihah",
+            "fr": "Al-Fatiha"
+          },
+          "arabic": "اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ",
+          "english": "Guide us to the straight path.",
+          "french": "Guide-nous sur le droit chemin.",
+          "reference": "Al-Fatihah 1:6"
+        },
+        {
+          "surah": 1,
+          "ayah": 7,
+          "surahName": {
+            "ar": "الفاتحة",
+            "en": "Al-Fatihah",
+            "fr": "Al-Fatiha"
+          },
+          "arabic": "صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ",
+          "english": "The path of those You have blessed, not of those who earned anger, nor of those who went astray.",
+          "french": "Le chemin de ceux que Tu as comblés, non de ceux qui ont encouru Ta colère, ni des égarés.",
+          "reference": "Al-Fatihah 1:7"
+        },
+        {
+          "surah": 20,
+          "ayah": 114,
+          "surahName": {
+            "ar": "طه",
+            "en": "Ta-Ha",
+            "fr": "Ta-Ha"
+          },
+          "arabic": "وَقُل رَّبِّ زِدْنِي عِلْمًا",
+          "english": "And say: My Lord, increase me in knowledge.",
+          "french": "Et dis : Seigneur, augmente-moi en savoir.",
+          "reference": "Ta-Ha 20:114"
+        },
+        {
+          "surah": 3,
+          "ayah": 8,
+          "surahName": {
+            "ar": "آل عمران",
+            "en": "Aal Imran",
+            "fr": "Al Imran"
+          },
+          "arabic": "رَبَّنَا لَا تُزِغْ قُلُوبَنَا بَعْدَ إِذْ هَدَيْتَنَا وَهَبْ لَنَا مِن لَّدُنكَ رَحْمَةً",
+          "english": "Our Lord, do not let our hearts swerve after You have guided us, and grant us mercy from Yourself.",
+          "french": "Seigneur, ne laisse pas dévier nos cœurs après nous avoir guidés, et accorde-nous une miséricorde venant de Toi.",
+          "reference": "Aal Imran 3:8"
+        },
+        {
+          "surah": 18,
+          "ayah": 10,
+          "surahName": {
+            "ar": "الكهف",
+            "en": "Al-Kahf",
+            "fr": "Al-Kahf"
+          },
+          "arabic": "رَبَّنَا آتِنَا مِن لَّدُنكَ رَحْمَةً وَهَيِّئْ لَنَا مِنْ أَمْرِنَا رَشَدًا",
+          "english": "Our Lord, grant us mercy from Yourself and provide for us, in our affair, right guidance.",
+          "french": "Seigneur, accorde-nous une miséricorde venant de Toi et prépare-nous, dans notre affaire, une droite direction.",
+          "reference": "Al-Kahf 18:10"
+        },
+        {
+          "surah": 6,
+          "ayah": 161,
+          "surahName": {
+            "ar": "الأنعام",
+            "en": "Al-An'am",
+            "fr": "Al-An'am"
+          },
+          "arabic": "قُلْ إِنَّنِي هَدَانِي رَبِّي إِلَىٰ صِرَاطٍ مُّسْتَقِيمٍ",
+          "english": "Say: My Lord has guided me to a straight path.",
+          "french": "Dis : Mon Seigneur m'a guidé vers un chemin droit.",
+          "reference": "Al-An'am 6:161"
+        },
+        {
+          "surah": 93,
+          "ayah": 7,
+          "surahName": {
+            "ar": "الضحى",
+            "en": "Ad-Duha",
+            "fr": "Ad-Duha"
+          },
+          "arabic": "وَوَجَدَكَ ضَالًّا فَهَدَىٰ",
+          "english": "And He found you unguided, then He guided you.",
+          "french": "Il t'a trouvé égaré, puis Il t'a guidé.",
+          "reference": "Ad-Duha 93:7"
+        },
+        {
+          "surah": 2,
+          "ayah": 272,
+          "surahName": {
+            "ar": "البقرة",
+            "en": "Al-Baqarah",
+            "fr": "Al-Baqara"
+          },
+          "arabic": "لَّيْسَ عَلَيْكَ هُدَاهُمْ وَلَٰكِنَّ اللَّهَ يَهْدِي مَن يَشَاءُ",
+          "english": "Their guidance is not upon you, but Allah guides whom He wills.",
+          "french": "Ce n'est pas à toi de les guider, mais Allah guide qui Il veut.",
+          "reference": "Al-Baqarah 2:272"
+        },
+        {
+          "surah": 28,
+          "ayah": 56,
+          "surahName": {
+            "ar": "القصص",
+            "en": "Al-Qasas",
+            "fr": "Al-Qasas"
+          },
+          "arabic": "إِنَّكَ لَا تَهْدِي مَنْ أَحْبَبْتَ وَلَٰكِنَّ اللَّهَ يَهْدِي مَن يَشَاءُ",
+          "english": "You do not guide whom you love, but Allah guides whom He wills.",
+          "french": "Tu ne guides pas celui que tu aimes, mais Allah guide qui Il veut.",
+          "reference": "Al-Qasas 28:56"
+        }
+      ]
+    },
+    {
+      "id": "repentance",
+      "title": {
+        "ar": "عند التوبة",
+        "en": "When you want to repent",
+        "fr": "Lorsque vous voulez vous repentir"
+      },
+      "ayahs": [
+        {
+          "surah": 4,
+          "ayah": 17,
+          "surahName": {
+            "ar": "النساء",
+            "en": "An-Nisa",
+            "fr": "An-Nisa"
+          },
+          "arabic": "إِنَّمَا التَّوْبَةُ عَلَى اللَّهِ لِلَّذِينَ يَعْمَلُونَ السُّوءَ بِجَهَالَةٍ ثُمَّ يَتُوبُونَ مِن قَرِيبٍ",
+          "english": "Allah has taken it upon Himself to accept repentance from those who do evil in ignorance and then repent soon after.",
+          "french": "Le repentir auprès d'Allah n'est que pour ceux qui font le mal par ignorance, puis se repentent aussitôt.",
+          "reference": "An-Nisa 4:17"
+        },
+        {
+          "surah": 9,
+          "ayah": 104,
+          "surahName": {
+            "ar": "التوبة",
+            "en": "At-Tawbah",
+            "fr": "At-Tawba"
+          },
+          "arabic": "أَلَمْ يَعْلَمُوا أَنَّ اللَّهَ هُوَ يَقْبَلُ التَّوْبَةَ عَنْ عِبَادِهِ",
+          "english": "Do they not know that Allah accepts repentance from His servants?",
+          "french": "Ne savent-ils pas qu'Allah accueille le repentir de Ses serviteurs ?",
+          "reference": "At-Tawbah 9:104"
+        },
+        {
+          "surah": 5,
+          "ayah": 74,
+          "surahName": {
+            "ar": "المائدة",
+            "en": "Al-Ma'idah",
+            "fr": "Al-Ma'ida"
+          },
+          "arabic": "أَفَلَا يَتُوبُونَ إِلَى اللَّهِ وَيَسْتَغْفِرُونَهُ ۚ وَاللَّهُ غَفُورٌ رَّحِيمٌ",
+          "english": "Will they not turn to Allah in repentance and seek His forgiveness? Allah is Forgiving, Merciful.",
+          "french": "Ne vont-ils pas revenir repentants vers Allah et Lui demander pardon ? Allah est Pardonneur et Miséricordieux.",
+          "reference": "Al-Ma'idah 5:74"
+        },
+        {
+          "surah": 11,
+          "ayah": 3,
+          "surahName": {
+            "ar": "هود",
+            "en": "Hud",
+            "fr": "Hud"
+          },
+          "arabic": "وَأَنِ اسْتَغْفِرُوا رَبَّكُمْ ثُمَّ تُوبُوا إِلَيْهِ يُمَتِّعْكُم مَّتَاعًا حَسَنًا",
+          "english": "Seek forgiveness from your Lord, then turn to Him in repentance. He will grant you a good enjoyment.",
+          "french": "Demandez pardon à votre Seigneur, puis revenez à Lui repentants. Il vous accordera une belle jouissance.",
+          "reference": "Hud 11:3"
+        },
+        {
+          "surah": 11,
+          "ayah": 52,
+          "surahName": {
+            "ar": "هود",
+            "en": "Hud",
+            "fr": "Hud"
+          },
+          "arabic": "وَيَا قَوْمِ اسْتَغْفِرُوا رَبَّكُمْ ثُمَّ تُوبُوا إِلَيْهِ يُرْسِلِ السَّمَاءَ عَلَيْكُم مِّدْرَارًا",
+          "english": "O my people, seek forgiveness from your Lord, then turn to Him. He will send the sky upon you in abundant rain.",
+          "french": "Ô mon peuple, demandez pardon à votre Seigneur, puis revenez à Lui. Il enverra sur vous le ciel en pluie abondante.",
+          "reference": "Hud 11:52"
+        },
+        {
+          "surah": 11,
+          "ayah": 90,
+          "surahName": {
+            "ar": "هود",
+            "en": "Hud",
+            "fr": "Hud"
+          },
+          "arabic": "وَاسْتَغْفِرُوا رَبَّكُمْ ثُمَّ تُوبُوا إِلَيْهِ ۚ إِنَّ رَبِّي رَحِيمٌ وَدُودٌ",
+          "english": "Seek forgiveness from your Lord, then turn to Him. My Lord is Merciful, Loving.",
+          "french": "Demandez pardon à votre Seigneur, puis revenez à Lui. Mon Seigneur est Miséricordieux et Aimant.",
+          "reference": "Hud 11:90"
+        },
+        {
+          "surah": 25,
+          "ayah": 70,
+          "surahName": {
+            "ar": "الفرقان",
+            "en": "Al-Furqan",
+            "fr": "Al-Furqan"
+          },
+          "arabic": "إِلَّا مَن تَابَ وَآمَنَ وَعَمِلَ عَمَلًا صَالِحًا فَأُولَٰئِكَ يُبَدِّلُ اللَّهُ سَيِّئَاتِهِمْ حَسَنَاتٍ",
+          "english": "Except one who repents, believes, and does righteous work. For those, Allah will change their evil deeds into good deeds.",
+          "french": "Sauf celui qui se repent, croit et fait une bonne œuvre. À ceux-là Allah changera leurs mauvaises actions en bonnes.",
+          "reference": "Al-Furqan 25:70"
+        },
+        {
+          "surah": 25,
+          "ayah": 71,
+          "surahName": {
+            "ar": "الفرقان",
+            "en": "Al-Furqan",
+            "fr": "Al-Furqan"
+          },
+          "arabic": "وَمَن تَابَ وَعَمِلَ صَالِحًا فَإِنَّهُ يَتُوبُ إِلَى اللَّهِ مَتَابًا",
+          "english": "Whoever repents and does righteous work turns to Allah with a true turning.",
+          "french": "Quiconque se repent et fait le bien revient à Allah d'un vrai retour.",
+          "reference": "Al-Furqan 25:71"
+        },
+        {
+          "surah": 66,
+          "ayah": 8,
+          "surahName": {
+            "ar": "التحريم",
+            "en": "At-Tahrim",
+            "fr": "At-Tahrim"
+          },
+          "arabic": "يَا أَيُّهَا الَّذِينَ آمَنُوا تُوبُوا إِلَى اللَّهِ تَوْبَةً نَّصُوحًا",
+          "english": "O you who believe, turn to Allah in sincere repentance.",
+          "french": "Ô vous qui croyez, revenez à Allah d'un repentir sincère.",
+          "reference": "At-Tahrim 66:8"
+        },
+        {
+          "surah": 42,
+          "ayah": 25,
+          "surahName": {
+            "ar": "الشورى",
+            "en": "Ash-Shura",
+            "fr": "Ash-Shura"
+          },
+          "arabic": "وَهُوَ الَّذِي يَقْبَلُ التَّوْبَةَ عَنْ عِبَادِهِ وَيَعْفُو عَنِ السَّيِّئَاتِ",
+          "english": "He is the One who accepts repentance from His servants and pardons evil deeds.",
+          "french": "C'est Lui qui accueille le repentir de Ses serviteurs et pardonne les mauvaises actions.",
+          "reference": "Ash-Shura 42:25"
+        }
+      ]
+    },
+    {
+      "id": "peace",
+      "title": {
+        "ar": "عند طلب السكينة",
+        "en": "When you seek peace",
+        "fr": "Lorsque vous cherchez la paix"
+      },
+      "ayahs": [
+        {
+          "surah": 89,
+          "ayah": 27,
+          "surahName": {
+            "ar": "الفجر",
+            "en": "Al-Fajr",
+            "fr": "Al-Fajr"
+          },
+          "arabic": "يَا أَيَّتُهَا النَّفْسُ الْمُطْمَئِنَّةُ",
+          "english": "O tranquil soul.",
+          "french": "Ô âme apaisée.",
+          "reference": "Al-Fajr 89:27"
+        },
+        {
+          "surah": 89,
+          "ayah": 28,
+          "surahName": {
+            "ar": "الفجر",
+            "en": "Al-Fajr",
+            "fr": "Al-Fajr"
+          },
+          "arabic": "ارْجِعِي إِلَىٰ رَبِّكِ رَاضِيَةً مَّرْضِيَّةً",
+          "english": "Return to your Lord, pleased and pleasing.",
+          "french": "Retourne vers ton Seigneur, satisfaite et agréée.",
+          "reference": "Al-Fajr 89:28"
+        },
+        {
+          "surah": 2,
+          "ayah": 208,
+          "surahName": {
+            "ar": "البقرة",
+            "en": "Al-Baqarah",
+            "fr": "Al-Baqara"
+          },
+          "arabic": "يَا أَيُّهَا الَّذِينَ آمَنُوا ادْخُلُوا فِي السِّلْمِ كَافَّةً",
+          "english": "O you who believe, enter into peace completely.",
+          "french": "Ô vous qui croyez, entrez tous dans la paix.",
+          "reference": "Al-Baqarah 2:208"
+        },
+        {
+          "surah": 10,
+          "ayah": 25,
+          "surahName": {
+            "ar": "يونس",
+            "en": "Yunus",
+            "fr": "Yunus"
+          },
+          "arabic": "وَاللَّهُ يَدْعُو إِلَىٰ دَارِ السَّلَامِ",
+          "english": "Allah calls to the Home of Peace.",
+          "french": "Allah appelle à la Demeure de la paix.",
+          "reference": "Yunus 10:25"
+        },
+        {
+          "surah": 6,
+          "ayah": 127,
+          "surahName": {
+            "ar": "الأنعام",
+            "en": "Al-An'am",
+            "fr": "Al-An'am"
+          },
+          "arabic": "لَهُمْ دَارُ السَّلَامِ عِندَ رَبِّهِمْ",
+          "english": "For them is the Home of Peace with their Lord.",
+          "french": "Ils auront la Demeure de la paix auprès de leur Seigneur.",
+          "reference": "Al-An'am 6:127"
+        },
+        {
+          "surah": 59,
+          "ayah": 23,
+          "surahName": {
+            "ar": "الحشر",
+            "en": "Al-Hashr",
+            "fr": "Al-Hashr"
+          },
+          "arabic": "هُوَ اللَّهُ الَّذِي لَا إِلَٰهَ إِلَّا هُوَ الْمَلِكُ الْقُدُّوسُ السَّلَامُ",
+          "english": "He is Allah, besides whom there is no god worthy of worship: the King, the Holy, the Source of Peace.",
+          "french": "Il est Allah, en dehors de qui il n'y a pas de divinité digne d'adoration : le Roi, le Saint, la Paix.",
+          "reference": "Al-Hashr 59:23"
+        },
+        {
+          "surah": 97,
+          "ayah": 5,
+          "surahName": {
+            "ar": "القدر",
+            "en": "Al-Qadr",
+            "fr": "Al-Qadr"
+          },
+          "arabic": "سَلَامٌ هِيَ حَتَّىٰ مَطْلَعِ الْفَجْرِ",
+          "english": "It is peace until the break of dawn.",
+          "french": "Elle est paix jusqu'à l'apparition de l'aube.",
+          "reference": "Al-Qadr 97:5"
+        },
+        {
+          "surah": 8,
+          "ayah": 61,
+          "surahName": {
+            "ar": "الأنفال",
+            "en": "Al-Anfal",
+            "fr": "Al-Anfal"
+          },
+          "arabic": "وَإِن جَنَحُوا لِلسَّلْمِ فَاجْنَحْ لَهَا وَتَوَكَّلْ عَلَى اللَّهِ",
+          "english": "If they incline to peace, incline to it and rely upon Allah.",
+          "french": "S'ils inclinent à la paix, incline vers elle et place ta confiance en Allah.",
+          "reference": "Al-Anfal 8:61"
+        },
+        {
+          "surah": 49,
+          "ayah": 10,
+          "surahName": {
+            "ar": "الحجرات",
+            "en": "Al-Hujurat",
+            "fr": "Al-Hujurat"
+          },
+          "arabic": "إِنَّمَا الْمُؤْمِنُونَ إِخْوَةٌ فَأَصْلِحُوا بَيْنَ أَخَوَيْكُمْ",
+          "english": "The believers are but brothers, so set things right between your brothers.",
+          "french": "Les croyants ne sont que des frères. Établissez donc la concorde entre vos frères.",
+          "reference": "Al-Hujurat 49:10"
+        },
+        {
+          "surah": 36,
+          "ayah": 58,
+          "surahName": {
+            "ar": "يس",
+            "en": "Ya-Sin",
+            "fr": "Ya-Sin"
+          },
+          "arabic": "سَلَامٌ قَوْلًا مِّن رَّبٍّ رَّحِيمٍ",
+          "english": "Peace: a word from a Merciful Lord.",
+          "french": "Paix : une parole d'un Seigneur miséricordieux.",
+          "reference": "Ya-Sin 36:58"
+        }
+      ]
+    },
+    {
+      "id": "provision",
+      "title": {
+        "ar": "عند ضيق الرزق",
+        "en": "When provision feels tight",
+        "fr": "Lorsque la subsistance se fait étroite"
+      },
+      "ayahs": [
+        {
+          "surah": 51,
+          "ayah": 58,
+          "surahName": {
+            "ar": "الذاريات",
+            "en": "Adh-Dhariyat",
+            "fr": "Adh-Dhariyat"
+          },
+          "arabic": "إِنَّ اللَّهَ هُوَ الرَّزَّاقُ ذُو الْقُوَّةِ الْمَتِينُ",
+          "english": "Allah is the Provider, the Lord of strength, the Firm.",
+          "french": "Allah est le Pourvoyeur, le Détenteur de la force, l'Inébranlable.",
+          "reference": "Adh-Dhariyat 51:58"
+        },
+        {
+          "surah": 11,
+          "ayah": 6,
+          "surahName": {
+            "ar": "هود",
+            "en": "Hud",
+            "fr": "Hud"
+          },
+          "arabic": "وَمَا مِن دَابَّةٍ فِي الْأَرْضِ إِلَّا عَلَى اللَّهِ رِزْقُهَا",
+          "english": "There is no creature on earth but that its provision is upon Allah.",
+          "french": "Il n'est point de bête sur terre dont la subsistance n'incombe à Allah.",
+          "reference": "Hud 11:6"
+        },
+        {
+          "surah": 29,
+          "ayah": 60,
+          "surahName": {
+            "ar": "العنكبوت",
+            "en": "Al-Ankabut",
+            "fr": "Al-Ankabut"
+          },
+          "arabic": "وَكَأَيِّن مِّن دَابَّةٍ لَّا تَحْمِلُ رِزْقَهَا اللَّهُ يَرْزُقُهَا وَإِيَّاكُمْ",
+          "english": "How many a creature does not carry its provision. Allah provides for it and for you.",
+          "french": "Que de bêtes ne portent pas leur subsistance. Allah les pourvoit, et vous aussi.",
+          "reference": "Al-Ankabut 29:60"
+        },
+        {
+          "surah": 17,
+          "ayah": 30,
+          "surahName": {
+            "ar": "الإسراء",
+            "en": "Al-Isra",
+            "fr": "Al-Isra"
+          },
+          "arabic": "إِنَّ رَبَّكَ يَبْسُطُ الرِّزْقَ لِمَن يَشَاءُ وَيَقْدِرُ",
+          "english": "Your Lord extends provision for whom He wills and restricts it.",
+          "french": "Ton Seigneur étend la subsistance à qui Il veut et Il la restreint.",
+          "reference": "Al-Isra 17:30"
+        },
+        {
+          "surah": 34,
+          "ayah": 39,
+          "surahName": {
+            "ar": "سبأ",
+            "en": "Saba",
+            "fr": "Saba"
+          },
+          "arabic": "وَمَا أَنفَقْتُم مِّن شَيْءٍ فَهُوَ يُخْلِفُهُ ۖ وَهُوَ خَيْرُ الرَّازِقِينَ",
+          "english": "Whatever you spend, He replaces it. He is the best of providers.",
+          "french": "Quoi que vous dépensiez, Il le remplace. Il est le meilleur des pourvoyeurs.",
+          "reference": "Saba 34:39"
+        },
+        {
+          "surah": 2,
+          "ayah": 268,
+          "surahName": {
+            "ar": "البقرة",
+            "en": "Al-Baqarah",
+            "fr": "Al-Baqara"
+          },
+          "arabic": "الشَّيْطَانُ يَعِدُكُمُ الْفَقْرَ وَيَأْمُرُكُم بِالْفَحْشَاءِ ۖ وَاللَّهُ يَعِدُكُم مَّغْفِرَةً مِّنْهُ وَفَضْلًا",
+          "english": "Satan promises you poverty and commands indecency. Allah promises you forgiveness from Him and bounty.",
+          "french": "Le diable vous promet la pauvreté et vous commande l'indécence. Allah vous promet un pardon venant de Lui et une grâce.",
+          "reference": "Al-Baqarah 2:268"
+        },
+        {
+          "surah": 35,
+          "ayah": 3,
+          "surahName": {
+            "ar": "فاطر",
+            "en": "Fatir",
+            "fr": "Fatir"
+          },
+          "arabic": "هَلْ مِنْ خَالِقٍ غَيْرُ اللَّهِ يَرْزُقُكُم مِّنَ السَّمَاءِ وَالْأَرْضِ",
+          "english": "Is there any creator other than Allah who provides for you from the sky and the earth?",
+          "french": "Y a-t-il un créateur autre qu'Allah qui vous pourvoie depuis le ciel et la terre ?",
+          "reference": "Fatir 35:3"
+        },
+        {
+          "surah": 67,
+          "ayah": 21,
+          "surahName": {
+            "ar": "الملك",
+            "en": "Al-Mulk",
+            "fr": "Al-Mulk"
+          },
+          "arabic": "أَمَّنْ هَٰذَا الَّذِي يَرْزُقُكُمْ إِنْ أَمْسَكَ رِزْقَهُ",
+          "english": "Who is it that will provide for you if He withholds His provision?",
+          "french": "Qui donc vous donnera votre subsistance s'Il retient la Sienne ?",
+          "reference": "Al-Mulk 67:21"
+        },
+        {
+          "surah": 20,
+          "ayah": 132,
+          "surahName": {
+            "ar": "طه",
+            "en": "Ta-Ha",
+            "fr": "Ta-Ha"
+          },
+          "arabic": "لَا نَسْأَلُكَ رِزْقًا ۖ نَّحْنُ نَرْزُقُكَ ۗ وَالْعَاقِبَةُ لِلتَّقْوَىٰ",
+          "english": "We do not ask you for provision. We provide for you. The best outcome is for mindfulness of Allah.",
+          "french": "Nous ne te demandons pas de subsistance. C'est Nous qui te pourvoyons. La belle fin est pour la piété.",
+          "reference": "Ta-Ha 20:132"
+        },
+        {
+          "surah": 62,
+          "ayah": 10,
+          "surahName": {
+            "ar": "الجمعة",
+            "en": "Al-Jumu'ah",
+            "fr": "Al-Jumu'a"
+          },
+          "arabic": "فَإِذَا قُضِيَتِ الصَّلَاةُ فَانتَشِرُوا فِي الْأَرْضِ وَابْتَغُوا مِن فَضْلِ اللَّهِ",
+          "english": "When the prayer is finished, disperse in the land and seek the bounty of Allah.",
+          "french": "Quand la prière est achevée, répandez-vous sur terre et recherchez la grâce d'Allah.",
+          "reference": "Al-Jumu'ah 62:10"
+        }
+      ]
+    },
+    {
+      "id": "parents",
+      "title": {
+        "ar": "عند ذكر الوالدين",
+        "en": "When you think of your parents",
+        "fr": "Lorsque vous pensez à vos parents"
+      },
+      "ayahs": [
+        {
+          "surah": 17,
+          "ayah": 23,
+          "surahName": {
+            "ar": "الإسراء",
+            "en": "Al-Isra",
+            "fr": "Al-Isra"
+          },
+          "arabic": "وَقَضَىٰ رَبُّكَ أَلَّا تَعْبُدُوا إِلَّا إِيَّاهُ وَبِالْوَالِدَيْنِ إِحْسَانًا",
+          "english": "Your Lord has decreed that you worship none but Him, and that you be good to parents.",
+          "french": "Ton Seigneur a décrété que vous n'adoriez que Lui, et que vous traitiez bien vos parents.",
+          "reference": "Al-Isra 17:23"
+        },
+        {
+          "surah": 17,
+          "ayah": 24,
+          "surahName": {
+            "ar": "الإسراء",
+            "en": "Al-Isra",
+            "fr": "Al-Isra"
+          },
+          "arabic": "وَاخْفِضْ لَهُمَا جَنَاحَ الذُّلِّ مِنَ الرَّحْمَةِ وَقُل رَّبِّ ارْحَمْهُمَا كَمَا رَبَّيَانِي صَغِيرًا",
+          "english": "Lower to them the wing of humility out of mercy, and say: My Lord, have mercy on them as they raised me when I was small.",
+          "french": "Abaisse pour eux l'aile de l'humilité, par miséricorde, et dis : Seigneur, fais-leur miséricorde comme ils m'ont élevé petit.",
+          "reference": "Al-Isra 17:24"
+        },
+        {
+          "surah": 31,
+          "ayah": 14,
+          "surahName": {
+            "ar": "لقمان",
+            "en": "Luqman",
+            "fr": "Luqman"
+          },
+          "arabic": "وَوَصَّيْنَا الْإِنسَانَ بِوَالِدَيْهِ",
+          "english": "We enjoined upon man goodness to his parents.",
+          "french": "Nous avons enjoint à l'homme la bonté envers ses parents.",
+          "reference": "Luqman 31:14"
+        },
+        {
+          "surah": 31,
+          "ayah": 15,
+          "surahName": {
+            "ar": "لقمان",
+            "en": "Luqman",
+            "fr": "Luqman"
+          },
+          "arabic": "وَصَاحِبْهُمَا فِي الدُّنْيَا مَعْرُوفًا",
+          "english": "Keep company with them in this world with kindness.",
+          "french": "Tiens-leur compagnie ici-bas de façon convenable.",
+          "reference": "Luqman 31:15"
+        },
+        {
+          "surah": 46,
+          "ayah": 15,
+          "surahName": {
+            "ar": "الأحقاف",
+            "en": "Al-Ahqaf",
+            "fr": "Al-Ahqaf"
+          },
+          "arabic": "وَوَصَّيْنَا الْإِنسَانَ بِوَالِدَيْهِ إِحْسَانًا",
+          "english": "We enjoined upon man kindness to his parents.",
+          "french": "Nous avons enjoint à l'homme la bienfaisance envers ses parents.",
+          "reference": "Al-Ahqaf 46:15"
+        },
+        {
+          "surah": 29,
+          "ayah": 8,
+          "surahName": {
+            "ar": "العنكبوت",
+            "en": "Al-Ankabut",
+            "fr": "Al-Ankabut"
+          },
+          "arabic": "وَوَصَّيْنَا الْإِنسَانَ بِوَالِدَيْهِ حُسْنًا",
+          "english": "We enjoined upon man goodness to his parents.",
+          "french": "Nous avons enjoint à l'homme d'être bon envers ses parents.",
+          "reference": "Al-Ankabut 29:8"
+        },
+        {
+          "surah": 4,
+          "ayah": 36,
+          "surahName": {
+            "ar": "النساء",
+            "en": "An-Nisa",
+            "fr": "An-Nisa"
+          },
+          "arabic": "وَاعْبُدُوا اللَّهَ وَلَا تُشْرِكُوا بِهِ شَيْئًا ۖ وَبِالْوَالِدَيْنِ إِحْسَانًا",
+          "english": "Worship Allah and do not associate anything with Him, and be good to parents.",
+          "french": "Adorez Allah et ne Lui donnez aucun associé, et soyez bons envers les parents.",
+          "reference": "An-Nisa 4:36"
+        },
+        {
+          "surah": 6,
+          "ayah": 151,
+          "surahName": {
+            "ar": "الأنعام",
+            "en": "Al-An'am",
+            "fr": "Al-An'am"
+          },
+          "arabic": "أَلَّا تُشْرِكُوا بِهِ شَيْئًا ۖ وَبِالْوَالِدَيْنِ إِحْسَانًا",
+          "english": "Do not associate anything with Him, and be good to parents.",
+          "french": "Ne Lui associez rien, et soyez bons envers les parents.",
+          "reference": "Al-An'am 6:151"
+        },
+        {
+          "surah": 19,
+          "ayah": 14,
+          "surahName": {
+            "ar": "مريم",
+            "en": "Maryam",
+            "fr": "Maryam"
+          },
+          "arabic": "وَبَرًّا بِوَالِدَيْهِ وَلَمْ يَكُن جَبَّارًا عَصِيًّا",
+          "english": "And dutiful to his parents, and he was not arrogant or disobedient.",
+          "french": "Plein de bonté envers ses parents, et il ne fut ni violent ni désobéissant.",
+          "reference": "Maryam 19:14"
+        },
+        {
+          "surah": 19,
+          "ayah": 32,
+          "surahName": {
+            "ar": "مريم",
+            "en": "Maryam",
+            "fr": "Maryam"
+          },
+          "arabic": "وَبَرًّا بِوَالِدَتِي وَلَمْ يَجْعَلْنِي جَبَّارًا شَقِيًّا",
+          "english": "And dutiful to my mother, and He has not made me arrogant or wretched.",
+          "french": "Et plein de bonté envers ma mère. Il ne m'a pas fait violent ni malheureux.",
+          "reference": "Maryam 19:32"
+        }
+      ]
+    },
+    {
+      "id": "justice",
+      "title": {
+        "ar": "عند الظلم",
+        "en": "When you face injustice",
+        "fr": "Lorsque vous faites face à l'injustice"
+      },
+      "ayahs": [
+        {
+          "surah": 4,
+          "ayah": 135,
+          "surahName": {
+            "ar": "النساء",
+            "en": "An-Nisa",
+            "fr": "An-Nisa"
+          },
+          "arabic": "يَا أَيُّهَا الَّذِينَ آمَنُوا كُونُوا قَوَّامِينَ بِالْقِسْطِ شُهَدَاءَ لِلَّهِ وَلَوْ عَلَىٰ أَنفُسِكُمْ",
+          "english": "O you who believe, stand firmly for justice as witnesses for Allah, even if it is against yourselves.",
+          "french": "Ô vous qui croyez, soyez stricts en justice, témoins pour Allah, même contre vous-mêmes.",
+          "reference": "An-Nisa 4:135"
+        },
+        {
+          "surah": 4,
+          "ayah": 58,
+          "surahName": {
+            "ar": "النساء",
+            "en": "An-Nisa",
+            "fr": "An-Nisa"
+          },
+          "arabic": "وَإِذَا حَكَمْتُم بَيْنَ النَّاسِ أَن تَحْكُمُوا بِالْعَدْلِ",
+          "english": "When you judge between people, judge with justice.",
+          "french": "Lorsque vous jugez entre les gens, jugez avec équité.",
+          "reference": "An-Nisa 4:58"
+        },
+        {
+          "surah": 16,
+          "ayah": 90,
+          "surahName": {
+            "ar": "النحل",
+            "en": "An-Nahl",
+            "fr": "An-Nahl"
+          },
+          "arabic": "إِنَّ اللَّهَ يَأْمُرُ بِالْعَدْلِ وَالْإِحْسَانِ وَإِيتَاءِ ذِي الْقُرْبَىٰ",
+          "english": "Allah commands justice, goodness, and giving to relatives.",
+          "french": "Allah ordonne la justice, la bienfaisance et le don aux proches.",
+          "reference": "An-Nahl 16:90"
+        },
+        {
+          "surah": 57,
+          "ayah": 25,
+          "surahName": {
+            "ar": "الحديد",
+            "en": "Al-Hadid",
+            "fr": "Al-Hadid"
+          },
+          "arabic": "وَأَنزَلْنَا مَعَهُمُ الْكِتَابَ وَالْمِيزَانَ لِيَقُومَ النَّاسُ بِالْقِسْطِ",
+          "english": "We sent down with them the Book and the balance, so that people may uphold justice.",
+          "french": "Nous avons fait descendre avec eux le Livre et la balance, afin que les gens établissent la justice.",
+          "reference": "Al-Hadid 57:25"
+        },
+        {
+          "surah": 49,
+          "ayah": 9,
+          "surahName": {
+            "ar": "الحجرات",
+            "en": "Al-Hujurat",
+            "fr": "Al-Hujurat"
+          },
+          "arabic": "فَأَصْلِحُوا بَيْنَهُمَا بِالْعَدْلِ وَأَقْسِطُوا ۖ إِنَّ اللَّهَ يُحِبُّ الْمُقْسِطِينَ",
+          "english": "Set things right between them with justice and act fairly. Allah loves those who act fairly.",
+          "french": "Rétablissez la concorde entre eux avec justice et soyez équitables. Allah aime les équitables.",
+          "reference": "Al-Hujurat 49:9"
+        },
+        {
+          "surah": 60,
+          "ayah": 8,
+          "surahName": {
+            "ar": "الممتحنة",
+            "en": "Al-Mumtahanah",
+            "fr": "Al-Mumtahanah"
+          },
+          "arabic": "أَن تَبَرُّوهُمْ وَتُقْسِطُوا إِلَيْهِمْ ۚ إِنَّ اللَّهَ يُحِبُّ الْمُقْسِطِينَ",
+          "english": "That you be kind to them and act justly toward them. Allah loves those who act justly.",
+          "french": "Que vous soyez bons envers eux et équitables. Allah aime les équitables.",
+          "reference": "Al-Mumtahanah 60:8"
+        },
+        {
+          "surah": 4,
+          "ayah": 105,
+          "surahName": {
+            "ar": "النساء",
+            "en": "An-Nisa",
+            "fr": "An-Nisa"
+          },
+          "arabic": "إِنَّا أَنزَلْنَا إِلَيْكَ الْكِتَابَ بِالْحَقِّ لِتَحْكُمَ بَيْنَ النَّاسِ بِمَا أَرَاكَ اللَّهُ",
+          "english": "We sent down to you the Book in truth so that you may judge between people by what Allah has shown you.",
+          "french": "Nous avons fait descendre vers toi le Livre avec la vérité, afin que tu juges entre les gens selon ce qu'Allah t'a montré.",
+          "reference": "An-Nisa 4:105"
+        },
+        {
+          "surah": 7,
+          "ayah": 29,
+          "surahName": {
+            "ar": "الأعراف",
+            "en": "Al-A'raf",
+            "fr": "Al-A'raf"
+          },
+          "arabic": "قُلْ أَمَرَ رَبِّي بِالْقِسْطِ",
+          "english": "Say: My Lord has commanded justice.",
+          "french": "Dis : Mon Seigneur a ordonné l'équité.",
+          "reference": "Al-A'raf 7:29"
+        },
+        {
+          "surah": 55,
+          "ayah": 9,
+          "surahName": {
+            "ar": "الرحمن",
+            "en": "Ar-Rahman",
+            "fr": "Ar-Rahman"
+          },
+          "arabic": "وَأَقِيمُوا الْوَزْنَ بِالْقِسْطِ وَلَا تُخْسِرُوا الْمِيزَانَ",
+          "english": "Establish the weight with justice, and do not fall short in the balance.",
+          "french": "Établissez la pesée avec équité et ne faussez pas la balance.",
+          "reference": "Ar-Rahman 55:9"
+        },
+        {
+          "surah": 5,
+          "ayah": 42,
+          "surahName": {
+            "ar": "المائدة",
+            "en": "Al-Ma'idah",
+            "fr": "Al-Ma'ida"
+          },
+          "arabic": "وَإِنْ حَكَمْتَ فَاحْكُم بَيْنَهُم بِالْقِسْطِ ۚ إِنَّ اللَّهَ يُحِبُّ الْمُقْسِطِينَ",
+          "english": "If you judge, judge between them with justice. Allah loves those who act justly.",
+          "french": "Si tu juges, juge entre eux avec équité. Allah aime les équitables.",
+          "reference": "Al-Ma'idah 5:42"
+        }
+      ]
+    },
+    {
+      "id": "hereafter",
+      "title": {
+        "ar": "عند ذكر الآخرة",
+        "en": "When you remember the Hereafter",
+        "fr": "Lorsque vous vous souvenez de l'au-delà"
+      },
+      "ayahs": [
+        {
+          "surah": 3,
+          "ayah": 185,
+          "surahName": {
+            "ar": "آل عمران",
+            "en": "Aal Imran",
+            "fr": "Al Imran"
+          },
+          "arabic": "كُلُّ نَفْسٍ ذَائِقَةُ الْمَوْتِ ۗ وَإِنَّمَا تُوَفَّوْنَ أُجُورَكُمْ يَوْمَ الْقِيَامَةِ",
+          "english": "Every soul will taste death, and you will be paid your rewards in full on the Day of Resurrection.",
+          "french": "Toute âme goûtera la mort, et vous serez pleinement rétribués au Jour de la Résurrection.",
+          "reference": "Aal Imran 3:185"
+        },
+        {
+          "surah": 29,
+          "ayah": 64,
+          "surahName": {
+            "ar": "العنكبوت",
+            "en": "Al-Ankabut",
+            "fr": "Al-Ankabut"
+          },
+          "arabic": "وَمَا هَٰذِهِ الْحَيَاةُ الدُّنْيَا إِلَّا لَهْوٌ وَلَعِبٌ ۚ وَإِنَّ الدَّارَ الْآخِرَةَ لَهِيَ الْحَيَوَانُ",
+          "english": "This worldly life is nothing but amusement and play. The Home of the Hereafter is the true life.",
+          "french": "Cette vie d'ici-bas n'est que divertissement et jeu. La Demeure dernière est la vraie vie.",
+          "reference": "Al-Ankabut 29:64"
+        },
+        {
+          "surah": 87,
+          "ayah": 17,
+          "surahName": {
+            "ar": "الأعلى",
+            "en": "Al-A'la",
+            "fr": "Al-A'la"
+          },
+          "arabic": "وَالْآخِرَةُ خَيْرٌ وَأَبْقَىٰ",
+          "english": "The Hereafter is better and more lasting.",
+          "french": "L'au-delà est meilleur et plus durable.",
+          "reference": "Al-A'la 87:17"
+        },
+        {
+          "surah": 2,
+          "ayah": 201,
+          "surahName": {
+            "ar": "البقرة",
+            "en": "Al-Baqarah",
+            "fr": "Al-Baqara"
+          },
+          "arabic": "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ",
+          "english": "Our Lord, give us good in this world and good in the Hereafter, and protect us from the punishment of the Fire.",
+          "french": "Seigneur, accorde-nous une belle part ici-bas et une belle part dans l'au-delà, et protège-nous du châtiment du Feu.",
+          "reference": "Al-Baqarah 2:201"
+        },
+        {
+          "surah": 28,
+          "ayah": 77,
+          "surahName": {
+            "ar": "القصص",
+            "en": "Al-Qasas",
+            "fr": "Al-Qasas"
+          },
+          "arabic": "وَابْتَغِ فِيمَا آتَاكَ اللَّهُ الدَّارَ الْآخِرَةَ ۖ وَلَا تَنسَ نَصِيبَكَ مِنَ الدُّنْيَا",
+          "english": "Seek, through what Allah has given you, the Home of the Hereafter, and do not forget your share of this world.",
+          "french": "Recherche, dans ce qu'Allah t'a donné, la Demeure dernière, et n'oublie pas ta part ici-bas.",
+          "reference": "Al-Qasas 28:77"
+        },
+        {
+          "surah": 99,
+          "ayah": 7,
+          "surahName": {
+            "ar": "الزلزلة",
+            "en": "Az-Zalzalah",
+            "fr": "Az-Zalzalah"
+          },
+          "arabic": "فَمَن يَعْمَلْ مِثْقَالَ ذَرَّةٍ خَيْرًا يَرَهُ",
+          "english": "Whoever does an atom's weight of good will see it.",
+          "french": "Quiconque fait un atome de bien le verra.",
+          "reference": "Az-Zalzalah 99:7"
+        },
+        {
+          "surah": 99,
+          "ayah": 8,
+          "surahName": {
+            "ar": "الزلزلة",
+            "en": "Az-Zalzalah",
+            "fr": "Az-Zalzalah"
+          },
+          "arabic": "وَمَن يَعْمَلْ مِثْقَالَ ذَرَّةٍ شَرًّا يَرَهُ",
+          "english": "And whoever does an atom's weight of evil will see it.",
+          "french": "Et quiconque fait un atome de mal le verra.",
+          "reference": "Az-Zalzalah 99:8"
+        },
+        {
+          "surah": 18,
+          "ayah": 46,
+          "surahName": {
+            "ar": "الكهف",
+            "en": "Al-Kahf",
+            "fr": "Al-Kahf"
+          },
+          "arabic": "وَالْبَاقِيَاتُ الصَّالِحَاتُ خَيْرٌ عِندَ رَبِّكَ ثَوَابًا وَخَيْرٌ أَمَلًا",
+          "english": "Enduring righteous deeds are better with your Lord in reward and better in hope.",
+          "french": "Les bonnes œuvres durables sont meilleures auprès de ton Seigneur en récompense et meilleures en espérance.",
+          "reference": "Al-Kahf 18:46"
+        },
+        {
+          "surah": 57,
+          "ayah": 20,
+          "surahName": {
+            "ar": "الحديد",
+            "en": "Al-Hadid",
+            "fr": "Al-Hadid"
+          },
+          "arabic": "وَمَا الْحَيَاةُ الدُّنْيَا إِلَّا مَتَاعُ الْغُرُورِ",
+          "english": "The life of this world is nothing but the enjoyment of delusion.",
+          "french": "La vie d'ici-bas n'est qu'une jouissance trompeuse.",
+          "reference": "Al-Hadid 57:20"
+        },
+        {
+          "surah": 102,
+          "ayah": 8,
+          "surahName": {
+            "ar": "التكاثر",
+            "en": "At-Takathur",
+            "fr": "At-Takathur"
+          },
+          "arabic": "ثُمَّ لَتُسْأَلُنَّ يَوْمَئِذٍ عَنِ النَّعِيمِ",
+          "english": "Then, on that Day, you will surely be asked about pleasure.",
+          "french": "Puis, ce jour-là, vous serez certes interrogés sur le plaisir.",
+          "reference": "At-Takathur 102:8"
+        }
+      ]
+    },
+    {
+      "id": "love",
+      "title": {
+        "ar": "عند حب الله",
+        "en": "When you long for Allah's love",
+        "fr": "Lorsque vous aspirez à l'amour d'Allah"
+      },
+      "ayahs": [
+        {
+          "surah": 2,
+          "ayah": 165,
+          "surahName": {
+            "ar": "البقرة",
+            "en": "Al-Baqarah",
+            "fr": "Al-Baqara"
+          },
+          "arabic": "وَالَّذِينَ آمَنُوا أَشَدُّ حُبًّا لِّلَّهِ",
+          "english": "Those who believe are stronger in love for Allah.",
+          "french": "Ceux qui croient ont un amour plus fort pour Allah.",
+          "reference": "Al-Baqarah 2:165"
+        },
+        {
+          "surah": 3,
+          "ayah": 31,
+          "surahName": {
+            "ar": "آل عمران",
+            "en": "Aal Imran",
+            "fr": "Al Imran"
+          },
+          "arabic": "قُلْ إِن كُنتُمْ تُحِبُّونَ اللَّهَ فَاتَّبِعُونِي يُحْبِبْكُمُ اللَّهُ",
+          "english": "Say: If you love Allah, follow me. Allah will love you.",
+          "french": "Dis : Si vous aimez Allah, suivez-moi. Allah vous aimera.",
+          "reference": "Aal Imran 3:31"
+        },
+        {
+          "surah": 5,
+          "ayah": 54,
+          "surahName": {
+            "ar": "المائدة",
+            "en": "Al-Ma'idah",
+            "fr": "Al-Ma'ida"
+          },
+          "arabic": "فَسَوْفَ يَأْتِي اللَّهُ بِقَوْمٍ يُحِبُّهُمْ وَيُحِبُّونَهُ",
+          "english": "Allah will bring a people whom He loves and who love Him.",
+          "french": "Allah fera venir un peuple qu'Il aime et qui L'aime.",
+          "reference": "Al-Ma'idah 5:54"
+        },
+        {
+          "surah": 9,
+          "ayah": 24,
+          "surahName": {
+            "ar": "التوبة",
+            "en": "At-Tawbah",
+            "fr": "At-Tawba"
+          },
+          "arabic": "أَحَبَّ إِلَيْكُم مِّنَ اللَّهِ وَرَسُولِهِ",
+          "english": "Dearer to you than Allah and His Messenger.",
+          "french": "Plus chers pour vous qu'Allah et Son Messager.",
+          "reference": "At-Tawbah 9:24"
+        },
+        {
+          "surah": 19,
+          "ayah": 96,
+          "surahName": {
+            "ar": "مريم",
+            "en": "Maryam",
+            "fr": "Maryam"
+          },
+          "arabic": "إِنَّ الَّذِينَ آمَنُوا وَعَمِلُوا الصَّالِحَاتِ سَيَجْعَلُ لَهُمُ الرَّحْمَٰنُ وُدًّا",
+          "english": "Those who believe and do righteous deeds, the Most Merciful will place love for them.",
+          "french": "Ceux qui croient et font le bien, le Tout Miséricordieux leur accordera de l'affection.",
+          "reference": "Maryam 19:96"
+        },
+        {
+          "surah": 2,
+          "ayah": 195,
+          "surahName": {
+            "ar": "البقرة",
+            "en": "Al-Baqarah",
+            "fr": "Al-Baqara"
+          },
+          "arabic": "وَأَحْسِنُوا ۛ إِنَّ اللَّهَ يُحِبُّ الْمُحْسِنِينَ",
+          "english": "Do good. Allah loves those who do good.",
+          "french": "Faites le bien. Allah aime les bienfaisants.",
+          "reference": "Al-Baqarah 2:195"
+        },
+        {
+          "surah": 3,
+          "ayah": 76,
+          "surahName": {
+            "ar": "آل عمران",
+            "en": "Aal Imran",
+            "fr": "Al Imran"
+          },
+          "arabic": "بَلَىٰ مَنْ أَوْفَىٰ بِعَهْدِهِ وَاتَّقَىٰ فَإِنَّ اللَّهَ يُحِبُّ الْمُتَّقِينَ",
+          "english": "Whoever fulfils his pledge and is mindful of Allah, Allah loves the mindful.",
+          "french": "Quiconque tient son engagement et craint Allah, Allah aime les pieux.",
+          "reference": "Aal Imran 3:76"
+        },
+        {
+          "surah": 98,
+          "ayah": 8,
+          "surahName": {
+            "ar": "البينة",
+            "en": "Al-Bayyinah",
+            "fr": "Al-Bayyinah"
+          },
+          "arabic": "رَّضِيَ اللَّهُ عَنْهُمْ وَرَضُوا عَنْهُ",
+          "english": "Allah is pleased with them, and they are pleased with Him.",
+          "french": "Allah est satisfait d'eux, et ils sont satisfaits de Lui.",
+          "reference": "Al-Bayyinah 98:8"
+        },
+        {
+          "surah": 30,
+          "ayah": 21,
+          "surahName": {
+            "ar": "الروم",
+            "en": "Ar-Rum",
+            "fr": "Ar-Rum"
+          },
+          "arabic": "وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً",
+          "english": "And He placed between you affection and mercy.",
+          "french": "Et Il a mis entre vous affection et miséricorde.",
+          "reference": "Ar-Rum 30:21"
+        },
+        {
+          "surah": 2,
+          "ayah": 207,
+          "surahName": {
+            "ar": "البقرة",
+            "en": "Al-Baqarah",
+            "fr": "Al-Baqara"
+          },
+          "arabic": "وَمِنَ النَّاسِ مَن يَشْرِي نَفْسَهُ ابْتِغَاءَ مَرْضَاتِ اللَّهِ",
+          "english": "Among people is one who sells himself seeking the pleasure of Allah.",
+          "french": "Parmi les gens, il en est qui se vendent eux-mêmes en recherchant l'agrément d'Allah.",
+          "reference": "Al-Baqarah 2:207"
+        }
+      ]
+    }
+  ],
+  "hadiths": [
+    {
+      "id": "h-feel-01",
+      "narrator": {
+        "ar": "أبو هريرة",
+        "en": "Abu Hurayrah",
+        "fr": "Abu Hurayra"
+      },
+      "arabic": "إِنَّ اللَّهَ لَا يَنْظُرُ إِلَى أَجْسَامِكُمْ وَلَا إِلَى صُوَرِكُمْ، وَلَكِنْ يَنْظُرُ إِلَى قُلُوبِكُمْ وَأَعْمَالِكُمْ",
+      "english": "Allah does not look at your bodies or your forms. He looks at your hearts and your deeds.",
+      "french": "Allah ne regarde ni vos corps ni vos apparences. Il regarde vos cœurs et vos actes.",
+      "reference": "Sahih Muslim 2564",
+      "grade": "Sahih"
+    },
+    {
+      "id": "h-feel-02",
+      "narrator": {
+        "ar": "النعمان بن بشير",
+        "en": "An-Nu'man ibn Bashir",
+        "fr": "An-Nu'man ibn Bashir"
+      },
+      "arabic": "أَلَا وَإِنَّ فِي الْجَسَدِ مُضْغَةً، إِذَا صَلَحَتْ صَلَحَ الْجَسَدُ كُلُّهُ، وَإِذَا فَسَدَتْ فَسَدَ الْجَسَدُ كُلُّهُ، أَلَا وَهِيَ الْقَلْبُ",
+      "english": "In the body there is a piece of flesh. If it is sound, the whole body is sound. If it is corrupt, the whole body is corrupt. It is the heart.",
+      "french": "Dans le corps il y a un morceau de chair. S'il est sain, tout le corps est sain. S'il est corrompu, tout le corps est corrompu. C'est le cœur.",
+      "reference": "Sahih al-Bukhari 52; Sahih Muslim 1599",
+      "grade": "Sahih"
+    },
+    {
+      "id": "h-feel-03",
+      "narrator": {
+        "ar": "عبد الله بن عباس",
+        "en": "Abdullah ibn Abbas",
+        "fr": "Abdallah ibn Abbas"
+      },
+      "arabic": "احْفَظِ اللَّهَ يَحْفَظْكَ، احْفَظِ اللَّهَ تَجِدْهُ تُجَاهَكَ",
+      "english": "Be mindful of Allah, and He will protect you. Be mindful of Allah, and you will find Him before you.",
+      "french": "Préserve les droits d'Allah, Il te préservera. Préserve les droits d'Allah, tu Le trouveras devant toi.",
+      "reference": "Sunan at-Tirmidhi 2516",
+      "grade": "Sahih"
+    },
+    {
+      "id": "h-feel-04",
+      "narrator": {
+        "ar": "أبو هريرة",
+        "en": "Abu Hurayrah",
+        "fr": "Abu Hurayra"
+      },
+      "arabic": "مَا يُصِيبُ الْمُسْلِمَ مِنْ نَصَبٍ وَلَا وَصَبٍ وَلَا هَمٍّ وَلَا حَزَنٍ وَلَا أَذًى وَلَا غَمٍّ، حَتَّى الشَّوْكَةِ يُشَاكُهَا، إِلَّا كَفَّرَ اللَّهُ بِهَا مِنْ خَطَايَاهُ",
+      "english": "No fatigue, illness, anxiety, grief, harm, or sorrow befalls a Muslim, even a thorn that pricks him, except that Allah removes some of his sins by it.",
+      "french": "Aucune fatigue, maladie, angoisse, tristesse, nuisance ou peine n'atteint un musulman, même une épine qui le pique, sans qu'Allah lui efface par cela une partie de ses fautes.",
+      "reference": "Sahih al-Bukhari 5641; Sahih Muslim 2573",
+      "grade": "Sahih"
+    },
+    {
+      "id": "h-feel-05",
+      "narrator": {
+        "ar": "صهيب",
+        "en": "Suhayb",
+        "fr": "Suhayb"
+      },
+      "arabic": "عَجَبًا لِأَمْرِ الْمُؤْمِنِ، إِنَّ أَمْرَهُ كُلَّهُ خَيْرٌ، إِنْ أَصَابَتْهُ سَرَّاءُ شَكَرَ فَكَانَ خَيْرًا لَهُ، وَإِنْ أَصَابَتْهُ ضَرَّاءُ صَبَرَ فَكَانَ خَيْرًا لَهُ",
+      "english": "How wonderful is the affair of the believer. All of his affair is good. If something pleasing happens to him, he is grateful, and that is good for him. If something harmful happens to him, he is patient, and that is good for him.",
+      "french": "Que l'affaire du croyant est admirable. Toute son affaire est un bien. S'il lui arrive une joie, il remercie, et c'est un bien pour lui. S'il lui arrive un mal, il patiente, et c'est un bien pour lui.",
+      "reference": "Sahih Muslim 2999",
+      "grade": "Sahih"
+    },
+    {
+      "id": "h-feel-06",
+      "narrator": {
+        "ar": "أبو هريرة",
+        "en": "Abu Hurayrah",
+        "fr": "Abu Hurayra"
+      },
+      "arabic": "لَيْسَ الشَّدِيدُ بِالصُّرَعَةِ، إِنَّمَا الشَّدِيدُ الَّذِي يَمْلِكُ نَفْسَهُ عِنْدَ الْغَضَبِ",
+      "english": "The strong man is not the one who wrestles. The strong man is the one who controls himself when angry.",
+      "french": "Le fort n'est pas celui qui terrasse les gens. Le fort est celui qui se maîtrise lorsqu'il est en colère.",
+      "reference": "Sahih al-Bukhari 6114; Sahih Muslim 2609",
+      "grade": "Sahih"
+    },
+    {
+      "id": "h-feel-07",
+      "narrator": {
+        "ar": "أنس",
+        "en": "Anas",
+        "fr": "Anas"
+      },
+      "arabic": "لَا يُؤْمِنُ أَحَدُكُمْ حَتَّى يُحِبَّ لِأَخِيهِ مَا يُحِبُّ لِنَفْسِهِ",
+      "english": "None of you believes until he loves for his brother what he loves for himself.",
+      "french": "Aucun de vous ne croit vraiment tant qu'il n'aime pas pour son frère ce qu'il aime pour lui-même.",
+      "reference": "Sahih al-Bukhari 13; Sahih Muslim 45",
+      "grade": "Sahih"
+    },
+    {
+      "id": "h-feel-08",
+      "narrator": {
+        "ar": "أبو هريرة",
+        "en": "Abu Hurayrah",
+        "fr": "Abu Hurayra"
+      },
+      "arabic": "مَنْ نَفَّسَ عَنْ مُؤْمِنٍ كُرْبَةً مِنْ كُرَبِ الدُّنْيَا نَفَّسَ اللَّهُ عَنْهُ كُرْبَةً مِنْ كُرَبِ يَوْمِ الْقِيَامَةِ",
+      "english": "Whoever relieves a believer of a hardship of this world, Allah will relieve him of a hardship of the Day of Resurrection.",
+      "french": "Celui qui soulage un croyant d'une peine de ce monde, Allah le soulagera d'une peine du Jour de la Résurrection.",
+      "reference": "Sahih Muslim 2699",
+      "grade": "Sahih"
+    },
+    {
+      "id": "h-feel-09",
+      "narrator": {
+        "ar": "عبد الله بن مسعود",
+        "en": "Abdullah ibn Mas'ud",
+        "fr": "Abdallah ibn Mas'ud"
+      },
+      "arabic": "لَا يَدْخُلُ الْجَنَّةَ مَنْ كَانَ فِي قَلْبِهِ مِثْقَالُ ذَرَّةٍ مِنْ كِبْرٍ",
+      "english": "Whoever has an atom's weight of arrogance in his heart will not enter Paradise.",
+      "french": "N'entrera pas au Paradis celui qui a dans le cœur un atome d'orgueil.",
+      "reference": "Sahih Muslim 91",
+      "grade": "Sahih"
+    },
+    {
+      "id": "h-feel-10",
+      "narrator": {
+        "ar": "أبو هريرة",
+        "en": "Abu Hurayrah",
+        "fr": "Abu Hurayra"
+      },
+      "arabic": "إِنَّ اللَّهَ يَقُولُ: أَنَا عِنْدَ ظَنِّ عَبْدِي بِي",
+      "english": "Allah says: I am as My servant thinks of Me.",
+      "french": "Allah dit : Je suis selon l'opinion que Mon serviteur a de Moi.",
+      "reference": "Sahih al-Bukhari 7405; Sahih Muslim 2675",
+      "grade": "Sahih"
+    },
+    {
+      "id": "h-feel-11",
+      "narrator": {
+        "ar": "أبو ذر",
+        "en": "Abu Dharr",
+        "fr": "Abu Dharr"
+      },
+      "arabic": "يَا عِبَادِي إِنَّكُمْ تُخْطِئُونَ بِاللَّيْلِ وَالنَّهَارِ، وَأَنَا أَغْفِرُ الذُّنُوبَ جَمِيعًا، فَاسْتَغْفِرُونِي أَغْفِرْ لَكُمْ",
+      "english": "O My servants, you sin by night and by day, and I forgive all sins, so seek My forgiveness and I will forgive you.",
+      "french": "Ô Mes serviteurs, vous fautez la nuit et le jour, et Je pardonne tous les péchés. Demandez-Moi pardon, Je vous pardonnerai.",
+      "reference": "Sahih Muslim 2577",
+      "grade": "Sahih"
+    },
+    {
+      "id": "h-feel-12",
+      "narrator": {
+        "ar": "ابن عباس",
+        "en": "Ibn Abbas",
+        "fr": "Ibn Abbas"
+      },
+      "arabic": "وَاعْلَمْ أَنَّ النَّصْرَ مَعَ الصَّبْرِ، وَأَنَّ الْفَرَجَ مَعَ الْكَرْبِ، وَأَنَّ مَعَ الْعُسْرِ يُسْرًا",
+      "english": "Know that help comes with patience, relief comes with distress, and with hardship comes ease.",
+      "french": "Sache que le secours vient avec la patience, que la délivrance vient avec la détresse, et qu'avec la difficulté vient la facilité.",
+      "reference": "Sunan at-Tirmidhi 2516; Musnad Ahmad",
+      "grade": "Hasan"
+    },
+    {
+      "id": "h-feel-13",
+      "narrator": {
+        "ar": "أبو سعيد الخدري",
+        "en": "Abu Sa'id al-Khudri",
+        "fr": "Abu Sa'id al-Khudri"
+      },
+      "arabic": "مَا يَكُونُ عِنْدِي مِنْ خَيْرٍ فَلَنْ أَدَّخِرَهُ عَنْكُمْ، وَمَنْ يَسْتَعْفِفْ يُعِفَّهُ اللَّهُ، وَمَنْ يَسْتَغْنِ يُغْنِهِ اللَّهُ",
+      "english": "Whatever good I have, I will not withhold it from you. Whoever seeks to be chaste, Allah will make him chaste. Whoever seeks to be independent, Allah will make him independent.",
+      "french": "Le bien que j'ai, je ne vous le retiendrai pas. Celui qui cherche la chasteté, Allah le rendra chaste. Celui qui cherche à se suffire, Allah le rendra suffisant.",
+      "reference": "Sahih al-Bukhari 1469; Sahih Muslim 1053",
+      "grade": "Sahih"
+    }
+  ],
+  "counts": {
+    "topics": 20,
+    "ayahs": 200,
+    "hadiths": 13
+  }
+}

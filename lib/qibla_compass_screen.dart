@@ -444,16 +444,16 @@ class _QiblaCompassScreenState extends BaseScreenState<QiblaCompassScreen>
       appBar: AppBar(
         title: Text(
           '🕋 ${getText('qibla')}',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            color: isDark ? Colors.white : Colors.black87,
+          style: const TextStyle(
+            fontWeight: FontWeight.w700,
+            color: Colors.white,
             letterSpacing: 0.5,
           ),
         ),
-        backgroundColor: isDark
-            ? const Color(0xFF0A0A0A)
-            : const Color(0xFFF5F0EB),
+        backgroundColor: const Color(0xFF1A5F4A),
+        foregroundColor: Colors.white,
         elevation: 0,
+        surfaceTintColor: Colors.transparent,
         actions: [
           IconButton(
             icon: Icon(

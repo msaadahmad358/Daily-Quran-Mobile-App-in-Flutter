@@ -2,9 +2,18 @@ import 'package:flutter/material.dart';
 import 'translations.dart';
 
 class DuaTab extends StatelessWidget {
-  const DuaTab({super.key});
+  final bool embedded;
+  final bool isDarkMode;
+  final String currentLanguage;
 
-  final List<Map<String, String>> _duas = const [
+  const DuaTab({
+    super.key,
+    this.embedded = false,
+    this.isDarkMode = false,
+    this.currentLanguage = 'English',
+  });
+
+  static const List<Map<String, String>> _duas = [
     {
       'title': 'duaForFasting',
       'arabic': 'اللهم إني لك صمت',
@@ -34,30 +43,17 @@ class DuaTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
-    final currentLanguage = 'English'; // Get from provider
+    final isDark = embedded
+        ? isDarkMode
+        : Theme.of(context).brightness == Brightness.dark;
+    final lang = embedded ? currentLanguage : 'English';
 
-    return Scaffold(
-      backgroundColor: isDark
-          ? const Color(0xFF0A0A0A)
-          : const Color(0xFFF5F0EB),
-      appBar: AppBar(
-        title: Text(
-          Translations.getText(currentLanguage, 'duaSupplications'),
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            color: isDark ? Colors.white : Colors.black87,
-          ),
-        ),
-        backgroundColor: isDark
-            ? const Color(0xFF0A0A0A)
-            : const Color(0xFFF5F0EB),
-        elevation: 0,
-      ),
-      body: ListView.builder(
-        padding: const EdgeInsets.all(16),
-        itemCount: _duas.length,
-        itemBuilder: (context, index) {
+    final list = ListView.builder(
+      shrinkWrap: embedded,
+      physics: embedded ? const NeverScrollableScrollPhysics() : null,
+      padding: EdgeInsets.all(embedded ? 0 : 16),
+      itemCount: _duas.length,
+      itemBuilder: (context, index) {
           final dua = _duas[index];
           return Container(
             margin: const EdgeInsets.only(bottom: 14),
@@ -104,7 +100,7 @@ class DuaTab extends StatelessWidget {
                     const SizedBox(width: 12),
                     Expanded(
                       child: Text(
-                        Translations.getText(currentLanguage, dua['title']!),
+                        Translations.getText(lang, dua['title']!),
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w600,
@@ -170,10 +166,7 @@ class DuaTab extends StatelessWidget {
                           ),
                           const SizedBox(width: 8),
                           Text(
-                            Translations.getText(
-                              currentLanguage,
-                              'translationLabel',
-                            ),
+                            Translations.getText(lang, 'translationLabel'),
                             style: TextStyle(
                               fontSize: 11,
                               color: const Color(0xFFC9A96E),
@@ -184,10 +177,7 @@ class DuaTab extends StatelessWidget {
                       ),
                       const SizedBox(height: 4),
                       Text(
-                        Translations.getText(
-                          currentLanguage,
-                          dua['translation']!,
-                        ),
+                        dua['translation']!,
                         style: TextStyle(
                           fontSize: 13,
                           fontStyle: FontStyle.italic,
@@ -219,7 +209,26 @@ class DuaTab extends StatelessWidget {
             ),
           );
         },
+      );
+
+    if (embedded) return list;
+
+    return Scaffold(
+      backgroundColor:
+          isDark ? const Color(0xFF0A0A0A) : const Color(0xFFF5F0EB),
+      appBar: AppBar(
+        title: Text(
+          Translations.getText(lang, 'duaSupplications'),
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: isDark ? Colors.white : Colors.black87,
+          ),
+        ),
+        backgroundColor:
+            isDark ? const Color(0xFF0A0A0A) : const Color(0xFFF5F0EB),
+        elevation: 0,
       ),
+      body: list,
     );
   }
 }

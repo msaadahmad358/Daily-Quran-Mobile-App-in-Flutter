@@ -792,25 +792,24 @@ class _StatsScreenState extends BaseScreenState<StatsScreen>
         Translations.getText(widget.currentLanguage, key);
 
     return Scaffold(
-      backgroundColor: isDark
-          ? const Color(0xFF0A0A0A)
-          : const Color(0xFFF5F0EB),
+      backgroundColor:
+          isDark ? const Color(0xFF121212) : const Color(0xFFF5F2EE),
       appBar: AppBar(
+        backgroundColor: const Color(0xFF1A5F4A),
+        foregroundColor: Colors.white,
+        elevation: 0,
+        centerTitle: true,
+        surfaceTintColor: Colors.transparent,
         title: Text(
-          getText('statistics'),
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            color: isDark ? Colors.white : Colors.black87,
+          getText('stats'),
+          style: const TextStyle(
+            fontWeight: FontWeight.w700,
+            fontSize: 17,
           ),
         ),
-        backgroundColor: isDark
-            ? const Color(0xFF0A0A0A)
-            : const Color(0xFFF5F0EB),
-        elevation: 0,
         actions: [
-          // Refresh Button
           Padding(
-            padding: const EdgeInsets.only(right: 8),
+            padding: const EdgeInsets.only(right: 4),
             child: IconButton(
               icon: _isLoading
                   ? const SizedBox(
@@ -821,47 +820,42 @@ class _StatsScreenState extends BaseScreenState<StatsScreen>
                         valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
                       ),
                     )
-                  : Icon(
-                      Icons.refresh,
-                      color: isDark ? Colors.white : Colors.black87,
-                    ),
+                  : const Icon(Icons.refresh_rounded),
               onPressed: _isLoading ? null : _loadData,
               tooltip: getText('refreshData'),
             ),
           ),
-          // Add demo data button (for testing)
           IconButton(
-            icon: Icon(
-              Icons.add_box,
-              color: isDark ? Colors.white : Colors.black87,
-            ),
+            icon: const Icon(Icons.add_box_outlined),
             onPressed: _addDemoData,
             tooltip: getText('addDemoData'),
           ),
         ],
         bottom: TabBar(
           controller: _tabController,
-          indicatorColor: const Color(0xFF1A5F4A),
+          indicatorColor: const Color(0xFFC9A96E),
           indicatorWeight: 3,
-          labelColor: isDark ? Colors.white : const Color(0xFF1A5F4A),
-          unselectedLabelColor: isDark ? Colors.grey[600] : Colors.grey[400],
+          labelColor: Colors.white,
+          unselectedLabelColor: Colors.white70,
           labelStyle: const TextStyle(
-            fontWeight: FontWeight.w600,
-            fontSize: 14,
+            fontWeight: FontWeight.w700,
+            fontSize: 13,
           ),
           unselectedLabelStyle: const TextStyle(
-            fontWeight: FontWeight.w400,
-            fontSize: 14,
+            fontWeight: FontWeight.w500,
+            fontSize: 13,
           ),
-          tabs: const [
-            Tab(text: '📊 Overview'),
-            Tab(text: '📈 Analytics'),
-            Tab(text: '📜 History'),
+          tabs: [
+            Tab(text: getText('overview')),
+            Tab(text: getText('analytics')),
+            Tab(text: getText('history')),
           ],
         ),
       ),
       body: _isLoading || _isClearing
-          ? const Center(child: CircularProgressIndicator())
+          ? const Center(
+              child: CircularProgressIndicator(color: Color(0xFF1A5F4A)),
+            )
           : TabBarView(
               controller: _tabController,
               children: [
@@ -1886,11 +1880,17 @@ class _StatsScreenState extends BaseScreenState<StatsScreen>
   BoxDecoration _buildCardDecoration(bool isDark) {
     return BoxDecoration(
       color: isDark ? const Color(0xFF1E1E1E) : Colors.white,
-      borderRadius: BorderRadius.circular(12),
+      borderRadius: BorderRadius.circular(3),
+      border: Border(
+        left: BorderSide(
+          color: const Color(0xFF1A5F4A).withValues(alpha: isDark ? 0.6 : 1),
+          width: 4,
+        ),
+      ),
       boxShadow: [
         BoxShadow(
-          color: Colors.black.withValues(alpha: isDark ? 0.3 : 0.05),
-          blurRadius: 8,
+          color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.05),
+          blurRadius: 6,
           offset: const Offset(0, 2),
         ),
       ],

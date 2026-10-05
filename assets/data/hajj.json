@@ -1,0 +1,143 @@
+{
+  "id": "hajj",
+  "title": {
+    "ar": "طريقة الحج",
+    "en": "How to Perform Hajj",
+    "fr": "La manière d'accomplir le Hajj"
+  },
+  "description": {
+    "ar": "بيان عملي للحج بأنواعه الثلاثة: التمتع والقران والإفراد، من الإحرام إلى طواف الوداع، مع الأدعية والمواطن.",
+    "en": "A practical account of Hajj in its three forms: tamattu, qiran, and ifrad, from ihram until the farewell tawaf, with the supplications and the places. Confirm school-specific details with a reliable scholar.",
+    "fr": "Un exposé pratique du Hajj dans ses trois formes : tamattu, qiran et ifrad, de l'ihram jusqu'au tawaf d'adieu, avec les invocations et les lieux. Confirmez les détails propres aux écoles auprès d'un savant fiable."
+  },
+  "types": [
+    {
+      "id": "tamattu",
+      "name": { "ar": "التمتع", "en": "Tamattu", "fr": "Tamattu" },
+      "english": "Enter ihram for Umrah from the miqat, complete Umrah, leave ihram, then enter ihram again for Hajj from Makkah on the 8th of Dhul Hijjah. A sacrifice is due if one is not a resident of the Haram.",
+      "french": "Entrez en ihram pour la Omra depuis le miqat, achevez la Omra, sortez de l'ihram, puis entrez de nouveau en ihram pour le Hajj depuis La Mecque le 8 de Dhul Hijja. Un sacrifice est dû si l'on n'habite pas le Haram.",
+      "arabic": "يُحرم بالعمرة من الميقات ويتمها ويتحلل، ثم يحرم بالحج من مكة يوم التروية. وعليه الهدي إن لم يكن من حاضري المسجد الحرام."
+    },
+    {
+      "id": "qiran",
+      "name": { "ar": "القران", "en": "Qiran", "fr": "Qiran" },
+      "english": "Enter one ihram for Umrah and Hajj together, or add Hajj to Umrah before beginning tawaf. Remain in ihram until the Day of Sacrifice. A sacrifice is due.",
+      "french": "Entrez dans un seul ihram pour la Omra et le Hajj ensemble, ou ajoutez le Hajj à la Omra avant de commencer le tawaf. Restez en ihram jusqu'au jour du sacrifice. Un sacrifice est dû.",
+      "arabic": "يُحرم بالعمرة والحج معًا، أو يُدخل الحج على العمرة قبل الطواف، ويبقى محرمًا إلى يوم النحر. وعليه الهدي."
+    },
+    {
+      "id": "ifrad",
+      "name": { "ar": "الإفراد", "en": "Ifrad", "fr": "Ifrad" },
+      "english": "Enter ihram for Hajj alone from the miqat. There is no Umrah before it in that ihram, and no sacrifice is required, though it is good if one offers it.",
+      "french": "Entrez en ihram pour le Hajj seul depuis le miqat. Il n'y a pas de Omra avant lui dans cet ihram, et le sacrifice n'est pas obligatoire, bien qu'il soit bien de l'offrir.",
+      "arabic": "يُحرم بالحج وحده من الميقات. لا عمرة قبله في هذا الإحرام، والهدي غير واجب، وهو حسن إن تبرع به."
+    }
+  ],
+  "pillars": [
+    { "ar": "الإحرام", "en": "Ihram", "fr": "L'ihram" },
+    { "ar": "الوقوف بعرفة", "en": "Standing at Arafah", "fr": "La station à Arafat" },
+    { "ar": "طواف الإفاضة", "en": "The tawaf of ifadah", "fr": "Le tawaf d'ifada" },
+    { "ar": "السعي عند جمهور العلماء", "en": "Sa'i, according to the majority of scholars", "fr": "Le sa'y, selon la majorité des savants" }
+  ],
+  "days": [
+    {
+      "day": "8 Dhul Hijjah",
+      "name": { "ar": "يوم التروية", "en": "The Day of Tarwiyah", "fr": "Le jour de Tarwiya" },
+      "arabic": "يُحرم المتمتع من مكانه بمكة، ثم يتوجه الحجاج إلى منى، ويصلون الظهر والعصر والمغرب والعشاء والفجر قصرًا بلا جمع، كل صلاة في وقتها.",
+      "english": "The person in tamattu enters ihram for Hajj from where he is in Makkah. The pilgrims go to Mina and pray Dhuhr, Asr, Maghrib, Isha, and Fajr shortened but not joined, each prayer in its time.",
+      "french": "Celui qui est en tamattu entre en ihram pour le Hajj depuis l'endroit où il se trouve à La Mecque. Les pèlerins vont à Mina et prient le dhuhr, le asr, le maghrib, le icha et le fajr en raccourcissant sans regrouper, chaque prière à son heure.",
+      "reference": "Sahih Muslim 1218"
+    },
+    {
+      "day": "9 Dhul Hijjah",
+      "name": { "ar": "يوم عرفة", "en": "The Day of Arafah", "fr": "Le jour d'Arafat" },
+      "arabic": "بعد طلوع الشمس يسيرون من منى إلى عرفة. يصلون الظهر والعصر جمع تقديم وقصرًا. الوقوف بعرفة ركن، ووقته من زوال الشمس يوم عرفة إلى طلوع فجر يوم النحر، ويكفي المرور فيها لحظة مع النية. يكثر من الذكر والدعاء، وخير الدعاء يوم عرفة كلمة التوحيد.",
+      "english": "After sunrise they travel from Mina to Arafah. They pray Dhuhr and Asr joined and shortened at the earlier time. Standing at Arafah is a pillar. Its time runs from midday on the Day of Arafah until dawn on the Day of Sacrifice. Passing through it for a moment with the intention is enough. Increase in remembrance and supplication. The best supplication on the Day of Arafah is the word of tawhid.",
+      "french": "Après le lever du soleil, ils vont de Mina à Arafat. Ils prient le dhuhr et le asr regroupés et raccourcis à l'heure de la première. La station à Arafat est un pilier. Son temps va du midi du jour d'Arafat jusqu'à l'aube du jour du sacrifice. Y passer un instant avec l'intention suffit. Multipliez l'évocation et l'invocation. La meilleure invocation le jour d'Arafat est la parole du tawhid.",
+      "dua": {
+        "arabic": "لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ، وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ",
+        "english": "There is no god worthy of worship except Allah alone, with no partner. To Him belongs the dominion and praise, and He is able to do all things.",
+        "french": "Il n'y a de divinité digne d'adoration qu'Allah, Seul, sans associé. À Lui la royauté et la louange, et Il est capable de toute chose."
+      },
+      "reference": "Sahih Muslim 1218; Sunan at-Tirmidhi 889 and 3585"
+    },
+    {
+      "day": "Night of 10",
+      "name": { "ar": "مزدلفة", "en": "Muzdalifah", "fr": "Muzdalifa" },
+      "arabic": "بعد غروب الشمس يدفعون إلى مزدلفة بسكينة، ويصلون المغرب والعشاء جمعًا وقصرًا. يبيتون بها، ويلتقطون حصى الجمار. الضعفة يجوز لهم الدفع بعد منتصف الليل.",
+      "english": "After sunset they move to Muzdalifah with calm. They pray Maghrib and Isha joined and shortened. They spend the night there and gather pebbles for the Jamarat. The weak may leave after the middle of the night.",
+      "french": "Après le coucher du soleil, ils se rendent à Muzdalifa avec calme. Ils prient le maghrib et le icha regroupés et raccourcis. Ils y passent la nuit et ramassent les cailloux des Jamarat. Les personnes faibles peuvent partir après le milieu de la nuit.",
+      "reference": "Sahih Muslim 1218; Sahih al-Bukhari 1676"
+    },
+    {
+      "day": "10 Dhul Hijjah",
+      "name": { "ar": "يوم النحر", "en": "The Day of Sacrifice", "fr": "Le jour du sacrifice" },
+      "arabic": "أعمال هذا اليوم أربعة، والترتيب السنة: رمي جمرة العقبة بسبع حصيات مع التكبير، ثم النحر لمن وجب عليه أو تبرع، ثم الحلق أو التقصير، ثم طواف الإفاضة والسعي لمن لم يسعَ. بفعل اثنين من الرمي والحلق والطواف يحل التحلل الأول عند كثير من العلماء، وبطواف الإفاضة يتم التحلل.",
+      "english": "This day has four acts. The sunnah order is: stone Jamrat al-Aqabah with seven pebbles while saying Allahu akbar, then offer the sacrifice for the one upon whom it is due or who gives it freely, then shave or shorten the hair, then perform the tawaf of ifadah and sa'i for the one who has not yet done sa'i. Doing two of the stoning, the shaving, and the tawaf brings the first release from ihram according to many scholars. The tawaf of ifadah completes the release.",
+      "french": "Ce jour a quatre actes. L'ordre de la sunna est : lapider Jamrat al-Aqaba de sept cailloux en disant Allahou akbar, puis offrir le sacrifice pour celui à qui il est dû ou qui le donne librement, puis se raser ou raccourcir, puis accomplir le tawaf d'ifada et le sa'y pour celui qui ne l'a pas encore fait. Accomplir deux actes parmi la lapidation, le rasage et le tawaf apporte la première sortie de l'ihram selon de nombreux savants. Le tawaf d'ifada achève la sortie.",
+      "dua": {
+        "arabic": "اللَّهُ أَكْبَرُ",
+        "english": "Allah is the Greatest. This is said with each pebble.",
+        "french": "Allah est le Plus Grand. On le dit avec chaque caillou."
+      },
+      "reference": "Sahih Muslim 1218 and 1297"
+    },
+    {
+      "day": "11 to 13 Dhul Hijjah",
+      "name": { "ar": "أيام التشريق", "en": "The Days of Tashriq", "fr": "Les jours de Tashriq" },
+      "arabic": "يبيت بمنى ليالي التشريق. يرمي الجمرات الثلاث كل يوم بعد الزوال: الصغرى ثم الوسطى ثم العقبة، بسبع حصيات لكل واحدة، ويدعو بعد الصغرى والوسطى. من تعجل في يومين فلا إثم عليه، ومن تأخر فلا إثم عليه.",
+      "english": "Spend the nights of Tashriq in Mina. Stone the three Jamarat each day after midday: the small, then the middle, then al-Aqabah, with seven pebbles for each, and supplicate after the small and the middle. Whoever hastens away in two days is not at fault, and whoever stays on is not at fault.",
+      "french": "Passez les nuits de Tashriq à Mina. Lapidez les trois Jamarat chaque jour après midi : la petite, puis la moyenne, puis al-Aqaba, avec sept cailloux pour chacune, et invoquez après la petite et la moyenne. Celui qui se hâte en deux jours n'est pas en faute, et celui qui reste ne l'est pas non plus.",
+      "reference": "Qur'an, Al-Baqarah 2:203; Sahih al-Bukhari 1751"
+    },
+    {
+      "day": "Farewell",
+      "name": { "ar": "طواف الوداع", "en": "The farewell tawaf", "fr": "Le tawaf d'adieu" },
+      "arabic": "إذا أراد الخروج من مكة طاف للوداع سبعة أشواط بغير رمل ولا اضطباع، وهو واجب عند الجمهور على غير الحائض والنفساء. ثم ينصرف.",
+      "english": "When one intends to leave Makkah, one performs the farewell tawaf of seven circuits, without brisk walking and without uncovering the shoulder. It is obligatory according to the majority, except for the woman in menstruation or post-natal bleeding. Then one departs.",
+      "french": "Lorsque l'on veut quitter La Mecque, on accomplit le tawaf d'adieu en sept tours, sans marche rapide ni épaule découverte. Il est obligatoire selon la majorité, sauf pour la femme qui a ses menstrues ou ses lochies. Puis l'on part.",
+      "reference": "Sahih al-Bukhari 1755; Sahih Muslim 1328"
+    }
+  ],
+  "sacrifice": {
+    "english": "The hady of tamattu and qiran is a sheep, or a seventh of a camel or a cow, slaughtered in the Haram on the Day of Sacrifice or the Days of Tashriq. If a person cannot find it or cannot afford it, he fasts three days in Hajj and seven when he returns.",
+    "french": "Le sacrifice du tamattu et du qiran est un mouton, ou un septième de chameau ou de vache, égorgé dans le Haram le jour du sacrifice ou les jours de Tashriq. Si l'on n'en trouve pas ou qu'on ne peut le payer, on jeûne trois jours pendant le Hajj et sept au retour.",
+    "arabic": "هدي التمتع والقران شاة أو سُبع بدنة أو بقرة، يُذبح في الحرم يوم النحر أو أيام التشريق. فمن لم يجد صام ثلاثة أيام في الحج وسبعة إذا رجع.",
+    "reference": "Qur'an, Al-Baqarah 2:196"
+  },
+  "women": {
+    "english": "A woman wears her ordinary covering clothes in ihram. She does not wear a niqab or gloves. She does not walk briskly in tawaf or jog in sa'i, and she does not shave her head. If menstruation begins before the tawaf of ifadah, she waits until she is pure. If it begins after that tawaf, she leaves without the farewell tawaf.",
+    "french": "La femme porte ses vêtements couvrants ordinaires en ihram. Elle ne porte ni niqab ni gants. Elle ne marche pas rapidement dans le tawaf et n'accélère pas dans le sa'y, et elle ne se rase pas la tête. Si les menstrues commencent avant le tawaf d'ifada, elle attend d'être pure. Si elles commencent après ce tawaf, elle part sans le tawaf d'adieu.",
+    "arabic": "المرأة تلبس لباسها الساتر، ولا تنتقب ولا تلبس القفازين، ولا ترمل ولا تسعى سعيًا شديدًا، ولا تحلق. إن حاضت قبل طواف الإفاضة انتظرت الطهر. وإن حاضت بعده سقط عنها طواف الوداع."
+  },
+  "quranAyahs": [
+    { "id": "q-2-196", "surah": 2, "ayah": 196, "surahName": { "ar": "البقرة", "en": "Al-Baqarah", "fr": "Al-Baqara" }, "arabic": "وَأَتِمُّوا الْحَجَّ وَالْعُمْرَةَ لِلَّهِ ۚ فَإِنْ أُحْصِرْتُمْ فَمَا اسْتَيْسَرَ مِنَ الْهَدْيِ", "english": "Complete the Hajj and the Umrah for Allah. If you are prevented, then offer whatever sacrifice is easy.", "french": "Accomplissez le Hajj et la Omra pour Allah. Si vous en êtes empêchés, alors offrez le sacrifice qui vous est facile.", "reference": "Al-Baqarah 2:196" },
+    { "id": "q-2-197", "surah": 2, "ayah": 197, "surahName": { "ar": "البقرة", "en": "Al-Baqarah", "fr": "Al-Baqara" }, "arabic": "الْحَجُّ أَشْهُرٌ مَّعْلُومَاتٌ ۚ فَمَن فَرَضَ فِيهِنَّ الْحَجَّ فَلَا رَفَثَ وَلَا فُسُوقَ وَلَا جِدَالَ فِي الْحَجِّ", "english": "Hajj is in known months. Whoever undertakes Hajj in them, there is to be no obscenity, no sin, and no quarrelling in Hajj.", "french": "Le Hajj a lieu dans des mois connus. Quiconque s'y engage, point d'obscénité, point de perversité et point de dispute dans le Hajj.", "reference": "Al-Baqarah 2:197" },
+    { "id": "q-2-198", "surah": 2, "ayah": 198, "surahName": { "ar": "البقرة", "en": "Al-Baqarah", "fr": "Al-Baqara" }, "arabic": "فَإِذَا أَفَضْتُم مِّنْ عَرَفَاتٍ فَاذْكُرُوا اللَّهَ عِندَ الْمَشْعَرِ الْحَرَامِ", "english": "When you pour down from Arafat, remember Allah at the Sacred Monument.", "french": "Lorsque vous descendez d'Arafat, évoquez Allah auprès du Monument sacré.", "reference": "Al-Baqarah 2:198" },
+    { "id": "q-2-199", "surah": 2, "ayah": 199, "surahName": { "ar": "البقرة", "en": "Al-Baqarah", "fr": "Al-Baqara" }, "arabic": "ثُمَّ أَفِيضُوا مِنْ حَيْثُ أَفَاضَ النَّاسُ وَاسْتَغْفِرُوا اللَّهَ ۚ إِنَّ اللَّهَ غَفُورٌ رَّحِيمٌ", "english": "Then move on from where the people move on, and seek forgiveness from Allah. Allah is Forgiving, Merciful.", "french": "Ensuite repartez d'où les gens repartent, et demandez pardon à Allah. Allah est Pardonneur et Miséricordieux.", "reference": "Al-Baqarah 2:199" },
+    { "id": "q-2-200", "surah": 2, "ayah": 200, "surahName": { "ar": "البقرة", "en": "Al-Baqarah", "fr": "Al-Baqara" }, "arabic": "فَإِذَا قَضَيْتُم مَّنَاسِكَكُمْ فَاذْكُرُوا اللَّهَ كَذِكْرِكُمْ آبَاءَكُمْ أَوْ أَشَدَّ ذِكْرًا", "english": "When you have completed your rites, remember Allah as you remember your fathers, or with a stronger remembrance.", "french": "Lorsque vous avez achevé vos rites, évoquez Allah comme vous évoquez vos pères, ou d'une évocation plus forte.", "reference": "Al-Baqarah 2:200" },
+    { "id": "q-2-203", "surah": 2, "ayah": 203, "surahName": { "ar": "البقرة", "en": "Al-Baqarah", "fr": "Al-Baqara" }, "arabic": "وَاذْكُرُوا اللَّهَ فِي أَيَّامٍ مَّعْدُودَاتٍ ۚ فَمَن تَعَجَّلَ فِي يَوْمَيْنِ فَلَا إِثْمَ عَلَيْهِ وَمَن تَأَخَّرَ فَلَا إِثْمَ عَلَيْهِ ۚ لِمَنِ اتَّقَىٰ", "english": "Remember Allah during the appointed days. Whoever hastens in two days is not at fault, and whoever stays on is not at fault, for the one who is mindful of Allah.", "french": "Évoquez Allah pendant des jours comptés. Celui qui se hâte en deux jours n'est pas en faute, et celui qui reste ne l'est pas, pour celui qui craint Allah.", "reference": "Al-Baqarah 2:203" },
+    { "id": "q-3-97", "surah": 3, "ayah": 97, "surahName": { "ar": "آل عمران", "en": "Aal Imran", "fr": "Al Imran" }, "arabic": "وَلِلَّهِ عَلَى النَّاسِ حِجُّ الْبَيْتِ مَنِ اسْتَطَاعَ إِلَيْهِ سَبِيلًا ۚ وَمَن كَفَرَ فَإِنَّ اللَّهَ غَنِيٌّ عَنِ الْعَالَمِينَ", "english": "Pilgrimage to the House is a duty people owe to Allah, for whoever is able to find a way. Whoever rejects that, Allah is free of need of the worlds.", "french": "Le pèlerinage à la Maison est un devoir envers Allah pour quiconque en a les moyens. Quiconque mécroit, Allah se passe des mondes.", "reference": "Aal Imran 3:97" },
+    { "id": "q-22-27", "surah": 22, "ayah": 27, "surahName": { "ar": "الحج", "en": "Al-Hajj", "fr": "Al-Hajj" }, "arabic": "وَأَذِّن فِي النَّاسِ بِالْحَجِّ يَأْتُوكَ رِجَالًا وَعَلَىٰ كُلِّ ضَامِرٍ يَأْتِينَ مِن كُلِّ فَجٍّ عَمِيقٍ", "english": "Proclaim the Hajj to the people. They will come to you on foot and on every lean camel, coming from every distant pass.", "french": "Appelle les gens au Hajj. Ils viendront vers toi à pied et sur toute monture maigre, venant de tout chemin profond.", "reference": "Al-Hajj 22:27" },
+    { "id": "q-22-28", "surah": 22, "ayah": 28, "surahName": { "ar": "الحج", "en": "Al-Hajj", "fr": "Al-Hajj" }, "arabic": "لِّيَشْهَدُوا مَنَافِعَ لَهُمْ وَيَذْكُرُوا اسْمَ اللَّهِ فِي أَيَّامٍ مَّعْلُومَاتٍ عَلَىٰ مَا رَزَقَهُم مِّن بَهِيمَةِ الْأَنْعَامِ", "english": "That they may witness benefits for themselves and mention the name of Allah on known days over the livestock He has provided them.", "french": "Afin qu'ils témoignent des avantages pour eux et qu'ils évoquent le nom d'Allah, en des jours connus, sur les bêtes de troupeau qu'Il leur a accordées.", "reference": "Al-Hajj 22:28" },
+    { "id": "q-22-36", "surah": 22, "ayah": 36, "surahName": { "ar": "الحج", "en": "Al-Hajj", "fr": "Al-Hajj" }, "arabic": "وَالْبُدْنَ جَعَلْنَاهَا لَكُم مِّن شَعَائِرِ اللَّهِ لَكُمْ فِيهَا خَيْرٌ", "english": "The sacrificial camels We have made for you among the symbols of Allah. In them there is good for you.", "french": "Les chameaux sacrificiels, Nous les avons faits pour vous parmi les rites d'Allah. Il y a en eux un bien pour vous.", "reference": "Al-Hajj 22:36" },
+    { "id": "q-5-95", "surah": 5, "ayah": 95, "surahName": { "ar": "المائدة", "en": "Al-Ma'idah", "fr": "Al-Ma'ida" }, "arabic": "لَا تَقْتُلُوا الصَّيْدَ وَأَنتُمْ حُرُمٌ", "english": "Do not kill game while you are in ihram.", "french": "Ne tuez pas le gibier alors que vous êtes en état d'ihram.", "reference": "Al-Ma'idah 5:95" },
+    { "id": "q-48-27", "surah": 48, "ayah": 27, "surahName": { "ar": "الفتح", "en": "Al-Fath", "fr": "Al-Fath" }, "arabic": "لَتَدْخُلُنَّ الْمَسْجِدَ الْحَرَامَ إِن شَاءَ اللَّهُ آمِنِينَ مُحَلِّقِينَ رُءُوسَكُمْ وَمُقَصِّرِينَ", "english": "You will surely enter the Sacred Mosque, if Allah wills, in safety, with heads shaved or hair shortened.", "french": "Vous entrerez certes dans la Mosquée sacrée, si Allah le veut, en sécurité, la tête rasée ou les cheveux raccourcis.", "reference": "Al-Fath 48:27" },
+    { "id": "q-9-3", "surah": 9, "ayah": 3, "surahName": { "ar": "التوبة", "en": "At-Tawbah", "fr": "At-Tawba" }, "arabic": "وَأَذَانٌ مِّنَ اللَّهِ وَرَسُولِهِ إِلَى النَّاسِ يَوْمَ الْحَجِّ الْأَكْبَرِ", "english": "And a proclamation from Allah and His Messenger to the people on the day of the greater Hajj.", "french": "Et une proclamation d'Allah et de Son Messager aux gens, le jour du grand pèlerinage.", "reference": "At-Tawbah 9:3" }
+  ],
+  "hadiths": [
+    { "id": "h-hajj-01", "narrator": { "ar": "أبو هريرة", "en": "Abu Hurayrah", "fr": "Abu Hurayra" }, "arabic": "مَنْ حَجَّ فَلَمْ يَرْفُثْ وَلَمْ يَفْسُقْ رَجَعَ كَيَوْمِ وَلَدَتْهُ أُمُّهُ", "english": "Whoever performs Hajj and does not commit obscenity or sin returns as on the day his mother bore him.", "french": "Celui qui accomplit le Hajj sans obscénité ni perversité revient comme au jour où sa mère l'a mis au monde.", "reference": "Sahih al-Bukhari 1521; Sahih Muslim 1350", "grade": "Sahih" },
+    { "id": "h-hajj-02", "narrator": { "ar": "أبو هريرة", "en": "Abu Hurayrah", "fr": "Abu Hurayra" }, "arabic": "الْحَجُّ الْمَبْرُورُ لَيْسَ لَهُ جَزَاءٌ إِلَّا الْجَنَّةُ", "english": "The accepted Hajj has no reward except Paradise.", "french": "Le Hajj agréé n'a d'autre récompense que le Paradis.", "reference": "Sahih al-Bukhari 1773; Sahih Muslim 1349", "grade": "Sahih" },
+    { "id": "h-hajj-03", "narrator": { "ar": "عبد الرحمن بن يعمر", "en": "Abd al-Rahman ibn Ya'mar", "fr": "Abd al-Rahman ibn Ya'mar" }, "arabic": "الْحَجُّ عَرَفَةُ", "english": "Hajj is Arafah.", "french": "Le Hajj, c'est Arafat.", "reference": "Sunan at-Tirmidhi 889; Sunan Abi Dawud 1949; Sunan an-Nasa'i", "grade": "Sahih" },
+    { "id": "h-hajj-04", "narrator": { "ar": "جابر بن عبد الله", "en": "Jabir ibn Abdullah", "fr": "Jabir ibn Abdallah" }, "arabic": "لِتَأْخُذُوا مَنَاسِكَكُمْ، فَإِنِّي لَا أَدْرِي لَعَلِّي لَا أَحُجُّ بَعْدَ حَجَّتِي هَذِهِ", "english": "Learn your rites from me, for I do not know whether I shall perform Hajj again after this Hajj of mine.", "french": "Apprenez vos rites de moi, car je ne sais pas si j'accomplirai le Hajj après ce Hajj-ci.", "reference": "Sahih Muslim 1297", "grade": "Sahih" },
+    { "id": "h-hajj-05", "narrator": { "ar": "جابر بن عبد الله", "en": "Jabir ibn Abdullah", "fr": "Jabir ibn Abdallah" }, "arabic": "نَحَرْتُ هَاهُنَا، وَمِنًى كُلُّهَا مَنْحَرٌ", "english": "I have sacrificed here, and all of Mina is a place of sacrifice.", "french": "J'ai sacrifié ici, et tout Mina est un lieu de sacrifice.", "reference": "Sahih Muslim 1218", "grade": "Sahih" },
+    { "id": "h-hajj-06", "narrator": { "ar": "جابر", "en": "Jabir", "fr": "Jabir" }, "arabic": "وَقَفْتُ هَاهُنَا، وَعَرَفَةُ كُلُّهَا مَوْقِفٌ", "english": "I have stood here, and all of Arafah is a standing place.", "french": "Je me suis tenu ici, et tout Arafat est un lieu de station.", "reference": "Sahih Muslim 1218", "grade": "Sahih" },
+    { "id": "h-hajj-07", "narrator": { "ar": "عائشة", "en": "Aishah", "fr": "Aicha" }, "arabic": "إِنَّمَا جُعِلَ الطَّوَافُ بِالْبَيْتِ وَبَيْنَ الصَّفَا وَالْمَرْوَةِ وَرَمْيُ الْجِمَارِ لِإِقَامَةِ ذِكْرِ اللَّهِ", "english": "Tawaf of the House, walking between Safa and Marwah, and stoning the Jamarat were only appointed to establish the remembrance of Allah.", "french": "Le tawaf de la Maison, le parcours entre Safa et Marwa et la lapidation des Jamarat n'ont été institués que pour établir l'évocation d'Allah.", "reference": "Sunan Abi Dawud 1888; Sunan at-Tirmidhi 902", "grade": "Hasan" },
+    { "id": "h-hajj-08", "narrator": { "ar": "ابن عباس", "en": "Ibn Abbas", "fr": "Ibn Abbas" }, "arabic": "لَا رَفَثَ وَلَا فُسُوقَ وَلَا جِدَالَ فِي الْحَجِّ", "english": "There is no obscenity, no sin, and no quarrelling in Hajj.", "french": "Point d'obscénité, point de perversité et point de dispute dans le Hajj.", "reference": "The wording is Qur'an 2:197, and the Prophet recited it in Hajj as part of teaching the rites. Sahih al-Bukhari, Book of Hajj.", "grade": "The verse is Qur'an. The practice is in the Hajj narrations." },
+    { "id": "h-hajj-09", "narrator": { "ar": "أبو هريرة", "en": "Abu Hurayrah", "fr": "Abu Hurayra" }, "arabic": "أَفْضَلُ الْجِهَادِ حَجٌّ مَبْرُورٌ", "english": "In a narration answering which jihad is best for women and in the general virtue of Hajj: the best jihad is an accepted Hajj.", "french": "Dans une narration sur le meilleur jihad, notamment pour les femmes, et dans le mérite général du Hajj : le meilleur jihad est un Hajj agréé.", "reference": "Sahih al-Bukhari 1520", "grade": "Sahih" },
+    { "id": "h-hajj-10", "narrator": { "ar": "ابن عمر", "en": "Ibn Umar", "fr": "Ibn Umar" }, "arabic": "لَبَّيْكَ اللَّهُمَّ لَبَّيْكَ", "english": "The talbiyah of the Prophet was: Here I am, O Allah, here I am. Here I am, You have no partner, here I am.", "french": "La talbiya du Prophète était : Me voici, ô Allah, me voici. Me voici, Tu n'as pas d'associé, me voici.", "reference": "Sahih al-Bukhari 1549; Sahih Muslim 1184", "grade": "Sahih" },
+    { "id": "h-hajj-11", "narrator": { "ar": "ابن عباس", "en": "Ibn Abbas", "fr": "Ibn Abbas" }, "arabic": "أُمِرَ النَّاسُ أَنْ يَكُونَ آخِرُ عَهْدِهِمْ بِالْبَيْتِ", "english": "The people were commanded that their last rite should be at the House, except that this was lightened for the menstruating woman.", "french": "Il fut ordonné aux gens que leur dernier rite soit à la Maison, sauf que cela fut allégé pour la femme qui a ses menstrues.", "reference": "Sahih al-Bukhari 1755; Sahih Muslim 1328", "grade": "Sahih" },
+    { "id": "h-hajj-12", "narrator": { "ar": "عائشة", "en": "Aishah", "fr": "Aicha" }, "arabic": "مَا مِنْ يَوْمٍ أَكْثَرَ مِنْ أَنْ يُعْتِقَ اللَّهُ فِيهِ عَبْدًا مِنَ النَّارِ مِنْ يَوْمِ عَرَفَةَ", "english": "There is no day on which Allah frees more servants from the Fire than the Day of Arafah.", "french": "Il n'est pas de jour où Allah affranchisse plus de serviteurs du Feu que le jour d'Arafat.", "reference": "Sahih Muslim 1348", "grade": "Sahih" },
+    { "id": "h-hajj-13", "narrator": { "ar": "أبو هريرة", "en": "Abu Hurayrah", "fr": "Abu Hurayra" }, "arabic": "أَيُّهَا النَّاسُ، قَدْ فَرَضَ اللَّهُ عَلَيْكُمُ الْحَجَّ فَحُجُّوا", "english": "O people, Allah has made Hajj obligatory upon you, so perform Hajj.", "french": "Ô gens, Allah vous a prescrit le Hajj, alors accomplissez le Hajj.", "reference": "Sahih Muslim 1337", "grade": "Sahih" }
+  ]
+}

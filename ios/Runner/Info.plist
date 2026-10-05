@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	
-	<!-- ============ EXISTING CONFIGURATION ============ -->
 	<key>CADisableMinimumFrameDurationOnPhone</key>
 	<true/>
 	<key>CFBundleDevelopmentRegion</key>
@@ -26,28 +24,35 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
-	<key>LSRequiresIPhoneOS</key>
-	<true/>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
-	
-	<!-- ============ PERMISSION DESCRIPTIONS ============ -->
-	
-	<!-- Location Permission Descriptions -->
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
+
+	<!-- Location: prayer times & Qibla -->
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>This app needs your location to calculate accurate Qibla direction and prayer times for your current city.</string>
-	
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>This app needs your location to calculate accurate Qibla direction and prayer times even when the app is in the background.</string>
-	
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>This app needs your location to calculate accurate Qibla direction and prayer times.</string>
-	
-	<!-- Sensor/Motion Permission Description -->
+	<string>Daily Quran uses your location to show accurate prayer times and Qibla direction for where you are.</string>
+	<key>NSLocationTemporaryUsageDescriptionDictionary</key>
+	<dict>
+		<key>PrayerTimesLocation</key>
+		<string>Allow location access to load prayer times for your current city.</string>
+		<key>QiblaCompassLocation</key>
+		<string>Allow location access to point the Qibla compass toward Mecca from your position.</string>
+	</dict>
+
+	<!-- Compass / device motion for Qibla -->
 	<key>NSMotionUsageDescription</key>
-	<string>This app needs motion sensor access to show the Qibla compass direction. The compass helps you find the direction of Mecca for prayer.</string>
-	
-	<!-- Internet Permission (iOS doesn't require explicit permission, but we keep this for clarity) -->
+	<string>Daily Quran uses the device compass and motion sensors to show the Qibla direction while you hold your phone.</string>
+
+	<!-- Local prayer reminders (no extra plist string required on iOS 10+) -->
+
+	<!-- Quran audio & adhan playback in background briefly -->
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>audio</string>
+		<string>fetch</string>
+	</array>
+
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
@@ -57,10 +62,7 @@
 		<key>NSAllowsArbitraryLoadsInWebContent</key>
 		<true/>
 	</dict>
-	
-	<!-- ============ END PERMISSION DESCRIPTIONS ============ -->
-	
-	<!-- ============ SCENE CONFIGURATION ============ -->
+
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -82,24 +84,20 @@
 			</array>
 		</dict>
 	</dict>
-	
+
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
-	
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
-	
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
-	
-	<!-- ============ ORIENTATION ============ -->
+
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
@@ -107,23 +105,10 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	
-	<!-- ============ APP ICON & SPLASH ============ -->
-	<key>UIPrerenderedIcon</key>
-	<false/>
-	
+
 	<key>UIStatusBarHidden</key>
 	<false/>
-	
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	
-	<key>UIStatusBarStyle</key>
-	<string>UIStatusBarStyleDefault</string>
-	<key>NSAppTransportSecurity</key>
-    <dict>
-        <key>NSAllowsArbitraryLoads</key>
-        <true/>
-    </dict>
 </dict>
 </plist>

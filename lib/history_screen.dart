@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'translations.dart';
 import 'stats.dart';
 
@@ -17,6 +18,8 @@ class HistoryScreen extends StatefulWidget {
 }
 
 class _HistoryScreenState extends State<HistoryScreen> {
+  static const _primary = Color(0xFF1A5F4A);
+
   final ReadingTracker _tracker = ReadingTracker();
   List<ReadingSession> _sessions = [];
   bool _isLoading = true;
@@ -36,286 +39,224 @@ class _HistoryScreenState extends State<HistoryScreen> {
     });
   }
 
+  String _formatWhen(DateTime dt) {
+    final locale = widget.currentLanguage == 'French' ? 'fr_FR' : 'en_US';
+    return DateFormat('EEE, d MMM · HH:mm', locale).format(dt);
+  }
+
   @override
   Widget build(BuildContext context) {
     final isDark = widget.isDarkMode;
+    final bg = isDark ? const Color(0xFF121212) : const Color(0xFFF5F2EE);
+    final card = isDark ? const Color(0xFF1E1E1E) : Colors.white;
     final getText = (String key) =>
         Translations.getText(widget.currentLanguage, key);
 
     return Scaffold(
-      backgroundColor: isDark
-          ? const Color(0xFF0A0A0A)
-          : const Color(0xFFF5F0EB),
+      backgroundColor: bg,
       appBar: AppBar(
+        backgroundColor: _primary,
+        foregroundColor: Colors.white,
+        elevation: 0,
+        centerTitle: true,
+        surfaceTintColor: Colors.transparent,
         title: Text(
           getText('history'),
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            color: isDark ? Colors.white : Colors.black87,
+          style: const TextStyle(
+            fontWeight: FontWeight.w700,
+            fontSize: 17,
           ),
         ),
-        backgroundColor: isDark
-            ? const Color(0xFF0A0A0A)
-            : const Color(0xFFF5F0EB),
-        elevation: 0,
         actions: [
           IconButton(
-            icon: Icon(
-              Icons.refresh,
-              color: isDark ? Colors.white : Colors.black87,
-            ),
+            icon: const Icon(Icons.refresh_rounded),
             onPressed: _loadHistory,
           ),
         ],
       ),
       body: _isLoading
-          ? const Center(child: CircularProgressIndicator())
-          : _sessions.isEmpty
-          ? Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    padding: const EdgeInsets.all(24),
-                    decoration: BoxDecoration(
-                      color: isDark ? const Color(0xFF1E1E1E) : Colors.white,
-                      shape: BoxShape.circle,
-                    ),
-                    child: Icon(
-                      Icons.history,
-                      size: 48,
-                      color: isDark ? Colors.grey[600] : Colors.grey[400],
-                    ),
-                  ),
-                  const SizedBox(height: 16),
-                  Text(
-                    getText('noHistory'),
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w600,
-                      color: isDark ? Colors.white : Colors.black87,
-                    ),
-                  ),
-                  const SizedBox(height: 8),
-                  Text(
-                    getText('startReading'),
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: isDark ? Colors.grey[400] : Colors.grey[600],
-                    ),
-                  ),
-                  const SizedBox(height: 24),
-                  ElevatedButton.icon(
-                    onPressed: () {
-                      // Navigate to Quran tab
-                    },
-                    icon: const Icon(Icons.menu_book),
-                    label: Text(getText('startReading')),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFF1A5F4A),
-                      foregroundColor: Colors.white,
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 24,
-                        vertical: 12,
-                      ),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+          ? const Center(
+              child: CircularProgressIndicator(color: _primary),
             )
-          : RefreshIndicator(
-              onRefresh: _loadHistory,
-              child: ListView.builder(
-                padding: const EdgeInsets.all(16),
-                itemCount: _sessions.length,
-                itemBuilder: (context, index) {
-                  final session = _sessions[index];
-                  final isComplete = session.totalAyahsRead > 0;
-
-                  return Container(
-                    margin: const EdgeInsets.only(bottom: 12),
-                    padding: const EdgeInsets.all(16),
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                        colors: isDark
-                            ? [const Color(0xFF1E1E1E), const Color(0xFF2A2A2A)]
-                            : [Colors.white, const Color(0xFFF8F5F0)],
-                      ),
-                      borderRadius: BorderRadius.circular(16),
-                      border: Border.all(
-                        color: isDark
-                            ? const Color(0xFF3D3D3D)
-                            : const Color(0xFFE8E0D8),
-                      ),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withValues(alpha: 0.04),
-                          blurRadius: 8,
-                          offset: const Offset(0, 2),
+          : _sessions.isEmpty
+              ? Center(
+                  child: Padding(
+                    padding: const EdgeInsets.all(32),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.history_toggle_off_rounded,
+                          size: 56,
+                          color: isDark ? Colors.grey[600] : Colors.grey[400],
+                        ),
+                        const SizedBox(height: 16),
+                        Text(
+                          getText('noHistory'),
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 17,
+                            fontWeight: FontWeight.w700,
+                            color: isDark ? Colors.white : const Color(0xFF1A2E35),
+                          ),
+                        ),
+                        const SizedBox(height: 8),
+                        Text(
+                          getText('startReading'),
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: isDark ? Colors.grey[400] : Colors.grey[600],
+                          ),
                         ),
                       ],
                     ),
-                    child: Row(
-                      children: [
-                        Container(
-                          width: 48,
-                          height: 48,
-                          decoration: BoxDecoration(
-                            gradient: isComplete
-                                ? const LinearGradient(
-                                    colors: [Colors.green, Colors.lightGreen],
-                                  )
-                                : const LinearGradient(
-                                    colors: [
-                                      Color(0xFF1A5F4A),
-                                      Color(0xFF2D7A62),
-                                    ],
-                                  ),
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          child: Center(
-                            child: Text(
-                              '${index + 1}',
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 16,
-                              ),
-                            ),
-                          ),
-                        ),
-                        const SizedBox(width: 14),
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                session.surahName,
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w600,
-                                  color: isDark ? Colors.white : Colors.black87,
+                  ),
+                )
+              : RefreshIndicator(
+                  color: _primary,
+                  onRefresh: _loadHistory,
+                  child: ListView.builder(
+                    padding: const EdgeInsets.fromLTRB(14, 14, 14, 24),
+                    itemCount: _sessions.length,
+                    itemBuilder: (context, index) {
+                      final session = _sessions[index];
+                      return Padding(
+                        padding: const EdgeInsets.only(bottom: 10),
+                        child: Material(
+                          color: card,
+                          borderRadius: BorderRadius.circular(3),
+                          elevation: isDark ? 0 : 0.5,
+                          clipBehavior: Clip.antiAlias,
+                          child: IntrinsicHeight(
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              children: [
+                                Container(
+                                  width: 5,
+                                  color: _primary,
                                 ),
-                              ),
-                              Row(
-                                children: [
-                                  Icon(
-                                    Icons.book,
-                                    size: 12,
-                                    color: isDark
-                                        ? Colors.grey[500]
-                                        : Colors.grey[400],
-                                  ),
-                                  const SizedBox(width: 4),
-                                  Text(
-                                    '${session.totalAyahsRead} ${getText('ayahs')}',
-                                    style: TextStyle(
-                                      fontSize: 12,
-                                      color: isDark
-                                          ? Colors.grey[400]
-                                          : Colors.grey[600],
+                                Expanded(
+                                  child: Padding(
+                                    padding: const EdgeInsets.fromLTRB(
+                                      12,
+                                      12,
+                                      12,
+                                      12,
                                     ),
-                                  ),
-                                  const SizedBox(width: 8),
-                                  Icon(
-                                    Icons.timer,
-                                    size: 12,
-                                    color: isDark
-                                        ? Colors.grey[500]
-                                        : Colors.grey[400],
-                                  ),
-                                  const SizedBox(width: 4),
-                                  Text(
-                                    session.formattedDuration,
-                                    style: TextStyle(
-                                      fontSize: 11,
-                                      color: isDark
-                                          ? Colors.grey[500]
-                                          : Colors.grey[400],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 12,
-                            vertical: 6,
-                          ),
-                          decoration: BoxDecoration(
-                            color: isComplete
-                                ? Colors.green.withValues(alpha: 0.15)
-                                : const Color(
-                                    0xFFC9A96E,
-                                  ).withValues(alpha: 0.15),
-                            borderRadius: BorderRadius.circular(12),
-                            border: Border.all(
-                              color: isComplete
-                                  ? Colors.green.withValues(alpha: 0.3)
-                                  : const Color(
-                                      0xFFC9A96E,
-                                    ).withValues(alpha: 0.3),
-                            ),
-                          ),
-                          child: Row(
-                            children: [
-                              if (isComplete) ...[
-                                const Icon(
-                                  Icons.check_circle,
-                                  color: Colors.green,
-                                  size: 14,
-                                ),
-                                const SizedBox(width: 4),
-                                Text(
-                                  getText('read'),
-                                  style: TextStyle(
-                                    fontSize: 11,
-                                    fontWeight: FontWeight.w600,
-                                    color: Colors.green,
-                                  ),
-                                ),
-                              ] else ...[
-                                SizedBox(
-                                  width: 20,
-                                  height: 20,
-                                  child: CircularProgressIndicator(
-                                    value: session.totalAyahsRead > 0 ? 0.5 : 0,
-                                    strokeWidth: 2,
-                                    valueColor:
-                                        const AlwaysStoppedAnimation<Color>(
-                                          Color(0xFFC9A96E),
+                                    child: Row(
+                                      children: [
+                                        Container(
+                                          width: 44,
+                                          height: 44,
+                                          alignment: Alignment.center,
+                                          decoration: BoxDecoration(
+                                            color: _primary.withValues(
+                                              alpha: 0.12,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(3),
+                                          ),
+                                          child: Text(
+                                            '${session.surahNumber}',
+                                            style: const TextStyle(
+                                              color: _primary,
+                                              fontWeight: FontWeight.w800,
+                                              fontSize: 16,
+                                            ),
+                                          ),
                                         ),
-                                    backgroundColor: isDark
-                                        ? Colors.grey[700]
-                                        : Colors.grey[300],
-                                  ),
-                                ),
-                                const SizedBox(width: 6),
-                                Text(
-                                  '${session.totalAyahsRead > 0 ? (session.totalAyahsRead / 10 * 100).toInt() : 0}%',
-                                  style: TextStyle(
-                                    fontSize: 11,
-                                    fontWeight: FontWeight.w600,
-                                    color: const Color(0xFFC9A96E),
+                                        const SizedBox(width: 12),
+                                        Expanded(
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                session.surahName,
+                                                style: TextStyle(
+                                                  fontSize: 15,
+                                                  fontWeight: FontWeight.w800,
+                                                  color: isDark
+                                                      ? Colors.white
+                                                      : const Color(
+                                                          0xFF1A2E35,
+                                                        ),
+                                                ),
+                                              ),
+                                              const SizedBox(height: 4),
+                                              Text(
+                                                _formatWhen(session.startTime),
+                                                style: TextStyle(
+                                                  fontSize: 11,
+                                                  color: isDark
+                                                      ? Colors.grey[500]
+                                                      : Colors.grey[600],
+                                                ),
+                                              ),
+                                              const SizedBox(height: 6),
+                                              Row(
+                                                children: [
+                                                  Icon(
+                                                    Icons.menu_book_outlined,
+                                                    size: 14,
+                                                    color: isDark
+                                                        ? Colors.grey[500]
+                                                        : Colors.grey[600],
+                                                  ),
+                                                  const SizedBox(width: 4),
+                                                  Text(
+                                                    '${session.totalAyahsRead} ${getText('ayahs')}',
+                                                    style: TextStyle(
+                                                      fontSize: 12,
+                                                      fontWeight: FontWeight.w600,
+                                                      color: isDark
+                                                          ? Colors.grey[300]
+                                                          : Colors.grey[700],
+                                                    ),
+                                                  ),
+                                                  const SizedBox(width: 12),
+                                                  Icon(
+                                                    Icons.timer_outlined,
+                                                    size: 14,
+                                                    color: isDark
+                                                        ? Colors.grey[500]
+                                                        : Colors.grey[600],
+                                                  ),
+                                                  const SizedBox(width: 4),
+                                                  Text(
+                                                    session.formattedDuration,
+                                                    style: TextStyle(
+                                                      fontSize: 12,
+                                                      color: isDark
+                                                          ? Colors.grey[400]
+                                                          : Colors.grey[600],
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Icon(
+                                          Icons.check_circle_outline,
+                                          color: session.totalAyahsRead > 0
+                                              ? _primary
+                                              : Colors.grey,
+                                          size: 22,
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ],
-                            ],
+                            ),
                           ),
                         ),
-                      ],
-                    ),
-                  );
-                },
-              ),
-            ),
+                      );
+                    },
+                  ),
+                ),
     );
   }
 }

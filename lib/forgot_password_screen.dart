@@ -39,21 +39,22 @@ class _ForgotPasswordScreenState extends BaseScreenState<ForgotPasswordScreen> {
 
     return Scaffold(
       backgroundColor: isDark
-          ? const Color(0xFF0A0A0A)
-          : const Color(0xFFF5F0EB),
+          ? const Color(0xFF121212)
+          : const Color(0xFFF5F2EE),
 
       appBar: AppBar(
         title: Text(
           getText('forgotPassword'),
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            color: isDark ? Colors.white : Colors.black87,
+          style: const TextStyle(
+            fontWeight: FontWeight.w700,
+            fontSize: 17,
           ),
         ),
-        backgroundColor: isDark
-            ? const Color(0xFF0A0A0A)
-            : const Color(0xFFF5F0EB),
+        backgroundColor: const Color(0xFF1A5F4A),
+        foregroundColor: Colors.white,
         elevation: 0,
+        centerTitle: true,
+        surfaceTintColor: Colors.transparent,
       ),
       body: Padding(
         padding: const EdgeInsets.all(24),

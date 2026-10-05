@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:qrn_app/main.dart';
+import 'package:qrn_app/theme/app_arabic.dart';
 import 'auth_service.dart';
 import 'translations.dart';
 import 'base_screen.dart';
@@ -27,6 +27,9 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends BaseScreenState<LoginScreen> {
+  static const _primary = Color(0xFF1A5F4A);
+  static const _gold = Color(0xFFC9A96E);
+
   bool _isLogin = true;
   bool _isLoading = false;
   final _emailController = TextEditingController();
@@ -39,374 +42,345 @@ class _LoginScreenState extends BaseScreenState<LoginScreen> {
 
   final AuthService _auth = AuthService();
 
+  InputDecoration _fieldDecoration({
+    required String label,
+    required bool isDark,
+    required Widget prefix,
+    Widget? suffix,
+  }) {
+    final fill = isDark ? const Color(0xFF1E1E1E) : Colors.white;
+    final border = isDark ? Colors.white12 : const Color(0xFFE8E4DE);
+    return InputDecoration(
+      labelText: label,
+      labelStyle: TextStyle(
+        color: isDark ? Colors.grey[400] : Colors.grey[600],
+        fontWeight: FontWeight.w500,
+      ),
+      prefixIcon: prefix,
+      suffixIcon: suffix,
+      filled: true,
+      fillColor: fill,
+      contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 16),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(3),
+        borderSide: BorderSide(color: border),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(3),
+        borderSide: const BorderSide(color: _primary, width: 2),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final isDark = widget.isDarkMode;
     final getText = (String key) =>
         Translations.getText(widget.currentLanguage, key);
+    final canPop = Navigator.canPop(context);
+    final sheetBg =
+        isDark ? const Color(0xFF121212) : const Color(0xFFF5F2EE);
 
     return Scaffold(
-      backgroundColor: isDark
-          ? const Color(0xFF121212)
-          : const Color(0xFFF8F5F0),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.all(30),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(height: 20),
-
-              // Title
-              Text(
-                _isLogin ? getText('login') : getText('signup'),
-                style: TextStyle(
-                  fontSize: 32,
-                  fontWeight: FontWeight.bold,
-                  color: isDark ? Colors.white : const Color(0xFF1A5F4A),
-                ),
-              ),
-              const SizedBox(height: 10),
-              Text(
-                _isLogin ? '${getText('welcome')} 👋' : getText('welcomeDesc'),
-                style: TextStyle(
-                  fontSize: 16,
-                  color: isDark ? Colors.grey[400] : Colors.grey[600],
-                ),
-              ),
-              const SizedBox(height: 40),
-
-              // ========== VERIFICATION SCREEN ==========
-              if (_showVerification) ...[
-                Text(
-                  getText('verifyYourEmail'),
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    color: isDark ? Colors.white : const Color(0xFF1A5F4A),
-                  ),
-                ),
-                const SizedBox(height: 10),
-                Text(
-                  '${getText('enterVerificationCode')} $_verificationEmail',
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: isDark ? Colors.grey[400] : Colors.grey[600],
-                  ),
-                ),
-                const SizedBox(height: 30),
-
-                // Code Input
-                TextField(
-                  controller: _codeController,
-                  style: TextStyle(color: isDark ? Colors.white : Colors.black),
-                  keyboardType: TextInputType.number,
-                  maxLength: 6,
-                  decoration: InputDecoration(
-                    labelText: getText('verificationCode'),
-                    labelStyle: TextStyle(
-                      color: isDark ? Colors.grey[400] : Colors.grey[600],
-                    ),
-                    prefixIcon: Icon(Icons.pin, color: const Color(0xFF1A5F4A)),
-                    counterText: '',
-                    filled: true,
-                    fillColor: isDark ? const Color(0xFF1E1E1E) : Colors.white,
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(16),
-                      borderSide: BorderSide.none,
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(16),
-                      borderSide: const BorderSide(
-                        color: Color(0xFF1A5F4A),
-                        width: 2,
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 24),
-
-                // Verify Button
-                SizedBox(
-                  width: double.infinity,
-                  height: 56,
-                  child: ElevatedButton(
-                    onPressed: _isLoading ? null : _verifyEmail,
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFF1A5F4A),
-                      foregroundColor: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                      elevation: 4,
-                    ),
-                    child: _isLoading
-                        ? const SizedBox(
-                            width: 24,
-                            height: 24,
-                            child: CircularProgressIndicator(
-                              strokeWidth: 2,
-                              valueColor: AlwaysStoppedAnimation<Color>(
-                                Colors.white,
-                              ),
-                            ),
-                          )
-                        : Text(
-                            getText('verify'),
-                            style: const TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w600,
-                            ),
+      backgroundColor: _primary,
+      body: Column(
+        children: [
+          SafeArea(
+            bottom: false,
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(8, 8, 16, 28),
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      if (canPop)
+                        IconButton(
+                          onPressed: () => Navigator.pop(context),
+                          icon: const Icon(Icons.arrow_back_rounded,
+                              color: Colors.white),
+                        )
+                      else
+                        const SizedBox(width: 8),
+                      Expanded(
+                        child: Text(
+                          getText('appTitleShort'),
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 17,
+                            fontWeight: FontWeight.w700,
                           ),
-                  ),
-                ),
-                const SizedBox(height: 16),
-                TextButton(
-                  onPressed: _resendCode,
-                  child: Text(
-                    getText('resendCode'),
-                    style: TextStyle(
-                      color: const Color(0xFF1A5F4A),
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                ),
-                TextButton(
-                  onPressed: () => setState(() => _showVerification = false),
-                  child: Text(
-                    getText('backToLogin'),
-                    style: TextStyle(
-                      color: isDark ? Colors.grey[400] : Colors.grey[600],
-                    ),
-                  ),
-                ),
-              ] else ...[
-                // ========== EMAIL INPUT ==========
-                TextField(
-                  controller: _emailController,
-                  style: TextStyle(color: isDark ? Colors.white : Colors.black),
-                  decoration: InputDecoration(
-                    labelText: getText('email'),
-                    labelStyle: TextStyle(
-                      color: isDark ? Colors.grey[400] : Colors.grey[600],
-                    ),
-                    prefixIcon: Icon(
-                      Icons.email_outlined,
-                      color: const Color(0xFF1A5F4A),
-                    ),
-                    filled: true,
-                    fillColor: isDark ? const Color(0xFF1E1E1E) : Colors.white,
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(16),
-                      borderSide: BorderSide.none,
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(16),
-                      borderSide: const BorderSide(
-                        color: Color(0xFF1A5F4A),
-                        width: 2,
-                      ),
-                    ),
-                  ),
-                  keyboardType: TextInputType.emailAddress,
-                ),
-                const SizedBox(height: 16),
-
-                // Name (Signup only)
-                if (!_isLogin) ...[
-                  TextField(
-                    controller: _nameController,
-                    style: TextStyle(
-                      color: isDark ? Colors.white : Colors.black,
-                    ),
-                    decoration: InputDecoration(
-                      labelText: 'Full Name',
-                      labelStyle: TextStyle(
-                        color: isDark ? Colors.grey[400] : Colors.grey[600],
-                      ),
-                      prefixIcon: Icon(
-                        Icons.person_outline,
-                        color: const Color(0xFF1A5F4A),
-                      ),
-                      filled: true,
-                      fillColor: isDark
-                          ? const Color(0xFF1E1E1E)
-                          : Colors.white,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(16),
-                        borderSide: BorderSide.none,
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(16),
-                        borderSide: const BorderSide(
-                          color: Color(0xFF1A5F4A),
-                          width: 2,
                         ),
                       ),
-                    ),
+                      SizedBox(width: canPop ? 48 : 8),
+                    ],
                   ),
-                  const SizedBox(height: 16),
-                ],
-
-                // Password
-                TextField(
-                  controller: _passwordController,
-                  style: TextStyle(color: isDark ? Colors.white : Colors.black),
-                  obscureText: _obscurePassword,
-                  decoration: InputDecoration(
-                    labelText: getText('password'),
-                    labelStyle: TextStyle(
-                      color: isDark ? Colors.grey[400] : Colors.grey[600],
-                    ),
-                    prefixIcon: Icon(
-                      Icons.lock_outline,
-                      color: const Color(0xFF1A5F4A),
-                    ),
-                    suffixIcon: IconButton(
-                      icon: Icon(
-                        _obscurePassword
-                            ? Icons.visibility_off
-                            : Icons.visibility,
-                        color: isDark ? Colors.grey[400] : Colors.grey[600],
-                      ),
-                      onPressed: () =>
-                          setState(() => _obscurePassword = !_obscurePassword),
-                    ),
-                    filled: true,
-                    fillColor: isDark ? const Color(0xFF1E1E1E) : Colors.white,
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(16),
-                      borderSide: BorderSide.none,
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(16),
-                      borderSide: const BorderSide(
-                        color: Color(0xFF1A5F4A),
-                        width: 2,
-                      ),
-                    ),
-                  ),
-                ),
-
-                // Forgot Password (Login only)
-                if (_isLogin) ...[
                   const SizedBox(height: 8),
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: TextButton(
-                      onPressed: widget.onForgotPassword,
-                      child: Text(
-                        getText('forgotPassword'),
-                        style: const TextStyle(
-                          color: Color(0xFF1A5F4A),
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-
-                const SizedBox(height: 24),
-
-                // Submit Button
-                SizedBox(
-                  width: double.infinity,
-                  height: 56,
-                  child: ElevatedButton(
-                    onPressed: _isLoading ? null : _submit,
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFF1A5F4A),
-                      foregroundColor: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                      elevation: 4,
-                    ),
-                    child: _isLoading
-                        ? const SizedBox(
-                            width: 24,
-                            height: 24,
-                            child: CircularProgressIndicator(
-                              strokeWidth: 2,
-                              valueColor: AlwaysStoppedAnimation<Color>(
-                                Colors.white,
-                              ),
-                            ),
-                          )
-                        : Text(
-                            _isLogin ? getText('login') : getText('signup'),
-                            style: const TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                  ),
-                ),
-
-                const SizedBox(height: 16),
-
-                // Skip Now Button
-                SizedBox(
-                  width: double.infinity,
-                  height: 48,
-                  child: OutlinedButton(
-                    onPressed: widget.onSkipLogin,
-                    style: OutlinedButton.styleFrom(
-                      side: BorderSide(
-                        color: isDark ? Colors.grey[600]! : Colors.grey[400]!,
+                  Container(
+                    width: 72,
+                    height: 72,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(16),
+                      border: Border.all(
+                        color: _gold.withValues(alpha: 0.5),
                         width: 1.5,
                       ),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16),
-                      ),
                     ),
-                    child: Text(
-                      getText('skipNow'),
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                        color: isDark ? Colors.grey[300] : Colors.grey[700],
-                      ),
-                    ),
-                  ),
-                ),
-
-                const SizedBox(height: 16),
-
-                // Toggle Login/Signup
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      _isLogin
-                          ? getText('dontHaveAccount')
-                          : getText('alreadyHaveAccount'),
-                      style: TextStyle(
-                        color: isDark ? Colors.grey[400] : Colors.grey[600],
-                      ),
-                    ),
-                    TextButton(
-                      onPressed: () => setState(() => _isLogin = !_isLogin),
-                      child: Text(
-                        _isLogin ? getText('signup') : getText('login'),
-                        style: const TextStyle(
-                          color: Color(0xFF1A5F4A),
-                          fontWeight: FontWeight.w600,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(14),
+                      child: Image.asset(
+                        'assets/logo.jpg',
+                        fit: BoxFit.cover,
+                        errorBuilder: (_, __, ___) => const Icon(
+                          Icons.menu_book_rounded,
+                          color: _primary,
+                          size: 36,
                         ),
                       ),
                     ),
+                  ),
+                  const SizedBox(height: 14),
+                  Text(
+                    _showVerification
+                        ? getText('verifyYourEmail')
+                        : (_isLogin
+                            ? getText('welcome')
+                            : getText('welcomeDesc')),
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.white.withValues(alpha: 0.92),
+                      fontSize: 15,
+                      height: 1.4,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          Expanded(
+            child: Container(
+              width: double.infinity,
+              decoration: BoxDecoration(
+                color: sheetBg,
+                borderRadius: const BorderRadius.vertical(
+                  top: Radius.circular(20),
+                ),
+              ),
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.fromLTRB(20, 22, 20, 28),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    if (!_showVerification) ...[
+                      _AuthModeTabs(
+                        isLogin: _isLogin,
+                        loginLabel: getText('login'),
+                        signupLabel: getText('signup'),
+                        onLogin: () => setState(() => _isLogin = true),
+                        onSignup: () => setState(() => _isLogin = false),
+                        isDark: isDark,
+                      ),
+                      const SizedBox(height: 22),
+                    ],
+                    if (_showVerification)
+                      _buildVerification(isDark, getText)
+                    else
+                      _buildCredentials(isDark, getText),
                   ],
                 ),
-              ],
-              const SizedBox(height: 30),
-            ],
+              ),
+            ),
           ),
-        ),
+        ],
       ),
     );
   }
 
-  // ========== SUBMIT HANDLERS ==========
+  Widget _buildCredentials(bool isDark, String Function(String) getText) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        TextField(
+          controller: _emailController,
+          style: TextStyle(color: isDark ? Colors.white : Colors.black87),
+          keyboardType: TextInputType.emailAddress,
+          decoration: _fieldDecoration(
+            label: getText('email'),
+            isDark: isDark,
+            prefix: const Icon(Icons.email_outlined, color: _primary),
+          ),
+        ),
+        if (!_isLogin) ...[
+          const SizedBox(height: 12),
+          TextField(
+            controller: _nameController,
+            style: TextStyle(color: isDark ? Colors.white : Colors.black87),
+            decoration: _fieldDecoration(
+              label: getText('fullName'),
+              isDark: isDark,
+              prefix: const Icon(Icons.person_outline, color: _primary),
+            ),
+          ),
+        ],
+        const SizedBox(height: 12),
+        TextField(
+          controller: _passwordController,
+          obscureText: _obscurePassword,
+          style: TextStyle(color: isDark ? Colors.white : Colors.black87),
+          decoration: _fieldDecoration(
+            label: getText('password'),
+            isDark: isDark,
+            prefix: const Icon(Icons.lock_outline, color: _primary),
+            suffix: IconButton(
+              icon: Icon(
+                _obscurePassword
+                    ? Icons.visibility_off_outlined
+                    : Icons.visibility_outlined,
+                color: isDark ? Colors.grey[400] : Colors.grey[600],
+              ),
+              onPressed: () =>
+                  setState(() => _obscurePassword = !_obscurePassword),
+            ),
+          ),
+        ),
+        if (_isLogin) ...[
+          Align(
+            alignment: Alignment.centerRight,
+            child: TextButton(
+              onPressed: widget.onForgotPassword,
+              child: Text(
+                getText('forgotPassword'),
+                style: const TextStyle(
+                  color: _primary,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ),
+          ),
+        ] else
+          const SizedBox(height: 8),
+        const SizedBox(height: 8),
+        SizedBox(
+          height: 52,
+          child: FilledButton(
+            onPressed: _isLoading ? null : _submit,
+            style: FilledButton.styleFrom(
+              backgroundColor: _primary,
+              disabledBackgroundColor: _primary.withValues(alpha: 0.5),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(3),
+              ),
+            ),
+            child: _isLoading
+                ? const SizedBox(
+                    width: 22,
+                    height: 22,
+                    child: CircularProgressIndicator(
+                      strokeWidth: 2,
+                      color: Colors.white,
+                    ),
+                  )
+                : Text(
+                    _isLogin ? getText('login') : getText('signup'),
+                    style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+          ),
+        ),
+        const SizedBox(height: 20),
+        Center(
+          child: Text(
+            'بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ',
+            textDirection: TextDirection.rtl,
+            style: AppArabic.style(
+              fontSize: 16,
+              color: isDark ? Colors.grey[500] : Colors.grey[600],
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildVerification(bool isDark, String Function(String) getText) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Text(
+          '${getText('enterVerificationCode')} $_verificationEmail',
+          style: TextStyle(
+            fontSize: 14,
+            height: 1.45,
+            color: isDark ? Colors.grey[400] : Colors.grey[700],
+          ),
+        ),
+        const SizedBox(height: 20),
+        TextField(
+          controller: _codeController,
+          style: TextStyle(color: isDark ? Colors.white : Colors.black87),
+          keyboardType: TextInputType.number,
+          maxLength: 6,
+          textAlign: TextAlign.center,
+          decoration: _fieldDecoration(
+            label: getText('verificationCode'),
+            isDark: isDark,
+            prefix: const Icon(Icons.pin_outlined, color: _primary),
+          ).copyWith(counterText: ''),
+        ),
+        const SizedBox(height: 16),
+        SizedBox(
+          height: 52,
+          child: FilledButton(
+            onPressed: _isLoading ? null : _verifyEmail,
+            style: FilledButton.styleFrom(
+              backgroundColor: _primary,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(3),
+              ),
+            ),
+            child: _isLoading
+                ? const SizedBox(
+                    width: 22,
+                    height: 22,
+                    child: CircularProgressIndicator(
+                      strokeWidth: 2,
+                      color: Colors.white,
+                    ),
+                  )
+                : Text(
+                    getText('verify'),
+                    style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+          ),
+        ),
+        TextButton(
+          onPressed: _isLoading ? null : _resendCode,
+          child: Text(
+            getText('resendCode'),
+            style: const TextStyle(
+              color: _primary,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+        ),
+        TextButton(
+          onPressed: () => setState(() => _showVerification = false),
+          child: Text(
+            getText('backToLogin'),
+            style: TextStyle(
+              color: isDark ? Colors.grey[500] : Colors.grey[600],
+            ),
+          ),
+        ),
+      ],
+    );
+  }
 
   Future<void> _submit() async {
     setState(() => _isLoading = true);
@@ -415,15 +389,12 @@ class _LoginScreenState extends BaseScreenState<LoginScreen> {
     final password = _passwordController.text;
 
     if (_isLogin) {
-      // LOGIN
       final result = await _auth.login(email: email, password: password);
-
-      print(result);
 
       if (result['success'] == true) {
         widget.onLogin();
+        if (mounted && Navigator.canPop(context)) Navigator.pop(context);
       } else {
-        // Check if verification required
         if (result['data'] != null &&
             result['data']['requires_verification'] == true) {
           setState(() {
@@ -436,7 +407,6 @@ class _LoginScreenState extends BaseScreenState<LoginScreen> {
         _showError(result['message'] ?? getText('loginFailed'));
       }
     } else {
-      // REGISTER
       final name = _nameController.text.trim();
 
       if (name.isEmpty) {
@@ -482,6 +452,7 @@ class _LoginScreenState extends BaseScreenState<LoginScreen> {
 
     if (result['success'] == true) {
       widget.onLogin();
+      if (mounted && Navigator.canPop(context)) Navigator.pop(context);
     } else {
       _showError(result['message'] ?? getText('verificationFailed'));
     }
@@ -505,14 +476,12 @@ class _LoginScreenState extends BaseScreenState<LoginScreen> {
     setState(() => _isLoading = false);
   }
 
-  // ========== UI HELPERS ==========
-
   void _showError(String message) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(message),
-        backgroundColor: Colors.red,
-        duration: const Duration(seconds: 3),
+        backgroundColor: Colors.red.shade700,
+        behavior: SnackBarBehavior.floating,
       ),
     );
   }
@@ -521,8 +490,8 @@ class _LoginScreenState extends BaseScreenState<LoginScreen> {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(message),
-        backgroundColor: Colors.green,
-        duration: const Duration(seconds: 3),
+        backgroundColor: _primary,
+        behavior: SnackBarBehavior.floating,
       ),
     );
   }
@@ -534,5 +503,96 @@ class _LoginScreenState extends BaseScreenState<LoginScreen> {
     _nameController.dispose();
     _codeController.dispose();
     super.dispose();
+  }
+}
+
+class _AuthModeTabs extends StatelessWidget {
+  final bool isLogin;
+  final String loginLabel;
+  final String signupLabel;
+  final VoidCallback onLogin;
+  final VoidCallback onSignup;
+  final bool isDark;
+
+  static const _primary = Color(0xFF1A5F4A);
+
+  const _AuthModeTabs({
+    required this.isLogin,
+    required this.loginLabel,
+    required this.signupLabel,
+    required this.onLogin,
+    required this.onSignup,
+    required this.isDark,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final bg = isDark ? const Color(0xFF1E1E1E) : Colors.white;
+    return Container(
+      padding: const EdgeInsets.all(4),
+      decoration: BoxDecoration(
+        color: bg,
+        borderRadius: BorderRadius.circular(3),
+        border: Border.all(
+          color: isDark ? Colors.white12 : const Color(0xFFE8E4DE),
+        ),
+      ),
+      child: Row(
+        children: [
+          Expanded(
+            child: _TabChip(
+              label: loginLabel,
+              selected: isLogin,
+              onTap: onLogin,
+            ),
+          ),
+          Expanded(
+            child: _TabChip(
+              label: signupLabel,
+              selected: !isLogin,
+              onTap: onSignup,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _TabChip extends StatelessWidget {
+  final String label;
+  final bool selected;
+  final VoidCallback onTap;
+
+  static const _primary = Color(0xFF1A5F4A);
+
+  const _TabChip({
+    required this.label,
+    required this.selected,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      color: selected ? _primary : Colors.transparent,
+      borderRadius: BorderRadius.circular(3),
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(3),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 12),
+          child: Text(
+            label,
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontWeight: FontWeight.w700,
+              fontSize: 14,
+              color: selected ? Colors.white : _primary,
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }

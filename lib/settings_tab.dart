@@ -3,6 +3,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'translations.dart';
 import 'auth_service.dart';
 import 'login_screen.dart';
+import 'theme/app_surfaces.dart';
+import 'navigation/app_navigation.dart';
+import 'widgets/app_main_drawer.dart';
 
 class SettingsTab extends StatefulWidget {
   final Function(bool) onThemeToggle;
@@ -25,6 +28,10 @@ class SettingsTab extends StatefulWidget {
 }
 
 class _SettingsTabState extends State<SettingsTab> {
+  static const _primary = Color(0xFF1A5F4A);
+  static const _primaryLight = Color(0xFF2D7A62);
+  static const _pagePadding = EdgeInsets.fromLTRB(20, 8, 20, 28);
+
   final AuthService _auth = AuthService();
   User? _currentUser;
   bool _showTranslation = true;
@@ -448,561 +455,353 @@ class _SettingsTabState extends State<SettingsTab> {
     final isDark = widget.isDarkMode;
 
     return Scaffold(
-      backgroundColor: isDark
-          ? const Color(0xFF0A0A0A)
-          : const Color(0xFFF5F0EB),
+      backgroundColor: AppSurfaces.scaffold(isDark),
+      drawer: const AppMainDrawer(),
       appBar: AppBar(
-        title: Text(
-          getText('settings'),
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            color: isDark ? Colors.white : Colors.black87,
+        backgroundColor: _primary,
+        foregroundColor: Colors.white,
+        elevation: 0,
+        centerTitle: true,
+        automaticallyImplyLeading: false,
+        surfaceTintColor: Colors.transparent,
+        leading: Builder(
+          builder: (ctx) => IconButton(
+            icon: const Icon(Icons.menu_rounded),
+            onPressed: () => Scaffold.of(ctx).openDrawer(),
           ),
         ),
-        backgroundColor: isDark
-            ? const Color(0xFF0A0A0A)
-            : const Color(0xFFF5F0EB),
-        elevation: 0,
+        title: Text(
+          getText('settings'),
+          style: const TextStyle(
+            fontWeight: FontWeight.w700,
+            fontSize: 17,
+            letterSpacing: 0.2,
+          ),
+        ),
+        actions: [
+          IconButton(
+            onPressed: () => openAppNotifications(context),
+            icon: const Icon(Icons.notifications_none_rounded),
+          ),
+        ],
       ),
       body: _isLoading
           ? Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  CircularProgressIndicator(),
-                  SizedBox(height: 16),
+                  const CircularProgressIndicator(color: _primary),
+                  const SizedBox(height: 16),
                   Text(
-                    Translations.getText(widget.currentLanguage, 'pleaseWait'),
+                    getText('pleaseWait'),
+                    style: TextStyle(
+                      color: isDark ? Colors.grey[400] : Colors.grey[700],
+                    ),
                   ),
                 ],
               ),
             )
           : SingleChildScrollView(
-              padding: const EdgeInsets.all(16),
+              padding: _pagePadding,
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  // Profile Section
-                  Container(
-                    padding: const EdgeInsets.all(20),
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                        colors: isDark
-                            ? [const Color(0xFF1E1E1E), const Color(0xFF2A2A2A)]
-                            : [Colors.white, const Color(0xFFF8F5F0)],
+                  _buildProfileCard(isDark, getText),
+                  const SizedBox(height: 28),
+                  _buildSectionTitle(getText('language'), isDark),
+                  const SizedBox(height: 10),
+                  _buildSettingsGroup(
+                    isDark: isDark,
+                    child: Padding(
+                      padding: const EdgeInsets.all(6),
+                      child: SegmentedButton<String>(
+                        segments: const [
+                          ButtonSegment(
+                            value: 'English',
+                            label: Text('English'),
+                          ),
+                          ButtonSegment(
+                            value: 'French',
+                            label: Text('Français'),
+                          ),
+                        ],
+                        selected: {widget.currentLanguage},
+                        onSelectionChanged: (s) {
+                          widget.onLanguageChange(s.first);
+                        },
+                        style: ButtonStyle(
+                          visualDensity: VisualDensity.compact,
+                          foregroundColor:
+                              WidgetStateProperty.resolveWith((states) {
+                            if (states.contains(WidgetState.selected)) {
+                              return Colors.white;
+                            }
+                            return isDark ? Colors.grey[300] : Colors.grey[800];
+                          }),
+                          backgroundColor:
+                              WidgetStateProperty.resolveWith((states) {
+                            if (states.contains(WidgetState.selected)) {
+                              return _primary;
+                            }
+                            return Colors.transparent;
+                          }),
+                        ),
                       ),
-                      borderRadius: BorderRadius.circular(20),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withValues(alpha: 0.05),
-                          blurRadius: 12,
-                          offset: const Offset(0, 4),
-                        ),
-                      ],
-                    ),
-                    child: Row(
-                      children: [
-                        Container(
-                          width: 60,
-                          height: 60,
-                          decoration: BoxDecoration(
-                            gradient: const LinearGradient(
-                              colors: [Color(0xFF1A5F4A), Color(0xFF2D7A62)],
-                            ),
-                            shape: BoxShape.circle,
-                          ),
-                          child: Center(
-                            child: Text(
-                              _currentUser?.name?.isNotEmpty == true
-                                  ? _currentUser!.name![0].toUpperCase()
-                                  : '👤',
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 24,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                        ),
-                        const SizedBox(width: 16),
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                _currentUser?.name ?? getText('guestUser'),
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                  color: isDark ? Colors.white : Colors.black87,
-                                ),
-                              ),
-                              Text(
-                                _currentUser?.email ?? getText('notSignedIn'),
-                                style: TextStyle(
-                                  fontSize: 13,
-                                  color: isDark
-                                      ? Colors.grey[400]
-                                      : Colors.grey[600],
-                                ),
-                              ),
-                              Container(
-                                margin: const EdgeInsets.only(top: 4),
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 8,
-                                  vertical: 2,
-                                ),
-                                decoration: BoxDecoration(
-                                  color: _currentUser?.emailVerified == true
-                                      ? Colors.green.withValues(alpha: 0.15)
-                                      : Colors.orange.withValues(alpha: 0.15),
-                                  borderRadius: BorderRadius.circular(8),
-                                ),
-                                child: Text(
-                                  _currentUser?.emailVerified == true
-                                      ? getText('verified')
-                                      : getText('notVerified'),
-                                  style: TextStyle(
-                                    fontSize: 10,
-                                    color: _currentUser?.emailVerified == true
-                                        ? Colors.green
-                                        : Colors.orange,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
                     ),
                   ),
-
                   const SizedBox(height: 24),
-
-                  // Language Section
-                  _buildSectionHeader('🌐', getText('language'), isDark),
-                  const SizedBox(height: 12),
-                  Container(
-                    padding: const EdgeInsets.all(16),
-                    decoration: _buildCardDecoration(isDark),
-                    child: Row(
+                  _buildSectionTitle(getText('readingPreferences'), isDark),
+                  const SizedBox(height: 10),
+                  _buildSettingsGroup(
+                    isDark: isDark,
+                    child: Column(
                       children: [
-                        Expanded(
-                          child: GestureDetector(
-                            onTap: () => widget.onLanguageChange('English'),
-                            child: Container(
-                              padding: const EdgeInsets.symmetric(vertical: 12),
-                              decoration: BoxDecoration(
-                                gradient: widget.currentLanguage == 'English'
-                                    ? const LinearGradient(
-                                        colors: [
-                                          Color(0xFF1A5F4A),
-                                          Color(0xFF2D7A62),
-                                        ],
-                                      )
-                                    : null,
-                                color: widget.currentLanguage == 'English'
-                                    ? null
-                                    : (isDark
-                                          ? const Color(0xFF3D3D3D)
-                                          : const Color(0xFFF0F0F0)),
-                                borderRadius: BorderRadius.circular(12),
-                              ),
-                              child: Center(
-                                child: Text(
-                                  'English',
-                                  style: TextStyle(
-                                    color: widget.currentLanguage == 'English'
-                                        ? Colors.white
-                                        : (isDark
-                                              ? Colors.grey[400]
-                                              : Colors.grey[700]),
-                                    fontWeight:
-                                        widget.currentLanguage == 'English'
-                                        ? FontWeight.w600
-                                        : FontWeight.w400,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        const SizedBox(width: 12),
-                        Expanded(
-                          child: GestureDetector(
-                            onTap: () => widget.onLanguageChange('French'),
-                            child: Container(
-                              padding: const EdgeInsets.symmetric(vertical: 12),
-                              decoration: BoxDecoration(
-                                gradient: widget.currentLanguage == 'French'
-                                    ? const LinearGradient(
-                                        colors: [
-                                          Color(0xFF1A5F4A),
-                                          Color(0xFF2D7A62),
-                                        ],
-                                      )
-                                    : null,
-                                color: widget.currentLanguage == 'French'
-                                    ? null
-                                    : (isDark
-                                          ? const Color(0xFF3D3D3D)
-                                          : const Color(0xFFF0F0F0)),
-                                borderRadius: BorderRadius.circular(12),
-                              ),
-                              child: Center(
-                                child: Text(
-                                  'Français',
-                                  style: TextStyle(
-                                    color: widget.currentLanguage == 'French'
-                                        ? Colors.white
-                                        : (isDark
-                                              ? Colors.grey[400]
-                                              : Colors.grey[700]),
-                                    fontWeight:
-                                        widget.currentLanguage == 'French'
-                                        ? FontWeight.w600
-                                        : FontWeight.w400,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-
-                  const SizedBox(height: 24),
-
-                  // Reading Preferences
-                  _buildSectionHeader(
-                    '📖',
-                    getText('readingPreferences'),
-                    isDark,
-                  ),
-                  const SizedBox(height: 12),
-
-                  Container(
-                    padding: const EdgeInsets.all(16),
-                    decoration: _buildCardDecoration(isDark),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: [
-                            Container(
-                              padding: const EdgeInsets.all(8),
-                              decoration: BoxDecoration(
-                                color: const Color(
-                                  0xFF1A5F4A,
-                                ).withValues(alpha: 0.1),
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: const Icon(
-                                Icons.translate,
-                                color: Color(0xFF1A5F4A),
-                                size: 22,
-                              ),
-                            ),
-                            const SizedBox(width: 12),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  getText('showTranslation'),
-                                  style: TextStyle(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w500,
-                                    color: isDark
-                                        ? Colors.white
-                                        : Colors.black87,
-                                  ),
-                                ),
-                                Text(
-                                  getText('showTranslationDesc'),
-                                  style: TextStyle(
-                                    fontSize: 10,
-                                    color: isDark
-                                        ? Colors.grey[400]
-                                        : Colors.grey[600],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                        Switch(
+                        _settingsSwitchTile(
+                          isDark: isDark,
+                          title: getText('showTranslation'),
+                          subtitle: getText('showTranslationDesc'),
                           value: _showTranslation,
-                          onChanged: (value) {
+                          onChanged: (v) {
                             setState(() {
-                              _showTranslation = value;
+                              _showTranslation = v;
                               _savePreferences();
                             });
                           },
-                          activeColor: const Color(0xFF1A5F4A),
                         ),
-                      ],
-                    ),
-                  ),
-
-                  const SizedBox(height: 12),
-
-                  Container(
-                    padding: const EdgeInsets.all(16),
-                    decoration: _buildCardDecoration(isDark),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: [
-                            Container(
-                              padding: const EdgeInsets.all(8),
-                              decoration: BoxDecoration(
-                                color: const Color(
-                                  0xFFC9A96E,
-                                ).withValues(alpha: 0.15),
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: const Icon(
-                                Icons.info_outline,
-                                color: Color(0xFFC9A96E),
-                                size: 22,
-                              ),
-                            ),
-                            const SizedBox(width: 12),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  getText('showTafsir'),
-                                  style: TextStyle(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w500,
-                                    color: isDark
-                                        ? Colors.white
-                                        : Colors.black87,
-                                  ),
-                                ),
-                                Text(
-                                  getText('showTafsirDesc'),
-                                  style: TextStyle(
-                                    fontSize: 10,
-                                    color: isDark
-                                        ? Colors.grey[400]
-                                        : Colors.grey[600],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                        Switch(
+                        _groupDivider(isDark),
+                        _settingsSwitchTile(
+                          isDark: isDark,
+                          title: getText('showTafsir'),
+                          subtitle: getText('showTafsirDesc'),
                           value: _showTafsir,
-                          onChanged: (value) {
+                          onChanged: (v) {
                             setState(() {
-                              _showTafsir = value;
+                              _showTafsir = v;
                               _savePreferences();
                             });
                           },
-                          activeColor: const Color(0xFF1A5F4A),
                         ),
                       ],
                     ),
                   ),
-
                   const SizedBox(height: 24),
-
-                  // Theme Section
-                  _buildSectionHeader('🎨', getText('theme'), isDark),
-                  const SizedBox(height: 12),
-                  Container(
-                    padding: const EdgeInsets.all(16),
-                    decoration: _buildCardDecoration(isDark),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: [
-                            Container(
-                              padding: const EdgeInsets.all(8),
-                              decoration: BoxDecoration(
-                                color: const Color(
-                                  0xFF1A5F4A,
-                                ).withValues(alpha: 0.1),
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: Icon(
-                                widget.isDarkMode
-                                    ? Icons.dark_mode
-                                    : Icons.light_mode,
-                                color: const Color(0xFF1A5F4A),
-                                size: 22,
-                              ),
-                            ),
-                            const SizedBox(width: 12),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  widget.isDarkMode
-                                      ? getText('darkMode')
-                                      : getText('lightMode'),
-                                  style: TextStyle(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w500,
-                                    color: isDark
-                                        ? Colors.white
-                                        : Colors.black87,
-                                  ),
-                                ),
-                                Text(
-                                  widget.isDarkMode
-                                      ? getText('switchToLight')
-                                      : getText('switchToDark'),
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                    color: isDark
-                                        ? Colors.grey[400]
-                                        : Colors.grey[600],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                        Switch(
-                          value: widget.isDarkMode,
-                          onChanged: widget.onThemeToggle,
-                          activeColor: const Color(0xFF1A5F4A),
-                        ),
-                      ],
+                  _buildSectionTitle(getText('theme'), isDark),
+                  const SizedBox(height: 10),
+                  _buildSettingsGroup(
+                    isDark: isDark,
+                    child: _settingsSwitchTile(
+                      isDark: isDark,
+                      title: widget.isDarkMode
+                          ? getText('darkMode')
+                          : getText('lightMode'),
+                      subtitle: widget.isDarkMode
+                          ? getText('switchToLight')
+                          : getText('switchToDark'),
+                      value: widget.isDarkMode,
+                      onChanged: widget.onThemeToggle,
                     ),
                   ),
-
                   const SizedBox(height: 24),
-
-                  // Account Section
-                  _buildSectionHeader('🔐', getText('account'), isDark),
-                  const SizedBox(height: 12),
-
+                  _buildSectionTitle(getText('account'), isDark),
+                  const SizedBox(height: 10),
                   if (_currentUser != null) ...[
-                    _buildMenuItem(
-                      icon: Icons.person_outline,
-                      title: getText('editProfile'),
+                    _buildSettingsGroup(
                       isDark: isDark,
-                      onTap: _showEditProfileDialog,
+                      child: Column(
+                        children: [
+                          _settingsNavTile(
+                            isDark: isDark,
+                            icon: Icons.person_outline_rounded,
+                            title: getText('editProfile'),
+                            onTap: _showEditProfileDialog,
+                          ),
+                          _groupDivider(isDark),
+                          _settingsNavTile(
+                            isDark: isDark,
+                            icon: Icons.lock_outline_rounded,
+                            title: getText('changePassword'),
+                            onTap: _showChangePasswordDialog,
+                          ),
+                        ],
+                      ),
                     ),
-                    const SizedBox(height: 8),
-
-                    _buildMenuItem(
-                      icon: Icons.lock_outline,
-                      title: getText('changePassword'),
+                    const SizedBox(height: 12),
+                    _buildSettingsGroup(
                       isDark: isDark,
-                      onTap: _showChangePasswordDialog,
-                    ),
-                    const SizedBox(height: 8),
-
-                    _buildMenuItem(
-                      icon: Icons.logout,
-                      title: getText('logout'),
-                      isDark: isDark,
-                      iconColor: Colors.red,
-                      onTap: _logout,
-                    ),
-                    const SizedBox(height: 8),
-
-                    _buildMenuItem(
-                      icon: Icons.delete_outline,
-                      title: getText('deleteAccount'),
-                      isDark: isDark,
-                      iconColor: Colors.red,
-                      onTap: _deleteAccount,
+                      child: Column(
+                        children: [
+                          _settingsNavTile(
+                            isDark: isDark,
+                            icon: Icons.logout_rounded,
+                            title: getText('logout'),
+                            titleColor: Colors.red.shade700,
+                            iconColor: Colors.red.shade700,
+                            onTap: _logout,
+                          ),
+                          _groupDivider(isDark),
+                          _settingsNavTile(
+                            isDark: isDark,
+                            icon: Icons.delete_outline_rounded,
+                            title: getText('deleteAccount'),
+                            titleColor: Colors.red.shade700,
+                            iconColor: Colors.red.shade700,
+                            onTap: _deleteAccount,
+                          ),
+                        ],
+                      ),
                     ),
                   ] else ...[
-                    _buildMenuItem(
-                      icon: Icons.person_add_outlined,
-                      title: getText('createAccount'),
+                    _buildSettingsGroup(
                       isDark: isDark,
-                      onTap: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) => LoginScreen(
-                              onLogin: () {
-                                Navigator.of(context).pop();
-                                widget.onUserUpdated?.call();
-                                _loadUser();
-                              },
-                              onSignup: () {
-                                Navigator.of(context).pop();
-                                widget.onUserUpdated?.call();
-                                _loadUser();
-                              },
-                              onForgotPassword: () {},
-                              onSkipLogin: () {
-                                Navigator.of(context).pop();
-                              },
-                              currentLanguage: widget.currentLanguage,
-                              isDarkMode: isDark,
+                      child: _settingsNavTile(
+                        isDark: isDark,
+                        icon: Icons.person_add_alt_1_outlined,
+                        title: getText('createAccount'),
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => LoginScreen(
+                                onLogin: () {
+                                  Navigator.of(context).pop();
+                                  widget.onUserUpdated?.call();
+                                  _loadUser();
+                                },
+                                onSignup: () {
+                                  Navigator.of(context).pop();
+                                  widget.onUserUpdated?.call();
+                                  _loadUser();
+                                },
+                                onForgotPassword: () {},
+                                onSkipLogin: () {
+                                  Navigator.of(context).pop();
+                                },
+                                currentLanguage: widget.currentLanguage,
+                                isDarkMode: isDark,
+                              ),
                             ),
-                          ),
-                        );
-                      },
-                    ),
-                    const SizedBox(height: 8),
-                    Container(
-                      padding: const EdgeInsets.all(12),
-                      decoration: BoxDecoration(
-                        color: isDark
-                            ? const Color(0xFF2A2A2A)
-                            : Colors.blue.withValues(alpha: 0.1),
-                        borderRadius: BorderRadius.circular(12),
+                          );
+                        },
                       ),
+                    ),
+                    const SizedBox(height: 10),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 4),
                       child: Text(
                         getText('createAccountMessage'),
                         style: TextStyle(
-                          fontSize: 12,
-                          color: isDark ? Colors.grey[400] : Colors.grey[600],
-                          fontStyle: FontStyle.italic,
+                          fontSize: 13,
+                          height: 1.4,
+                          color: isDark ? Colors.grey[500] : Colors.grey[600],
                         ),
                       ),
                     ),
                   ],
-
-                  const SizedBox(height: 24),
-
-                  // Version
-                  Center(
-                    child: Text(
-                      '${getText('version')} 1.0.1',
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: isDark ? Colors.grey[600] : Colors.grey[400],
-                      ),
+                  const SizedBox(height: 32),
+                  Text(
+                    '${getText('version')} 1.0.1',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: isDark ? Colors.grey[600] : Colors.grey[500],
                     ),
                   ),
-                  const SizedBox(height: 20),
                 ],
               ),
             ),
     );
   }
 
-  Widget _buildSectionHeader(String emoji, String title, bool isDark) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 4),
+  Widget _buildProfileCard(bool isDark, String Function(String) getText) {
+    final verified = _currentUser?.emailVerified == true;
+
+    return Container(
+      padding: const EdgeInsets.all(20),
+      decoration: BoxDecoration(
+        color: AppSurfaces.card(isDark),
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(
+          color: isDark
+              ? Colors.white.withValues(alpha: 0.06)
+              : Colors.black.withValues(alpha: 0.06),
+        ),
+        boxShadow: isDark
+            ? null
+            : [
+                BoxShadow(
+                  color: Colors.black.withValues(alpha: 0.04),
+                  blurRadius: 16,
+                  offset: const Offset(0, 4),
+                ),
+              ],
+      ),
       child: Row(
         children: [
-          Text(emoji, style: const TextStyle(fontSize: 20)),
-          const SizedBox(width: 8),
-          Text(
-            title,
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-              color: isDark ? Colors.white : Colors.black87,
+          Container(
+            padding: const EdgeInsets.all(3),
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              border: Border.all(color: _primary.withValues(alpha: 0.35)),
+            ),
+            child: CircleAvatar(
+              radius: 32,
+              backgroundColor: _primary.withValues(alpha: 0.12),
+              child: Text(
+                _currentUser?.name?.isNotEmpty == true
+                    ? _currentUser!.name![0].toUpperCase()
+                    : '?',
+                style: const TextStyle(
+                  color: _primary,
+                  fontSize: 26,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(width: 16),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  _currentUser?.name ?? getText('guestUser'),
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
+                    letterSpacing: -0.2,
+                    color: isDark ? Colors.white : const Color(0xFF1A1A1A),
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  _currentUser?.email ?? getText('notSignedIn'),
+                  style: TextStyle(
+                    fontSize: 13,
+                    color: isDark ? Colors.grey[400] : Colors.grey[600],
+                  ),
+                ),
+                if (_currentUser != null) ...[
+                  const SizedBox(height: 8),
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 8,
+                      vertical: 4,
+                    ),
+                    decoration: BoxDecoration(
+                      color: (verified ? _primary : Colors.orange)
+                          .withValues(alpha: 0.12),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Text(
+                      verified ? getText('verified') : getText('notVerified'),
+                      style: TextStyle(
+                        fontSize: 11,
+                        fontWeight: FontWeight.w600,
+                        color: verified ? _primary : Colors.orange.shade800,
+                      ),
+                    ),
+                  ),
+                ],
+              ],
             ),
           ),
         ],
@@ -1010,75 +809,107 @@ class _SettingsTabState extends State<SettingsTab> {
     );
   }
 
-  BoxDecoration _buildCardDecoration(bool isDark) {
-    return BoxDecoration(
-      gradient: LinearGradient(
-        begin: Alignment.topLeft,
-        end: Alignment.bottomRight,
-        colors: isDark
-            ? [const Color(0xFF1E1E1E), const Color(0xFF2A2A2A)]
-            : [Colors.white, const Color(0xFFF8F5F0)],
-      ),
-      borderRadius: BorderRadius.circular(16),
-      boxShadow: [
-        BoxShadow(
-          color: Colors.black.withValues(alpha: 0.05),
-          blurRadius: 8,
-          offset: const Offset(0, 2),
+  Widget _buildSectionTitle(String title, bool isDark) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 4),
+      child: Text(
+        title.toUpperCase(),
+        style: TextStyle(
+          fontSize: 12,
+          fontWeight: FontWeight.w600,
+          letterSpacing: 0.8,
+          color: isDark ? Colors.grey[500] : Colors.grey[600],
         ),
-      ],
+      ),
     );
   }
 
-  Widget _buildMenuItem({
-    required IconData icon,
-    required String title,
+  Widget _buildSettingsGroup({
     required bool isDark,
-    required VoidCallback onTap,
-    Color? iconColor,
+    required Widget child,
   }) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: isDark
-                ? [const Color(0xFF1E1E1E), const Color(0xFF2A2A2A)]
-                : [Colors.white, const Color(0xFFF8F5F0)],
-          ),
-          borderRadius: BorderRadius.circular(12),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withValues(alpha: 0.04),
-              blurRadius: 8,
-              offset: const Offset(0, 2),
-            ),
-          ],
-        ),
-        child: Row(
-          children: [
-            Icon(icon, color: iconColor ?? const Color(0xFF1A5F4A), size: 22),
-            const SizedBox(width: 14),
-            Expanded(
-              child: Text(
-                title,
-                style: TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.w500,
-                  color: isDark ? Colors.white : Colors.black87,
-                ),
-              ),
-            ),
-            Icon(
-              Icons.chevron_right,
-              color: isDark ? Colors.grey[600] : Colors.grey[400],
-            ),
-          ],
+    return Container(
+      decoration: BoxDecoration(
+        color: AppSurfaces.card(isDark),
+        borderRadius: BorderRadius.circular(14),
+        border: Border.all(
+          color: isDark
+              ? Colors.white.withValues(alpha: 0.06)
+              : Colors.black.withValues(alpha: 0.06),
         ),
       ),
+      clipBehavior: Clip.antiAlias,
+      child: child,
+    );
+  }
+
+  Widget _groupDivider(bool isDark) {
+    return Divider(
+      height: 1,
+      thickness: 1,
+      indent: 16,
+      endIndent: 16,
+      color: isDark ? Colors.white.withValues(alpha: 0.06) : Colors.grey[200],
+    );
+  }
+
+  Widget _settingsSwitchTile({
+    required bool isDark,
+    required String title,
+    required String subtitle,
+    required bool value,
+    required ValueChanged<bool> onChanged,
+  }) {
+    return SwitchListTile.adaptive(
+      contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 2),
+      title: Text(
+        title,
+        style: TextStyle(
+          fontSize: 15,
+          fontWeight: FontWeight.w500,
+          color: isDark ? Colors.white : const Color(0xFF1A1A1A),
+        ),
+      ),
+      subtitle: Text(
+        subtitle,
+        style: TextStyle(
+          fontSize: 12,
+          color: isDark ? Colors.grey[500] : Colors.grey[600],
+        ),
+      ),
+      value: value,
+      onChanged: onChanged,
+      activeColor: _primary,
+    );
+  }
+
+  Widget _settingsNavTile({
+    required bool isDark,
+    required IconData icon,
+    required String title,
+    required VoidCallback onTap,
+    Color? iconColor,
+    Color? titleColor,
+  }) {
+    final fg = titleColor ?? (isDark ? Colors.white : const Color(0xFF1A1A1A));
+    final ic = iconColor ?? _primary;
+
+    return ListTile(
+      contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 2),
+      leading: Icon(icon, color: ic, size: 22),
+      title: Text(
+        title,
+        style: TextStyle(
+          fontSize: 15,
+          fontWeight: FontWeight.w500,
+          color: fg,
+        ),
+      ),
+      trailing: Icon(
+        Icons.chevron_right_rounded,
+        color: isDark ? Colors.grey[600] : Colors.grey[400],
+      ),
+      onTap: onTap,
     );
   }
 }

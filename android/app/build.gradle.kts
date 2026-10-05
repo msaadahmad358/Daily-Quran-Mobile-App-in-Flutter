@@ -1,6 +1,5 @@
 plugins {
     id("com.android.application")
-    id("com.google.gms.google-services")
     id("kotlin-android")
     id("dev.flutter.flutter-gradle-plugin")
 }
@@ -37,6 +36,17 @@ android {
 
 flutter {
     source = "../.."
+}
+
+val copyAzanRawResources = tasks.register<Copy>("copyAzanRawResources") {
+    from("../../assets/audio") {
+        include("azan2.mp3")
+    }
+    into("src/main/res/raw")
+}
+
+tasks.named("preBuild").configure {
+    dependsOn(copyAzanRawResources)
 }
 
 // ========== ADD THIS BLOCK ==========

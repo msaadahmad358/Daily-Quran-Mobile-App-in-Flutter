@@ -22,6 +22,9 @@ dependencies:
   provider: ^6.1.5+1
   url_launcher: ^6.3.2
   geolocator: ^10.1.0
+  flutter_compass: ^0.8.1
+  flutter_map: ^8.2.1
+  latlong2: ^0.9.1
   permission_handler: ^11.0.0
   flutter_launcher_icons: ^0.13.1
 
@@ -30,12 +33,17 @@ dependencies:
 
   # ===== UTILITIES =====
   intl: any                      # Let flutter_localizations pin the version
+  share_plus: ^10.1.4
+  flutter_tts: ^4.2.0
+  just_audio: ^0.9.46
+  timezone: ^0.9.4
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^6.0.0
   rename: ^3.1.0
+  image: ^4.5.4
 
 flutter_native_splash:
   color: "#1A5F4A"
@@ -71,3 +79,42 @@ flutter:
   uses-material-design: true
   assets:
     - assets/
+    - assets/nav/
+    - assets/images/
+    - assets/nav/nav_home.png
+    - assets/nav/nav_quran.png
+    - assets/nav/nav_prayer.png
+    - assets/nav/nav_more.png
+    - assets/nav/nav_settings.png
+    - assets/images/quran_header_bg.jpg
+    - assets/images/surah_detail_header.jpg
+    - assets/images/prayer/prayer_bg_fajr.jpg
+    - assets/images/prayer/prayer_bg_sunrise.jpg
+    - assets/images/prayer/prayer_bg_dhuhr.jpg
+    - assets/images/prayer/prayer_bg_asr.jpg
+    - assets/images/prayer/prayer_bg_night.jpg
+    - assets/images/more/
+    - assets/images/qibla/
+    - assets/images/home/
+    - assets/images/home/read_quran.jpg
+    - assets/images/home/home_verse_bg.jpg
+    - assets/data/
+    - assets/data/quran-index.json
+    - assets/audio/azan2.mp3
+    - assets/fonts/Amiri-Regular.ttf
+    - assets/fonts/ScheherazadeNew-Regular.ttf
+    - assets/fonts/surah-name-v4.ttf
+
+  fonts:
+    - family: SurahNameV4
+      fonts:
+        - asset: assets/fonts/surah-name-v4.ttf
+    - family: IndoPak
+      fonts:
+        - asset: assets/fonts/ScheherazadeNew-Regular.ttf
+    - family: AmiriQuran
+      fonts:
+        - asset: assets/fonts/Amiri-Regular.ttf
+    - family: ArabicNaskh
+      fonts:
+        - asset: assets/fonts/Amiri-Regular.ttf
