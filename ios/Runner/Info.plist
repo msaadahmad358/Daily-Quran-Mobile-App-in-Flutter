@@ -44,6 +44,10 @@
 	<key>NSMotionUsageDescription</key>
 	<string>Daily Quran uses the device compass and motion sensors to show the Qibla direction while you hold your phone.</string>
 
+	<!-- Microphone: required by audio playback / recording framework dependencies -->
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Daily Quran requires microphone access for audio playback configuration and voice-related features.</string>
+
 	<!-- Local prayer reminders (no extra plist string required on iOS 10+) -->
 
 	<!-- Quran audio & adhan playback in background briefly -->

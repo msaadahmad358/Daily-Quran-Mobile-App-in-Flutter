@@ -46,6 +46,7 @@ post_install do |installer|
         'PERMISSION_LOCATION_WHENINUSE=1',
         'PERMISSION_NOTIFICATIONS=1',
         'PERMISSION_SENSORS=1',
+        'PERMISSION_MICROPHONE=0',
       ]
     end
   end
