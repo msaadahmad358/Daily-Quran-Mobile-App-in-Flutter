@@ -32,6 +32,10 @@
 	<!-- Location: prayer times & Qibla -->
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Daily Quran uses your location to show accurate prayer times and Qibla direction for where you are.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Daily Quran uses your location to show accurate prayer times and Qibla direction for where you are.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Daily Quran uses your location to show accurate prayer times and Qibla direction for where you are.</string>
 	<key>NSLocationTemporaryUsageDescriptionDictionary</key>
 	<dict>
 		<key>PrayerTimesLocation</key>
