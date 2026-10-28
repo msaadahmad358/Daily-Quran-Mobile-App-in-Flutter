@@ -75,11 +75,9 @@ class _LoginScreenState extends BaseScreenState<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     final isDark = widget.isDarkMode;
-    final getText = (String key) =>
-        Translations.getText(widget.currentLanguage, key);
+    final getText = (String key) => Translations.getText(widget.currentLanguage, key);
     final canPop = Navigator.canPop(context);
-    final sheetBg =
-        isDark ? const Color(0xFF121212) : const Color(0xFFF5F2EE);
+    final sheetBg = isDark ? const Color(0xFF121212) : const Color(0xFFF5F2EE);
 
     return Scaffold(
       backgroundColor: _primary,
@@ -96,8 +94,7 @@ class _LoginScreenState extends BaseScreenState<LoginScreen> {
                       if (canPop)
                         IconButton(
                           onPressed: () => Navigator.pop(context),
-                          icon: const Icon(Icons.arrow_back_rounded,
-                              color: Colors.white),
+                          icon: const Icon(Icons.arrow_back_rounded, color: Colors.white),
                         )
                       else
                         const SizedBox(width: 8),
@@ -122,21 +119,15 @@ class _LoginScreenState extends BaseScreenState<LoginScreen> {
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(16),
-                      border: Border.all(
-                        color: _gold.withValues(alpha: 0.5),
-                        width: 1.5,
-                      ),
+                      border: Border.all(color: _gold.withValues(alpha: 0.5), width: 1.5),
                     ),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(14),
                       child: Image.asset(
                         'assets/logo.jpg',
                         fit: BoxFit.cover,
-                        errorBuilder: (_, __, ___) => const Icon(
-                          Icons.menu_book_rounded,
-                          color: _primary,
-                          size: 36,
-                        ),
+                        errorBuilder: (_, __, ___) =>
+                            const Icon(Icons.menu_book_rounded, color: _primary, size: 36),
                       ),
                     ),
                   ),
@@ -144,9 +135,7 @@ class _LoginScreenState extends BaseScreenState<LoginScreen> {
                   Text(
                     _showVerification
                         ? getText('verifyYourEmail')
-                        : (_isLogin
-                            ? getText('welcome')
-                            : getText('welcomeDesc')),
+                        : (_isLogin ? getText('welcome') : getText('welcomeDesc')),
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.white.withValues(alpha: 0.92),
@@ -163,9 +152,7 @@ class _LoginScreenState extends BaseScreenState<LoginScreen> {
               width: double.infinity,
               decoration: BoxDecoration(
                 color: sheetBg,
-                borderRadius: const BorderRadius.vertical(
-                  top: Radius.circular(20),
-                ),
+                borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
               ),
               child: SingleChildScrollView(
                 padding: const EdgeInsets.fromLTRB(20, 22, 20, 28),
@@ -234,13 +221,10 @@ class _LoginScreenState extends BaseScreenState<LoginScreen> {
             prefix: const Icon(Icons.lock_outline, color: _primary),
             suffix: IconButton(
               icon: Icon(
-                _obscurePassword
-                    ? Icons.visibility_off_outlined
-                    : Icons.visibility_outlined,
+                _obscurePassword ? Icons.visibility_off_outlined : Icons.visibility_outlined,
                 color: isDark ? Colors.grey[400] : Colors.grey[600],
               ),
-              onPressed: () =>
-                  setState(() => _obscurePassword = !_obscurePassword),
+              onPressed: () => setState(() => _obscurePassword = !_obscurePassword),
             ),
           ),
         ),
@@ -251,10 +235,7 @@ class _LoginScreenState extends BaseScreenState<LoginScreen> {
               onPressed: widget.onForgotPassword,
               child: Text(
                 getText('forgotPassword'),
-                style: const TextStyle(
-                  color: _primary,
-                  fontWeight: FontWeight.w600,
-                ),
+                style: const TextStyle(color: _primary, fontWeight: FontWeight.w600),
               ),
             ),
           ),
@@ -268,25 +249,17 @@ class _LoginScreenState extends BaseScreenState<LoginScreen> {
             style: FilledButton.styleFrom(
               backgroundColor: _primary,
               disabledBackgroundColor: _primary.withValues(alpha: 0.5),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(3),
-              ),
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(3)),
             ),
             child: _isLoading
                 ? const SizedBox(
                     width: 22,
                     height: 22,
-                    child: CircularProgressIndicator(
-                      strokeWidth: 2,
-                      color: Colors.white,
-                    ),
+                    child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white),
                   )
                 : Text(
                     _isLogin ? getText('login') : getText('signup'),
-                    style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w700,
-                    ),
+                    style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
                   ),
           ),
         ),
@@ -337,25 +310,17 @@ class _LoginScreenState extends BaseScreenState<LoginScreen> {
             onPressed: _isLoading ? null : _verifyEmail,
             style: FilledButton.styleFrom(
               backgroundColor: _primary,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(3),
-              ),
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(3)),
             ),
             child: _isLoading
                 ? const SizedBox(
                     width: 22,
                     height: 22,
-                    child: CircularProgressIndicator(
-                      strokeWidth: 2,
-                      color: Colors.white,
-                    ),
+                    child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white),
                   )
                 : Text(
                     getText('verify'),
-                    style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w700,
-                    ),
+                    style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
                   ),
           ),
         ),
@@ -363,19 +328,14 @@ class _LoginScreenState extends BaseScreenState<LoginScreen> {
           onPressed: _isLoading ? null : _resendCode,
           child: Text(
             getText('resendCode'),
-            style: const TextStyle(
-              color: _primary,
-              fontWeight: FontWeight.w600,
-            ),
+            style: const TextStyle(color: _primary, fontWeight: FontWeight.w600),
           ),
         ),
         TextButton(
           onPressed: () => setState(() => _showVerification = false),
           child: Text(
             getText('backToLogin'),
-            style: TextStyle(
-              color: isDark ? Colors.grey[500] : Colors.grey[600],
-            ),
+            style: TextStyle(color: isDark ? Colors.grey[500] : Colors.grey[600]),
           ),
         ),
       ],
@@ -395,8 +355,7 @@ class _LoginScreenState extends BaseScreenState<LoginScreen> {
         widget.onLogin();
         if (mounted && Navigator.canPop(context)) Navigator.pop(context);
       } else {
-        if (result['data'] != null &&
-            result['data']['requires_verification'] == true) {
+        if (result['data'] != null && result['data']['requires_verification'] == true) {
           setState(() {
             _verificationEmail = email;
             _showVerification = true;
@@ -415,11 +374,7 @@ class _LoginScreenState extends BaseScreenState<LoginScreen> {
         return;
       }
 
-      final result = await _auth.register(
-        email: email,
-        password: password,
-        name: name,
-      );
+      final result = await _auth.register(email: email, password: password, name: name);
 
       if (result['success'] == true) {
         setState(() {
@@ -445,10 +400,7 @@ class _LoginScreenState extends BaseScreenState<LoginScreen> {
 
     setState(() => _isLoading = true);
 
-    final result = await _auth.verifyEmail(
-      email: _verificationEmail,
-      code: code,
-    );
+    final result = await _auth.verifyEmail(email: _verificationEmail, code: code);
 
     if (result['success'] == true) {
       widget.onLogin();
@@ -463,9 +415,7 @@ class _LoginScreenState extends BaseScreenState<LoginScreen> {
   Future<void> _resendCode() async {
     setState(() => _isLoading = true);
 
-    final result = await _auth.resendVerificationCode(
-      email: _verificationEmail,
-    );
+    final result = await _auth.resendVerificationCode(email: _verificationEmail);
 
     if (result['success'] == true) {
       _showSuccess(getText('newCodeSent'));
@@ -533,25 +483,15 @@ class _AuthModeTabs extends StatelessWidget {
       decoration: BoxDecoration(
         color: bg,
         borderRadius: BorderRadius.circular(3),
-        border: Border.all(
-          color: isDark ? Colors.white12 : const Color(0xFFE8E4DE),
-        ),
+        border: Border.all(color: isDark ? Colors.white12 : const Color(0xFFE8E4DE)),
       ),
       child: Row(
         children: [
           Expanded(
-            child: _TabChip(
-              label: loginLabel,
-              selected: isLogin,
-              onTap: onLogin,
-            ),
+            child: _TabChip(label: loginLabel, selected: isLogin, onTap: onLogin),
           ),
           Expanded(
-            child: _TabChip(
-              label: signupLabel,
-              selected: !isLogin,
-              onTap: onSignup,
-            ),
+            child: _TabChip(label: signupLabel, selected: !isLogin, onTap: onSignup),
           ),
         ],
       ),
@@ -566,11 +506,7 @@ class _TabChip extends StatelessWidget {
 
   static const _primary = Color(0xFF1A5F4A);
 
-  const _TabChip({
-    required this.label,
-    required this.selected,
-    required this.onTap,
-  });
+  const _TabChip({required this.label, required this.selected, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
