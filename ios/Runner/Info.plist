@@ -36,6 +36,8 @@
 	<string>Daily Quran uses your location to show accurate prayer times and Qibla direction for where you are.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Daily Quran uses your location to show accurate prayer times and Qibla direction for where you are.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Daily Quran requires microphone access for audio playback configuration and voice-related features.</string>
 	<key>NSLocationTemporaryUsageDescriptionDictionary</key>
 	<dict>
 		<key>PrayerTimesLocation</key>
@@ -48,28 +50,19 @@
 	<key>NSMotionUsageDescription</key>
 	<string>Daily Quran uses the device compass and motion sensors to show the Qibla direction while you hold your phone.</string>
 
-	<!-- Microphone: required by audio playback / recording framework dependencies -->
-	<key>NSMicrophoneUsageDescription</key>
-	<string>Daily Quran requires microphone access for audio playback configuration and voice-related features.</string>
-
 	<!-- Local prayer reminders (no extra plist string required on iOS 10+) -->
 
 	<!-- Quran audio & adhan playback in background briefly -->
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>audio</string>
-		<string>fetch</string>
 	</array>
 
-	<key>NSAppTransportSecurity</key>
-	<dict>
-		<key>NSAllowsArbitraryLoads</key>
-		<true/>
-		<key>NSAllowsArbitraryLoadsForMedia</key>
-		<true/>
-		<key>NSAllowsArbitraryLoadsInWebContent</key>
-		<true/>
-	</dict>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>https</string>
+		<string>http</string>
+	</array>
 
 	<key>UIApplicationSceneManifest</key>
 	<dict>

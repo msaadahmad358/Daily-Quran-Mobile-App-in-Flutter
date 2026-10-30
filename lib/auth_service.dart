@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
@@ -9,6 +10,7 @@ class User {
   final int id;
   final String email;
   final String? name;
+  final String? country;
   final bool emailVerified;
   final String? authProvider;
   final DateTime? createdAt;
@@ -17,6 +19,7 @@ class User {
     required this.id,
     required this.email,
     this.name,
+    this.country,
     required this.emailVerified,
     this.authProvider,
     this.createdAt,
@@ -27,10 +30,11 @@ class User {
       id: json['id'] ?? 0,
       email: json['email'] ?? '',
       name: json['name'] ?? json['full_name'] ?? '',
+      country: json['country'] ?? '',
       emailVerified: json['email_verified'] ?? false,
       authProvider: json['auth_provider'] ?? 'email',
       createdAt: json['created_at'] != null
-          ? DateTime.parse(json['created_at'])
+          ? DateTime.tryParse('${json['created_at']}')
           : null,
     );
   }
@@ -40,6 +44,7 @@ class User {
       'id': id,
       'email': email,
       'name': name,
+      'country': country,
       'email_verified': emailVerified,
       'auth_provider': authProvider,
     };
@@ -51,11 +56,9 @@ class User {
 // ============================================================
 class AuthService {
   // ============ API CONFIGURATION ============
-  // Auth operations (register, login, verify, password reset) live here:
-  static const String authUrl = 'https://sunnahsource.org/QRN/api/auth.php';
-
-  // Profile operations (get/update profile, change password, delete) live here:
-  static const String userUrl = 'https://sunnahsource.org/QRN/api/user.php';
+  // Daily Quran backend (register / login / forgot password / donate)
+  static const String dqBaseUrl =
+      'https://tushroomsinternetlab.sunnahsource.org/daily-quran-app';
 
   static const String _tokenKey = 'auth_token';
   static const String _userKey = 'user_data';
@@ -102,211 +105,226 @@ class AuthService {
     await prefs.remove(_userKey);
   }
 
+  static const Duration _timeout = Duration(seconds: 20);
+
+  static String _netMsg(Object e) => e is TimeoutException
+      ? 'Request timed out. Please check your internet and try again.'
+      : 'Network error. Please check your internet and try again.';
+
   // ============ HTTP HELPERS ============
 
-  /// POST without auth → defaults to auth.php
-  Future<Map<String, dynamic>> _post(
-    String action,
-    Map<String, dynamic> data, {
-    String? endpoint,
-  }) async {
+  /// JSON POST to the Daily Quran backend. Returns the decoded body for any
+  /// status code (the API always replies with {success, message, ...}).
+  Future<Map<String, dynamic>> _dqPost(
+    String file,
+    Map<String, dynamic> data,
+  ) async {
     try {
-      final url = Uri.parse(endpoint ?? authUrl);
-      final body = {'action': action, ...data};
-
       final response = await http.post(
-        url,
+        Uri.parse('$dqBaseUrl/$file'),
         headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
+          'Content-Type': 'application/json',
           'Accept': 'application/json',
         },
-        body: body,
-      );
-
-      if (response.statusCode == 200) {
-        return jsonDecode(response.body);
-      } else {
-        return {
-          'success': false,
-          'message': 'Server error: ${response.statusCode}',
-        };
-      }
+        body: jsonEncode(data),
+      ).timeout(_timeout);
+      try {
+        final decoded = jsonDecode(response.body);
+        if (decoded is Map<String, dynamic>) return decoded;
+      } catch (_) {}
+      return {
+        'success': false,
+        'message': 'Server error: ${response.statusCode}',
+      };
     } catch (e) {
-      return {'success': false, 'message': 'Network error: $e'};
+      return {'success': false, 'message': _netMsg(e)};
     }
   }
 
-  /// POST with auth → defaults to user.php (profile ops live there)
-  Future<Map<String, dynamic>> _postWithAuth(
-    String action,
-    Map<String, dynamic> data, {
-    String? endpoint,
-  }) async {
+  Future<void> _saveDqSession(Map<String, dynamic> result) async {
+    final userData = result['user'];
+    if (result['success'] == true && userData is Map<String, dynamic>) {
+      final user = User.fromJson({...userData, 'email_verified': true});
+      final token = result['token'];
+      if (token is String && token.isNotEmpty) await saveToken(token);
+      await saveUser(user);
+    }
+  }
+
+  /// Donate page URL, prefilled with the logged-in user's details.
+  Future<Uri> donateUri([String? language]) async {
+    final user = await getUser();
+    final params = <String, String>{};
+    if (language != null) {
+      params['lang'] = language == 'English' ? 'en' : 'fr';
+    }
+    if (user != null) {
+      if ((user.name ?? '').isNotEmpty) params['name'] = user.name!;
+      params['email'] = user.email;
+      params['user_id'] = '${user.id}';
+    }
+    return Uri.parse(
+      '$dqBaseUrl/donate.php',
+    ).replace(queryParameters: params.isEmpty ? null : params);
+  }
+
+  /// Authenticated JSON POST (Bearer token) to the Daily Quran backend.
+  Future<Map<String, dynamic>> _dqAuthPost(
+    String file,
+    Map<String, dynamic> data,
+  ) async {
+    final token = await getToken();
+    if (token == null || token.isEmpty) {
+      return {'success': false, 'message': 'Not authenticated'};
+    }
     try {
-      final token = await getToken();
-      if (token == null || token.isEmpty) {
-        return {'success': false, 'message': 'Not authenticated'};
-      }
-
-      final url = Uri.parse(endpoint ?? userUrl);
-      final body = {'action': action, ...data};
-
       final response = await http.post(
-        url,
+        Uri.parse('$dqBaseUrl/$file'),
         headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
+          'Content-Type': 'application/json',
           'Accept': 'application/json',
           'Authorization': 'Bearer $token',
         },
-        body: body,
-      );
-
-      if (response.statusCode == 200) {
-        return jsonDecode(response.body);
-      } else if (response.statusCode == 401) {
+        body: jsonEncode(data),
+      ).timeout(_timeout);
+      Map<String, dynamic>? decoded;
+      try {
+        final d = jsonDecode(response.body);
+        if (d is Map<String, dynamic>) decoded = d;
+      } catch (_) {}
+      if (response.statusCode == 401 &&
+          !file.startsWith('change_password') &&
+          !file.startsWith('delete_account')) {
         await logout();
-        return {
-          'success': false,
-          'message': 'Session expired. Please login again.',
-        };
-      } else {
-        return {
-          'success': false,
-          'message': 'Server error: ${response.statusCode}',
-        };
+        return decoded ??
+            {'success': false, 'message': 'Session expired. Please login again.'};
       }
+      return decoded ??
+          {'success': false, 'message': 'Server error: ${response.statusCode}'};
     } catch (e) {
-      return {'success': false, 'message': 'Network error: $e'};
+      return {'success': false, 'message': _netMsg(e)};
     }
   }
 
   // ============================================================
-  // AUTH API METHODS (auth.php)
+  // AUTH API METHODS (Daily Quran backend)
   // ============================================================
 
   Future<Map<String, dynamic>> register({
     required String email,
     required String password,
     required String name,
+    String country = '',
+    String? confirmPassword,
   }) async {
-    return _post('register', {
+    final result = await _dqPost('register.php', {
+      'name': name.trim(),
+      'country': country.trim(),
       'email': email.trim(),
       'password': password,
-      'name': name.trim(),
+      'confirm_password': confirmPassword ?? password,
     });
+    await _saveDqSession(result);
+    return result;
   }
 
+  /// Email verification is not used by the new backend (signup logs in).
   Future<Map<String, dynamic>> verifyEmail({
     required String email,
     required String code,
   }) async {
-    final result = await _post('verify-email', {
-      'email': email.trim(),
-      'code': code.trim(),
-    });
-
-    // Auto-login on successful verification
-    if (result['success'] == true && result['data'] != null) {
-      final token = result['data']['token'];
-      if (token != null) {
-        await saveToken(token);
-
-        // Try saving user from response, but the response may lack name —
-        // fall back to fetching full profile from user.php
-        final userData = result['data']['user'];
-        if (userData != null) {
-          await saveUser(User.fromJson(userData));
-        }
-        // Always fetch fresh profile to get complete info (name, verified, etc.)
-        await getProfile();
-      }
-    }
-    return result;
+    return {'success': false, 'message': 'Email verification is not required'};
   }
 
   Future<Map<String, dynamic>> resendVerificationCode({
     required String email,
   }) async {
-    return _post('resend-code', {'email': email.trim()});
+    return {'success': false, 'message': 'Email verification is not required'};
   }
 
   Future<Map<String, dynamic>> login({
     required String email,
     required String password,
   }) async {
-    final result = await _post('login', {
+    final result = await _dqPost('login.php', {
       'email': email.trim(),
       'password': password,
     });
-
-    if (result['success'] == true && result['data'] != null) {
-      final token = result['data']['token'];
-      final userData = result['data']['user'];
-      if (token != null) {
-        await saveToken(token);
-        if (userData != null) {
-          await saveUser(User.fromJson(userData));
-        }
-      }
-    }
+    await _saveDqSession(result);
     return result;
   }
 
-  Future<Map<String, dynamic>> forgotPassword({required String email}) async {
-    return _post('forgot-password', {'email': email.trim()});
-  }
+  /// Step 1 of forgot password: checks whether an account exists for [email].
+  Future<Map<String, dynamic>> checkEmail({required String email}) =>
+      _dqPost('check_email.php', {'email': email.trim().toLowerCase()});
 
-  Future<Map<String, dynamic>> verifyResetCode({
-    required String email,
-    required String code,
-  }) async {
-    return _post('verify-reset-code', {
-      'email': email.trim(),
-      'code': code.trim(),
-    });
-  }
+  /// Kept for compatibility; same as [checkEmail].
+  Future<Map<String, dynamic>> forgotPassword({String email = ''}) =>
+      checkEmail(email: email);
 
+  /// Step 2: sets a new password for [email] (no code).
   Future<Map<String, dynamic>> resetPassword({
     required String email,
-    required String code,
     required String newPassword,
-  }) async {
-    return _post('reset-password', {
-      'email': email.trim(),
-      'code': code.trim(),
-      'new_password': newPassword,
-    });
+    String? confirmPassword,
+  }) =>
+      _dqPost('reset_password.php', {
+        'email': email.trim().toLowerCase(),
+        'new_password': newPassword,
+        'confirm_password': confirmPassword ?? newPassword,
+      });
+
+  /// The logged-in user's payment history (paid / failed / cancelled).
+  Future<Map<String, dynamic>> myPayments() async {
+    final token = await getToken();
+    if (token == null || token.isEmpty) {
+      return {'success': false, 'message': 'Not authenticated'};
+    }
+    try {
+      final r = await http.get(
+        Uri.parse('$dqBaseUrl/my_payments.php'),
+        headers: {'Accept': 'application/json', 'Authorization': 'Bearer $token'},
+      ).timeout(_timeout);
+      final d = jsonDecode(r.body);
+      if (d is Map<String, dynamic>) return d;
+    } catch (e) {
+      return {'success': false, 'message': _netMsg(e)};
+    }
+    return {'success': false, 'message': 'Server error'};
   }
 
   Future<void> logoutUser() async {
-    await _post('logout', {});
+    try {
+      await _dqAuthPost('logout.php', {});
+    } catch (_) {}
     await logout();
   }
 
   // ============================================================
-  // USER API METHODS (user.php) — go through _postWithAuth
+  // PROFILE METHODS (Bearer token)
   // ============================================================
 
-  /// Get profile from user.php and refresh cached user
   Future<Map<String, dynamic>> getProfile() async {
-    final result = await _postWithAuth('get-profile', {});
-
-    if (result['success'] == true && result['data'] != null) {
-      final userData = result['data']['user'];
-      if (userData != null) {
-        await saveUser(User.fromJson(userData));
-      }
+    final result = await _dqAuthPost('profile.php', {});
+    final userData = result['user'];
+    if (result['success'] == true && userData is Map<String, dynamic>) {
+      await saveUser(User.fromJson({...userData, 'email_verified': true}));
     }
     return result;
   }
 
-  /// Update profile via user.php
-  Future<Map<String, dynamic>> updateProfile({required String name}) async {
-    final result = await _postWithAuth('update-profile', {'name': name.trim()});
-
-    if (result['success'] == true) {
-      // Refresh from server to get authoritative data
-      await getProfile();
+  Future<Map<String, dynamic>> updateProfile({
+    required String name,
+    String? country,
+    String? email,
+  }) async {
+    final body = <String, dynamic>{'name': name.trim()};
+    if (country != null) body['country'] = country.trim();
+    if (email != null && email.trim().isNotEmpty) body['email'] = email.trim();
+    final result = await _dqAuthPost('update_profile.php', body);
+    final userData = result['user'];
+    if (result['success'] == true && userData is Map<String, dynamic>) {
+      await saveUser(User.fromJson({...userData, 'email_verified': true}));
     }
     return result;
   }
@@ -314,21 +332,29 @@ class AuthService {
   Future<Map<String, dynamic>> changePassword({
     required String oldPassword,
     required String newPassword,
+    String? confirmPassword,
   }) async {
-    return _postWithAuth('change-password', {
-      'old_password': oldPassword,
+    final result = await _dqAuthPost('change_password.php', {
+      'current_password': oldPassword,
       'new_password': newPassword,
+      'confirm_password': confirmPassword ?? newPassword,
     });
+    final token = result['token'];
+    if (result['success'] == true && token is String && token.isNotEmpty) {
+      await saveToken(token);
+    }
+    return result;
   }
 
-  Future<Map<String, dynamic>> deleteAccount() async {
-    final result = await _postWithAuth('delete-account', {});
+  Future<Map<String, dynamic>> deleteAccount({required String password}) async {
+    final result = await _dqAuthPost('delete_account.php', {
+      'password': password,
+    });
     if (result['success'] == true) {
       await logout();
     }
     return result;
   }
-
   // ============================================================
   // UTILITY METHODS
   // ============================================================

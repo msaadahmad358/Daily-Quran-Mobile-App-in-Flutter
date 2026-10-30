@@ -306,7 +306,7 @@ class _PrayerTimesScreenState extends BaseScreenState<PrayerTimesScreen> {
         headers: const {
           'User-Agent': 'DailyQuranMobile/1.0 (prayer-times)',
         },
-      );
+      ).timeout(const Duration(seconds: 20));
 
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
@@ -360,7 +360,7 @@ class _PrayerTimesScreenState extends BaseScreenState<PrayerTimesScreen> {
             'https://api.aladhan.com/v1/timingsByCity?city=${Uri.encodeComponent(c)}&country=${Uri.encodeComponent(co)}&method=2';
       }
 
-      final response = await http.get(Uri.parse(url));
+      final response = await http.get(Uri.parse(url)).timeout(const Duration(seconds: 20));
 
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);

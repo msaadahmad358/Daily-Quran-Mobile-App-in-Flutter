@@ -79,6 +79,8 @@ class Translations {
       'stats': 'Statistics',
       'subscription': 'Subscription',
       'donate': 'Donate',
+      'donateNow': 'Donate Now',
+      'couldNotOpenDonation': 'Could not open the donation page',
       'qibla': 'Qibla Compass',
       'support': 'Support & Donation',
 
@@ -508,6 +510,64 @@ class Translations {
       'notifPrayerTitle': 'Prayer time — {name}',
       'notifPrayerBodyLoc': '{name} · {location}',
       'notifPrayerBody': 'It is time for {name}',
+
+      // ========== AUTH / ACCOUNT (added) ==========
+      'delete': 'Delete',
+      'ok': 'OK',
+      'country': 'Country',
+      'authPrivacyNote': 'Your data is encrypted and kept private',
+      'authWelcomeBack': 'Welcome back — continue your journey',
+      'authCreateAccount': 'Create your free account',
+      'authNoAccount': 'Don\'t have an account?',
+      'authHaveAccount': 'Already have an account?',
+      'selectCountry': 'Please select your country',
+      'passwordMin6': 'Password must be at least 6 characters',
+      'passwordsMismatch': 'Passwords do not match',
+      'registrationSuccess': 'Registration successful',
+      'pwNeed8': 'Password must be at least 8 characters',
+      'pwNeedUpper': 'Password must contain at least one uppercase letter',
+      'pwNeedNumber': 'Password must contain at least one number',
+      'fpTitle': 'Forgot password',
+      'fpIntro': 'Enter your account email. If it is found, you can set a new password right here.',
+      'fpInvalidEmail': 'Please enter a valid email',
+      'fpAccountFound': 'Account found. Now set your new password below.',
+      'fpNoAccount': 'No account found with this email.',
+      'fpUpdated': 'Password updated. Please log in with your new password.',
+      'fpContinue': 'Continue',
+      'fpRule': 'At least 8 characters, 1 uppercase letter and 1 number.',
+      'fpUpdateButton': 'Update password',
+      'genericFailed': 'Something went wrong. Please try again.',
+      'accountDeleteFailed': 'Failed to delete account',
+      'paymentHistory': 'Payment History',
+      'phReceiptOnlyPaid': 'Receipt is available for paid donations only',
+      'phLoadFailed': 'Could not load payment history',
+      'phEmpty': 'You have not made any payment yet',
+      'phTotal': 'Total donated',
+      'statusPaid': 'Paid',
+      'statusFailed': 'Failed',
+      'statusCancelled': 'Cancelled',
+      'statusProcessing': 'Processing',
+      'statusRefunded': 'Refunded',
+      'statusPending': 'Pending',
+      'netTimeout': 'Request timed out. Please check your internet and try again.',
+      'netError': 'Network error. Please check your internet and try again.',
+      'serverError': 'Server error. Please try again later.',
+      'sessionExpired': 'Session expired. Please login again.',
+      'notAuthenticated': 'Not authenticated. Please log in.',
+      'apiInvalidLogin': 'Invalid email or password',
+      'apiEmailRegistered': 'Email already registered',
+      'apiCurrentPwWrong': 'Current password is incorrect',
+      'apiPwWrong': 'Password is incorrect',
+      'apiAllRequired': 'All fields are required',
+      'apiEmailPwRequired': 'Email and password required',
+      'apiNameCountryRequired': 'Name and country are required',
+      'apiTooManyAttempts': 'Too many attempts. Please wait 15 minutes and try again.',
+      'apiTooManyResets': 'Too many password resets. Please try again later.',
+      'apiContactAdmin': 'Please contact the admin to reset your password',
+      'apiLoginSuccess': 'Login successful',
+      'apiLoggedOut': 'Logged out',
+      'apiAccountDeleted': 'Account deleted',
+      'apiAmountRange': 'Amount must be between €1 and €10,000',
     },
 
     'French': {
@@ -585,6 +645,8 @@ class Translations {
       'stats': 'Statistiques',
       'subscription': 'Abonnement',
       'donate': 'Faire un don',
+      'donateNow': 'Faire un don',
+      'couldNotOpenDonation': 'Impossible d\'ouvrir la page de don',
       'qibla': 'Boussole Qibla',
       'support': 'Soutien & Don',
 
@@ -1026,6 +1088,64 @@ class Translations {
       'notifPrayerTitle': 'Heure de prière — {name}',
       'notifPrayerBodyLoc': '{name} · {location}',
       'notifPrayerBody': 'C\'est l\'heure de {name}',
+
+      // ========== AUTH / ACCOUNT (added) ==========
+      'delete': 'Supprimer',
+      'ok': 'OK',
+      'country': 'Pays',
+      'authPrivacyNote': 'Vos données sont chiffrées et restent privées',
+      'authWelcomeBack': 'Bon retour — poursuivez votre chemin',
+      'authCreateAccount': 'Créez votre compte gratuit',
+      'authNoAccount': 'Vous n\'avez pas de compte ?',
+      'authHaveAccount': 'Vous avez déjà un compte ?',
+      'selectCountry': 'Veuillez choisir votre pays',
+      'passwordMin6': 'Le mot de passe doit contenir au moins 6 caractères',
+      'passwordsMismatch': 'Les mots de passe ne correspondent pas',
+      'registrationSuccess': 'Inscription réussie',
+      'pwNeed8': 'Le mot de passe doit contenir au moins 8 caractères',
+      'pwNeedUpper': 'Le mot de passe doit contenir au moins une lettre majuscule',
+      'pwNeedNumber': 'Le mot de passe doit contenir au moins un chiffre',
+      'fpTitle': 'Mot de passe oublié',
+      'fpIntro': 'Saisissez l\'e-mail de votre compte. S\'il est trouvé, vous pourrez définir un nouveau mot de passe ici même.',
+      'fpInvalidEmail': 'Veuillez saisir un e-mail valide',
+      'fpAccountFound': 'Compte trouvé. Définissez maintenant votre nouveau mot de passe ci-dessous.',
+      'fpNoAccount': 'Aucun compte trouvé avec cet e-mail.',
+      'fpUpdated': 'Mot de passe mis à jour. Connectez-vous avec votre nouveau mot de passe.',
+      'fpContinue': 'Continuer',
+      'fpRule': 'Au moins 8 caractères, 1 majuscule et 1 chiffre.',
+      'fpUpdateButton': 'Mettre à jour le mot de passe',
+      'genericFailed': 'Une erreur s\'est produite. Veuillez réessayer.',
+      'accountDeleteFailed': 'Échec de la suppression du compte',
+      'paymentHistory': 'Historique des paiements',
+      'phReceiptOnlyPaid': 'Le reçu est disponible uniquement pour les dons payés',
+      'phLoadFailed': 'Impossible de charger l\'historique des paiements',
+      'phEmpty': 'Vous n\'avez encore effectué aucun paiement',
+      'phTotal': 'Total des dons',
+      'statusPaid': 'Payé',
+      'statusFailed': 'Échoué',
+      'statusCancelled': 'Annulé',
+      'statusProcessing': 'En cours',
+      'statusRefunded': 'Remboursé',
+      'statusPending': 'En attente',
+      'netTimeout': 'Délai d\'attente dépassé. Vérifiez votre connexion internet et réessayez.',
+      'netError': 'Erreur réseau. Vérifiez votre connexion internet et réessayez.',
+      'serverError': 'Erreur du serveur. Veuillez réessayer plus tard.',
+      'sessionExpired': 'Session expirée. Veuillez vous reconnecter.',
+      'notAuthenticated': 'Non connecté. Veuillez vous connecter.',
+      'apiInvalidLogin': 'E-mail ou mot de passe incorrect',
+      'apiEmailRegistered': 'Cet e-mail est déjà enregistré',
+      'apiCurrentPwWrong': 'Le mot de passe actuel est incorrect',
+      'apiPwWrong': 'Le mot de passe est incorrect',
+      'apiAllRequired': 'Tous les champs sont obligatoires',
+      'apiEmailPwRequired': 'L\'e-mail et le mot de passe sont obligatoires',
+      'apiNameCountryRequired': 'Le nom et le pays sont obligatoires',
+      'apiTooManyAttempts': 'Trop de tentatives. Veuillez patienter 15 minutes et réessayer.',
+      'apiTooManyResets': 'Trop de réinitialisations du mot de passe. Veuillez réessayer plus tard.',
+      'apiContactAdmin': 'Veuillez contacter l\'administrateur pour réinitialiser votre mot de passe',
+      'apiLoginSuccess': 'Connexion réussie',
+      'apiLoggedOut': 'Déconnecté',
+      'apiAccountDeleted': 'Compte supprimé',
+      'apiAmountRange': 'Le montant doit être compris entre 1 € et 10 000 €',
     },
   };
 
@@ -1035,4 +1155,107 @@ class Translations {
         _translations['English']?[key] ??
         key;
   }
+
+  // Known (English) API / service messages -> translation keys.
+  static const Map<String, String> _apiMessageKeys = {
+    'invalid email or password': 'apiInvalidLogin',
+    'email already registered': 'apiEmailRegistered',
+    'current password is incorrect': 'apiCurrentPwWrong',
+    'password is incorrect': 'apiPwWrong',
+    'all fields are required': 'apiAllRequired',
+    'email and password required': 'apiEmailPwRequired',
+    'name and country are required': 'apiNameCountryRequired',
+    'too many attempts. please wait 15 minutes and try again': 'apiTooManyAttempts',
+    'too many password resets. please try again later': 'apiTooManyResets',
+    'please contact the admin to reset your password': 'apiContactAdmin',
+    'login successful': 'apiLoginSuccess',
+    'logged out': 'apiLoggedOut',
+    'account deleted': 'apiAccountDeleted',
+    'amount must be between €1 and €10,000': 'apiAmountRange',
+    'no account found with this email': 'fpNoAccount',
+    'account found. please set your new password': 'fpAccountFound',
+    'password updated. please log in with your new password': 'fpUpdated',
+    'password must be at least 6 characters': 'passwordMin6',
+    'passwords do not match': 'passwordsMismatch',
+    'please enter a valid email': 'fpInvalidEmail',
+    'invalid email': 'fpInvalidEmail',
+    'registration successful': 'registrationSuccess',
+    'password changed': 'passwordChanged',
+    'profile updated': 'profileUpdated',
+    'session expired. please login again': 'sessionExpired',
+    'not authenticated': 'notAuthenticated',
+    'password must be at least 8 characters': 'pwNeed8',
+    'password must contain at least one uppercase letter': 'pwNeedUpper',
+    'password must contain at least one number': 'pwNeedNumber',
+    'request timed out. please check your internet and try again': 'netTimeout',
+    'network error. please check your internet and try again': 'netError',
+  };
+
+  /// Localizes a message coming from the server or AuthService.
+  /// Unknown messages: generic localized error for non-English languages
+  /// when [fallbackKey] is given, otherwise the original text.
+  static String apiMessage(String language, Object? message,
+      {String? fallbackKey}) {
+    final raw = (message ?? '').toString().trim();
+    var norm = raw.toLowerCase();
+    while (norm.endsWith('.') || norm.endsWith('!')) {
+      norm = norm.substring(0, norm.length - 1).trim();
+    }
+    final key = _apiMessageKeys[norm];
+    if (key != null) return getText(language, key);
+    if (norm.startsWith('server error')) return getText(language, 'serverError');
+    if (norm.startsWith('payment could not be started')) {
+      return getText(language, 'genericFailed');
+    }
+    if (raw.isEmpty || (language != 'English' && fallbackKey != null)) {
+      return getText(language, fallbackKey ?? 'genericFailed');
+    }
+    return raw;
+  }
+
+  static const Map<String, String> _countriesFr = {
+    'Belgium': 'Belgique',
+    'France': 'France',
+    'Netherlands': 'Pays-Bas',
+    'Germany': 'Allemagne',
+    'Luxembourg': 'Luxembourg',
+    'United Kingdom': 'Royaume-Uni',
+    'Spain': 'Espagne',
+    'Italy': 'Italie',
+    'Switzerland': 'Suisse',
+    'Austria': 'Autriche',
+    'Sweden': 'Suède',
+    'Norway': 'Norvège',
+    'Denmark': 'Danemark',
+    'Ireland': 'Irlande',
+    'Portugal': 'Portugal',
+    'Poland': 'Pologne',
+    'Morocco': 'Maroc',
+    'Algeria': 'Algérie',
+    'Tunisia': 'Tunisie',
+    'Egypt': 'Égypte',
+    'Turkey': 'Turquie',
+    'Saudi Arabia': 'Arabie saoudite',
+    'United Arab Emirates': 'Émirats arabes unis',
+    'Qatar': 'Qatar',
+    'Kuwait': 'Koweït',
+    'Jordan': 'Jordanie',
+    'Pakistan': 'Pakistan',
+    'India': 'Inde',
+    'Bangladesh': 'Bangladesh',
+    'Indonesia': 'Indonésie',
+    'Malaysia': 'Malaisie',
+    'Nigeria': 'Nigeria',
+    'Senegal': 'Sénégal',
+    'Somalia': 'Somalie',
+    'United States': 'États-Unis',
+    'Canada': 'Canada',
+    'Australia': 'Australie',
+    'Other': 'Autre',
+  };
+
+  /// Display name for a signup country (value sent to the API stays English).
+  static String countryName(String language, String country) =>
+      language == 'French' ? (_countriesFr[country] ?? country) : country;
+
 }

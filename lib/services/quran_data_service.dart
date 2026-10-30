@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
 /// Offline Quran JSON — load once at app start.
@@ -24,7 +25,8 @@ class QuranDataService {
   Future<void> _loadInternal() async {
     if (_ready) return;
     final raw = await rootBundle.loadString('assets/quran_data.json');
-    final data = json.decode(raw) as Map<String, dynamic>;
+    // ~65 MB JSON: decode on a background isolate so the UI never freezes.
+    final data = await compute(_decode, raw);
     if (data.containsKey('surahs')) {
       _surahs = Map<String, dynamic>.from(data['surahs'] as Map);
     } else {
@@ -48,3 +50,6 @@ class QuranDataService {
     return _surahs[key] as Map<String, dynamic>;
   }
 }
+
+Map<String, dynamic> _decode(String raw) =>
+    json.decode(raw) as Map<String, dynamic>;

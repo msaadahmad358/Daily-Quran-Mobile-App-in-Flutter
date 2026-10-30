@@ -16,6 +16,8 @@
 		97C146FC1CF9000F007C117D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FA1CF9000F007C117D /* Main.storyboard */; };
 		97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FD1CF9000F007C117D /* Assets.xcassets */; };
 		97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */; };
+		F1A2B3C42F01000100AZCAF2 /* azan.caf in Resources */ = {isa = PBXBuildFile; fileRef = F1A2B3C42F01000100AZCAF1 /* azan.caf */; };
+		F1A2B3C42F01000100PRIV2 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = F1A2B3C42F01000100PRIV1 /* PrivacyInfo.xcprivacy */; };
 		D462F4B8A4BDFA505ABC1032 /* Pods_Runner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07E6A4D2B8C95ECC21855CCA /* Pods_Runner.framework */; };
 		F1A2B3C42F01000100AZCAF2 /* azan.caf in Resources */ = {isa = PBXBuildFile; fileRef = F1A2B3C42F01000100AZCAF1 /* azan.caf */; };
 		F1A2B3C42F01000100PRIV2 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = F1A2B3C42F01000100PRIV1 /* PrivacyInfo.xcprivacy */; };

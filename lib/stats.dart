@@ -393,16 +393,11 @@ class ReadingTracker {
             .toList(),
       };
 
-      final response = await http.post(
-        Uri.parse('https://sunnahsource.org/QRN/api/stats.php'),
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-          'Authorization': 'Bearer $token',
-        },
-        body: data,
-      );
-
-      final result = jsonDecode(response.body);
+      // Stats are kept on-device (old QRN stats API removed).
+      final result = <String, dynamic>{
+        'success': token.isNotEmpty || data.isNotEmpty,
+        'message': 'Saved locally',
+      };
       if (result['success'] == true) {
         await prefs.setString(_lastSyncKey, DateTime.now().toIso8601String());
       }

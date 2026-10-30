@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -85,7 +86,7 @@ class _IslamicCalendarScreenState extends State<IslamicCalendarScreen> {
     final url =
         'https://api.aladhan.com/v1/gToHCalendar/${now.month}/${now.year}';
     try {
-      final res = await http.get(Uri.parse(url));
+      final res = await http.get(Uri.parse(url)).timeout(const Duration(seconds: 20));
       if (res.statusCode != 200) {
         throw Exception('HTTP ${res.statusCode}');
       }

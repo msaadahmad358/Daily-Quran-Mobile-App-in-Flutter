@@ -174,13 +174,16 @@ class PrayerNotificationService {
     final cache = await PrayerTimesCache.load();
     if (cache == null) return;
 
-    tz.Location location;
-    try {
-      location = tz.getLocation(
-        cache.timezone.isNotEmpty ? cache.timezone : 'UTC',
-      );
-    } catch (_) {
-      location = tz.local;
+    // Prayer times are wall-clock times in the city's timezone. If the cached
+    // timezone is missing/unknown, fall back to the DEVICE's local time
+    // (tz.local is UTC unless set, which would fire alerts hours off).
+    tz.Location? location;
+    if (cache.timezone.isNotEmpty) {
+      try {
+        location = tz.getLocation(cache.timezone);
+      } catch (_) {
+        location = null;
+      }
     }
 
     final details = _azanNotificationDetails();
@@ -194,7 +197,9 @@ class PrayerNotificationService {
       final raw = cache.times[name]?.toString();
       if (raw == null || raw.isEmpty || raw == '--:--') continue;
 
-      final when = _nextPrayerDateTime(raw, location);
+      final when = location != null
+          ? _nextPrayerDateTime(raw, location)
+          : _nextPrayerDeviceLocal(raw);
       if (when == null) continue;
 
       final (title, body) = _localizedPrayerAlert(
@@ -215,6 +220,22 @@ class PrayerNotificationService {
         matchDateTimeComponents: DateTimeComponents.time,
       );
     }
+  }
+
+  /// Next occurrence of HH:mm in the device's local time, as an absolute
+  /// instant (UTC-based TZDateTime), independent of tz.local.
+  tz.TZDateTime? _nextPrayerDeviceLocal(String hhmm) {
+    final parts = hhmm.split(':');
+    if (parts.length < 2) return null;
+    final h = int.tryParse(parts[0].trim());
+    final m = int.tryParse(parts[1].trim().split(' ').first);
+    if (h == null || m == null) return null;
+    final now = DateTime.now();
+    var local = DateTime(now.year, now.month, now.day, h, m);
+    if (local.isBefore(now)) {
+      local = DateTime(now.year, now.month, now.day + 1, h, m);
+    }
+    return tz.TZDateTime.from(local, tz.UTC);
   }
 
   tz.TZDateTime? _nextPrayerDateTime(String hhmm, tz.Location location) {
@@ -252,7 +273,7 @@ class PrayerNotificationService {
   }) async {
     await init();
     await _plugin.cancel(998);
-    final when = tz.TZDateTime.now(tz.local).add(delay);
+    final when = tz.TZDateTime.now(tz.UTC).add(delay);
     await _plugin.zonedSchedule(
       998,
       title,

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'translations.dart';
 import 'auth_service.dart';
 import 'login_screen.dart';
+import 'payment_history_screen.dart';
 import 'theme/app_surfaces.dart';
 import 'navigation/app_navigation.dart';
 import 'widgets/app_main_drawer.dart';
@@ -66,276 +68,318 @@ class _SettingsTabState extends State<SettingsTab> {
     await prefs.setBool('show_tafsir', _showTafsir);
   }
 
-  void _showEditProfileDialog() {
-    final TextEditingController nameController = TextEditingController(
-      text: _currentUser?.name ?? '',
-    );
-
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: Text(
-          Translations.getText(widget.currentLanguage, 'editProfile'),
-        ),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            TextField(
-              controller: nameController,
-              decoration: InputDecoration(
-                labelText: Translations.getText(
-                  widget.currentLanguage,
-                  'fullName',
-                ),
-                border: const OutlineInputBorder(),
-                prefixIcon: const Icon(Icons.person),
-              ),
-            ),
-          ],
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: Text(Translations.getText(widget.currentLanguage, 'cancel')),
+  // Prominent status banner shown at the TOP of a dialog (not a bottom
+  // snackbar that can hide behind the keyboard).
+  Widget _dialogBanner(String? message, {bool success = false}) {
+    if (message == null || message.isEmpty) return const SizedBox.shrink();
+    final color = success ? Colors.green.shade700 : Colors.red.shade700;
+    return Container(
+      width: double.infinity,
+      margin: const EdgeInsets.only(bottom: 12),
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+      decoration: BoxDecoration(
+        color: color.withValues(alpha: 0.12),
+        border: Border.all(color: color),
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: Row(
+        children: [
+          Icon(
+            success ? Icons.check_circle : Icons.error_outline,
+            color: color,
           ),
-          ElevatedButton(
-            onPressed: () async {
-              final name = nameController.text.trim();
-              if (name.isEmpty) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text(
-                      Translations.getText(
-                        widget.currentLanguage,
-                        'nameCannotBeEmpty',
-                      ),
-                    ),
-                    backgroundColor: Colors.red,
-                  ),
-                );
-                return;
-              }
-              setState(() => _isLoading = true);
-              final result = await _auth.updateProfile(name: name);
-              setState(() => _isLoading = false);
-              if (result['success'] == true) {
-                _loadUser();
-                widget.onUserUpdated?.call(); // ← ADD: refresh top banner
-
-                Navigator.pop(context);
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text(
-                      Translations.getText(
-                        widget.currentLanguage,
-                        'profileUpdated',
-                      ),
-                    ),
-                    backgroundColor: Colors.green,
-                  ),
-                );
-              } else {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text(
-                      result['message'] ??
-                          Translations.getText(
-                            widget.currentLanguage,
-                            'failedUpdateProfile',
-                          ),
-                    ),
-                    backgroundColor: Colors.red,
-                  ),
-                );
-              }
-            },
-            style: ElevatedButton.styleFrom(
-              backgroundColor: const Color(0xFF1A5F4A),
-              foregroundColor: Colors.white,
+          const SizedBox(width: 8),
+          Expanded(
+            child: Text(
+              message,
+              style: TextStyle(color: color, fontWeight: FontWeight.w600),
             ),
-            child: _isLoading
-                ? const SizedBox(
-                    width: 20,
-                    height: 20,
-                    child: CircularProgressIndicator(
-                      strokeWidth: 2,
-                      valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
-                    ),
-                  )
-                : Text(
-                    Translations.getText(widget.currentLanguage, 'save'),
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
           ),
         ],
       ),
     );
   }
 
-  void _showChangePasswordDialog() {
-    final TextEditingController oldPassController = TextEditingController();
-    final TextEditingController newPassController = TextEditingController();
-    final TextEditingController confirmPassController = TextEditingController();
-
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: Text(
-          Translations.getText(widget.currentLanguage, 'changePassword'),
+  Widget _busyButtonChild(bool busy, String label) {
+    if (busy) {
+      return const SizedBox(
+        width: 20,
+        height: 20,
+        child: CircularProgressIndicator(
+          strokeWidth: 2,
+          valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
         ),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            TextField(
-              controller: oldPassController,
-              obscureText: true,
-              decoration: InputDecoration(
-                labelText: Translations.getText(
-                  widget.currentLanguage,
-                  'currentPassword',
-                ),
-                border: const OutlineInputBorder(),
-                prefixIcon: const Icon(Icons.lock_outline),
-              ),
-            ),
-            const SizedBox(height: 12),
-            TextField(
-              controller: newPassController,
-              obscureText: true,
-              decoration: InputDecoration(
-                labelText: Translations.getText(
-                  widget.currentLanguage,
-                  'newPassword',
-                ),
-                border: const OutlineInputBorder(),
-                prefixIcon: const Icon(Icons.lock),
-              ),
-            ),
-            const SizedBox(height: 12),
-            TextField(
-              controller: confirmPassController,
-              obscureText: true,
-              decoration: InputDecoration(
-                labelText: Translations.getText(
-                  widget.currentLanguage,
-                  'confirmNewPassword',
-                ),
-                border: const OutlineInputBorder(),
-                prefixIcon: const Icon(Icons.lock),
-              ),
-            ),
-          ],
+      );
+    }
+    return Text(
+      label,
+      style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+    );
+  }
+
+  Future<void> _showResultDialog({
+    required bool success,
+    required String message,
+  }) async {
+    if (!mounted) return;
+    await showDialog<void>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        icon: Icon(
+          success ? Icons.check_circle : Icons.error_outline,
+          color: success ? Colors.green : Colors.red,
+          size: 48,
+        ),
+        content: Text(
+          message,
+          textAlign: TextAlign.center,
+          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
         ),
         actions: [
           TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: Text(Translations.getText(widget.currentLanguage, 'cancel')),
-          ),
-          ElevatedButton(
-            onPressed: () async {
-              final oldPass = oldPassController.text;
-              final newPass = newPassController.text;
-              final confirmPass = confirmPassController.text;
-
-              if (oldPass.isEmpty || newPass.isEmpty || confirmPass.isEmpty) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text(
-                      Translations.getText(
-                        widget.currentLanguage,
-                        'pleaseFillAllFields',
-                      ),
-                    ),
-                    backgroundColor: Colors.red,
-                  ),
-                );
-                return;
-              }
-              if (newPass != confirmPass) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text(
-                      Translations.getText(
-                        widget.currentLanguage,
-                        'passwordsDoNotMatch',
-                      ),
-                    ),
-                    backgroundColor: Colors.red,
-                  ),
-                );
-                return;
-              }
-              if (newPass.length < 8) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text(
-                      Translations.getText(
-                        widget.currentLanguage,
-                        'passwordMinLength',
-                      ),
-                    ),
-                    backgroundColor: Colors.red,
-                  ),
-                );
-                return;
-              }
-
-              setState(() => _isLoading = true);
-              final result = await _auth.changePassword(
-                oldPassword: oldPass,
-                newPassword: newPass,
-              );
-              setState(() => _isLoading = false);
-
-              if (result['success'] == true) {
-                Navigator.pop(context);
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text(
-                      Translations.getText(
-                        widget.currentLanguage,
-                        'passwordChanged',
-                      ),
-                    ),
-                    backgroundColor: Colors.green,
-                  ),
-                );
-              } else {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text(
-                      result['message'] ??
-                          Translations.getText(
-                            widget.currentLanguage,
-                            'failedChangePassword',
-                          ),
-                    ),
-                    backgroundColor: Colors.red,
-                  ),
-                );
-              }
-            },
-            style: ElevatedButton.styleFrom(
-              backgroundColor: const Color(0xFF1A5F4A),
-              foregroundColor: Colors.white,
-            ),
-            child: _isLoading
-                ? const SizedBox(
-                    width: 20,
-                    height: 20,
-                    child: CircularProgressIndicator(
-                      strokeWidth: 2,
-                      valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
-                    ),
-                  )
-                : Text(Translations.getText(widget.currentLanguage, 'update')),
+            onPressed: () => Navigator.pop(ctx),
+            child: Text(_t('ok')),
           ),
         ],
       ),
     );
+  }
+
+  String _t(String key) => Translations.getText(widget.currentLanguage, key);
+
+  String _api(Object? message, String fallbackKey) => Translations.apiMessage(
+      widget.currentLanguage, message,
+      fallbackKey: fallbackKey);
+
+  void _showEditProfileDialog() {
+    final nameController = TextEditingController(text: _currentUser?.name ?? '');
+    final countryController =
+        TextEditingController(text: _currentUser?.country ?? '');
+    final emailController =
+        TextEditingController(text: _currentUser?.email ?? '');
+    bool busy = false;
+    String? error;
+
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (dialogContext) => StatefulBuilder(
+        builder: (dialogContext, setDialog) => AlertDialog(
+          title: Text(_t('editProfile')),
+          content: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                _dialogBanner(error),
+                TextField(
+                  controller: nameController,
+                  enabled: !busy,
+                  decoration: InputDecoration(
+                    labelText: _t('fullName'),
+                    border: const OutlineInputBorder(),
+                    prefixIcon: const Icon(Icons.person),
+                  ),
+                ),
+                const SizedBox(height: 12),
+                TextField(
+                  controller: countryController,
+                  enabled: !busy,
+                  decoration: InputDecoration(
+                    labelText: _t('country'),
+                    border: const OutlineInputBorder(),
+                    prefixIcon: const Icon(Icons.public),
+                  ),
+                ),
+                const SizedBox(height: 12),
+                TextField(
+                  controller: emailController,
+                  enabled: !busy,
+                  keyboardType: TextInputType.emailAddress,
+                  decoration: InputDecoration(
+                    labelText: _t('email'),
+                    border: const OutlineInputBorder(),
+                    prefixIcon: const Icon(Icons.email_outlined),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: busy ? null : () => Navigator.pop(dialogContext),
+              child: Text(_t('cancel')),
+            ),
+            ElevatedButton(
+              onPressed: busy
+                  ? null
+                  : () async {
+                      final name = nameController.text.trim();
+                      if (name.isEmpty) {
+                        setDialog(() => error = _t('nameCannotBeEmpty'));
+                        return;
+                      }
+                      setDialog(() {
+                        busy = true;
+                        error = null;
+                      });
+                      final result = await _auth.updateProfile(
+                        name: name,
+                        country: countryController.text.trim(),
+                        email: emailController.text.trim(),
+                      );
+                      if (!dialogContext.mounted) return;
+                      if (result['success'] == true) {
+                        Navigator.pop(dialogContext);
+                        _loadUser();
+                        widget.onUserUpdated?.call();
+                        await _showResultDialog(
+                          success: true,
+                          message: _t('profileUpdated'),
+                        );
+                      } else {
+                        setDialog(() {
+                          busy = false;
+                          error = _api(result['message'], 'failedUpdateProfile');
+                        });
+                      }
+                    },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color(0xFF1A5F4A),
+                foregroundColor: Colors.white,
+                disabledBackgroundColor:
+                    const Color(0xFF1A5F4A).withValues(alpha: 0.6),
+              ),
+              child: _busyButtonChild(busy, _t('save')),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  void _showChangePasswordDialog() {
+    final oldPassController = TextEditingController();
+    final newPassController = TextEditingController();
+    final confirmPassController = TextEditingController();
+    bool busy = false;
+    String? error;
+
+    InputDecoration deco(String key, IconData icon) => InputDecoration(
+          labelText: _t(key),
+          border: const OutlineInputBorder(),
+          prefixIcon: Icon(icon),
+        );
+
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (dialogContext) => StatefulBuilder(
+        builder: (dialogContext, setDialog) => AlertDialog(
+          title: Text(_t('changePassword')),
+          content: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                _dialogBanner(error),
+                TextField(
+                  controller: oldPassController,
+                  enabled: !busy,
+                  obscureText: true,
+                  decoration: deco('currentPassword', Icons.lock_outline),
+                ),
+                const SizedBox(height: 12),
+                TextField(
+                  controller: newPassController,
+                  enabled: !busy,
+                  obscureText: true,
+                  decoration: deco('newPassword', Icons.lock),
+                ),
+                const SizedBox(height: 12),
+                TextField(
+                  controller: confirmPassController,
+                  enabled: !busy,
+                  obscureText: true,
+                  decoration: deco('confirmNewPassword', Icons.lock),
+                ),
+              ],
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: busy ? null : () => Navigator.pop(dialogContext),
+              child: Text(_t('cancel')),
+            ),
+            ElevatedButton(
+              onPressed: busy
+                  ? null
+                  : () async {
+                      final oldPass = oldPassController.text;
+                      final newPass = newPassController.text;
+                      final confirmPass = confirmPassController.text;
+                      String? v;
+                      if (oldPass.isEmpty ||
+                          newPass.isEmpty ||
+                          confirmPass.isEmpty) {
+                        v = _t('pleaseFillAllFields');
+                      } else if (newPass != confirmPass) {
+                        v = _t('passwordsDoNotMatch');
+                      } else if (newPass.length < 8) {
+                        v = _t('passwordMinLength');
+                      }
+                      if (v != null) {
+                        setDialog(() => error = v);
+                        return;
+                      }
+                      FocusScope.of(dialogContext).unfocus();
+                      setDialog(() {
+                        busy = true;
+                        error = null;
+                      });
+                      final result = await _auth.changePassword(
+                        oldPassword: oldPass,
+                        newPassword: newPass,
+                        confirmPassword: confirmPass,
+                      );
+                      if (!dialogContext.mounted) return;
+                      if (result['success'] == true) {
+                        Navigator.pop(dialogContext);
+                        await _showResultDialog(
+                          success: true,
+                          message: _t('passwordChanged'),
+                        );
+                      } else {
+                        setDialog(() {
+                          busy = false;
+                          error = _api(result['message'], 'failedChangePassword');
+                        });
+                      }
+                    },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color(0xFF1A5F4A),
+                foregroundColor: Colors.white,
+                disabledBackgroundColor:
+                    const Color(0xFF1A5F4A).withValues(alpha: 0.6),
+              ),
+              child: _busyButtonChild(busy, _t('update')),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Future<void> _openDonate() async {
+    final uri = await _auth.donateUri(widget.currentLanguage);
+    final ok = await launchUrl(uri, mode: LaunchMode.externalApplication);
+    if (!ok && mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            Translations.getText(widget.currentLanguage, 'couldNotOpenDonation'),
+          ),
+        ),
+      );
+    }
   }
 
   Future<void> _logout() async {
@@ -370,82 +414,133 @@ class _SettingsTabState extends State<SettingsTab> {
           context,
           MaterialPageRoute(
             builder: (context) => LoginScreen(
-              onLogin: () {},
-              onSignup: () {},
+              onLogin: () {
+                widget.onUserUpdated?.call();
+                _loadUser();
+              },
+              onSignup: () {
+                widget.onUserUpdated?.call();
+                _loadUser();
+              },
               onForgotPassword: () {},
               currentLanguage: widget.currentLanguage,
               isDarkMode: widget.isDarkMode,
-              onSkipLogin: () {},
+              onSkipLogin: () {
+                _loadUser();
+              },
             ),
           ),
-          (route) => false,
+          (route) => route.isFirst,
         );
       }
     }
   }
 
   Future<void> _deleteAccount() async {
-    final confirm = await showDialog<bool>(
+    final passwordController = TextEditingController();
+    bool busy = false;
+    String? error;
+
+    final deleted = await showDialog<bool>(
       context: context,
-      builder: (context) => AlertDialog(
-        title: Text(
-          Translations.getText(widget.currentLanguage, 'deleteAccount'),
-          style: const TextStyle(color: Colors.red),
-        ),
-        content: Text(
-          Translations.getText(widget.currentLanguage, 'deleteAccountConfirm'),
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context, false),
-            child: Text(Translations.getText(widget.currentLanguage, 'cancel')),
+      barrierDismissible: false,
+      builder: (dialogContext) => StatefulBuilder(
+        builder: (dialogContext, setDialog) => AlertDialog(
+          title: Text(
+            _t('deleteAccount'),
+            style: const TextStyle(color: Colors.red),
           ),
-          TextButton(
-            onPressed: () => Navigator.pop(context, true),
-            style: TextButton.styleFrom(foregroundColor: Colors.red),
-            child: Text(Translations.getText(widget.currentLanguage, 'delete')),
+          content: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                _dialogBanner(error),
+                Text(_t('deleteAccountConfirm')),
+                const SizedBox(height: 12),
+                TextField(
+                  controller: passwordController,
+                  enabled: !busy,
+                  obscureText: true,
+                  decoration: InputDecoration(
+                    labelText: _t('password'),
+                    border: const OutlineInputBorder(),
+                    prefixIcon: const Icon(Icons.lock_outline),
+                  ),
+                ),
+              ],
+            ),
           ),
-        ],
+          actions: [
+            TextButton(
+              onPressed: busy ? null : () => Navigator.pop(dialogContext, false),
+              child: Text(_t('cancel')),
+            ),
+            ElevatedButton(
+              onPressed: busy
+                  ? null
+                  : () async {
+                      if (passwordController.text.isEmpty) {
+                        setDialog(() => error = _t('pleaseFillAllFields'));
+                        return;
+                      }
+                      FocusScope.of(dialogContext).unfocus();
+                      setDialog(() {
+                        busy = true;
+                        error = null;
+                      });
+                      final result = await _auth.deleteAccount(
+                        password: passwordController.text,
+                      );
+                      if (!dialogContext.mounted) return;
+                      if (result['success'] == true) {
+                        Navigator.pop(dialogContext, true);
+                      } else {
+                        setDialog(() {
+                          busy = false;
+                          error = _api(result['message'], 'accountDeleteFailed');
+                        });
+                      }
+                    },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.red,
+                foregroundColor: Colors.white,
+                disabledBackgroundColor: Colors.red.withValues(alpha: 0.6),
+              ),
+              child: _busyButtonChild(busy, _t('delete')),
+            ),
+          ],
+        ),
       ),
     );
 
-    if (confirm == true) {
-      setState(() => _isLoading = true);
-      final result = await _auth.deleteAccount();
-      setState(() => _isLoading = false);
-
-      if (result['success'] == true) {
-        if (context.mounted) {
-          Navigator.pushAndRemoveUntil(
-            context,
-            MaterialPageRoute(
-              builder: (context) => LoginScreen(
-                onLogin: () {},
-                onSignup: () {},
-                onForgotPassword: () {},
-                currentLanguage: widget.currentLanguage,
-                isDarkMode: widget.isDarkMode,
-                onSkipLogin: () {},
-              ),
-            ),
-            (route) => false,
-          );
-        }
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Account deleted successfully'),
-            backgroundColor: Colors.green,
-          ),
-        );
-      } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(result['message'] ?? 'Failed to delete account'),
-            backgroundColor: Colors.red,
-          ),
-        );
-      }
-    }
+    if (deleted != true || !mounted) return;
+    await _showResultDialog(
+      success: true,
+      message: _t('accountDeleted'),
+    );
+    if (!mounted) return;
+    Navigator.pushAndRemoveUntil(
+      context,
+      MaterialPageRoute(
+        builder: (context) => LoginScreen(
+          onLogin: () {
+            widget.onUserUpdated?.call();
+            _loadUser();
+          },
+          onSignup: () {
+            widget.onUserUpdated?.call();
+            _loadUser();
+          },
+          onForgotPassword: () {},
+          currentLanguage: widget.currentLanguage,
+          isDarkMode: widget.isDarkMode,
+          onSkipLogin: () {
+            _loadUser();
+          },
+        ),
+      ),
+      (route) => route.isFirst,
+    );
   }
 
   @override
@@ -604,6 +699,16 @@ class _SettingsTabState extends State<SettingsTab> {
                   const SizedBox(height: 24),
                   _buildSectionTitle(getText('account'), isDark),
                   const SizedBox(height: 10),
+                  _buildSettingsGroup(
+                    isDark: isDark,
+                    child: _settingsNavTile(
+                      isDark: isDark,
+                      icon: Icons.volunteer_activism_rounded,
+                      title: Translations.getText(widget.currentLanguage, 'donate'),
+                      onTap: _openDonate,
+                    ),
+                  ),
+                  const SizedBox(height: 12),
                   if (_currentUser != null) ...[
                     _buildSettingsGroup(
                       isDark: isDark,
@@ -621,6 +726,21 @@ class _SettingsTabState extends State<SettingsTab> {
                             icon: Icons.lock_outline_rounded,
                             title: getText('changePassword'),
                             onTap: _showChangePasswordDialog,
+                          ),
+                          _groupDivider(isDark),
+                          _settingsNavTile(
+                            isDark: isDark,
+                            icon: Icons.receipt_long_outlined,
+                            title: _t('paymentHistory'),
+                            onTap: () => Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (_) =>
+                                    PaymentHistoryScreen(
+                                  isDarkMode: isDark,
+                                  currentLanguage: widget.currentLanguage,
+                                ),
+                              ),
+                            ),
                           ),
                         ],
                       ),

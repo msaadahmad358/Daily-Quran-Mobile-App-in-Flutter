@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:convert';
@@ -105,11 +108,13 @@ class AppTheme {
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   tz.initializeTimeZones();
-  await QuranDataService.instance.load();
-  await PrayerNotificationService.instance.init();
+  // Start heavy work in the background so the first frame (splash) shows
+  // immediately. _boot() awaits the Quran data before leaving the splash.
+  unawaited(QuranDataService.instance.load());
   runApp(
     DevicePreview(
-      enabled: false,
+      // Never ship the DevicePreview frame/tooling in release builds.
+      enabled: !kReleaseMode,
       builder: (context) => ChangeNotifierProvider(
         create: (_) => GlobalSurahAudioService(),
         child: const MyApp(),
@@ -144,7 +149,11 @@ class _MyAppState extends State<MyApp> {
   Future<void> _boot() async {
     final savedLang = await AppLanguagePrefs.get();
     await AppLanguagePrefs.set(savedLang);
+    // Notification plugin init + refresh of scheduled azan alerts runs in the
+    // background; it does not need to block the UI.
+    unawaited(_initNotifications());
     await Future.wait([
+      QuranDataService.instance.load(),
       _checkAuthStatus(),
       _initStatsTracker(),
     ]);
@@ -154,6 +163,14 @@ class _MyAppState extends State<MyApp> {
         _bootReady = true;
       });
     }
+  }
+
+  Future<void> _initNotifications() async {
+    try {
+      await PrayerNotificationService.instance.init();
+      // Re-arm today's prayer alerts from cached times on every launch.
+      await PrayerNotificationService.instance.rescheduleFromCache();
+    } catch (_) {}
   }
 
   Future<void> _checkAuthStatus() async {
@@ -197,18 +214,17 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: Translations.getText(_currentLanguage, 'appTitle'),
       debugShowCheckedModeBanner: false,
+      locale: DevicePreview.locale(context),
       theme: _isDarkMode ? AppTheme.darkTheme : AppTheme.lightTheme,
       navigatorKey: navigatorKey,
       builder: (context, child) {
+        child = DevicePreview.appBuilder(context, child);
         final mediaQuery = MediaQuery.of(context);
         return MediaQuery(
           data: mediaQuery.copyWith(
-            // Lock font scaling to 1.0 — ignores device font size settings
             textScaler: const TextScaler.linear(1.0),
-            // Optional: also lock by clamping textScaleFactor for older Flutter
-            // textScaleFactor: 1.0,
           ),
-          child: child!,
+          child: child,
         );
       },
       home: _showSplash || !_bootReady
@@ -247,3 +263,4 @@ class _MyAppState extends State<MyApp> {
     );
   }
 }
+

@@ -447,6 +447,8 @@ class _HomeTabState extends State<HomeTab> {
                 const SizedBox(height: 12),
                 _buildHadithOfTheDayCard(isDark, getText),
                 const SizedBox(height: 12),
+                _buildDonateNowButton(isDark, getText),
+                const SizedBox(height: 12),
                 SizedBox(
                   height: shortcutHeight,
                   child: _HomeShortcutCard(
@@ -504,6 +506,78 @@ class _HomeTabState extends State<HomeTab> {
             ),
           );
         },
+      ),
+    );
+  }
+
+  Future<void> _openDonate(String Function(String) getText) async {
+    final messenger = ScaffoldMessenger.of(context);
+    final uri = await AuthService().donateUri(widget.currentLanguage);
+    final ok = await launchUrl(uri, mode: LaunchMode.externalApplication);
+    if (!ok && mounted) {
+      messenger.showSnackBar(
+        SnackBar(content: Text(getText('couldNotOpenDonation'))),
+      );
+    }
+  }
+
+  Widget _buildDonateNowButton(
+    bool isDark,
+    String Function(String) getText,
+  ) {
+    // Same background as the Ayat/Hadith cards (image + green overlay).
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(3),
+      child: SizedBox(
+        height: 56,
+        width: double.infinity,
+        child: Stack(
+          fit: StackFit.expand,
+          children: [
+            Image.asset(
+              _verseBgAsset,
+              fit: BoxFit.cover,
+              errorBuilder: (context, error, stackTrace) =>
+                  ColoredBox(color: _primary),
+            ),
+            Container(
+              color: Color.lerp(
+                _primary.withValues(alpha: 0.78),
+                Colors.black.withValues(alpha: 0.5),
+                isDark ? 0.5 : 0.3,
+              ),
+            ),
+            Material(
+              color: Colors.transparent,
+              child: InkWell(
+                key: const Key('homeDonateNow'),
+                onTap: () => _openDonate(getText),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Icon(
+                      Icons.favorite_rounded,
+                      color: _goldAccent,
+                      size: 22,
+                      shadows: [Shadow(blurRadius: 6, color: Colors.black45)],
+                    ),
+                    const SizedBox(width: 10),
+                    Text(
+                      getText('donateNow'),
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w800,
+                        letterSpacing: 0.3,
+                        shadows: [Shadow(blurRadius: 6, color: Colors.black45)],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
